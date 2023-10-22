@@ -1194,7 +1194,7 @@ $vth_logo = $d->getTemplates(30);
             }
         }
 
-        $('body').on('click', '.xoa_sp_gh_dh', function (e) {
+        $('body').on('click', '#modalDathang .xoa_sp_gh_dh', function (e) {
             e.preventDefault();
             var id = $(this).attr('data-product');
             var iddh = $(this).attr('data-cart-item');
