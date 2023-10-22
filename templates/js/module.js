@@ -401,10 +401,39 @@ $(document).ready(function() {
 				}
 			})
 		}
+
+		$('body').on('click', '#modalAddToCart .xoa_sp_gh_dh', function (e) {
+			e.preventDefault();
+			var id = $(this).attr('data-product');
+			var iddh = $(this).attr('data-cart-item');
+			var al = $(this).attr('data-confirm');
+
+			xoa_sp_gh_dm(id, iddh, al);
+			return false;
+		});
+
 		return false;
 	});
 });
 
+function xoa_sp_gh_dm(id, iddh, al) {
+	var cf = confirm(al);
+	if (cf) {
+		$.ajax({
+			url: "./sources/ajax.php",
+			type: 'POST',
+			data: {
+				'do': 'xoa_sp_gh',
+				'id': id,
+				'iddh': iddh
+			},
+			success: function(data) {
+				updateProductInCart();
+				$('#modalAddToCart .modal-body').load('ajax/ajax_cartInfo.php');
+			}
+		})
+	}
+}
 
 function handleAddToCartAction(e) {
 	e.preventDefault();
