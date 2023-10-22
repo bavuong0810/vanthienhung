@@ -361,7 +361,6 @@ $(document).ready(function() {
 
 		const success = (res) => {
 			updateProductInCart();
-			getAllProvince();
 			$('#modalAddToCart .dathang-cart').load('ajax/ajax_cartInfo.php');
 			$('#modalAddToCart span.product-name').html(product_name);
 			$('#modalAddToCart').modal('show');
@@ -387,6 +386,10 @@ $(document).ready(function() {
 		xoa_sp_gh_dm(id, iddh, al);
 		return false;
 	});
+
+	getAllProvince();
+	$('#province').on('change', handleSelectProvince);
+	$('#county').on('change', handleSelectCounty);
 });
 
 function xoa_sp_gh_dm(id, iddh, al) {
