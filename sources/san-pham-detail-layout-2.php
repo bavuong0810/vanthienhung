@@ -790,61 +790,6 @@ $vth_logo = $d->getTemplates(30);
     var elDeliveryFee = $('#delivery_fee');
     var elTotalFee = $('#tong_tien_gh');
 
-    function getAllProvince() {
-        $.ajax('/img_data/files/viet-nam/tinh_tp.json', {
-            success: data => {
-                $('#province').append(`<option value="">Chọn tỉnh/thành phố</option>`);
-                Object.keys(data).forEach(function(i) {
-                    const element = data[i];
-                    $('#province').append(`<option value="${element.name}" data-id="${element.code}" ${element.name === Wind.province.name ? 'selected' : ''}>${element.name}</option>`);
-                });
-
-                $('#province').trigger('change');
-                $('#province').on('change', handleGetDeliveryFee);
-            },
-            fail: () => {
-                alert('Có lỗi khi lấy thông tin, vui lòng tải lại trang!');
-            },
-        });
-    }
-
-    function handleSelectProvince() {
-        const provinceId = $('#province').find(":selected").data('id');
-        if (!provinceId) {
-            return;
-        }
-        $.ajax(`/img_data/files/viet-nam/quan-huyen/${provinceId}.json`, {
-            success: data => {
-                $('#county').html('');
-                $('#county').append(`<option>Chọn quận/huyện</option>`);
-                Object.keys(data).forEach(function(i) {
-                    const element = data[i];
-                    $('#county').append(`<option value="${element.name}" data-id="${element.code}">${element.name}</option>`);
-                });
-            },
-            fail: () => {
-                alert('Có lỗi khi lấy thông tin, vui lòng tải lại trang!');
-            },
-        });
-    }
-
-    function handleSelectCounty() {
-        const countyId = $('#county').find(":selected").data('id');
-        $.ajax(`/img_data/files/viet-nam/xa-phuong/${countyId}.json`, {
-            success: data => {
-                $('#commune').html('');
-                $('#commune').append(`<option>Chọn xã/phường</option>`);
-                Object.keys(data).forEach(function(i) {
-                    const element = data[i];
-                    $('#commune').append(`<option value="${element.name}" data-id="${element.code}">${element.name}</option>`);
-                });
-            },
-            fail: () => {
-                alert('Có lỗi khi lấy thông tin, vui lòng tải lại trang!');
-            },
-        });
-    }
-
     function updateUndefineArea() {
         elDeliveryFee.html('Thông báo sau!');
     }
