@@ -435,12 +435,13 @@ function handleAddToCartAction(e) {
 			showCancelButton: true,
 			confirmButtonText: 'Xem',
 			cancelButtonText: 'Không',
-			closeOnConfirm: false,
+			closeOnConfirm: true,
 			showLoaderOnConfirm: true,
 		}, (isConfirmed) => {
 			if (isConfirmed) {
 				$('#modalAddToCart .dathang-cart').load('ajax/ajax_cartInfo.php');
 				$('#modalAddToCart').modal('show');
+
 			}
 		});
 	};

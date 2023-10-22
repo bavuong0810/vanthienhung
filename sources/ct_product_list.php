@@ -107,19 +107,57 @@
                 <?php } ?>
             </div>
 
-            <div class="dong-lon-buttons">
+            <?php
+            $view_print_price_request = $d->getOption('view_print_price_request');
+            $view_add_to_cart =  $d->getOption('view_add_to_cart');
+            $view_request_price =  $d->getOption('view_request_price');
+            $view_small_button_placeorder = $d->getOption('view_small_button_placeorder');
+            $view_btn_contact =  $d->getOption('view_btn_contact');
+            $view_shipping_content =  $d->getOption('view_shipping_content');
+            $view_return_content =  $d->getOption('view_return_content');
+            $view_button_checkorder =  $d->getOption('view_button_checkorder');
+            $view_button_warrantyonline =  $d->getOption('view_button_warrantyonline');
+            ?>
+            <div class="dong-lon-buttons">'
+                <?php if ($view_add_to_cart): ?>
                 <a href="javascript:void(0)" type="button" class="dl-btn btn btn-success btn-flat mr-1 addToCart" id="addToCart" data-product="<?= $item['id'] ?>" data-title="<?= $item['name_' . $lang] ?>" data-price="<?= $item['price'] ?>" data-detail="true">
                     Thêm vào giỏ
                 </a>
-                
+                <?php endif ?>
+
+                <?php if ($view_request_price): ?>
                 <button id="product_detail_price_request" type="button" class="dl-btn btn btn-danger mr-1 addcart" data-product="<?= $item['id'] ?>" data-code="<?= $item['code']; ?>" data-image="<?= $img_baogia ?>" data-title="<?= $item['name_' . $lang] ?>" data-price="<?= $item['price'] ?>" data-detail="true">
                     Yêu cầu báo giá
                 </button>
+                <?php endif; ?>
+
+                <?php if( $view_button_checkorder || $view_button_warrantyonline ) { $vbtn2 = ( $view_button_checkorder && $view_button_warrantyonline ) ? 2 : 1;?>
+                    <?php if($view_button_checkorder){?>
+                        <a href="javascript:void(0)" class="dl-btn btn btn-flat btn-blue btn-checkorder" data-toggle="modal" data-target="#checkorderModal">
+                            Kiểm tra đơn hàng
+                        </a>
+                    <?php }?>
+
+                    <?php if($view_button_warrantyonline){?>
+                        <a href="javascript:void(0)" class="btn btn-flat btn-blue btn-warrantyonline" data-toggle="modal" data-target="#warrantyonlineModal">
+                            Bảo hành online
+                        </a>
+                    <?php }?>
+                <?php }?>
+
+                <?php if($view_btn_contact == 'small'){?>
+                    <a class="dl-btn btn btn-sendmail btn-product-contact btn-flat" href="javascript:void(0)"
+                       data-toggle="modal" data-target="#sendEmailModal">Liên hệ</a>
+                <?php }?>
+
+                <?php if ($view_print_price_request): ?>
                 <a class="dl-btn-inline" href="/in-bao-gia-san-pham.php?pid=<?php echo $item['id'] ?>" title="In báo giá" target="_blank">
                     <button type="button" class="dl-btn btn btn-danger btn-flat print-price">
                         In báo giá
                     </button>
                 </a>
+                <?php endif; ?>
+
                 <a class="dl-btn-inline dl-btn btn-default btn" href="<?=URLPATH.$item['alias_'.$lang] ?>.html" title="<?=$item['name_'.$lang] ?>">
                     Chi tiết
                 </a>
