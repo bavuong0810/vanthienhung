@@ -478,7 +478,7 @@ function getAllProvince() {
 			$('#province').append(`<option value="">Chọn tỉnh/thành phố</option>`);
 			Object.keys(data).forEach(function(i) {
 				const element = data[i];
-				$('#province').append(`<option value="${element.name}" data-id="${element.code}" ${element.name === Wind.province.name ? 'selected' : ''}>${element.name}</option>`);
+				$('#province').append(`<option value="${element.name}" data-id="${element.code}">${element.name}</option>`);
 			});
 
 			$('#province').trigger('change');
