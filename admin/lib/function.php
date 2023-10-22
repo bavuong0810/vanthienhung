@@ -57,7 +57,7 @@ class func_index
 			$this->$k = $v;
 		}
 
-		$this->memcached = new Memcache();
+		$this->memcached = new Memcached();
 
         $this->memcached->addServer(
 			getenv('MEMCACHED_HOST') ?: 'memcached',
