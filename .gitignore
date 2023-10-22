@@ -11,6 +11,7 @@
 /cache/
 /code/
 admin/lib/config.php
+admin/assets/GeoLite2-City.mmdb
 /smtp/token.json
 test.php
 /tmp/html/*
