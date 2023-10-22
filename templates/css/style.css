@@ -2975,7 +2975,7 @@ span.divider {
     color: #ffffff;
 }
 
-#modalDathang .modal-dialog {
+#modalDathang .modal-dialog, #modalAddToCart .modal-dialog {
     width: 1024px;
     max-width: 100%;
 }

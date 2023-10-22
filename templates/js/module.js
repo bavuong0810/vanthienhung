@@ -345,7 +345,7 @@ $(document).ready(function() {
 
 	initAddToCartAction();
 
-	$('.dong-lon-buttons .addToCart').click(function(e) {
+	$('.dong-lon-buttons .addToCart, .detail-button-wrap a.addToCart').click(function(e) {
 		const id = $(this).data('product');
 		const soluong = 1;
 		const product_name = $(this).data('title');

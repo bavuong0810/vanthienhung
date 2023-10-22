@@ -108,7 +108,7 @@
             </div>
 
             <div class="dong-lon-buttons">
-                <a href="/gio-hang.html" target="_blank" type="button" class="dl-btn btn btn-success btn-flat mr-1 addToCart" id="addToCart" data-product="<?= $item['id'] ?>" data-title="<?= $item['name_' . $lang] ?>" data-price="<?= $item['price'] ?>" data-detail="true">
+                <a href="javascript:void(0)" type="button" class="dl-btn btn btn-success btn-flat mr-1 addToCart" id="addToCart" data-product="<?= $item['id'] ?>" data-title="<?= $item['name_' . $lang] ?>" data-price="<?= $item['price'] ?>" data-detail="true">
                     Thêm vào giỏ
                 </a>
                 

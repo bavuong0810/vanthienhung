@@ -235,7 +235,7 @@ $vth_logo = $d->getTemplates(30);
 
                                         <?php if($view_add_to_cart){?>
                                             <div class="detail-button-item">
-                                                <a href="/gio-hang.html" target="_blank" type="button" class="btn btn-success btn-flat mr-1 addToCart" id="addToCart" data-product="<?= $ctsp['id'] ?>" data-title="<?= $ctsp['name_' . $lang] ?>" data-price="<?= $ctsp['price'] ?>" data-detail="true">
+                                                <a href="javascript:void(0)" type="button" class="btn btn-success btn-flat mr-1 addToCart" id="addToCart" data-product="<?= $ctsp['id'] ?>" data-title="<?= $ctsp['name_' . $lang] ?>" data-price="<?= $ctsp['price'] ?>" data-detail="true">
                                                     Thêm vào giỏ
                                                 </a>
                                             </div>
