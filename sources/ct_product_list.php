@@ -161,6 +161,7 @@
                 <a class="dl-btn-inline dl-btn btn-default btn" href="<?=URLPATH.$item['alias_'.$lang] ?>.html" title="<?=$item['name_'.$lang] ?>">
                     Chi tiết
                 </a>
+
                 <?php if ($view_small_button_placeorder): ?>
                     <a href="javascript:void(0)" type="button" class="dl-btn btn btn-dathang btn-dathang-sm btn-flat addToCart" id="addToCart" data-product="<?= $item['id'] ?>" data-title="<?= $item['name_' . $lang] ?>" data-price="<?= $item['price'] ?>" data-detail="true">
                         Đặt hàng
