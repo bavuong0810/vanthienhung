@@ -1,0 +1,1 @@
+ALTER TABLE `db_sanpham` ADD COLUMN `don_vi` VARCHAR(100) NULL AFTER `is_new`;

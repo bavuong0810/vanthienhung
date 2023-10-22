@@ -1,0 +1,1 @@
+ALTER TABLE db_sanpham DROP COLUMN gio_su_dung, DROP COLUMN cong_suat, DROP COLUMN banh_sau,  DROP COLUMN nguon_dien;  

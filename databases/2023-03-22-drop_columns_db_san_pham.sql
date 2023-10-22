@@ -1,0 +1,7 @@
+ALTER TABLE db_sanpham 
+DROP COLUMN extra5, 
+DROP COLUMN extra6, 
+DROP COLUMN extra7, 
+DROP COLUMN extra8, DROP COLUMN extra9, DROP COLUMN extra10, 
+DROP COLUMN code_3, 
+DROP COLUMN thanh_pho, DROP COLUMN quan; 

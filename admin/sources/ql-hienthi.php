@@ -1,0 +1,122 @@
+<?php
+if(!defined('_source')) die("Error");
+$a = (isset($_REQUEST['a'])) ? addslashes($_REQUEST['a']) : "";
+
+switch($a){
+	case "man":
+		showdulieu();
+		$template = @$_REQUEST['p']."/them";
+		break;
+	case "save":
+		luudulieu();
+		break;
+	default:
+		$template = "index";
+}
+
+function showdulieu(){
+	global $d, $items;
+	$d->disableCacheQuery();
+}
+
+function luudulieu(){
+	global $d;
+	$data['view_san_pham'] = $_POST['view_san_pham'];
+	$data['view_ho_tro'] = $_POST['view_ho_tro'];
+	$data['view_footer'] = $_POST['view_footer'];
+	$view_footer_content = addslashes($_POST['view_footer_content']);
+
+	$data['view_dm_truc_tuyen'] = $_POST['view_dm_truc_tuyen'];
+	$data['view_ct_truc_tuyen'] = $_POST['view_ct_truc_tuyen'];
+	$data['view_thong_so'] = $_POST['view_thong_so'];
+	$data['view_san_pham_layout'] = $_POST['view_san_pham_layout'];
+
+	$data['view_home_slider'] = $_POST['view_home_slider'];
+	$data['view_home_gallery'] = $_POST['view_home_gallery'];
+	$data['view_home_business'] = $_POST['view_home_business'];
+	$data['view_home_services'] = $_POST['view_home_services'];
+	$data['view_chi_tiet_san_pham'] = $_POST['view_chi_tiet_san_pham'];
+	$data['view_san_pham_tieu_bieu'] = $_POST['view_san_pham_tieu_bieu'];
+	$data['view_button_placeorder'] = $_POST['view_button_placeorder'];
+
+	$data['view_num_category'] = $_POST['view_num_category'];
+	$data['view_num_related'] = $_POST['view_num_related'];
+
+	$data['view_price_report_form_right'] = $_POST['view_price_report_form_right'];
+	$data['view_product_description'] = $_POST['view_product_description'];
+
+	$data['footer_widget_title_4'] = $_POST['footer_widget_title_4'];
+	$data['view_button_placeorder_right'] = $_POST['view_button_placeorder_right'];
+	$data['view_ban_do_bottom'] = $_POST['view_ban_do_bottom'];
+	$data['view_product_noprice'] = $_POST['view_product_noprice'];
+
+	$data['footer_copyright'] = $_POST['footer_copyright'];
+	$data['footer_design_by'] = $_POST['footer_design_by'];
+
+	$data['view_print_price_request'] = $_POST['view_print_price_request'];
+	$data['view_print_price_template'] = $_POST['view_print_price_template'];
+	$data['view_vnpay_payment'] = $_POST['view_vnpay_payment'];
+
+	$data['view_product_detail_above'] = $_POST['view_product_detail_above'];
+	$data['view_product_detail_below'] = $_POST['view_product_detail_below'];
+
+	$data['view_danh_muc'] = $_POST['view_danh_muc'];
+	$data['view_nhan_hieu'] = $_POST['view_nhan_hieu'];
+	$data['view_add_to_cart'] = $_POST['view_add_to_cart'];
+	$data['view_request_price'] = $_POST['view_request_price'];
+
+	$data['view_website_fullwidth'] = $_POST['view_website_fullwidth'];
+	$data['view_right_sidebar_large'] = $_POST['view_right_sidebar_large'];
+	$data['view_small_button_placeorder'] = $_POST['view_small_button_placeorder'];
+
+	$data['view_vi_tri_nhan_hieu'] = $_POST['view_vi_tri_nhan_hieu'];
+	$data['view_vi_tri_form_bao_gia'] = $_POST['view_vi_tri_form_bao_gia'];
+
+	$data['view_button_facebook_zalo'] = $_POST['view_button_facebook_zalo'];
+	$data['view_button_like_share'] = $_POST['view_button_like_share'];
+	$data['view_menu_type'] = $_POST['view_menu_type'];
+	$data['view_menu_brand_type'] = $_POST['view_menu_brand_type'];
+	$data['view_menu_brand_button'] = $_POST['view_menu_brand_button'];
+	$data['view_count_product'] = $_POST['view_count_product'];
+	$data['view_menu_category_brand'] = $_POST['view_menu_category_brand'];
+	$data['view_btn_contact'] = $_POST['view_btn_contact'];
+
+	$data['view_button_checkorder_right'] = $_POST['view_button_checkorder_right'];
+	$data['view_button_warrantyonline_right'] = $_POST['view_button_warrantyonline_right'];
+	$data['view_button_price_request_right'] = $_POST['view_button_price_request_right'];
+	$data['view_button_contact_right'] = $_POST['view_button_contact_right'];
+	$data['view_zalo_right'] = $_POST['view_zalo_right'];
+	$data['view_calendar_right'] = $_POST['view_calendar_right'];
+
+	$data['view_button_checkorder_left'] = $_POST['view_button_checkorder_left'];
+	$data['view_button_warrantyonline_left'] = $_POST['view_button_warrantyonline_left'];
+	$data['view_button_price_request_left'] = $_POST['view_button_price_request_left'];
+	$data['view_button_contact_left'] = $_POST['view_button_contact_left'];
+	$data['view_zalo_left'] = $_POST['view_zalo_left'];
+	$data['view_calendar_left'] = $_POST['view_calendar_left'];
+
+	$data['view_button_checkorder'] = $_POST['view_button_checkorder'];
+	$data['view_button_warrantyonline'] = $_POST['view_button_warrantyonline'];
+
+	$data['view_category_page'] = $_POST['view_category_page'];
+	$data['view_brand_page_type'] = $_POST['view_brand_page_type'];
+
+	$data['view_shipping_content'] = addslashes($_POST['view_shipping_content']);
+	$data['view_return_content'] = addslashes($_POST['view_return_content']);
+	
+	foreach( $data as $key=>$val ){
+		$d->disableCacheQuery();
+		$d->reset();
+		
+		if( $key == 'view_footer' ){
+			$d->updateOption($key, $val, $view_footer_content);
+		} else {
+			$d->updateOption($key, $val);
+		}
+	}
+	$d->disableCacheQuery();
+	$d->reset();
+	$d->clearMemCached();
+	$d->alert("Cập nhật dữ liệu thành công.");
+	$d->redirect("index.php?p=".$_GET['p']."&a=man");
+}

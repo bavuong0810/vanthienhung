@@ -1,0 +1,227 @@
+image: ictu/sshpass
+
+variables:
+  GIT_STRATEGY: none
+
+# before_script:
+ # - apt-get update -qq && apt-get install -y -qq sshpass
+
+deploy_vanthienhung:
+  stage: deploy
+  environment: production
+  only:
+    - vanthienhung
+  script:
+    # - ls
+    - sshpass -V
+    - export SSHPASS=$SSH_PASS
+    - export GITUSER=$GIT_USER
+    - export GITPASS=$GIT_PASS
+    - sshpass -e ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "
+        cd /home/vanthienhung.vn/public_html &&
+        chown -R nginx:nginx \$(ls -a -I img_data -I . -I ..) &&
+        sudo -u nginx git pull https://$GITUSER:$GITPASS@gitlab.com/minhtranfu/vanthienhung.git vanthienhung &&
+        systemctl reload php-fpm &&
+        mkdir empty_dir &&
+        rsync -a --delete ./empty_dir/ ./tmp/html/ &&
+        rm -rf empty_dir &&
+
+        cd /home/vanthienhung.com/public_html &&
+        chown -R nginx:nginx \$(ls -a -I img_data -I . -I ..) &&
+        sudo -u nginx git pull https://$GITUSER:$GITPASS@gitlab.com/minhtranfu/vanthienhung.git vanthienhung &&
+        systemctl reload php-fpm &&
+        mkdir empty_dir &&
+        rsync -a --delete ./empty_dir/ ./tmp/html/ &&
+        rm -rf empty_dir &&
+
+        cd /home/vanthienhung.com.vn/public_html &&
+        chown -R nginx:nginx \$(ls -a -I img_data -I . -I ..) &&
+        sudo -u nginx git pull https://$GITUSER:$GITPASS@gitlab.com/minhtranfu/vanthienhung.git vanthienhung &&
+        systemctl reload php-fpm &&
+        mkdir empty_dir &&
+        rsync -a --delete ./empty_dir/ ./tmp/html/ &&
+        rm -rf empty_dir &&
+
+        cd /home/bacdan.online/public_html &&
+        chown -R nginx:nginx \$(ls -a -I img_data -I . -I ..) &&
+        sudo -u nginx git pull https://$GITUSER:$GITPASS@gitlab.com/minhtranfu/vanthienhung.git vanthienhung &&
+        systemctl reload php-fpm &&
+        mkdir empty_dir &&
+        rsync -a --delete ./empty_dir/ ./tmp/html/ &&
+        rm -rf empty_dir &&
+
+        cd /home/phutungxecogioi.online/public_html &&
+        chown -R nginx:nginx \$(ls -a -I img_data -I . -I ..) &&
+        sudo -u nginx git pull https://$GITUSER:$GITPASS@gitlab.com/minhtranfu/vanthienhung.git vanthienhung &&
+        systemctl reload php-fpm &&
+        mkdir empty_dir &&
+        rsync -a --delete ./empty_dir/ ./tmp/html/ &&
+        rm -rf empty_dir &&
+
+        cd /home/phutungxenang.online/public_html &&
+        chown -R nginx:nginx \$(ls -a -I img_data -I . -I ..) &&
+        sudo -u nginx git pull https://$GITUSER:$GITPASS@gitlab.com/minhtranfu/vanthienhung.git vanthienhung &&
+        systemctl reload php-fpm &&
+        mkdir empty_dir &&
+        rsync -a --delete ./empty_dir/ ./tmp/html/ &&
+        rm -rf empty_dir &&
+
+        cd /home/suaxe.online/public_html &&
+        chown -R nginx:nginx \$(ls -a -I img_data -I . -I ..) &&
+        sudo -u nginx git pull https://$GITUSER:$GITPASS@gitlab.com/minhtranfu/vanthienhung.git vanthienhung &&
+        systemctl reload php-fpm &&
+        mkdir empty_dir &&
+        rsync -a --delete ./empty_dir/ ./tmp/html/ &&
+        rm -rf empty_dir &&
+
+        cd /home/voxe.online/public_html &&
+        chown -R nginx:nginx \$(ls -a -I img_data -I . -I ..) &&
+        sudo -u nginx git pull https://$GITUSER:$GITPASS@gitlab.com/minhtranfu/vanthienhung.git vanthienhung &&
+        systemctl reload php-fpm &&
+        mkdir empty_dir &&
+        rsync -a --delete ./empty_dir/ ./tmp/html/ &&
+        rm -rf empty_dir &&
+
+        cd /home/xenang.online/public_html &&
+        chown -R nginx:nginx \$(ls -a -I img_data -I . -I ..) &&
+        sudo -u nginx git pull https://$GITUSER:$GITPASS@gitlab.com/minhtranfu/vanthienhung.git vanthienhung &&
+        systemctl reload php-fpm &&
+        mkdir empty_dir &&
+        rsync -a --delete ./empty_dir/ ./tmp/html/ &&
+        rm -rf empty_dir &&
+
+        cd /home/xetai.online/public_html &&
+        chown -R nginx:nginx \$(ls -a -I img_data -I . -I ..) &&
+        sudo -u nginx git pull https://$GITUSER:$GITPASS@gitlab.com/minhtranfu/vanthienhung.git vanthienhung &&
+        systemctl reload php-fpm &&
+        mkdir empty_dir &&
+        rsync -a --delete ./empty_dir/ ./tmp/html/ &&
+        rm -rf empty_dir &&
+
+        cd /home/chodansin.online/public_html &&
+        chown -R nginx:nginx \$(ls -a -I img_data -I . -I ..) &&
+        sudo -u nginx git pull https://$GITUSER:$GITPASS@gitlab.com/minhtranfu/vanthienhung.git vanthienhung &&
+        systemctl reload php-fpm &&
+        mkdir empty_dir &&
+        rsync -a --delete ./empty_dir/ ./tmp/html/ &&
+        rm -rf empty_dir &&
+
+        cd /home/daycuroa.online/public_html &&
+        chown -R nginx:nginx \$(ls -a -I img_data -I . -I ..) &&
+        sudo -u nginx git pull https://$GITUSER:$GITPASS@gitlab.com/minhtranfu/vanthienhung.git vanthienhung &&
+        systemctl reload php-fpm &&
+        mkdir empty_dir &&
+        rsync -a --delete ./empty_dir/ ./tmp/html/ &&
+        rm -rf empty_dir &&
+
+        cd /home/phutungxe.online/public_html &&
+        chown -R nginx:nginx \$(ls -a -I img_data -I . -I ..) &&
+        sudo -u nginx git pull https://$GITUSER:$GITPASS@gitlab.com/minhtranfu/vanthienhung.git vanthienhung &&
+        systemctl reload php-fpm &&
+        mkdir empty_dir &&
+        rsync -a --delete ./empty_dir/ ./tmp/html/ &&
+        rm -rf empty_dir &&
+
+        cd /home/thuyluc.online/public_html &&
+        chown -R nginx:nginx \$(ls -a -I img_data -I . -I ..) &&
+        sudo -u nginx git pull https://$GITUSER:$GITPASS@gitlab.com/minhtranfu/vanthienhung.git vanthienhung &&
+        systemctl reload php-fpm &&
+        mkdir empty_dir &&
+        rsync -a --delete ./empty_dir/ ./tmp/html/ &&
+        rm -rf empty_dir"
+
+deploy_binhduong:
+  stage: deploy
+  environment: production
+  only:
+    - binhduong
+  script:
+    # - ls
+    - sshpass -V
+    - export SSHPASS=$SSH_PASS
+    - export GITUSER=$GIT_USER
+    - export GITPASS=$GIT_PASS
+    - sshpass -e ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "
+        cd /home/congnghiepbinhduong.vn/public_html &&
+        chown -R nginx:nginx \$(ls -a -I img_data -I . -I ..) &&
+        sudo -u nginx git pull https://$GITUSER:$GITPASS@gitlab.com/minhtranfu/vanthienhung.git binhduong &&
+        systemctl reload php-fpm &&
+        rm -rf ./tmp/html &&
+        mkdir ./tmp/html &&
+        chmod 0777 ./tmp/html &&
+
+        cd /home/congnghiepbinhduong.com.vn/public_html &&
+        chown -R nginx:nginx \$(ls -a -I img_data -I . -I ..) &&
+        sudo -u nginx git pull https://$GITUSER:$GITPASS@gitlab.com/minhtranfu/vanthienhung.git binhduong &&
+        systemctl reload php-fpm &&
+        rm -rf ./tmp/html &&
+        mkdir ./tmp/html &&
+        chmod 0777 ./tmp/html &&
+
+        cd /home/congnghiepbinhduong.online/public_html &&
+        chown -R nginx:nginx \$(ls -a -I img_data -I . -I ..) &&
+        sudo -u nginx git pull https://$GITUSER:$GITPASS@gitlab.com/minhtranfu/vanthienhung.git binhduong &&
+        systemctl reload php-fpm &&
+        rm -rf ./tmp/html &&
+        mkdir ./tmp/html &&
+        chmod 0777 ./tmp/html"
+
+deploy_vthcomvn:
+  stage: deploy
+  environment: production
+  only:
+    - site/vthcomvn
+  script:
+    # - ls
+    - sshpass -V
+    - export SSHPASS=$SSH_PASS
+    - export GITUSER=$GIT_USER
+    - export GITPASS=$GIT_PASS
+    - sshpass -e ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "
+        cd /home/vanthienhung.com.vn/public_html &&
+        chown -R nginx:nginx \$(ls -a -I img_data -I . -I ..) &&
+        sudo -u nginx git pull https://$GITUSER:$GITPASS@gitlab.com/minhtranfu/vanthienhung.git site/vthcomvn &&
+        systemctl reload php-fpm &&
+        rm -rf ./tmp/html &&
+        mkdir ./tmp/html &&
+        chmod 0777 ./tmp/html"
+
+deploy_cnhnvn:
+  stage: deploy
+  environment: production
+  only:
+    - site/hanoi
+  script:
+    # - ls
+    - sshpass -V
+    - export SSHPASS=$SSH_PASS
+    - export GITUSER=$GIT_USER
+    - export GITPASS=$GIT_PASS
+    - sshpass -e ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "
+        cd /home/congnghiephanoi.vn/public_html &&
+        chown -R nginx:nginx \$(ls -a -I img_data -I . -I ..) &&
+        sudo -u nginx git pull https://$GITUSER:$GITPASS@gitlab.com/minhtranfu/vanthienhung.git site/hanoi &&
+        systemctl reload php-fpm &&
+        rm -rf ./tmp/html &&
+        mkdir ./tmp/html &&
+        chmod 0777 ./tmp/html"
+
+deploy_cndongnai:
+  stage: deploy
+  environment: production
+  only:
+    - site/dongnai
+  script:
+    # - ls
+    - sshpass -V
+    - export SSHPASS=$SSH_PASS
+    - export GITUSER=$GIT_USER
+    - export GITPASS=$GIT_PASS
+    - sshpass -e ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "
+        cd /home/congnghiepdongnai.vn/public_html &&
+        chown -R nginx:nginx \$(ls -a -I img_data -I . -I ..) &&
+        sudo -u nginx git pull https://$GITUSER:$GITPASS@gitlab.com/minhtranfu/vanthienhung.git site/dongnai &&
+        systemctl reload php-fpm &&
+        rm -rf ./tmp/html &&
+        mkdir ./tmp/html &&
+        chmod 0777 ./tmp/html"

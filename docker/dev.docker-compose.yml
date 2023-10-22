@@ -1,0 +1,130 @@
+version: '3.5'
+
+services:
+  nginx:
+    image: nginx:1.15.10-alpine
+    ports:
+      - 80:80
+      - 443:443
+    restart: unless-stopped
+    depends_on:
+      - php-fpm
+    volumes:
+      - ../:/var/www/app:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - app_system
+
+  php-fpm:
+    build: ../
+    # image: registry.gitlab.com/m-base/php:0.0.3
+    depends_on:
+      - mariadb
+    restart: always
+    volumes:
+      - ../:/var/www/app
+      - ./php-fpm.conf:/etc/php7/php-fpm.d/www.conf
+      - ./php-opcache-custom.ini:/usr/local/etc/php/conf.d/php-opcache-custom.ini
+#    ports:
+#      - ${APP_PORT}:80
+    networks:
+      - app_system
+    environment:
+      DB_HOST: "${DB_HOST}"
+      DB_PORT: ${DB_PORT}
+      DB_DATABASE: ${DB_DATABASE}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_CONNECTION: ${DB_CONNECTION}
+#    command: php /var/www/app/artisan serve --host 0.0.0.0 --port 80
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8081:8080
+    depends_on:
+      - mariadb
+    networks:
+      - app_system
+
+#  postgres:
+#    image: postgres:11-alpine
+#    restart: always
+#    # read_only: true
+#    # ports:
+#      # - 5433:5432
+#    tmpfs:
+#      - /tmp
+#      - /var/run/postgresql
+#    volumes:
+#      - postgres:/var/lib/postgresql/data
+#    environment:
+#      - POSTGRES_USER=${DB_USERNAME}
+#      - POSTGRES_PASSWORD=${DB_PASSWORD}
+#      - POSTGRES_DB=${DB_DATABASE}
+#    networks:
+#      - app_system
+
+  # mysql:
+  #   image: mysql:5.7
+  #   restart: always
+  #   environment:
+  #     MYSQL_DATABASE: ${DB_DATABASE}
+  #     # So you don't have to use root, but you can if you like
+  #     MYSQL_USER: ${DB_USERNAME}
+  #     # You can use whatever password you like
+  #     MYSQL_PASSWORD: ${DB_PASSWORD}
+  #     # Password for root access
+  #     MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+  #   # ports:
+  #     # <Port exposed> : < MySQL Port running inside container>
+  #     # - '3306:3306'
+  #   # expose:
+  #     # Opens port 3306 on the container
+  #     # - '3306'
+  #     # Where our data will be persisted
+  #   volumes:
+  #     - my-db:/var/lib/mysql
+  #   networks:
+  #     - app_system
+
+  mariadb:
+    image: mariadb:10.5.9
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      # So you don't have to use root, but you can if you like
+      MYSQL_USER: ${MYSQL_USER}
+      # You can use whatever password you like
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      # Password for root access
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      # <Port exposed> : < MySQL Port running inside container>
+      - '3306:3306'
+    # expose:
+      # Opens port 3306 on the container
+      # - '3306'
+      # Where our data will be persisted
+    volumes:
+      - v-mariadb:/var/lib/mysql
+    networks:
+      - app_system
+  
+  memcached:
+    image: memcached:1.6.9-alpine
+    restart: always
+    command: ["-m", "125"]
+    ports:
+      - 11211:11211
+    networks:
+      - app_system
+
+volumes:
+  my-db:
+  v-mariadb:
+
+networks:
+  app_system:
+    driver: bridge

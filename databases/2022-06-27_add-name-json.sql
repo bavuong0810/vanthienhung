@@ -1,0 +1,1 @@
+ALTER TABLE db_sanpham ADD COLUMN name_json JSON, ADD FULLTEXT (name_json);

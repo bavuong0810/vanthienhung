@@ -1,0 +1,82 @@
+version: '3.5'
+
+services:
+  nginx:
+    image: nginx:1.15.10-alpine
+    container_name: "cpa_web"
+    ports:
+      - 80:80
+      - 443:443
+    restart: unless-stopped
+    depends_on:
+      - app
+    volumes:
+      - ../:/var/www/cpa:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - cpa_system
+
+  app:
+    build: ../
+    container_name: "cpa_app"
+    depends_on:
+      - postgres
+    volumes:
+      - ../:/var/www/cpa
+      - ./php-fpm.conf:/etc/php7/php-fpm.d/www.conf
+    networks:
+      - cpa_system
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_DATABASE: cpa
+      DB_USERNAME: cpa
+      DB_PASSWORD: 123123
+      DB_CONNECTION: pgsql
+
+  queue_worker:
+    build: ./supervisord
+    container_name: "cpa_queue_worker"
+    depends_on:
+      - postgres
+    networks:
+      - cpa_system
+    volumes:
+      - ../:/var/www/cpa
+
+  adminer:
+    image: adminer
+    container_name: "cpa_adminer"
+    restart: always
+    ports:
+      - 8081:8080
+    depends_on:
+      - postgres
+    networks:
+      - cpa_system
+
+  postgres:
+    image: postgres:11-alpine
+    container_name: "cpa_postgres"
+    restart: always
+    # read_only: true
+    # ports:
+    #   - 5433:5432
+    tmpfs:
+      - /tmp
+      - /var/run/postgresql
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=cpa
+      - POSTGRES_PASSWORD=123123
+      - POSTGRES_DB=cpa
+    networks:
+      - cpa_system
+
+volumes:
+  postgres:
+
+networks:
+  cpa_system:
+    driver: bridge

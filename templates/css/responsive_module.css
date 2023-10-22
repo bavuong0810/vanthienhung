@@ -1,0 +1,45 @@
+@media (min-width: 1200px){
+	.container {
+		width: 1300px;
+        padding: 0px;
+        padding-top: 0px;
+	}
+	.container-2{ width: 900px; }
+}
+@media(max-width:991px) {
+	.col-video { width:50%; }	
+	.col-gallery{ width:33.33%; }
+    #mobile_menu{ display: block; }
+    #mobile_menu #menu{ height: 0; overflow: hidden; }
+    #aff_menu{ display: none; }
+    .dropdown-menu{ display: block; position: static; float: inherit; background: inherit; }
+    .mm-listview>li{ width: 100%; }
+    #mobile_menu .header{ margin-bottom: 2px; background: #3b6037; color: #fff; padding: 5px 10px; float: left; width: 100%; }
+    #mobile_menu .header a{ color: #fff; display: inline-block; float: left; width: 15%; height: 30px; line-height: 30px; font-size: 20px; }
+    #mobile_menu .header a span{ display: inline-block; padding: 3px 8px; border-radius: 3px; border: 1px solid #ccc; }
+    #mobile_menu .header form{ float: left; width: 85%; position: relative; margin: 0; }
+    #mobile_menu .header form input{ height: 30px; font-size: 12px; }
+    .after-taisao{ margin-top: -1px; }
+    #mobile_menu .header form button{ outline: none; position: absolute; right: 5px; top: 4px; background: transparent; color: #222; border: none; }
+}
+@media(max-width:480px) {
+	/* video */
+	.col-video { width:100%; }
+	.col-gallery{ width:50%; }	
+	/* chi tiet sp */
+	.img-detail-pro{
+		width:100%;
+	}
+	.quote-pro{
+		width:100%;
+		margin:0;
+		margin-top:15px;
+		margin-bottom:15px;
+	}
+	.item-content-row .img{
+		width:80px;
+	}
+	.item-content-row .img a{
+		width:80px;
+	}
+}

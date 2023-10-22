@@ -1,0 +1,11 @@
+ALTER TABLE db_sanpham 
+DROP COLUMN nang_cao, 
+DROP COLUMN nang_thap_nhat, 
+DROP COLUMN mat_ban, 
+DROP COLUMN chieu_dai_cang, 
+DROP COLUMN chieu_rong, 
+DROP COLUMN ti_so_truyen, 
+DROP COLUMN gear_type, 
+DROP COLUMN extra4, 
+DROP COLUMN kieu_dang, 
+DROP COLUMN tai_trong_nang;

@@ -1,0 +1,15 @@
+{
+    "name": "minhtran/php-gmail",
+    "description": "Send email with Gmail and PHP",
+    "type": "library",
+    "license": "None",
+    "authors": [
+        {
+            "name": "Minh Trần",
+            "email": "minhtranfu@gmail.com"
+        }
+    ],
+    "require": {
+        "google/apiclient": "^2.8.3"
+    }
+}
