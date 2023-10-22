@@ -118,7 +118,7 @@
             $view_button_checkorder =  $d->getOption('view_button_checkorder');
             $view_button_warrantyonline =  $d->getOption('view_button_warrantyonline');
             ?>
-            <div class="dong-lon-buttons">'
+            <div class="dong-lon-buttons">
                 <?php if ($view_add_to_cart): ?>
                 <a href="javascript:void(0)" type="button" class="dl-btn btn btn-success btn-flat mr-1 addToCart" id="addToCart" data-product="<?= $item['id'] ?>" data-title="<?= $item['name_' . $lang] ?>" data-price="<?= $item['price'] ?>" data-detail="true">
                     Thêm vào giỏ
@@ -133,20 +133,20 @@
 
                 <?php if( $view_button_checkorder || $view_button_warrantyonline ) { $vbtn2 = ( $view_button_checkorder && $view_button_warrantyonline ) ? 2 : 1;?>
                     <?php if($view_button_checkorder){?>
-                        <a href="javascript:void(0)" class="dl-btn btn btn-flat btn-blue btn-checkorder" data-toggle="modal" data-target="#checkorderModal">
+                        <a href="javascript:void(0)" class="dl-btn-inline btn btn-flat btn-blue btn-checkorder" data-toggle="modal" data-target="#checkorderModal">
                             Kiểm tra đơn hàng
                         </a>
                     <?php }?>
 
                     <?php if($view_button_warrantyonline){?>
-                        <a href="javascript:void(0)" class="btn btn-flat btn-blue btn-warrantyonline" data-toggle="modal" data-target="#warrantyonlineModal">
+                        <a href="javascript:void(0)" class="dl-btn-inline btn btn-flat btn-blue btn-warrantyonline" data-toggle="modal" data-target="#warrantyonlineModal">
                             Bảo hành online
                         </a>
                     <?php }?>
                 <?php }?>
 
                 <?php if($view_btn_contact == 'small'){?>
-                    <a class="dl-btn btn btn-sendmail btn-product-contact btn-flat" href="javascript:void(0)"
+                    <a class="dl-btn-inline btn btn-sendmail btn-product-contact btn-flat" href="javascript:void(0)"
                        data-toggle="modal" data-target="#sendEmailModal">Liên hệ</a>
                 <?php }?>
 
