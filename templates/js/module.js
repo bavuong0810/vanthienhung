@@ -386,7 +386,6 @@ $(document).ready(function() {
 		xoa_sp_gh_dm(id, iddh, al);
 		return false;
 	});
-
 	getAllProvince();
 	$('#province').on('change', handleSelectProvince);
 	$('#county').on('change', handleSelectCounty);
