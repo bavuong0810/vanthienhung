@@ -376,6 +376,33 @@ $(document).ready(function() {
 
 		return false;
 	});
+
+	$('#modalAddToCart .xoa_sp_gh_dh').click(function(e) {
+		e.preventDefault();
+		var id = $(this).attr('data-product');
+		var iddh = $(this).attr('data-cart-item');
+		var al = $(this).attr('data-confirm');
+
+		var cf = confirm(al);
+		if (cf) {
+			$.ajax({
+				url: "./sources/ajax.php",
+				type: 'POST',
+				data: {
+					'do': 'xoa_sp_gh',
+					'id': id,
+					'iddh': iddh
+				},
+				success: function(data) {
+					//$('#modalDathang').modal('hide');
+					updateProductInCart();
+					//loadCartInfo();
+					$('#modalAddToCart .modal-body').load('ajax/ajax_cartInfo.php');
+				}
+			})
+		}
+		return false;
+	});
 });
 
 
