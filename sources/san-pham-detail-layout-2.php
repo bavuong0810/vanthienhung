@@ -1187,10 +1187,8 @@ $vth_logo = $d->getTemplates(30);
                         'iddh': iddh
                     },
                     success: function(data) {
-                        //$('#modalDathang').modal('hide');
                         updateProductInCart();
-                        //loadCartInfo();
-                        $('#modalDathang .modal-body').load('ajax/ajax_cartInfo.php');
+                        $('#modalDathang .dathang-cart').load('ajax/ajax_cartInfo.php');
                     }
                 })
             }

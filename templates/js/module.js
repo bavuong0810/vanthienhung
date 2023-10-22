@@ -401,7 +401,7 @@ function xoa_sp_gh_dm(id, iddh, al) {
 			},
 			success: function(data) {
 				updateProductInCart();
-				$('#modalAddToCart .modal-body').load('ajax/ajax_cartInfo.php');
+				$('#modalAddToCart .dathang-cart').load('ajax/ajax_cartInfo.php');
 			}
 		})
 	}
