@@ -627,6 +627,30 @@ if (file_exists($cachePath) && 1 == 2) {
         </div>
     </div>
 
+    <div class="modal fade" id="modalAddToCart" tabindex="-1" role="dialog" aria-labelledby="modalAddToCartLabel" data-backdrop="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modalAddToCartLabel">Sản phẩm <span class="product-name"></span> đã được thêm vào giỏ hàng</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="" id="form-shopping" class="form-horizontal" method="post">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="dathang-form"><?php include 'form-dat-hang.php';?></div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="title-form text-uppercase">Thông tin đơn hàng</div>
+                                <div class="dathang-cart"></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script type="text/javascript">
         $(document).ready(function () {
 
