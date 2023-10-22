@@ -100,7 +100,7 @@ if (count($_SESSION['cart']) > 0) {
                 </td>
 
                 <td align="center">
-                    <a class="xoa_sp_gh_dh" data-product="<?= $product['id'] ?>" data-cart-item="<?= $_SESSION['iddonhang'] ?>" data-confirm="Xác nhận xóa?" href="#xoa" title="Xóa sản phẩm"><i class="fa fa-trash-o"></i></a>
+                    <a class="xoa_sp_gh_dh" data-product="<?= $product['id'] ?>" data-cart-item="<?= $_SESSION['iddonhang'] ?>" data-confirm="Xác nhận xóa?" href="javascript:void(0)" title="Xóa sản phẩm"><i class="fa fa-trash-o"></i></a>
                 </td>
             </tr>
 <?php
