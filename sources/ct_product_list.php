@@ -146,7 +146,7 @@
                 <?php }?>
 
                 <?php if($view_btn_contact == 'small'){?>
-                    <a class="dl-btn-inline btn btn-sendmail btn-product-contact btn-flat" href="javascript:void(0)"
+                    <a class="dl-btn-inline dl-btn btn btn-sendmail btn-product-contact btn-flat" href="javascript:void(0)"
                        data-toggle="modal" data-target="#sendEmailModal">Liên hệ</a>
                 <?php }?>
 
