@@ -439,7 +439,8 @@ function handleAddToCartAction(e) {
 			showLoaderOnConfirm: true,
 		}, (isConfirmed) => {
 			if (isConfirmed) {
-				window.location = '/gio-hang.html';
+				$('#modalAddToCart .dathang-cart').load('ajax/ajax_cartInfo.php');
+				$('#modalAddToCart').modal('show');
 			}
 		});
 	};
