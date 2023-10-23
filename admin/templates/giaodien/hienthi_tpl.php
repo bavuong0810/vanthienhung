@@ -32,7 +32,7 @@
 		</tr>
 	</thead>
 	<?php
-	$specials = array(49, 63, 59, 61, 54, 67, 62, 68, 69);
+	$specials = array(49, 63, 59, 61, 54, 67, 62, 68, 69, 30, 48);
 	$mota = array();
 	$mota[49] = 'Hiển thị zalo: phải, trái';
 	$mota[54] = 'Hiển thị cột bên phải, trái';
@@ -40,6 +40,9 @@
 	$mota[68] = 'Bài viết nhóm 3 - Tab bình luận';
 	$mota[69] = 'Bài viết nhóm 4 - Tab bình luận';
 	$mota[59] = 'Hiển thị bạn cần hỗ trợ';
+
+    $mota[30] = 'Hiển thị cột bên phải trong chi tiết sản phẩm "Giao diện 2"';
+    $mota[48] = 'Hiển thị cột bên phải trong chi tiết sản phẩm "Giao diện 2"';
 
 	$mota[60] = 'Tab bạn cần hỗ trợ';
 	$mota[51] = 'Tab bình luận';

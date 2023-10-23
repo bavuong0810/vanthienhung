@@ -117,6 +117,7 @@
             $view_return_content =  $d->getOption('view_return_content');
             $view_button_checkorder =  $d->getOption('view_button_checkorder');
             $view_button_warrantyonline =  $d->getOption('view_button_warrantyonline');
+            $view_button_placeorder = $d->getOption('view_button_placeorder');
             ?>
             <div class="dong-lon-buttons">
                 <?php if ($view_add_to_cart): ?>
@@ -133,13 +134,13 @@
 
                 <?php if( $view_button_checkorder || $view_button_warrantyonline ) { $vbtn2 = ( $view_button_checkorder && $view_button_warrantyonline ) ? 2 : 1;?>
                     <?php if($view_button_checkorder){?>
-                        <a href="javascript:void(0)" class="dl-btn-inline btn btn-flat btn-blue btn-checkorder" data-toggle="modal" data-target="#checkorderModal">
+                        <a href="javascript:void(0)" class="dl-btn dl-btn-inline btn btn-flat btn-blue btn-checkorder" data-toggle="modal" data-target="#checkorderModal">
                             Kiểm tra đơn hàng
                         </a>
                     <?php }?>
 
                     <?php if($view_button_warrantyonline){?>
-                        <a href="javascript:void(0)" class="dl-btn-inline btn btn-flat btn-blue btn-warrantyonline" data-toggle="modal" data-target="#warrantyonlineModal">
+                        <a href="javascript:void(0)" class="dl-btn dl-btn-inline btn btn-flat btn-blue btn-warrantyonline" data-toggle="modal" data-target="#warrantyonlineModal">
                             Bảo hành online
                         </a>
                     <?php }?>
@@ -162,7 +163,7 @@
                     Chi tiết
                 </a>
 
-                <?php if ($view_small_button_placeorder): ?>
+                <?php if ($view_button_placeorder && !$view_small_button_placeorder): ?>
                     <a href="javascript:void(0)" type="button" class="dl-btn btn btn-dathang btn-dathang-sm btn-flat addToCart" id="addToCart" data-product="<?= $item['id'] ?>" data-title="<?= $item['name_' . $lang] ?>" data-price="<?= $item['price'] ?>" data-detail="true">
                         Đặt hàng
                     </a>

@@ -357,15 +357,27 @@ $vth_logo = $d->getTemplates(30);
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="vth_logo text-center" style="margin: 30px 0;">
-                                <?= $vth_logo['content_' . $lang]; ?>
-                            </div>
-                            <div class="title-main">
-                                <h3><?= $our_service['name_' . $lang]; ?></h3>
-                            </div>
-                            <div class="content-about text-justify">
-                                <?= $our_service['content_' . $lang] ?>
-                            </div>
+                            <?php if($vth_logo['name_' . $lang] != ''): ?>
+                                <div class="title-main">
+                                    <h3><?= $vth_logo['name_' . $lang]; ?></h3>
+                                </div>
+                            <?php endif; ?>
+                            <?php if($vth_logo['content_' . $lang] != ''): ?>
+                                <div class="content-about text-justify">
+                                    <?= $vth_logo['content_' . $lang] ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if($our_service['name_' . $lang] != ''): ?>
+                                <div class="title-main">
+                                    <h3><?= $our_service['name_' . $lang]; ?></h3>
+                                </div>
+                            <?php endif; ?>
+                            <?php if($our_service['content_' . $lang] != ''): ?>
+                                <div class="content-about text-justify">
+                                    <?= $our_service['content_' . $lang] ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>

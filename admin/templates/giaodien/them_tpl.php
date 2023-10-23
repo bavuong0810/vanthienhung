@@ -63,7 +63,15 @@
 						<?php $ckeditor->replace('content_vi'); ?>
 					</td>
 				</tr>
-
+                <tr>
+                    <td class="td_left">
+                        Mô tả:
+                    </td>
+                    <td class="td_right">
+                        <textarea  name="content_vi" id="content_vi"><?=@$items[0]['content_vi']?></textarea>
+                        <?php $ckeditor->replace('content_vi'); ?>
+                    </td>
+                </tr>
 				
 				
 			</tbody>
