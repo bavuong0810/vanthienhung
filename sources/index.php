@@ -158,6 +158,14 @@ if($view_home_business){
             }
         });
 
+        let heightContentAbout = $('.sec-home .about-us .content-about').height();
+        if (heightContentAbout > 295) {
+            $('.sec-home .about-us .content-about').css('height', '295px');
+            $('.sec-home .about-us .more.cursor-pointer').show();
+        } else {
+            $('.sec-home .about-us .more.cursor-pointer').hide();
+        }
+
 		$('.slider-doitacs').slick({
 			slidesToShow: 6,
 			autoplay: true,

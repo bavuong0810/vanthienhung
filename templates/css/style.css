@@ -3229,10 +3229,9 @@ tr.product-small-list .excerpt {
     overflow: hidden;
     position: relative;
     display: -webkit-box;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 10;
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
-    height: 120px;
 }
 
 .sec-home .about-us .content-about.expanded {
@@ -3246,7 +3245,7 @@ tr.product-small-list .excerpt {
 
 .hot-news .news-home {
     overflow: hidden;
-    height: 120px;
+    height: 295px;
 }
 
 .hot-news .news-home.expanded {
