@@ -67,7 +67,7 @@ if (!empty($_COOKIE['productLayout']) && $_COOKIE['productLayout'] == 'small_lis
 
 <script type="text/javascript">
 $(document).ready(function($) {
-	$('.addToCart').click(function(e) {
+	$('.detail-button-wrap .addToCart').click(function(e) {
 		const id = $(this).data('product');
 		//const soluong = $('#numberOfProduct').val();
 		const soluong = 1;
