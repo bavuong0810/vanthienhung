@@ -362,7 +362,7 @@ $ctsp['brand_slug'] = isset($ctspBrand['brand_slug']) ? $ctspBrand['brand_slug']
 // Custom name
 $ctsp['name_' . $_SESSION['lang']] = getCustomProductName($ctsp);
 
-$ctsp['image_path_origin'] = empty($ctsp['image_path']) ? DEFAULT_PRODUCT_IMAGE : $ctsp['image_path'];
+$ctsp['image_path_origin'] = empty($ctsp['image_path']) ? $d->getDefaultProductImage() : $ctsp['image_path'];
 
 $img_baogia = empty($ctsp['image_path']) ? $d->getDefaultProductImage() : THUMB_BASE.'images/70/70/'.$ctsp['id'].'/'.$ctsp['image_path'] .'?zc=2';
 

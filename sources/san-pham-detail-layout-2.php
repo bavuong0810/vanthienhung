@@ -151,7 +151,9 @@ $vth_logo = $d->getTemplates(30);
                                             }
                                             ?>
                                         </div>
+                                        <?php if($view_thong_so): ?>
                                         <span class="more cursor-pointer">Xem thêm</span>
+                                        <?php endif; ?>
                                         <hr class="my-1">
 
                                         <div class="clearfix"></div>
