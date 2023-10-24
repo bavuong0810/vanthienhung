@@ -101,9 +101,12 @@ $vth_logo = $d->getTemplates(30);
                                         <div class="product-description">
                                             <?= $ctsp['description_' . $_SESSION['lang']] ?>
                                         </div>
+                                        <?php
+                                        $view_thong_so = $d->getOption('view_thong_so');
+                                        if ($view_thong_so):
+                                        ?>
                                         <div class="ql-editor inner">
                                             <?php
-                                            $view_thong_so = $d->getOption('view_thong_so');
                                             $attributesNeedShow = [
                                                 'brand_id' => 'Nhãn hiệu',
                                                 'model' => 'Model',
@@ -121,37 +124,34 @@ $vth_logo = $d->getTemplates(30);
                                                 'group_pos' => 'Vị trí',
                                             ];
                                             $attributes = (!empty($ctsp['name_json']))?$ctsp['name_json']:array();
-                                            if( $view_thong_so ){
-                                                foreach ($attributesNeedShow as $key => $name):
-                                                    if (empty($ctsp[$key])) {
-                                                        continue;
-                                                    }
+                                            foreach ($attributesNeedShow as $key => $name):
+                                                if (empty($ctsp[$key])) {
+                                                    continue;
+                                                }
 
-                                                    if( $key == 'brand_id' ){
-                                                        $val = $d->getBrandById($ctsp[$key]);
-                                                        $val = $val['name'];
-                                                    } else {
-                                                        $val = $ctsp[$key];
-                                                    }
+                                                if( $key == 'brand_id' ){
+                                                    $val = $d->getBrandById($ctsp[$key]);
+                                                    $val = $val['name'];
+                                                } else {
+                                                    $val = $ctsp[$key];
+                                                }
 
-                                                    if( $key == 'brand_id' ){
-                                                        $key = 'brand';
-                                                    }//check to get brand title
+                                                if( $key == 'brand_id' ){
+                                                    $key = 'brand';
+                                                }//check to get brand title
 
-                                                    $title = $name;
-                                                    if($attributes[$key.'_title']){
-                                                        $title = $attributes[$key.'_title'];
-                                                    }
-                                                    ?>
-                                                    <p style="margin-bottom: 0">
-                                                        <span class="text-muted"><?php echo $title; ?>:</span> <?php echo $val; ?>
-                                                    </p>
-                                                <?php
-                                                endforeach;
-                                            }
+                                                $title = $name;
+                                                if($attributes[$key.'_title']){
+                                                    $title = $attributes[$key.'_title'];
+                                                }
+                                                ?>
+                                                <p style="margin-bottom: 0">
+                                                    <span class="text-muted"><?php echo $title; ?>:</span> <?php echo $val; ?>
+                                                </p>
+                                            <?php
+                                            endforeach;
                                             ?>
                                         </div>
-                                        <?php if($view_thong_so): ?>
                                         <span class="more cursor-pointer">Xem thêm</span>
                                         <?php endif; ?>
                                         <hr class="my-1">
