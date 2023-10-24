@@ -387,8 +387,8 @@ $(document).ready(function() {
 		return false;
 	});
 	getAllProvince();
-	$('#province').on('change', handleSelectProvince);
-	$('#county').on('change', handleSelectCounty);
+	$('select[name="province"]').on('change', handleSelectProvince);
+	$('select[name="county"]').on('change', handleSelectCounty);
 });
 
 function xoa_sp_gh_dm(id, iddh, al) {
@@ -477,14 +477,14 @@ function initAddToCartAction() {
 function getAllProvince() {
 	$.ajax('/img_data/files/viet-nam/tinh_tp.json', {
 		success: data => {
-			$('#province').append(`<option value="">Chọn tỉnh/thành phố</option>`);
+			$('select[name="province"]').append(`<option value="">Chọn tỉnh/thành phố</option>`);
 			Object.keys(data).forEach(function(i) {
 				const element = data[i];
-				$('#province').append(`<option value="${element.name}" data-id="${element.code}">${element.name}</option>`);
+				$('select[name="province"]').append(`<option value="${element.name}" data-id="${element.code}">${element.name}</option>`);
 			});
 
-			$('#province').trigger('change');
-			$('#province').on('change', handleGetDeliveryFee);
+			$('select[name="province"]').trigger('change');
+			$('select[name="province"]').on('change', handleGetDeliveryFee);
 		},
 		fail: () => {
 			alert('Có lỗi khi lấy thông tin, vui lòng tải lại trang!');
