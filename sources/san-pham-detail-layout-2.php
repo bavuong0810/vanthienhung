@@ -1004,7 +1004,7 @@ $vth_logo = $d->getTemplates(30);
             });
         }*/
 
-        $('.btn-dathang').click(function(e) {
+        $('.detail-button-wrap .btn-dathang').click(function(e) {
             const id = $(this).data('product');
             const soluong = $('#numberOfProduct').val();
 

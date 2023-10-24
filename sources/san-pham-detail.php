@@ -1503,7 +1503,7 @@ $view_button_warrantyonline =  $d->getOption('view_button_warrantyonline');
             });
         }*/
 
-        $('.btn-dathang').click(function(e) {
+        $('.detail-button-wrap .btn-dathang').click(function(e) {
             const id = $(this).data('product');
             const soluong = $('#numberOfProduct').val();
 
