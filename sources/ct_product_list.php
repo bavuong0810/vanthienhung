@@ -123,7 +123,7 @@
                 <?php if ($view_add_to_cart): ?>
                 <a href="javascript:void(0)" type="button" class="dl-btn btn btn-success btn-flat mr-1 addToCart"
                    onclick="actionAddToCart(this)"
-                   id="addToCart" data-product="<?= $item['id'] ?>" data-title="<?= $item['name_' . $lang] ?>"
+                   data-product="<?= $item['id'] ?>" data-title="<?= $item['name_' . $lang] ?>"
                    data-price="<?= $item['price'] ?>" data-detail="true">
                     Thêm vào giỏ
                 </a>
@@ -169,7 +169,7 @@
                 <?php if ($view_button_placeorder && !$view_small_button_placeorder): ?>
                     <a href="javascript:void(0)" type="button" class="dl-btn btn btn-dathang btn-dathang-sm btn-flat addToCart"
                        onclick="actionAddToCart(this)"
-                       id="addToCart" data-product="<?= $item['id'] ?>" data-title="<?= $item['name_' . $lang] ?>"
+                       data-product="<?= $item['id'] ?>" data-title="<?= $item['name_' . $lang] ?>"
                        data-price="<?= $item['price'] ?>" data-detail="true">
                         Đặt hàng
                     </a>
