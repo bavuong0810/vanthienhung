@@ -952,7 +952,7 @@ $vth_logo = $d->getTemplates(30);
             updateInput(value);
         });
 
-        $('.addToCart').click(function(e) {
+        $('.detail-button-wrap .addToCart').click(function(e) {
             const id = $(this).data('product');
             const soluong = $('#numberOfProduct').val();
 

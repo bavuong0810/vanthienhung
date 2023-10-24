@@ -1451,7 +1451,7 @@ $view_button_warrantyonline =  $d->getOption('view_button_warrantyonline');
             updateInput(value);
         });
 
-        $('.addToCart').click(function(e) {
+        $('.detail-button-wrap .addToCart').click(function(e) {
             const id = $(this).data('product');
             const soluong = $('#numberOfProduct').val();
 
