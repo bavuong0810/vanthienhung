@@ -345,38 +345,6 @@ $(document).ready(function() {
 
 	initAddToCartAction();
 
-	$('.dong-lon-buttons .addToCart, .detail-button-wrap a.addToCart').click(function(e) {
-		const id = $(this).data('product');
-		const soluong = 1;
-		const product_name = $(this).data('title');
-		const data = {
-			id,
-			soluong,
-			func: 'addToCart',
-		};
-
-		const error = (res) => {
-			alert('Thêm sản phẩm vào giỏ hàng không thành công, vui lòng thử lại!');
-		};
-
-		const success = (res) => {
-			updateProductInCart();
-			$('#modalAddToCart .dathang-cart').load('ajax/ajax_cartInfo.php');
-			$('#modalAddToCart span.product-name').html(product_name);
-			$('#modalAddToCart').modal('show');
-		};
-
-		$.ajax({
-			url: '/api.php',
-			method: 'POST',
-			data,
-			success,
-			error,
-		});
-
-		return false;
-	});
-
 	$('body').on('click', '#modalAddToCart .xoa_sp_gh_dh', function (e) {
 		e.preventDefault();
 		var id = $(this).attr('data-product');
@@ -390,6 +358,38 @@ $(document).ready(function() {
 	$('select[name="province"]').on('change', handleSelectProvince);
 	$('select[name="county"]').on('change', handleSelectCounty);
 });
+
+function actionAddToCart(e) {
+	const id = $(e).data('product');
+	const soluong = 1;
+	const product_name = $(e).data('title');
+	const data = {
+		id,
+		soluong,
+		func: 'addToCart',
+	};
+
+	const error = (res) => {
+		alert('Thêm sản phẩm vào giỏ hàng không thành công, vui lòng thử lại!');
+	};
+
+	const success = (res) => {
+		updateProductInCart();
+		$('#modalAddToCart .dathang-cart').load('ajax/ajax_cartInfo.php');
+		$('#modalAddToCart span.product-name').html(product_name);
+		$('#modalAddToCart').modal('show');
+	};
+
+	$.ajax({
+		url: '/api.php',
+		method: 'POST',
+		data,
+		success,
+		error,
+	});
+
+	return false;
+}
 
 function xoa_sp_gh_dm(id, iddh, al) {
 	var cf = confirm(al);
