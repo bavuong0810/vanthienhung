@@ -1538,7 +1538,7 @@ $view_button_warrantyonline =  $d->getOption('view_button_warrantyonline');
         });
 
         $('.slider-doitacs').slick({
-            slidesToShow: 5,
+            slidesToShow: 8,
             autoplay: true,
             autoplaySpeed: 4000,
             prevArrow: "<button class='style-bt bt-prev'><i class='fa fa-chevron-left'></i></button>",
@@ -1546,7 +1546,7 @@ $view_button_warrantyonline =  $d->getOption('view_button_warrantyonline');
             responsive: [{
                     breakpoint: 991,
                     settings: {
-                        slidesToShow: 3,
+                        slidesToShow: 5,
                         slidesToScroll: 3
                     }
                 },
@@ -1733,5 +1733,10 @@ $view_button_warrantyonline =  $d->getOption('view_button_warrantyonline');
     }
     .return-content-item{
         background-image: url('../templates/images/cash-back.png');
+    }
+
+    .slider-doitacs .img-slogan img {
+        height: 125px;
+        margin: 0 auto;
     }
 </style>
