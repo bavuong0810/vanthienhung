@@ -84,7 +84,7 @@ $vth_logo = $d->getTemplates(30);
                 </div>
 
                 <div class="col-md-7 plr10 ct-col-box ct-box-right">
-                    <div class="row">
+                    <div class="row15">
                         <div class="col-md-6">
                             <div class="ct-box-inner">
 
@@ -165,13 +165,23 @@ $vth_logo = $d->getTemplates(30);
                                                 <?= $ctsp['description_' . $_SESSION['lang']] ?>
                                             </div>
                                         <?php }?>
-
-                                        <span><?= _price ?>:</span>
-                                        <span class="price <?= ($ctsp['promotion_price'] > 0) ? 'old-price' : ''; ?>"><?= ($ctsp['price'] > 0) ? $d->vnd($ctsp['price']) : '<a class="price" href="/lien-he.html" title="Click để liên hệ">' . _lienhe . '</a>'; ?></span>
-                                        <?php if ($ctsp['promotion_price'] > 0) { ?>
-                                            <span class="price price-km">Giá khuyến mãi : <?= $d->vnd($ctsp['promotion_price']) ?></span>
-                                        <?php } ?>
-                                        <?php echo '/' . ($item['unit'] ?: 'Cái'); ?>
+                                        <div class="product-detail-price">
+                                            <?php
+                                            $discountPercent = 0;
+                                            if ($ctsp['promotion_price'] < $ctsp['price']) {
+                                                $discountPercent = intval(100 - ($ctsp['promotion_price'] / $ctsp['price'] * 100));
+                                            }
+                                            ?>
+                                            <span><?= _price ?>:</span>
+                                            <span class="price <?= ($ctsp['promotion_price'] > 0) ? 'old-price' : ''; ?>"><?= ($ctsp['price'] > 0) ? $d->vnd($ctsp['price']) : '<a class="price" href="/lien-he.html" title="Click để liên hệ">' . _lienhe . '</a>'; ?></span>
+                                            <?php if ($ctsp['promotion_price'] > 0) { ?>
+                                                <span class="price price-km">Giá khuyến mãi : <?= $d->vnd($ctsp['promotion_price']) ?></span>
+                                            <?php } ?>
+                                            <?php echo '/' . ($item['unit'] ?: 'Cái'); ?>
+                                            <?php if($discountPercent > 0): ?>
+                                                <span class="fd-discount">- <?php echo $discountPercent; ?>%</span>
+                                            <?php endif; ?>
+                                        </div>
                                     </div>
                                     <div class="product-info">
                                         <span>Số lượng:</span>
