@@ -66,7 +66,7 @@ if( $item['brand_id'] ){
         <div class="txt-2line"><?php echo $item['part_number']; ?></div>
     </td>
 
-    <td class="hidden-xs txt-inline">
+    <td class="hidden-xs txt-inline" style="position: relative">
         <?php
         $discountPercent = 0;
         if ($item['promotion_price'] < $item['price'] && $item['promotion_price'] > 0) {
@@ -80,7 +80,7 @@ if( $item['brand_id'] ){
             <span><?php echo ($item['price'] > 0) ? $d->vnd($item['price']) : _lienhe; ?></span>
         <?php } ?>
         <?php if ($discountPercent > 0): ?>
-            <span class="fd-discount" style="float: right">- <?php echo $discountPercent; ?>%</span>
+            <span class="fd-discount" style="position: absolute; top: 10px; right: 15px">- <?php echo $discountPercent; ?>%</span>
         <?php endif; ?>
     </td>
     
