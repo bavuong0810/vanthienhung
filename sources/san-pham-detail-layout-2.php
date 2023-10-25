@@ -1039,7 +1039,7 @@ $vth_logo = $d->getTemplates(30);
         });
 
         $('.slider-doitacs').slick({
-            slidesToShow: 5,
+            slidesToShow: 8,
             autoplay: true,
             autoplaySpeed: 4000,
             prevArrow: "<button class='style-bt bt-prev'><i class='fa fa-chevron-left'></i></button>",
@@ -1047,7 +1047,7 @@ $vth_logo = $d->getTemplates(30);
             responsive: [{
                     breakpoint: 991,
                     settings: {
-                        slidesToShow: 3,
+                        slidesToShow: 5,
                         slidesToScroll: 3
                     }
                 },
@@ -1233,5 +1233,10 @@ $vth_logo = $d->getTemplates(30);
     }
     .return-content-item{
         background-image: url('../templates/images/cash-back.png');
+    }
+
+    .slider-doitacs .img-slogan img {
+        height: 125px;
+        margin: 0 auto;
     }
 </style>
