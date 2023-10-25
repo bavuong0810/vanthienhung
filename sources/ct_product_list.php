@@ -102,7 +102,7 @@
                     ?>
                     <?php if($item['promotion_price'] > 0){ ?>
                         <span class="price-km mr-1"><?= $d->vnd($item['promotion_price']) ?></span>
-                        <span class="price 'old-price"><i><small><?=($item['price'] > 0) ? $d->vnd($item['price']) :  _lienhe;?></small></i></span>
+                        <span class="price old-price"><i><small><?=($item['price'] > 0) ? $d->vnd($item['price']) :  _lienhe;?></small></i></span>
                     <?php } else { ?>
                         <span class="price"><?=($item['price']>0) ? $d->vnd($item['price']) :  _lienhe;?></span>
                     <?php } ?>

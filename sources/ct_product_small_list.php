@@ -105,7 +105,7 @@ if( $item['brand_id'] ){
                 <?php } else { ?>
                     <span><?php echo ($item['price'] > 0) ? $d->vnd($item['price']) : _lienhe; ?></span>
                 <?php } ?>
-                <?php if($discountPercent > 0): ?>
+                <?php if ($discountPercent > 0): ?>
                     <span class="fd-discount" style="float: right">- <?php echo $discountPercent; ?>%</span>
                 <?php endif; ?>
            
