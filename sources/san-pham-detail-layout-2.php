@@ -390,15 +390,14 @@ $vth_logo = $d->getTemplates(30);
             </div>
         </div>
 
+        <div class="clearfix row-ctcp-top">
+            <?php include 'san_pham_tieu_bieu.php'; ?>
+        </div>
         <div class="row10 clearfix row-ctcp-top<?php echo $extraClass?>">
 
             <div class="ctsp-col-left plr10 <?php echo ($has_sidebar)?'col-md-9':'col-md-12'?>">
-                
-                <?php include 'san_pham_tieu_bieu.php'; ?>
-                
                 <?php include 'tab_chi_tiet_san_pham.php'; ?>
-
-                <?php 
+                <?php
                 if( $view_vi_tri_form_bao_gia == 'above' ){
                     include 'tab_form_yeu_cau_bao_gia.php'; 
                 }

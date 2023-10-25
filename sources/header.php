@@ -138,7 +138,7 @@ $view_category_page =  $d->getOption('view_category_page');
                                 Sản phẩm vừa xem
                             </span>
                         </div>
-                        <a href="/gio-hang.html" title="Giỏ hàng" class="pull-right ml-1 cart-info">
+                        <a href="javascript:void(0)" title="Giỏ hàng" onclick="openCartModal()" class="pull-right ml-1 cart-info">
                             <span class="chat-button cart" id="cart">
                                 <span class="badge" id="productInCart">0</span>
                                 <i class="fa fa-shopping-cart"></i>

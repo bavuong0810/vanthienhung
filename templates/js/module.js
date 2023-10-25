@@ -391,6 +391,13 @@ function actionAddToCart(e) {
 	return false;
 }
 
+function openCartModal() {
+	$('#modalAddToCart .dathang-cart').load('ajax/ajax_cartInfo.php');
+	$('#modalAddToCart #modalAddToCartLabel').html("Giỏ hàng của bạn");
+	$('#modalAddToCart').modal('show');
+	return false;
+}
+
 function xoa_sp_gh_dm(id, iddh, al) {
 	var cf = confirm(al);
 	if (cf) {
