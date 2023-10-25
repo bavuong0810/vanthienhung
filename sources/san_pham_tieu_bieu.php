@@ -29,7 +29,7 @@ if( $view_san_pham_tieu_bieu ){
                                 </a>
                             </div>
                             <div class="clearfix product_info_price">
-                                <?php if ($item['promotion_price'] < $item['price']):
+                                <?php if ($item['promotion_price'] < $item['price'] && $item['promotion_price'] > 0):
                                     $discountPercent = intval(100 - ($item['promotion_price'] / $item['price'] * 100));
                                 ?>
                                 <p>

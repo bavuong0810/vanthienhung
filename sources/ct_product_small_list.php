@@ -92,7 +92,12 @@ if( $item['brand_id'] ){
         </div>-->
 
         <div class="visible-xs small text-muted" style="padding-top: 8px;color: #4cae4c;">
-            
+            <?php
+                $discountPercent = 0;
+                if ($item['promotion_price'] < $item['price'] && $item['promotion_price'] > 0) {
+                    $discountPercent = intval(100 - ($item['promotion_price'] / $item['price'] * 100));
+                }
+            ?>
                 Giá:
                 <?php if ($item['promotion_price'] > 0) { ?>
                     <span class="price-km mr-1"><?php echo $d->vnd($item['promotion_price']); ?></span>
@@ -100,6 +105,9 @@ if( $item['brand_id'] ){
                 <?php } else { ?>
                     <span><?php echo ($item['price'] > 0) ? $d->vnd($item['price']) : _lienhe; ?></span>
                 <?php } ?>
+                <?php if($discountPercent > 0): ?>
+                    <span class="fd-discount" style="float: right">- <?php echo $discountPercent; ?>%</span>
+                <?php endif; ?>
            
         </div>
 

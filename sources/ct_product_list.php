@@ -93,14 +93,25 @@
                 "><i class="fa fa-pencil" style="width: 20px;height: 20px;line-height: 20px;"></i></a>
             <?php } ?>
             <div class="price-home">
-                <?php if($item['promotion_price'] > 0){ ?>
-                    <span class="price-km mr-1"><?= $d->vnd($item['promotion_price']) ?></span>
-                    <span class="price 'old-price"><i><small><?=($item['price']>0) ? $d->vnd($item['price']) :  _lienhe;?></small></i></span>
-                <?php } else { ?>
-                    <span class="price"><?=($item['price']>0) ? $d->vnd($item['price']) :  _lienhe;?></span>
-                <?php } ?>
-                
-                <?php echo '/' . ($item['unit'] ?: 'Cái'); ?>
+                <div class="product-detail-price">
+                    <?php
+                    $discountPercent = 0;
+                    if ($item['promotion_price'] < $item['price'] && $item['promotion_price'] > 0) {
+                        $discountPercent = intval(100 - ($item['promotion_price'] / $item['price'] * 100));
+                    }
+                    ?>
+                    <?php if($item['promotion_price'] > 0){ ?>
+                        <span class="price-km mr-1"><?= $d->vnd($item['promotion_price']) ?></span>
+                        <span class="price 'old-price"><i><small><?=($item['price'] > 0) ? $d->vnd($item['price']) :  _lienhe;?></small></i></span>
+                    <?php } else { ?>
+                        <span class="price"><?=($item['price']>0) ? $d->vnd($item['price']) :  _lienhe;?></span>
+                    <?php } ?>
+
+                    <?php echo '/' . ($item['unit'] ?: 'Cái'); ?>
+                    <?php if($discountPercent > 0): ?>
+                        <span class="fd-discount">- <?php echo $discountPercent; ?>%</span>
+                    <?php endif; ?>
+                </div>
 
                 <?php if (!empty($item['updated_at'])) { ?>
                     <div><span class="text-muted">Cập nhật lúc:</span> <?php echo date('d-m-Y', strtotime($item['updated_at'])) ?></div>
