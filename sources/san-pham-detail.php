@@ -1543,7 +1543,15 @@ $view_button_warrantyonline =  $d->getOption('view_button_warrantyonline');
             autoplaySpeed: 4000,
             prevArrow: "<button class='style-bt bt-prev'><i class='fa fa-chevron-left'></i></button>",
             nextArrow: "<button class='style-bt bt-next'><i class='fa fa-chevron-right'></i></button>",
-            responsive: [{
+            responsive: [
+                {
+                    breakpoint: 1200,
+                    settings: {
+                        slidesToShow: 7,
+                        slidesToScroll: 3
+                    }
+                },
+                {
                     breakpoint: 991,
                     settings: {
                         slidesToShow: 5,

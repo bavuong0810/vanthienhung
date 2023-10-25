@@ -28,6 +28,27 @@ if( $view_san_pham_tieu_bieu ){
                                     </span>
                                 </a>
                             </div>
+                            <div class="clearfix product_info_price">
+                                <?php if ($item['promotion_price'] < $item['price']):
+                                    $discountPercent = intval(100 - ($item['promotion_price'] / $item['price'] * 100));
+                                ?>
+                                <p>
+	    					        <span class="fd-price">
+                                        <?php echo $d->vnd($item['promotion_price']); ?>
+                                    </span>
+
+                                    <span class="fd-discount">- <?php echo $discountPercent;?>%</span>
+                                    <br>
+                                    <s class="fd-market-price"><?php echo $d->vnd($item['price']); ?></s>
+                                </p>
+                                <?php else: ?>
+                                    <p>
+                                        <span class="fd-price">
+                                            <?php echo $d->vnd($item['price']); ?>
+                                        </span>
+                                    </p>
+                                <?php endif; ?>
+                            </div>
                         </div>
                     </div>
                 <?php } ?>
