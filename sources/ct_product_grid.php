@@ -45,13 +45,24 @@ $tooltip = '';
             </h3>
 
             <div class="price-home">
-                <?php if ($item['promotion_price'] > 0) { ?>
-                    <span class="price-km mr-1"><?= $d->vnd($item['promotion_price']) ?></span>
-                    <span class="price old-price"><i><small><?= ($item['price'] > 0) ? $d->vnd($item['price']) : _lienhe; ?></small></i></span>
-                <?php } else { ?>
-                    <span class="price"><?= ($item['price'] > 0) ? $d->vnd($item['price']) : _lienhe; ?></span>
-                <?php } ?>
-                <?php echo '/' . ($item['unit'] ?: 'Cái'); ?>
+                <div class="product-detail-price">
+                    <?php
+                    $discountPercent = 0;
+                    if ($item['promotion_price'] < $item['price'] && $item['promotion_price'] > 0) {
+                        $discountPercent = intval(100 - ($item['promotion_price'] / $item['price'] * 100));
+                    }
+                    ?>
+                    <?php if ($item['promotion_price'] > 0) { ?>
+                        <span class="price-km mr-1"><?= $d->vnd($item['promotion_price']) ?></span>
+                        <span class="price old-price"><i><small><?= ($item['price'] > 0) ? $d->vnd($item['price']) : _lienhe; ?></small></i></span>
+                    <?php } else { ?>
+                        <span class="price"><?= ($item['price'] > 0) ? $d->vnd($item['price']) : _lienhe; ?></span>
+                    <?php } ?>
+                    <?php echo '/' . ($item['unit'] ?: 'Cái'); ?>
+                    <?php if($discountPercent > 0): ?>
+                        <span class="fd-discount">- <?php echo $discountPercent; ?>%</span>
+                    <?php endif; ?>
+                </div>
             </div>
             <div class="row text-center">
                 <a class="btn-default btn" href="<?= URLPATH . $item['alias_' . $lang] ?>.html" title="<?= $item['name_' . $lang] ?>" target="_blank">
