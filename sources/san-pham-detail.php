@@ -1747,7 +1747,7 @@ $view_button_warrantyonline =  $d->getOption('view_button_warrantyonline');
     }
 
     .slider-doitacs .img-slogan img {
-        height: 160px;
+        height: 180px;
         margin: 0 auto;
     }
 
