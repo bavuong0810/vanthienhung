@@ -1049,7 +1049,7 @@ $vth_logo = $d->getTemplates(30);
         });
 
         $('.slider-doitacs').slick({
-            slidesToShow: 8,
+            slidesToShow: 7,
             autoplay: true,
             autoplaySpeed: 4000,
             prevArrow: "<button class='style-bt bt-prev'><i class='fa fa-chevron-left'></i></button>",
@@ -1058,7 +1058,7 @@ $vth_logo = $d->getTemplates(30);
                 {
                     breakpoint: 1200,
                     settings: {
-                        slidesToShow: 7,
+                        slidesToShow: 6,
                         slidesToScroll: 3
                     }
                 },
@@ -1238,7 +1238,7 @@ $vth_logo = $d->getTemplates(30);
         }
     }
     
-    .shipping-inner{
+    .shipping-inner {
         background-position: 8px center;
         background-repeat: no-repeat;
         background-size: 38px;
@@ -1246,15 +1246,20 @@ $vth_logo = $d->getTemplates(30);
         padding: 10px 10px 10px 60px;
         margin-bottom: 15px;
     }
-    .shipping-content-item{
+    .shipping-content-item {
         background-image: url('../templates/images/delivery.png');
     }
-    .return-content-item{
+    .return-content-item {
         background-image: url('../templates/images/cash-back.png');
     }
 
     .slider-doitacs .img-slogan img {
-        height: 125px;
+        height: 140px;
+        margin: 0 auto;
+    }
+
+    .slider-doitacs-2 .img-slogan img {
+        height: 140px;
         margin: 0 auto;
     }
 </style>

@@ -146,7 +146,7 @@
                 </button>
                 <?php endif; ?>
 
-                <?php if( $view_button_checkorder || $view_button_warrantyonline ) { $vbtn2 = ( $view_button_checkorder && $view_button_warrantyonline ) ? 2 : 1;?>
+                <?php /* if( $view_button_checkorder || $view_button_warrantyonline ) { $vbtn2 = ( $view_button_checkorder && $view_button_warrantyonline ) ? 2 : 1;?>
                     <?php if($view_button_checkorder){?>
                         <a href="javascript:void(0)" class="dl-btn dl-btn-inline btn btn-flat btn-blue btn-checkorder" data-toggle="modal" data-target="#checkorderModal">
                             Kiểm tra đơn hàng
@@ -158,7 +158,7 @@
                             Bảo hành online
                         </a>
                     <?php }?>
-                <?php }?>
+                <?php } */?>
 
                 <?php if($view_btn_contact != ''){?>
                     <a class="dl-btn-inline dl-btn btn btn-sendmail btn-product-contact btn-flat" href="javascript:void(0)"
