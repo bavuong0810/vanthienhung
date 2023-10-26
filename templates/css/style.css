@@ -3324,6 +3324,10 @@ span.fd-discount {
     font-size: 20px;
 }
 
+.product-cate-des p {
+    margin-bottom: 3px;
+}
+
 @media (min-width: 768px) {
     .no-zalobox .ct-box-inner {
         padding-left: 15px;

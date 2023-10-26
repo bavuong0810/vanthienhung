@@ -39,12 +39,6 @@
         </div>
 
         <div class="col-md-6">
-            <h3 class="m-0 mb-1">
-                <a href="<?=URLPATH.$item['alias_'.$lang] ?>.html" title="<?=$item['name_'.$lang] ?>">
-                    <?=$item['name_'.$lang] ?>
-                </a>
-            </h3>
-
             <?php
             $count = 0;
             $attributes = (!empty($item['name_json'])) ? $item['name_json'] : array();
@@ -53,6 +47,12 @@
             ?>
             <div class="row">
                 <div class="col-md-6">
+                    <h3 class="mb10 mt-0">
+                        <a href="<?=URLPATH.$item['alias_'.$lang] ?>.html" title="<?=$item['name_'.$lang] ?>">
+                            <?=$item['name_'.$lang] ?>
+                        </a>
+                    </h3>
+
                     <div class="product-cate-des">
                         <?php
                         foreach ($detailNeedShow as $key => $name):
@@ -97,6 +97,11 @@
                 </div>
             </div>
             <?php else: ?>
+            <h3 class="m-0 mb-1">
+                <a href="<?=URLPATH.$item['alias_'.$lang] ?>.html" title="<?=$item['name_'.$lang] ?>">
+                    <?=$item['name_'.$lang] ?>
+                </a>
+            </h3>
             <div class="row">
                 <?php
                 foreach ($detailNeedShow as $key => $name):
