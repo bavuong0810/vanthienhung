@@ -44,6 +44,10 @@ $vth_logo = $d->getTemplates(30);
                         
             <div class="page-title" style="padding: 10px 0 !important;"></div>
 
+            <div class="clearfix row-ctcp-top">
+                <?php include 'san_pham_tieu_bieu.php'; ?>
+            </div>
+
             <div class="row10 clearfix row-ctsp-detail">
                 <!-- Product info -->
                 <div class="col-md-5 plr10 ct-col-box ct-box-left">
