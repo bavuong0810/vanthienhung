@@ -3309,7 +3309,19 @@ span.fd-discount {
 }
 
 .san_pham_tieu_bieu_top {
-    margin: 15px 0;
+    margin: 15px 0 0;
+}
+
+.san_pham_tieu_bieu_top p {
+    margin-bottom: 0;
+}
+
+.san_pham_tieu_bieu_top .title-main {
+    margin-bottom: 10px;
+}
+
+.san_pham_tieu_bieu_top .title-main h3 {
+    font-size: 20px;
 }
 
 @media (min-width: 768px) {

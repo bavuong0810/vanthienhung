@@ -12,6 +12,13 @@ switch($a){
             $d->query("INSERT INTO `#_options`(`option_name`, `option_value_1`) VALUES('view_san_pham_tieu_bieu_top', '0')");
         }
 
+        // check table option have option_name 'view_product_category_list_layout_2'
+        $query_product_category_list_layout_2 = "SELECT * FROM `#_options` WHERE `option_name` = 'view_product_category_list_layout_2'";
+        $result = $d->simple_fetch($query_product_category_list_layout_2);
+        if (count($result) == 0) {
+            $d->query("INSERT INTO `#_options`(`option_name`, `option_value_1`) VALUES('view_product_category_list_layout_2', '0')");
+        }
+
 		showdulieu();
 		$template = @$_REQUEST['p']."/them";
 		break;
@@ -38,6 +45,7 @@ function luudulieu(){
 	$data['view_ct_truc_tuyen'] = $_POST['view_ct_truc_tuyen'];
 	$data['view_thong_so'] = $_POST['view_thong_so'];
 	$data['view_san_pham_layout'] = $_POST['view_san_pham_layout'];
+    $data['view_product_category_list_layout_2'] = $_POST['view_product_category_list_layout_2'];
 
 	$data['view_home_slider'] = $_POST['view_home_slider'];
 	$data['view_home_gallery'] = $_POST['view_home_gallery'];

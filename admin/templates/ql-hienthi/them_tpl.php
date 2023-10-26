@@ -87,7 +87,7 @@ $view_button_checkorder =  $d->getOption('view_button_checkorder');
 $view_button_warrantyonline =  $d->getOption('view_button_warrantyonline');
 $view_category_page =  $d->getOption('view_category_page');
 $view_brand_page_type =  $d->getOption('view_brand_page_type');
-
+$view_product_category_list_layout_2 = $d->getOption('view_product_category_list_layout_2');
 //Left col
 $view_dm_truc_tuyen = $d->getOption('view_dm_truc_tuyen');
 $view_danh_muc =  $d->getOption('view_danh_muc');
@@ -186,6 +186,14 @@ $view_return_content =  $d->getOption('view_return_content');
                                 </td>
                                 <td class="td_right">
                                     <p style="margin:0"><label for="view_san_pham_layout"><input <?php echo ($view_san_pham_layout == '2')?'checked="checked"':''?> id="view_san_pham_layout" type="checkbox" name="view_san_pham_layout" value="2"> Giao diện 2</label></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td_left" style="vertical-align: top !important;width:50%">
+                                    Hiển thị danh mục sản phẩm (Dòng lớn) giao diện 2:
+                                </td>
+                                <td class="td_right">
+                                    <p style="margin:0"><label for="view_product_category_list_layout_2"><input <?php echo ($view_product_category_list_layout_2 == '1')?'checked="checked"':''?> id="view_product_category_list_layout_2" type="checkbox" name="view_product_category_list_layout_2" value="1"> Giao diện 2</label></p>
                                 </td>
                             </tr>
                             <tr>

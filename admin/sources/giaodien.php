@@ -3,6 +3,14 @@ if(!defined('_source')) die("Error");
 $a = (isset($_REQUEST['a'])) ? addslashes($_REQUEST['a']) : "";
 switch($a){
 	case "man":
+        global $d;
+        // check table setting have id=70
+        $query_product_cate_id_70 = "SELECT * FROM `#_setting` WHERE `id` = 70";
+        $result = $d->simple_fetch($query_product_cate_id_70);
+        if (count($result) == 0) {
+            $d->query("INSERT INTO `#_setting`(`name_vi`, `content_vi`, `hien_thi`) VALUES('Danh mục dòng lớn nội dung bên phải', 'Danh mục dòng lớn nội dung bên phải', 0)");
+        }
+
 		showdulieu();
 		$template = @$_REQUEST['p']."/hienthi";
 		break;

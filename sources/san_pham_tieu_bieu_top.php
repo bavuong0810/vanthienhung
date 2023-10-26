@@ -17,7 +17,7 @@ if($view_san_pham_tieu_bieu_top){
                     }
                     ?>
                     <div class="plr10">
-                        <div class="clearfix item-tin mb10">
+                        <div class="clearfix item-tin">
                             <div class="img-slogan">
                                 <a href="<?= $item['alias_' . $lang] ?>.html" title="<?php echo $ctsp['name_' . $_SESSION['lang']] ?>">
                                     <div class="wrap-img">

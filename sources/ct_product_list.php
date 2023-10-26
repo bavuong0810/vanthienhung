@@ -44,12 +44,61 @@
                     <?=$item['name_'.$lang] ?>
                 </a>
             </h3>
-            
+
+            <?php
+            $count = 0;
+            $attributes = (!empty($item['name_json'])) ? $item['name_json'] : array();
+            $view_product_category_list_layout_2 = $d->getOption('view_product_category_list_layout_2');
+            if ($view_product_category_list_layout_2 == 1):
+            ?>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="product-cate-des">
+                        <?php
+                        foreach ($detailNeedShow as $key => $name):
+                            if (empty($item[$key])) {
+                                continue;
+                            }
+
+                            if ($key == 'brand_id'){
+                                $val = $d->getBrandById($item[$key]);
+                                $val = $val['name'];
+                            } else {
+                                $val = $item[$key];
+                            }
+
+                            if ($key == 'brand_id'){
+                                $key = 'brand';
+                            }//check to get brand title
+
+                            $title = $name;
+                            if ($attributes[$key.'_title']) {
+                                $title = $attributes[$key.'_title'];
+                            }
+                        ?>
+                            <p>
+                                <span class="text-muted"><?php echo $title; ?>:</span> <?php echo $val; ?>
+                            </p>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+                <div class="col-md-6 hidden-sm hidden-xs">
+                    <?php $productCateContentRight = $d->getTemplates(70); ?>
+                    <?php if ($productCateContentRight['name_' . $lang] != ''): ?>
+                        <div class="title-main">
+                            <h3><?= $productCateContentRight['name_' . $lang]; ?></h3>
+                        </div>
+                    <?php endif; ?>
+                    <?php if ($productCateContentRight['content_' . $lang] != ''): ?>
+                        <div class="content-about text-justify">
+                            <?= $productCateContentRight['content_' . $lang] ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <?php else: ?>
             <div class="row">
                 <?php
-                $count = 0;
-                $attributes = (!empty($item['name_json']))?$item['name_json']:array();
-
                 foreach ($detailNeedShow as $key => $name):
                     if (empty($item[$key])) {
                         continue;
@@ -82,6 +131,7 @@
                     </div>
                 <?php endforeach ?>
             </div>
+            <?php endif; ?>
         </div>
 
         <div class="col-md-3" style="display: flex; flex-direction: column; justify-content: space-between;">
