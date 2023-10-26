@@ -17,6 +17,11 @@ $doiTacs = $d->o_fet("SELECT * FROM `#_gallery` WHERE `parent` = 1117 AND `hide`
 		background: #fff;
 		border-radius: 4px;
 	}
+
+    .nganh-nghe .slider-doitacs img {
+        height: 145px;
+        margin: 0 auto;
+    }
 	/*
 	@media (min-width:992px){
 		.row-flex-index{
@@ -105,7 +110,7 @@ if($view_home_business){
 
 <section class="sec-pro hidden-xs">
 	<div class="container">
-		<div class="row10">
+		<div class="row10 nganh-nghe">
 			<div class="slider-doitacs">
 				<?php foreach ($doiTacs as $key => $doitac) {
 				?>
@@ -167,7 +172,7 @@ if($view_home_business){
         }
 
 		$('.slider-doitacs').slick({
-			slidesToShow: 6,
+			slidesToShow: 7,
 			autoplay: true,
 			autoplaySpeed: 4000,
 			prevArrow: "<button class='style-bt bt-prev'><i class='fa fa-chevron-left'></i></button>",
