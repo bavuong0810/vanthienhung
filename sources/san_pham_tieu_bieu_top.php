@@ -1,6 +1,6 @@
 <?php
 $view_san_pham_tieu_bieu_top = $d->getOption('view_san_pham_tieu_bieu_top');
-if( !$view_san_pham_tieu_bieu_top ){
+if($view_san_pham_tieu_bieu_top){
 ?>
 <section class="sec-pro hidden-sm hidden-xs">
     <div class="container">

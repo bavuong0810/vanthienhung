@@ -560,7 +560,7 @@ $view_button_warrantyonline =  $d->getOption('view_button_warrantyonline');
     $extraClass = ($has_sidebar)?' has-col-right':' no-col-right';
     ?> 
     <div class="container clearfix">
-        <div class="clearfix row-ctcp-top">
+        <div class="clearfix row-ctcp-top san_pham_tieu_bieu_top">
             <?php include 'san_pham_tieu_bieu_top.php'; ?>
         </div>
 

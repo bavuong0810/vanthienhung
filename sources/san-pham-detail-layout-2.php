@@ -44,7 +44,7 @@ $vth_logo = $d->getTemplates(30);
                         
             <div class="page-title" style="padding: 10px 0 !important;"></div>
 
-            <div class="clearfix row-ctcp-top">
+            <div class="clearfix row-ctcp-top san_pham_tieu_bieu_top">
                 <?php include 'san_pham_tieu_bieu_top.php'; ?>
             </div>
 

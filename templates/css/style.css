@@ -3308,6 +3308,10 @@ span.fd-discount {
     max-height: 3.7rem !important;
 }
 
+.san_pham_tieu_bieu_top {
+    margin: 15px 0;
+}
+
 @media (min-width: 768px) {
     .no-zalobox .ct-box-inner {
         padding-left: 15px;
