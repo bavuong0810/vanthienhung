@@ -1755,4 +1755,9 @@ $view_button_warrantyonline =  $d->getOption('view_button_warrantyonline');
         height: 160px;
         margin: 0 auto;
     }
+
+    .slider-doitacs-2 .max-line-2 {
+        height: 3.7rem !important;
+        max-height: 3.7rem !important;
+    }
 </style>
