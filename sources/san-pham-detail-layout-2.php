@@ -346,7 +346,7 @@ $vth_logo = $d->getTemplates(30);
                                 </div>
                                 <!-- </form> -->
                                 <div class="clearfix"></div>
-                                <hr class="mt-0" />
+                                <hr class="mt-1 mb-1" />
 
                                 <?php if($view_button_facebook_zalo){?>
                                     <div class="contact-now social-button">
