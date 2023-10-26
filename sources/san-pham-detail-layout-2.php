@@ -1080,7 +1080,7 @@ $vth_logo = $d->getTemplates(30);
         });
 
         $('.slider-doitacs-2').slick({
-            slidesToShow: 6,
+            slidesToShow: 7,
             autoplay: true,
             autoplaySpeed: 4000,
             prevArrow: "<button class='style-bt bt-prev'><i class='fa fa-chevron-left'></i></button>",
@@ -1259,7 +1259,7 @@ $vth_logo = $d->getTemplates(30);
     }
 
     .slider-doitacs-2 .img-slogan img {
-        height: 140px;
+        height: 160px;
         margin: 0 auto;
     }
 </style>
