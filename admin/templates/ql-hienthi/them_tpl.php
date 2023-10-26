@@ -384,15 +384,15 @@ $view_return_content =  $d->getOption('view_return_content');
 
                             <tr>
                                 <td class="td_left" style="vertical-align: top !important;">
-                                    Vận chuyển:
+                                    Hiển thị nội dung vận chuyển/đổi trả:
                                 </td>
                                 <td class="td_right">
-                                    <p style="margin:0">
-                                        <textarea class="form-control" name="view_shipping_content" rows="2"><?php echo stripslashes($view_shipping_content)?></textarea>
-                                    </p>
+                                    <p style="margin:0"><label for="view_shipping_content"><input <?php echo ($view_shipping_content == '1')?'checked="checked"':''?> id="view_shipping_content" type="checkbox" name="view_shipping_content" value="1"> Hiển thị</label></p>
                                 </td>
                             </tr>
 
+                            <?php
+                            /*
                             <tr>
                                 <td class="td_left" style="vertical-align: top !important;">
                                     Đổi trả:
@@ -403,7 +403,8 @@ $view_return_content =  $d->getOption('view_return_content');
                                     </p>
                                 </td>
                             </tr>
-
+                            */
+                            ?>
                         </tbody>
                     </table>
                 </div>

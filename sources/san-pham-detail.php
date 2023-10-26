@@ -843,26 +843,22 @@ $view_button_warrantyonline =  $d->getOption('view_button_warrantyonline');
                                     </div>
                                     <?php }?>
 
-                                    <?php if($view_shipping_content || $view_return_content){?>
-                                    <div class="shipping-content-wrap">
-                                        <?php if($view_shipping_content){?>
-                                        <div class="shipping-content-col">
-                                            <div class="shipping-inner shipping-content-item">
-                                                <?php echo stripslashes($view_shipping_content)?>
+                                    <?php if($view_shipping_content == 1):
+                                        $shipping_return = $d->getTemplates(71);
+                                    ?>
+                                    <div class="shipping-return">
+                                        <?php if ($shipping_return['name_' . $lang] != ''): ?>
+                                            <div class="title-main">
+                                                <h3><?= $shipping_return['name_' . $lang]; ?></h3>
                                             </div>
-                                        </div>
-                                        <?php }?>
-                                        
-                                        <?php if($view_return_content){?>
-                                        <div class="shipping-content-col">
-                                            <div class="shipping-inner return-content-item">
-                                                <?php echo stripslashes($view_return_content)?>
+                                        <?php endif; ?>
+                                        <?php if ($shipping_return['content_' . $lang] != ''): ?>
+                                            <div class="content-about text-justify">
+                                                <?= $shipping_return['content_' . $lang] ?>
                                             </div>
-                                        </div>
-                                        <?php }?>
+                                        <?php endif; ?>
                                     </div>
-                                    <?php }?>
-
+                                    <?php endif; ?>
                                 </div>
                                 <!-- </form> -->
                                 <div class="clearfix"></div>

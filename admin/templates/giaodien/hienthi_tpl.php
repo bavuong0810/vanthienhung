@@ -44,6 +44,7 @@
     $mota[30] = 'Hiển thị cột bên phải trong chi tiết sản phẩm "Giao diện 2"';
     $mota[48] = 'Hiển thị cột bên phải trong chi tiết sản phẩm "Giao diện 2"';
     $mota[70] = 'Hiển thị cột bên phải của danh mục sản phẩm (Dòng lớn) "Giao diện 2"';
+    $mota[71] = 'Hiển thị vận chuyển và đổi trả';
 
 	$mota[60] = 'Tab bạn cần hỗ trợ';
 	$mota[51] = 'Tab bình luận';

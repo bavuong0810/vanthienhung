@@ -179,8 +179,6 @@
             $view_request_price =  $d->getOption('view_request_price');
             $view_small_button_placeorder = $d->getOption('view_small_button_placeorder');
             $view_btn_contact =  $d->getOption('view_btn_contact');
-            $view_shipping_content =  $d->getOption('view_shipping_content');
-            $view_return_content =  $d->getOption('view_return_content');
             $view_button_checkorder =  $d->getOption('view_button_checkorder');
             $view_button_warrantyonline =  $d->getOption('view_button_warrantyonline');
             $view_button_placeorder = $d->getOption('view_button_placeorder');
