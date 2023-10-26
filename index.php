@@ -410,7 +410,9 @@ $body_class.= ' com-'.$com;
 
                         return `
                         <a href="${productLink}" title="${name}" rel="nofollow" style="display: inline-block;">
-                            <img src="${imgSrc}" alt="${name}" title="${name}" style="width: auto; height: 100px"/>
+                            <img src="${imgSrc}" alt="${name}" title="${name}"
+                                onerror="this.src='<?= $d->getDefaultProductImage() ?>';setTimeout(() => {$('.mz-loading').hide();}, 1000);"
+                                style="width: auto; height: 100px"/>
                             <p style="white-space: nowrap; text-overflow: ellipsis; color: #333; max-width: 120px;overflow-x: hidden;margin: 0 auto;">${name}</p>
                         </a>
                         `;

@@ -1548,23 +1548,16 @@ $view_button_warrantyonline =  $d->getOption('view_button_warrantyonline');
         });
 
         $('.slider-doitacs').slick({
-            slidesToShow: 8,
+            slidesToShow: 5,
             autoplay: true,
             autoplaySpeed: 4000,
             prevArrow: "<button class='style-bt bt-prev'><i class='fa fa-chevron-left'></i></button>",
             nextArrow: "<button class='style-bt bt-next'><i class='fa fa-chevron-right'></i></button>",
             responsive: [
                 {
-                    breakpoint: 1200,
-                    settings: {
-                        slidesToShow: 7,
-                        slidesToScroll: 3
-                    }
-                },
-                {
                     breakpoint: 991,
                     settings: {
-                        slidesToShow: 5,
+                        slidesToShow: 3,
                         slidesToScroll: 3
                     }
                 },
