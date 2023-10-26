@@ -41,6 +41,7 @@ $view_ho_tro = $d->getOption('view_ho_tro');
 $view_thong_so = $d->getOption('view_thong_so');
 $view_chi_tiet_san_pham = $d->getOption('view_chi_tiet_san_pham');
 $view_san_pham_tieu_bieu = $d->getOption('view_san_pham_tieu_bieu');
+$view_san_pham_tieu_bieu_top = $d->getOption('view_san_pham_tieu_bieu_top');
 $view_button_placeorder = $d->getOption('view_button_placeorder');
 $view_small_button_placeorder = $d->getOption('view_small_button_placeorder');
 
@@ -220,8 +221,15 @@ $view_return_content =  $d->getOption('view_return_content');
                                     <p style="margin:0"><label for="view_san_pham_tieu_bieu"><input <?php echo ($view_san_pham_tieu_bieu == '1')?'checked="checked"':''?> id="view_san_pham_tieu_bieu" type="checkbox" name="view_san_pham_tieu_bieu" value="1"> Hiển thị</label></p>
                                 </td>
                             </tr>
-                            
-                            
+                            <tr>
+                                <td class="td_left" style="vertical-align: top !important;">
+                                    Hiển thị sản phẩm tiêu biểu (Vị trí trên cùng):
+                                </td>
+                                <td class="td_right">
+                                    <p style="margin:0"><label for="view_san_pham_tieu_bieu_top"><input <?php echo ($view_san_pham_tieu_bieu_top == '1')?'checked="checked"':''?> id="view_san_pham_tieu_bieu_top" type="checkbox" name="view_san_pham_tieu_bieu_top" value="1"> Hiển thị</label></p>
+                                </td>
+                            </tr>
+
                             <tr>
                                 <td class="td_left" style="vertical-align: top !important;">
                                     Hiển thị mô tả sản phẩm:

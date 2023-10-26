@@ -1,9 +1,17 @@
 <?php
 if(!defined('_source')) die("Error");
 $a = (isset($_REQUEST['a'])) ? addslashes($_REQUEST['a']) : "";
-
 switch($a){
+
 	case "man":
+        global $d;
+        // check table option have option_name 'view_san_pham_tieu_bieu_top'
+        $query_san_pham_tieu_bieu_top = "SELECT * FROM `#_options` WHERE `option_name` = 'view_san_pham_tieu_bieu_top'";
+        $result = $d->simple_fetch($query_san_pham_tieu_bieu_top);
+        if (count($result) == 0) {
+            $d->query("INSERT INTO `#_options`(`option_name`, `option_value_1`) VALUES('view_san_pham_tieu_bieu_top', '0')");
+        }
+
 		showdulieu();
 		$template = @$_REQUEST['p']."/them";
 		break;
@@ -37,6 +45,7 @@ function luudulieu(){
 	$data['view_home_services'] = $_POST['view_home_services'];
 	$data['view_chi_tiet_san_pham'] = $_POST['view_chi_tiet_san_pham'];
 	$data['view_san_pham_tieu_bieu'] = $_POST['view_san_pham_tieu_bieu'];
+    $data['view_san_pham_tieu_bieu_top'] = $_POST['view_san_pham_tieu_bieu_top'];
 	$data['view_button_placeorder'] = $_POST['view_button_placeorder'];
 
 	$data['view_num_category'] = $_POST['view_num_category'];

@@ -561,7 +561,7 @@ $view_button_warrantyonline =  $d->getOption('view_button_warrantyonline');
     ?> 
     <div class="container clearfix">
         <div class="clearfix row-ctcp-top">
-            <?php include 'san_pham_tieu_bieu_default.php'; ?>
+            <?php include 'san_pham_tieu_bieu_top.php'; ?>
         </div>
 
         <div class="row10 clearfix row-ctcp-top<?php echo $extraClass?>">
