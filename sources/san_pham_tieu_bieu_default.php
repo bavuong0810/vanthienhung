@@ -1,6 +1,6 @@
 <?php
 $view_san_pham_tieu_bieu = $d->getOption('view_san_pham_tieu_bieu');
-if( !$view_san_pham_tieu_bieu ){
+if($view_san_pham_tieu_bieu == 3){
 ?>
 <section class="sec-pro hidden-sm hidden-xs">
     <div class="container">

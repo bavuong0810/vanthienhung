@@ -1,6 +1,6 @@
 <?php
-$view_san_pham_tieu_bieu_top = $d->getOption('view_san_pham_tieu_bieu_top');
-if($view_san_pham_tieu_bieu_top){
+$view_san_pham_tieu_bieu_top = $d->getOption('view_san_pham_tieu_bieu');
+if($view_san_pham_tieu_bieu_top == 2){
 ?>
 <section class="hidden-sm hidden-xs">
     <div class="container">

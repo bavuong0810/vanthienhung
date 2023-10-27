@@ -226,9 +226,31 @@ $view_return_content =  $d->getOption('view_return_content');
                                     Hiển thị sản phẩm tiêu biểu:
                                 </td>
                                 <td class="td_right">
-                                    <p style="margin:0"><label for="view_san_pham_tieu_bieu"><input <?php echo ($view_san_pham_tieu_bieu == '1')?'checked="checked"':''?> id="view_san_pham_tieu_bieu" type="checkbox" name="view_san_pham_tieu_bieu" value="1"> Hiển thị</label></p>
+                                    <p style="margin:0">
+                                        <label for="view_san_pham_tieu_bieu1">
+                                            <input <?php echo ($view_san_pham_tieu_bieu == '1')?'checked="checked"':''?>
+                                                    id="view_san_pham_tieu_bieu1" type="radio"
+                                                    name="view_san_pham_tieu_bieu" value="1"> Dưới chi tiết sản phẩm
+                                        </label>
+                                    </p>
+                                    <p style="margin:0">
+                                        <label for="view_san_pham_tieu_bieu2">
+                                            <input <?php echo ($view_san_pham_tieu_bieu == '2')?'checked="checked"':''?>
+                                                    id="view_san_pham_tieu_bieu2" type="radio"
+                                                    name="view_san_pham_tieu_bieu" value="2"> Trên cùng
+                                        </label>
+                                    </p>
+                                    <p style="margin:0">
+                                        <label for="view_san_pham_tieu_bieu3">
+                                            <input <?php echo ($view_san_pham_tieu_bieu == '3')?'checked="checked"':''?>
+                                                    id="view_san_pham_tieu_bieu3" type="radio"
+                                                    name="view_san_pham_tieu_bieu" value="3"> Dưới cùng
+                                        </label>
+                                    </p>
                                 </td>
                             </tr>
+                            <?php
+                            /*
                             <tr>
                                 <td class="td_left" style="vertical-align: top !important;">
                                     Hiển thị sản phẩm tiêu biểu (Vị trí trên cùng):
@@ -237,7 +259,8 @@ $view_return_content =  $d->getOption('view_return_content');
                                     <p style="margin:0"><label for="view_san_pham_tieu_bieu_top"><input <?php echo ($view_san_pham_tieu_bieu_top == '1')?'checked="checked"':''?> id="view_san_pham_tieu_bieu_top" type="checkbox" name="view_san_pham_tieu_bieu_top" value="1"> Hiển thị</label></p>
                                 </td>
                             </tr>
-
+                            */
+                            ?>
                             <tr>
                                 <td class="td_left" style="vertical-align: top !important;">
                                     Hiển thị mô tả sản phẩm:
