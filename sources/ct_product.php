@@ -1,17 +1,19 @@
 <?php
 $detailNeedShow = [
-	'brand_id' => 'Nhãn hiệu',
+    'brand_id' => 'Nhãn hiệu',
     'model' => 'Model',
-	//'code' => 'Mã sản phẩm',
-	'part_number' => 'Part number',
-	'specification' => 'Quy cách',
-	'loai' => 'Loại Động cơ',
-	'weight' => 'Trọng lượng (kg)',
-	'mfg_year' => 'Năm sản xuất',
-	'khung_nang' => 'Khung nâng (m)',
-	'bao_hanh' => 'Bảo hành',
-	'xuat_xu' => 'Xuất xứ',
-	'tinh_trang_hang' => 'Tình trạng hàng',
+    //'code' => 'Mã sản phẩm',
+    'part_number' => 'Part number',
+    'specification' => 'Quy cách',
+    'loai' => 'Loại Động cơ',
+    'weight' => 'Trọng lượng (kg)',
+    'mfg_year' => 'Năm sản xuất',
+    'khung_nang' => 'Khung nâng (m)',
+    'bao_hanh' => 'Bảo hành',
+    'tinh_trang_hang' => 'Tình trạng',
+    'xuat_xu' => 'Xuất xứ',
+    'group_quantity' => 'Số lượng',
+    'group_pos' => 'Vị trí',
 ];
 
 if (!empty($_COOKIE['productLayout']) && $_COOKIE['productLayout'] == 'small_list') {

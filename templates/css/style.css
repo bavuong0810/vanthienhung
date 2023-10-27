@@ -3325,7 +3325,28 @@ span.fd-discount {
 }
 
 .product-cate-des p {
-    margin-bottom: 3px;
+    margin-bottom: 0px;
+}
+
+.product-cate-des.inner {
+    overflow: hidden;
+    position: relative;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    line-height: 1.6;
+    margin-bottom: 5px;
+    height: 158px;
+}
+
+.product-cate-des.inner.expanded {
+    overflow: visible;
+    -webkit-line-clamp: initial;
+    -webkit-box-orient: initial;
+    text-overflow: initial;
+    display: block;
+    height: auto !important;
 }
 
 @media (min-width: 768px) {

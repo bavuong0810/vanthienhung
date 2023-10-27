@@ -395,7 +395,7 @@ $offset = ($page - 1) * $maxR;
 $view_product_noprice = $d->getOption('view_product_noprice');
 $pwhere = (!$view_product_noprice)?' and price > '.MIN_PRICE:'';
 
-$sp_tieubieu = $d->o_fet("select * from #_sanpham where " . get_column_show() . " = 1 $pwhere AND is_hot=1 AND category_id=" . @$ctsp['category_id'] . " AND id <> " . @$ctsp['id'] . " ORDER BY so_thu_tu ASC, id DESC LIMIT 0,50");
+$sp_tieubieu = $d->o_fet("select * from #_sanpham where " . get_column_show() . " = 1 $pwhere AND category_id=" . @$ctsp['category_id'] . " AND id <> " . @$ctsp['id'] . " ORDER BY so_thu_tu ASC, id DESC LIMIT 0,50");
 $sanpham = $d->o_fet("select * from #_sanpham where " . get_column_show() . " = 1 $pwhere AND category_id=" . @$ctsp['category_id'] . " AND id <> " . @$ctsp['id'] . " ORDER BY so_thu_tu ASC, id DESC LIMIT $offset, $maxR");
 
 //$deliveryAreas = $d->o_fet("SELECT `id`, `name` FROM `#_delivery_area` WHERE `isActive` = 1 ORDER BY `name`");

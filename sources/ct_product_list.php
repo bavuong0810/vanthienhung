@@ -53,8 +53,9 @@
                         </a>
                     </h3>
 
-                    <div class="product-cate-des">
+                    <div class="product-cate-des" id="product-cate-des-<?php echo $item['id']; ?>">
                         <?php
+                        $count_item = 0;
                         foreach ($detailNeedShow as $key => $name):
                             if (empty($item[$key])) {
                                 continue;
@@ -75,12 +76,35 @@
                             if ($attributes[$key.'_title']) {
                                 $title = $attributes[$key.'_title'];
                             }
+                            $count_item++;
                         ?>
                             <p>
                                 <span class="text-muted"><?php echo $title; ?>:</span> <?php echo $val; ?>
                             </p>
                         <?php endforeach; ?>
                     </div>
+                    <?php if ($count_item > 7): ?>
+                        <div>
+                            <span class="more cursor-pointer" style="color: #0000d7; font-weight: bold"
+                                  id="cursor-pointer-<?php echo $item['id']; ?>">Xem thêm</span>
+                        </div>
+                        <script>
+                            jQuery(document).ready(function($) {
+                                $('#product-cate-des-<?php echo $item['id']; ?>').addClass('inner');
+                                $('#cursor-pointer-<?php echo $item['id']; ?>').addClass('inner');
+
+                                $('#cursor-pointer-<?php echo $item['id']; ?>').on('click', function () {
+                                    if($('#product-cate-des-<?php echo $item['id']; ?>').hasClass('expanded')) {
+                                        $(this).html('Xem thêm');
+                                        $('#product-cate-des-<?php echo $item['id']; ?>').removeClass('expanded');
+                                    } else {
+                                        $('#product-cate-des-<?php echo $item['id']; ?>').addClass('expanded');
+                                        $(this).html('Thu gọn');
+                                    }
+                                });
+                            });
+                        </script>
+                    <?php endif; ?>
                 </div>
                 <div class="col-md-6 hidden-sm hidden-xs">
                     <?php $productCateContentRight = $d->getTemplates(70); ?>
