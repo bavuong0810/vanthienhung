@@ -353,7 +353,7 @@ $vth_logo = $d->getTemplates(30);
                                         <button href="" class="btn btn-flat facebook collapsed" data-toggle="collapse" data-target="#minhFacebookChat" aria-expanded="false" aria-controls="minhFacebookChat">
                                             Facebook
                                         </button>
-                                        <a href="https://zalo.me/<?php echo $SETTINGS['zalo']['value']; ?>" target="_blank" class="btn btn-flat zalo">
+                                        <a href="zalo://conversation?phone=<?php echo $SETTINGS['zalo']['value']; ?>" class="btn btn-flat zalo">
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zalo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         </a>
                                         <a href="tel:<?php echo $information['hotline']; ?>" class="btn btn-flat phone">
