@@ -164,7 +164,16 @@ function luudulieu(){
 
 	$data['view_shipping_content'] = addslashes($_POST['view_shipping_content']);
 	$data['view_return_content'] = addslashes($_POST['view_return_content']);
-	
+
+    //popup zalo
+    $data['popup_zalo_title'] = $_POST['popup_zalo_title'];
+    $data['popup_zalo_phone'] = $_POST['popup_zalo_phone'];
+    $data['popup_zalo_address'] = $_POST['popup_zalo_address'];
+    $data['popup_zalo_website'] = $_POST['popup_zalo_website'];
+    $data['popup_zalo_mail'] = $_POST['popup_zalo_mail'];
+    $data['popup_zalo_description'] = addslashes($_POST['popup_zalo_description']);
+    $data['popup_zalo_qr'] = $_POST['popup_zalo_qr'];
+
 	foreach( $data as $key=>$val ){
 		$d->disableCacheQuery();
 		$d->reset();

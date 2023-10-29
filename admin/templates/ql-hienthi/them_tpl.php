@@ -898,13 +898,6 @@ $popup_zalo_qr = $d->getOption('popup_zalo_qr');
         </div>
 
         <div class="ar_admin ar_admin_v2">
-            $popup_zalo_title = $d->getOption('popup_zalo_title');
-            $popup_zalo_phone = $d->getOption('popup_zalo_phone');
-            $popup_zalo_address = $d->getOption('popup_zalo_address');
-            $popup_zalo_website = $d->getOption('popup_zalo_website');
-            $popup_zalo_mail = $d->getOption('popup_zalo_mail');
-            $popup_zalo_description = $d->getOption('popup_zalo_description');
-            $popup_zalo_qr = $d->getOption('popup_zalo_qr');
             <table class="table table-bordered table-hover them_dt" style="border:none">
                 <tbody>
                 <div class="title_thongtinchung">
