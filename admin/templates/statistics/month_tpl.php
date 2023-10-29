@@ -125,9 +125,9 @@
 
 <div class="col-md-12">
 	<div class="row">
-		<h2 class="col-md-8">Danh sách sản phẩm trong tháng <span class="badge" style="background: red;vertical-align: middle;"><?php echo $countInDateProducts; ?> sản phẩm</span></h2>
-		<span class="col-md-4" style="margin-top:18px">
-			<form class="form-inline">
+		<h2 class="col-md-6">Danh sách sản phẩm trong tháng <span class="badge" style="background: red;vertical-align: middle;"><?php echo $countInDateProducts; ?> sản phẩm</span></h2>
+		<span class="col-md-6" style="margin-top:18px">
+			<form class="form-inline" style="display: flex; justify-content: space-between">
                 <div class="form-group">
                     <label for="emptyImage">
                         <input type="checkbox" value="1" name="emptyImage" id="emptyImage"> Lọc SP không hình ảnh
