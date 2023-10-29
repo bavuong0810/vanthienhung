@@ -768,7 +768,7 @@ $view_button_warrantyonline =  $d->getOption('view_button_warrantyonline');
 
                                         <?php if($view_add_to_cart){?>
                                         <div class="detail-button-item">
-                                            <a href="javascript:void(0)" type="button" class="btn btn-success btn-flat mr-1 addToCart"
+                                            <a href="javascript:void(0)" type="button" class="btn btn-success btn-flat mr-1"
                                                onclick="actionAddToCart(this)"
                                                id="addToCart" data-product="<?= $ctsp['id'] ?>" data-title="<?= $ctsp['name_' . $lang] ?>"
                                                data-price="<?= $ctsp['price'] ?>" data-detail="true">
