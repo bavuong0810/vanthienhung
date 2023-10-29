@@ -118,17 +118,25 @@
 
 <div class="col-md-12">
 	<div class="row">
-		<h2 class="col-md-9">Danh sách sản phẩm trong ngày <span class="badge" style="background: red;vertical-align: middle;"><?php echo $countInDateProducts; ?> sản phẩm</span></h2>
-		<span class="col-md-3" style="margin-top:18px">
+		<h2 class="col-md-8">Danh sách sản phẩm trong ngày <span class="badge" style="background: red;vertical-align: middle;"><?php echo $countInDateProducts; ?> sản phẩm</span></h2>
+		<span class="col-md-4" style="margin-top:18px">
 			<form>
-				<div class="input-group">
-					<input name="date" type="text" class="form-control" id="viewDate" value="<?php echo $_GET['date'] ? $_GET['date'] : date('Y-m-d'); ?>">
-					<input type="hidden" name="p" value="statistics">
-					<input type="hidden" name="a" value="perDay">
-					<span class="input-group-btn">
-						<button class="btn btn-primary">Xem</button>
-					</span>
-				</div>
+                <div style="display: flex; justify-content: space-between">
+                    <div class="input-group">
+                        <label for="emptyImage">
+                            <input type="checkbox" value="1" name="emptyImage" id="emptyImage"> Lọc SP không có hình ảnh
+                        </label>
+                    </div>
+                    <div class="input-group">
+                        <input name="date" type="text" class="form-control" id="viewDate" value="<?php echo $_GET['date'] ? $_GET['date'] : date('Y-m-d'); ?>">
+                        <input type="hidden" name="p" value="statistics">
+                        <input type="hidden" name="a" value="perDay">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary">Xem</button>
+                        </span>
+                    </div>
+                </div>
+
 			</form>
 		</span>
 	</div>
