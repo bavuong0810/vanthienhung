@@ -930,8 +930,8 @@ $popup_zalo_avatar = $d->getOption('popup_zalo_avatar');
                                    value="<?php echo $popup_zalo_avatar; ?>">
 
                         <div class="img-result" style="margin-top: 10px">
-                            <?php if($popup_zalo_qr != ''): ?>
-                                <img src="<?php echo FILEURL . "img_data/images/" . $popup_zalo_qr; ?>" alt="" width="150">
+                            <?php if($popup_zalo_avatar != ''): ?>
+                                <img src="<?php echo FILEURL . "img_data/images/" . $popup_zalo_avatar; ?>" alt="" width="150">
                             <?php endif; ?>
                         </div>
                         </p>
