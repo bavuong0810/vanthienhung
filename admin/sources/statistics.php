@@ -34,7 +34,7 @@ if ($action == 'perMonth') {
 	$template = @$_REQUEST['p']."/index";
 	$viewDate = $_GET['date'] ? $_GET['date'] : date('Y-m-d');
 
-    $filterProductNoImage = ($_GET['emptyImage'] == 1) ? " AND sp.`image_path` = ''" : "";
+    $filterProductNoImage = ($_GET['emptyImage'] == 1) ? " AND sp.`image_path` IS NULL" : "";
 
 	$inDateProducts = $d->o_fet("SELECT v.`region`, v.`ip`, `id_sanpham`, sp.`id`, `time`, `code`, `name_vi`, `image_path`, `alias_vi`, `is_completed`, COUNT(`time`) as `views`, `price`, `promotion_price` FROM `#_view` v INNER JOIN `#_sanpham` sp ON v.`id_sanpham` = sp.`id` WHERE `id_sanpham` <> 0 AND `is_bot` <> 1 AND `time` BETWEEN '$viewDate 00:00:00' AND '$viewDate 23:59:59' $filterProductNoImage GROUP BY `id_sanpham` ORDER BY `views` DESC");
 
