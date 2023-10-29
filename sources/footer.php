@@ -667,14 +667,23 @@ if (file_exists($cachePath) && 1 == 2) {
                     $popup_zalo_mail = $d->getOption('popup_zalo_mail');
                     $popup_zalo_description = $d->getOption('popup_zalo_description');
                     $popup_zalo_qr = $d->getOption('popup_zalo_qr');
+                    $popup_zalo_avatar = $d->getOption('popup_zalo_avatar');
                     ?>
                     <div class="row">
                         <div class="col-md-9">
-                            <div class="zalo-head">
-                                <h3 class="zalo-name"><?php echo $popup_zalo_title; ?></h3>
-                                <a href="zalo://conversation?phone=<?php echo $popup_zalo_phone; ?>" class="btn btn-primary">
-                                    <i class="fa fa-commenting" aria-hidden="true"></i> Nhắn tin
-                                </a>
+                            <div class="zalo-head txt-flex">
+                                <div class="thumb">
+                                    <div class="text-center">
+                                        <img src="<?php echo FILEURL . "img_data/images/" . $popup_zalo_avatar; ?>"
+                                             alt="<?php echo $popup_zalo_title; ?>" width="80">
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <h3 class="zalo-name"><?php echo $popup_zalo_title; ?></h3>
+                                    <a href="zalo://conversation?phone=<?php echo $popup_zalo_phone; ?>" class="btn btn-primary">
+                                        <i class="fa fa-commenting" aria-hidden="true"></i> Nhắn tin
+                                    </a>
+                                </div>
                             </div>
                             <div class="zalo-body">
                                 <h3>Hồ sơ kinh doanh</h3>
