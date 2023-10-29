@@ -988,7 +988,7 @@ $popup_zalo_qr = $d->getOption('popup_zalo_qr');
                     </td>
                     <td class="td_right">
                         <p style="margin:0">
-                            <input type="file" name="popup_zalo_file" class="input width400 form-control js-image-field"
+                            <input type="file" name="file" class="input width400 form-control js-image-field"
                                    id="popup_zalo_file" data-result="#zalo-qr"
                                    data-api="<?php echo getApiUploadFile(); ?>">
                             <input type="hidden" class="input-clipboard js-upload-result" name="popup_zalo_qr"
@@ -999,8 +999,6 @@ $popup_zalo_qr = $d->getOption('popup_zalo_qr');
                                     <img src="<?php echo FILEURL . "img_data/images/" . $popup_zalo_qr; ?>" alt="">
                                 <?php endif; ?>
                             </div>
-                            <input type="text" class="form-control" id="popup_zalo_qr" name="popup_zalo_qr"
-                                   value="<?php echo $popup_zalo_qr; ?>">
                         </p>
                     </td>
                 </tr>
@@ -1137,3 +1135,4 @@ $popup_zalo_qr = $d->getOption('popup_zalo_qr');
         });
     })(jQuery);
 </script>
+<script src="/admin/js/form.js?v=<?php echo getenv('APP_VERSION'); ?>"></script>
