@@ -19,6 +19,50 @@ switch($a){
             $d->query("INSERT INTO `#_options`(`option_name`, `option_value_1`) VALUES('view_product_category_list_layout_2', '0')");
         }
 
+        // popup zalo
+        // check table option have option_name 'popup_zalo_title'
+        $query_popup_zalo_title = "SELECT * FROM `#_options` WHERE `option_name` = 'popup_zalo_title'";
+        $result = $d->simple_fetch($query_popup_zalo_title);
+        if (count($result) == 0) {
+            $d->query("INSERT INTO `#_options`(`option_name`, `option_value_1`) VALUES('popup_zalo_title', '')");
+        }
+        // check table option have option_name 'popup_zalo_phone'
+        $query_popup_zalo_phone = "SELECT * FROM `#_options` WHERE `option_name` = 'popup_zalo_phone'";
+        $result = $d->simple_fetch($query_popup_zalo_phone);
+        if (count($result) == 0) {
+            $d->query("INSERT INTO `#_options`(`option_name`, `option_value_1`) VALUES('popup_zalo_phone', '')");
+        }
+        // check table option have option_name 'popup_zalo_address'
+        $query_popup_zalo_address = "SELECT * FROM `#_options` WHERE `option_name` = 'popup_zalo_address'";
+        $result = $d->simple_fetch($query_popup_zalo_address);
+        if (count($result) == 0) {
+            $d->query("INSERT INTO `#_options`(`option_name`, `option_value_1`) VALUES('popup_zalo_address', '')");
+        }
+        // check table option have option_name 'popup_zalo_address'
+        $query_popup_zalo_website = "SELECT * FROM `#_options` WHERE `option_name` = 'popup_zalo_website'";
+        $result = $d->simple_fetch($query_popup_zalo_website);
+        if (count($result) == 0) {
+            $d->query("INSERT INTO `#_options`(`option_name`, `option_value_1`) VALUES('popup_zalo_website', '')");
+        }
+        // check table option have option_name 'popup_zalo_mail'
+        $query_popup_zalo_mail = "SELECT * FROM `#_options` WHERE `option_name` = 'popup_zalo_mail'";
+        $result = $d->simple_fetch($query_popup_zalo_mail);
+        if (count($result) == 0) {
+            $d->query("INSERT INTO `#_options`(`option_name`, `option_value_1`) VALUES('popup_zalo_mail', '')");
+        }
+        // check table option have option_name 'popup_zalo_description'
+        $query_popup_zalo_description = "SELECT * FROM `#_options` WHERE `option_name` = 'popup_zalo_description'";
+        $result = $d->simple_fetch($query_popup_zalo_description);
+        if (count($result) == 0) {
+            $d->query("INSERT INTO `#_options`(`option_name`, `option_value_1`) VALUES('popup_zalo_description', '')");
+        }
+        // check table option have option_name 'popup_zalo_qr'
+        $query_popup_zalo_qr = "SELECT * FROM `#_options` WHERE `option_name` = 'popup_zalo_qr'";
+        $result = $d->simple_fetch($query_popup_zalo_qr);
+        if (count($result) == 0) {
+            $d->query("INSERT INTO `#_options`(`option_name`, `option_value_1`) VALUES('popup_zalo_qr', '')");
+        }
+
 		showdulieu();
 		$template = @$_REQUEST['p']."/them";
 		break;

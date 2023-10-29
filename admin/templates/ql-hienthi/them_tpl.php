@@ -118,6 +118,14 @@ $count_cats = $d->simple_fetch("select count(id) as cntid from #_category where 
 $view_shipping_content =  $d->getOption('view_shipping_content');
 $view_return_content =  $d->getOption('view_return_content');
 
+// Popup Zalo
+$popup_zalo_title = $d->getOption('popup_zalo_title');
+$popup_zalo_phone = $d->getOption('popup_zalo_phone');
+$popup_zalo_address = $d->getOption('popup_zalo_address');
+$popup_zalo_website = $d->getOption('popup_zalo_website');
+$popup_zalo_mail = $d->getOption('popup_zalo_mail');
+$popup_zalo_description = $d->getOption('popup_zalo_description');
+$popup_zalo_qr = $d->getOption('popup_zalo_qr');
 ?>
 
 <div class="col-xs-12">
@@ -885,6 +893,117 @@ $view_return_content =  $d->getOption('view_return_content');
                             </p>
                         </td>
                     </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="ar_admin ar_admin_v2">
+            $popup_zalo_title = $d->getOption('popup_zalo_title');
+            $popup_zalo_phone = $d->getOption('popup_zalo_phone');
+            $popup_zalo_address = $d->getOption('popup_zalo_address');
+            $popup_zalo_website = $d->getOption('popup_zalo_website');
+            $popup_zalo_mail = $d->getOption('popup_zalo_mail');
+            $popup_zalo_description = $d->getOption('popup_zalo_description');
+            $popup_zalo_qr = $d->getOption('popup_zalo_qr');
+            <table class="table table-bordered table-hover them_dt" style="border:none">
+                <tbody>
+                <div class="title_thongtinchung">
+                    Hiển thị Popup Zalo
+                </div>
+
+                <tr>
+                    <td class="td_left" style="vertical-align: top !important;">
+                        Tên Zalo:
+                    </td>
+                    <td class="td_right">
+                        <p style="margin:0">
+                            <input type="text" class="form-control" id="popup_zalo_title"
+                                   name="popup_zalo_title" value="<?php echo $popup_zalo_title; ?>">
+                        </p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="td_left" style="vertical-align: top !important;">
+                        Số điện thoại:
+                    </td>
+                    <td class="td_right">
+                        <p style="margin:0">
+                            <input type="text" class="form-control" id="popup_zalo_phone" name="popup_zalo_phone"
+                                   value="<?php echo $popup_zalo_phone; ?>">
+                        </p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="td_left" style="vertical-align: top !important;">
+                        Địa chỉ:
+                    </td>
+                    <td class="td_right">
+                        <p style="margin:0">
+                            <input type="text" class="form-control" id="popup_zalo_address" name="popup_zalo_address"
+                                   value="<?php echo $popup_zalo_address; ?>">
+                        </p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="td_left" style="vertical-align: top !important;">
+                        Email:
+                    </td>
+                    <td class="td_right">
+                        <p style="margin:0">
+                            <input type="text" class="form-control" id="popup_zalo_mail" name="popup_zalo_mail"
+                                   value="<?php echo $popup_zalo_mail; ?>">
+                        </p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="td_left" style="vertical-align: top !important;">
+                        Website:
+                    </td>
+                    <td class="td_right">
+                        <p style="margin:0">
+                            <input type="text" class="form-control" id="popup_zalo_website" name="popup_zalo_website"
+                                   value="<?php echo $popup_zalo_website; ?>">
+                        </p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="td_left" style="vertical-align: top !important;">
+                        Mô tả:
+                    </td>
+                    <td class="td_right">
+                        <p style="margin:0">
+                            <textarea  name="popup_zalo_description" id="popup_zalo_description"><?php echo $popup_zalo_description; ?></textarea>
+                            <?php $ckeditor->replace('popup_zalo_description'); ?>
+                        </p>
+                    </td>
+                </tr>
+                <tr id="zalo-qr">
+                    <td class="td_left" style="vertical-align: top !important;">
+                        Mã QR:
+                    </td>
+                    <td class="td_right">
+                        <p style="margin:0">
+                            <input type="file" name="popup_zalo_file" class="input width400 form-control js-image-field"
+                                   id="popup_zalo_file" data-result="#zalo-qr"
+                                   data-api="<?php echo getApiUploadFile(); ?>">
+                            <input type="hidden" class="input-clipboard js-upload-result" name="popup_zalo_qr"
+                                   value="<?php echo $popup_zalo_qr; ?>">
+
+                            <div class="img-result">
+                                <?php if($popup_zalo_qr != ''): ?>
+                                    <img src="<?php echo FILEURL . "img_data/images/" . $popup_zalo_qr; ?>" alt="">
+                                <?php endif; ?>
+                            </div>
+                            <input type="text" class="form-control" id="popup_zalo_qr" name="popup_zalo_qr"
+                                   value="<?php echo $popup_zalo_qr; ?>">
+                        </p>
+                    </td>
+                </tr>
                 </tbody>
             </table>
         </div>
