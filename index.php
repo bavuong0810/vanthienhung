@@ -212,7 +212,8 @@ $body_class.= ' com-'.$com;
                 <span class="chat-message">Chat Facebook</span>
                 <i class="fa fa-facebook"></i>
             </span>
-            <a href="https://zalo.me/<?php echo getenv('FIRST_PHONE'); ?>" target="_blank" class="chat-button close-all-chat zalo">
+            <a href="javascript:void(0)" data-toggle="modal" data-target="#modalZalo"
+               class="chat-button close-all-chat zalo">
                 <span class="chat-message">Chat Zalo</span>
                 <small>Zalo</small>
             </a>

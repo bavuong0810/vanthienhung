@@ -651,6 +651,54 @@ if (file_exists($cachePath) && 1 == 2) {
         </div>
     </div>
 
+    <div class="modal fade" id="modalZalo" tabindex="-1" role="dialog" aria-labelledby="modalZaloLabel" data-backdrop="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modalZaloLabel">Liên hệ qua Zalo</h4>
+                </div>
+                <div class="modal-body">
+                    <?php
+                    $popup_zalo_title = $d->getOption('popup_zalo_title');
+                    $popup_zalo_phone = $d->getOption('popup_zalo_phone');
+                    $popup_zalo_address = $d->getOption('popup_zalo_address');
+                    $popup_zalo_website = $d->getOption('popup_zalo_website');
+                    $popup_zalo_mail = $d->getOption('popup_zalo_mail');
+                    $popup_zalo_description = $d->getOption('popup_zalo_description');
+                    $popup_zalo_qr = $d->getOption('popup_zalo_qr');
+                    ?>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="zalo-head">
+                                <h3 class="zalo-name"><?php echo $popup_zalo_title; ?></h3>
+                                <a href="zalo://conversation?phone=<?php echo $popup_zalo_phone; ?>" class="btn btn-primary">
+                                    <i class="fa fa-commenting" aria-hidden="true"></i> Nhắn tin
+                                </a>
+                            </div>
+                            <div class="zalo-body">
+                                <h3>Hồ sơ kinh doanh</h3>
+                                <p><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo $popup_zalo_address; ?></p>
+                                <p><i class="fa fa-link" aria-hidden="true"></i> <a href="<?php echo $popup_zalo_website; ?>"><?php echo $popup_zalo_website; ?></a></p>
+                                <p><i class="fa fa-envelope" aria-hidden="true"></i> <?php echo $popup_zalo_mail; ?></p>
+                                <hr class="mb-2 mt-2">
+                                <div class="zalo-description">
+                                    <?php echo $popup_zalo_description; ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="text-center">
+                                <img src="<?php echo FILEURL . "img_data/images/" . $popup_zalo_qr; ?>" alt="<?php echo $popup_zalo_phone; ?>" width="200">
+                                <p>Mở Zalo, bấm quét QR để quét và xem trên điện thoại</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script type="text/javascript">
         $(document).ready(function () {
 

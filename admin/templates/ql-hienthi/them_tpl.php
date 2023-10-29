@@ -987,7 +987,7 @@ $popup_zalo_qr = $d->getOption('popup_zalo_qr');
                             <input type="hidden" class="input-clipboard js-upload-result" name="popup_zalo_qr"
                                    value="<?php echo $popup_zalo_qr; ?>">
 
-                            <div class="img-result">
+                            <div class="img-result" style="margin-top: 10px">
                                 <?php if($popup_zalo_qr != ''): ?>
                                     <img src="<?php echo FILEURL . "img_data/images/" . $popup_zalo_qr; ?>" alt="" width="150">
                                 <?php endif; ?>
