@@ -73,6 +73,7 @@ $(document).ready(function($) {
     $('.cart-quantity-input .minus-one').on('click', function () {
         let product_id = $(this).data('product');
         let quantity = $('#quantity_' + product_id).val();
+        quantity = parseInt(quantity);
         if (quantity > 1) {
             $('#quantity_' + product_id).val(quantity - 1);
         }
@@ -81,6 +82,7 @@ $(document).ready(function($) {
     $('.cart-quantity-input .add-one').on('click', function () {
         let product_id = $(this).data('product');
         let quantity = $('#quantity_' + product_id).val();
+        quantity = parseInt(quantity);
         $('#quantity_' + product_id).val(quantity + 1);
     });
 
