@@ -678,7 +678,7 @@ if (file_exists($cachePath) && 1 == 2) {
                                              alt="<?php echo $popup_zalo_title; ?>" width="80">
                                     </div>
                                 </div>
-                                <div class="info">
+                                <div class="info ml-1">
                                     <h3 class="zalo-name"><?php echo $popup_zalo_title; ?></h3>
                                     <a href="zalo://conversation?phone=<?php echo $popup_zalo_phone; ?>" class="btn btn-primary">
                                         <i class="fa fa-commenting" aria-hidden="true"></i> Nhắn tin

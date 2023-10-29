@@ -3349,7 +3349,20 @@ span.fd-discount {
     height: auto !important;
 }
 
+#modalZalo .thumb img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
 
+#modalZalo .zalo-name {
+    margin-top: 0;
+}
+
+#modalZalo .zalo-body {
+    margin-top: 30px;
+}
 
 @media (min-width: 768px) {
     .no-zalobox .ct-box-inner {
