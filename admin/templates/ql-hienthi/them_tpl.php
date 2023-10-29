@@ -989,7 +989,7 @@ $popup_zalo_qr = $d->getOption('popup_zalo_qr');
 
                             <div class="img-result">
                                 <?php if($popup_zalo_qr != ''): ?>
-                                    <img src="<?php echo FILEURL . "img_data/images/" . $popup_zalo_qr; ?>" alt="">
+                                    <img src="<?php echo FILEURL . "img_data/images/" . $popup_zalo_qr; ?>" alt="" width="150">
                                 <?php endif; ?>
                             </div>
                         </p>
