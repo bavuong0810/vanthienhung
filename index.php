@@ -217,8 +217,8 @@ $body_class.= ' com-'.$com;
                 <span class="chat-message">Chat Zalo</span>
                 <small>Zalo</small>
             </a>
-            <a href="tel:<?php echo getenv('FIRST_PHONE'); ?>" class="chat-button phone">
-                <span class="chat-message"><strong>02743501763 - <?php echo getenv('FIRST_PHONE'); ?></strong></span>
+            <a href="tel:<?php echo $information['hotline']; ?>" class="chat-button phone">
+                <span class="chat-message"><strong><?php echo $information['hotline']; ?></strong></span>
                 <i class="fa fa-phone"></i>
             </a>
         </div>
