@@ -4,6 +4,7 @@ $brand_name = '';
 if( $item['brand_id'] ){
     $brand_name = $d->getBrandById($item['brand_id']);
 }
+$img_baogia = empty($item['image_path']) ? $d->getDefaultProductImage() : $item['image_path'];
 ?>
 
 <tr class="product-small-list">
