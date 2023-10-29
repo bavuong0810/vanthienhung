@@ -113,6 +113,31 @@ $(document).ready(function() {
 			}
 		});	
 	}
+
+	if($(".form-order").length) {
+		var error1=$('.form-order input[name="ten"]').attr('data-error');
+		var error2=$('.form-order input[name="email"]').attr('data-error');
+		var error3=$('.form-order input[name="diachi"]').attr('data-error');
+		var error4=$('.form-order input[name="dienthoai"]').attr('data-error');
+
+		$(".form-order").validate({
+			rules: {
+				ten: "required",
+				email: {
+					required: true,
+					email: true
+				},
+				diachi: "required",
+				dienthoai: "required",
+			},
+			messages: {
+				ten: error1,
+				email: error2,
+				diachi: error3,
+				dienthoai: error4,
+			}
+		});
+	}
 	if($("#form-contact").length) {
 		var error1=$('#form-contact #ho_ten').attr('data-error');
 		var error2=$('#form-contact #so_dien_thoai').attr('data-error');
