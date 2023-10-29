@@ -21,12 +21,13 @@ if (!empty($_COOKIE['productLayout']) && $_COOKIE['productLayout'] == 'small_lis
 	<table class="table table-striped bg-white">
 		<thead>
 			<tr>
-				<th>Tên</th>
+				<th style="width: 350px;">Tên</th>
 				<th class="hidden-xs txt-inline" style="width: 170px;">Thương hiệu</th>
 				<th class="hidden-xs txt-inline" style="width: 140px;">Model</th>
 				<th class="hidden-xs txt-inline" style="width: 160px;">Quy cách</th>
 				<th class="hidden-xs" style="width: 200px;">Part Number</th>
 				<th class="hidden-xs" style="width: 200px;">Giá</th>
+                <th class="hidden-xs" style="width: 200px;">Liên hệ</th>
 				<th style="width: 110px;">Order</th>
 			</tr>
 		</thead>

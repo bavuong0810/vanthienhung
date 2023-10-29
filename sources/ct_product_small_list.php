@@ -83,7 +83,26 @@ if( $item['brand_id'] ){
             <span class="fd-discount" style="position: absolute; top: 10px; right: 15px">- <?php echo $discountPercent; ?>%</span>
         <?php endif; ?>
     </td>
-    
+
+    <td>
+
+    <?php
+    $view_request_price =  $d->getOption('view_request_price');
+    $view_btn_contact =  $d->getOption('view_btn_contact');
+    ?>
+    </td>
+        <?php if ($view_btn_contact): ?>
+        <a class="dl-btn-inline dl-btn btn btn-sendmail btn-product-contact btn-flat" href="javascript:void(0)"
+           data-toggle="modal" data-target="#sendEmailModal">Liên hệ</a>
+        <?php endif; ?>
+        <?php if ($view_request_price): ?>
+        <button id="product_detail_price_request" type="button" class="dl-btn btn btn-danger mr-1 addcart" data-product="<?= $item['id'] ?>" data-code="<?= $item['code']; ?>" data-image="<?= $img_baogia ?>" data-title="<?= $item['name_' . $lang] ?>" data-price="<?= $item['price'] ?>" data-detail="true">
+            Yêu cầu báo giá
+        </button>
+        <?php endif; ?>
+        <a class="dl-btn-inline dl-btn btn-default btn" href="<?=URLPATH.$item['alias_'.$lang] ?>.html" title="<?=$item['name_'.$lang] ?>">
+            Chi tiết
+        </a>
     <td>
         <div class="input-group btn-group txt-flex">
             <input value="1" type="number" min="1" class="form-control input-quantity" />
