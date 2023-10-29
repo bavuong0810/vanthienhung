@@ -124,7 +124,7 @@
                 <div style="display: flex; justify-content: space-between">
                     <div class="input-group">
                         <label for="emptyImage">
-                            <input type="checkbox" value="1" name="emptyImage" id="emptyImage"> Lọc SP không có hình ảnh
+                            <input type="checkbox" value="1" name="emptyImage" id="emptyImage"> Lọc SP không hình ảnh
                         </label>
                     </div>
                     <div class="input-group">
@@ -136,7 +136,6 @@
                         </span>
                     </div>
                 </div>
-
 			</form>
 		</span>
 	</div>

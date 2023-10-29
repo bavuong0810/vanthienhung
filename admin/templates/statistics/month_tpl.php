@@ -128,6 +128,11 @@
 		<h2 class="col-md-8">Danh sách sản phẩm trong tháng <span class="badge" style="background: red;vertical-align: middle;"><?php echo $countInDateProducts; ?> sản phẩm</span></h2>
 		<span class="col-md-4" style="margin-top:18px">
 			<form class="form-inline">
+                <div class="form-group">
+                    <label for="emptyImage">
+                        <input type="checkbox" value="1" name="emptyImage" id="emptyImage"> Lọc SP không hình ảnh
+                    </label>
+                </div>
 				<div class="form-group">
 					<label for="startDate">Từ: </label>
 					<input name="startDate" type="text" class="form-control date-picker" id="startDate" value="<?php echo $startDate; ?>">

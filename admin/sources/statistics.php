@@ -11,7 +11,9 @@ if ($action == 'perMonth') {
 	$ipEndDate = $_GET['ipEndDate'] ? $_GET['ipEndDate'] : date('Y-m-d');
 	$ipStartDate = $_GET['ipStartDate'] ? $_GET['ipStartDate'] : date($dateFormat, strtotime("-29 days", strtotime($ipEndDate)));
 
-	$inDateProducts = $d->o_fet("SELECT `id_sanpham`, sp.`id`, `time`, `code`, `name_vi`, `image_path`, `alias_vi`, `is_completed`, COUNT(`time`) as `views`, `price`, `promotion_price` FROM `#_view` v INNER JOIN `#_sanpham` sp ON v.`id_sanpham` = sp.`id` WHERE `id_sanpham` <> 0 AND `is_bot` <> 1 AND `time` BETWEEN '$startDate 00:00:00' AND  '$endDate 23:59:59' GROUP BY `id_sanpham` ORDER BY `views` DESC");
+    $filterProductNoImage = ($_GET['emptyImage'] == 1) ? "HAVING `image_path` = '' OR `image_path` IS NULL" : "";
+
+	$inDateProducts = $d->o_fet("SELECT v.`region`, v.`ip`, `id_sanpham`, sp.`id`, `time`, `code`, `name_vi`, `image_path`, `alias_vi`, `is_completed`, COUNT(`time`) as `views`, `price`, `promotion_price` FROM `#_view` v INNER JOIN `#_sanpham` sp ON v.`id_sanpham` = sp.`id` WHERE `id_sanpham` <> 0 AND `is_bot` <> 1 AND `time` BETWEEN '$startDate 00:00:00' AND  '$endDate 23:59:59' GROUP BY `id_sanpham` $filterProductNoImage ORDER BY `views` DESC");
 
 	$countInDateProducts = $d->o_fet("SELECT COUNT(DISTINCT `id_sanpham`) as `total` FROM `#_view` WHERE `id_sanpham` <> 0 AND `is_bot` <> 1 AND `time` BETWEEN '$startDate 00:00:00' AND '$endDate 23:59:59'");
 	$countInDateProducts = $countInDateProducts[0]['total'];
