@@ -26,6 +26,12 @@ switch($a){
         if (count($result) == 0) {
             $d->query("INSERT INTO `#_options`(`option_name`, `option_value_1`) VALUES('popup_zalo_title', '')");
         }
+        // check table option have option_name 'popup_zalo_avatar'
+        $query_popup_zalo_avatar = "SELECT * FROM `#_options` WHERE `option_name` = 'popup_zalo_avatar'";
+        $result = $d->simple_fetch($query_popup_zalo_avatar);
+        if (count($result) == 0) {
+            $d->query("INSERT INTO `#_options`(`option_name`, `option_value_1`) VALUES('popup_zalo_avatar', '')");
+        }
         // check table option have option_name 'popup_zalo_phone'
         $query_popup_zalo_phone = "SELECT * FROM `#_options` WHERE `option_name` = 'popup_zalo_phone'";
         $result = $d->simple_fetch($query_popup_zalo_phone);
@@ -167,6 +173,7 @@ function luudulieu(){
 
     //popup zalo
     $data['popup_zalo_title'] = $_POST['popup_zalo_title'];
+    $data['popup_zalo_avatar'] = $_POST['popup_zalo_avatar'];
     $data['popup_zalo_phone'] = $_POST['popup_zalo_phone'];
     $data['popup_zalo_address'] = $_POST['popup_zalo_address'];
     $data['popup_zalo_website'] = $_POST['popup_zalo_website'];

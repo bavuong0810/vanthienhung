@@ -126,6 +126,7 @@ $popup_zalo_website = $d->getOption('popup_zalo_website');
 $popup_zalo_mail = $d->getOption('popup_zalo_mail');
 $popup_zalo_description = $d->getOption('popup_zalo_description');
 $popup_zalo_qr = $d->getOption('popup_zalo_qr');
+$popup_zalo_avatar = $d->getOption('popup_zalo_avatar');
 ?>
 
 <div class="col-xs-12">
@@ -912,6 +913,27 @@ $popup_zalo_qr = $d->getOption('popup_zalo_qr');
                         <p style="margin:0">
                             <input type="text" class="form-control" id="popup_zalo_title"
                                    name="popup_zalo_title" value="<?php echo $popup_zalo_title; ?>">
+                        </p>
+                    </td>
+                </tr>
+
+                <tr id="zalo-avatar">
+                    <td class="td_left" style="vertical-align: top !important;">
+                        Ảnh đại diện:
+                    </td>
+                    <td class="td_right">
+                        <p style="margin:0">
+                            <input type="file" name="file" class="input width400 form-control js-image-field"
+                                   id="popup_zalo_avatar" data-result="#zalo-avatar"
+                                   data-api="<?php echo getApiUploadFile(); ?>">
+                            <input type="hidden" class="input-clipboard js-upload-result" name="popup_zalo_avatar"
+                                   value="<?php echo $popup_zalo_avatar; ?>">
+
+                        <div class="img-result" style="margin-top: 10px">
+                            <?php if($popup_zalo_qr != ''): ?>
+                                <img src="<?php echo FILEURL . "img_data/images/" . $popup_zalo_qr; ?>" alt="" width="150">
+                            <?php endif; ?>
+                        </div>
                         </p>
                     </td>
                 </tr>
