@@ -91,47 +91,49 @@ if( $item['brand_id'] ){
         ?>
 
         <?php if ($view_request_price): ?>
-            <button id="product_detail_price_request" type="button" class="dl-btn btn btn-danger mb-10 addcart"
+            <button id="product_detail_price_request" type="button" class="dl-btn btn btn-danger addcart"
                     data-product="<?= $item['id'] ?>" data-code="<?= $item['code']; ?>" data-image="<?= $img_baogia ?>"
                     data-title="<?= $item['name_' . $lang] ?>" data-price="<?= $item['price'] ?>"
-                    data-detail="true" style="width: 100%">
+                    data-detail="true" style="width: 100%; margin-bottom: 5px">
                 Yêu cầu báo giá
             </button>
         <?php endif; ?>
 
-        <div class="txt-flex" style="justify-content: center">
+        <div class="txt-flex" style="justify-content: space-between">
             <?php if ($view_btn_contact): ?>
                 <a class="dl-btn-inline dl-btn btn btn-sendmail btn-product-contact btn-flat" href="javascript:void(0)"
-                   data-toggle="modal" data-target="#sendEmailModal">Liên hệ</a>
+                   data-toggle="modal" data-target="#sendEmailModal" style="width: calc(50% - 3px);">Liên hệ</a>
             <?php endif; ?>
 
-            <a class="dl-btn-inline dl-btn btn-default btn" href="<?=URLPATH.$item['alias_'.$lang] ?>.html" title="<?=$item['name_'.$lang] ?>">
+            <a class="dl-btn-inline dl-btn btn-default btn" style="width: calc(50% - 3px);"
+               href="<?=URLPATH.$item['alias_'.$lang] ?>.html" title="<?=$item['name_'.$lang] ?>">
                 Chi tiết
             </a>
         </div>
     </td>
 
     <td>
-        <div class="input-group btn-group txt-flex">
+        <div class="input-group txt-flex">
             <div class="input-group quantity-input cart-quantity-input">
-            <span class="input-group-btn">
-                <button class="btn minus-one" data-product="<?php echo $item['id']; ?>">
-                    <i class="fa fa-minus"></i>
-                </button>
-            </span>
-                <input type="number" value="1" min="1" step="1"
-                       class="form-control text-center soluong_ valid input-quantity" aria-invalid="false">
                 <span class="input-group-btn">
-                <button class="btn add-one" data-product="<?php echo $item['id']; ?>">
-                    <i class="fa fa-plus"></i>
-                </button>
-            </span>
+                    <button class="btn minus-one" data-product="<?php echo $item['id']; ?>">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </span>
+                    <input type="number" value="1" min="1" step="1" style="width: 100%; top: 3px;"
+                           id="quantity_<?php echo $item['id']; ?>"
+                           class="form-control text-center soluong_ valid input-quantity" aria-invalid="false">
+                    <span class="input-group-btn">
+                    <button class="btn add-one" data-product="<?php echo $item['id']; ?>">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </span>
             </div>
-            <button type="button" class="btn btn-primary action-add-to-cart" data-id="<?php echo $item['id']; ?>">
+            <button type="button" class="btn btn-primary action-add-to-cart" style="margin-left: 3px"
+                    data-id="<?php echo $item['id']; ?>">
                 <i class="glyphicon glyphicon-shopping-cart"></i>
             </button>
         </div>
-        
         <!--
         <div class="input-group btn-group visible-xs txt-flex">
             <input value="1" type="number" min="1" class="form-control input-sm input-quantity" />

@@ -70,6 +70,20 @@ if (!empty($_COOKIE['productLayout']) && $_COOKIE['productLayout'] == 'small_lis
 
 <script type="text/javascript">
 $(document).ready(function($) {
+    $('.cart-quantity-input .minus-one').on('click', function () {
+        let product_id = $(this).data('product');
+        let quantity = $('#quantity_' + product_id).val();
+        if (quantity > 1) {
+            $('#quantity_' + product_id).val(quantity - 1);
+        }
+    });
+
+    $('.cart-quantity-input .add-one').on('click', function () {
+        let product_id = $(this).data('product');
+        let quantity = $('#quantity_' + product_id).val();
+        $('#quantity_' + product_id).val(quantity + 1);
+    });
+
 	$('.detail-button-wrap .addToCart').click(function(e) {
 		const id = $(this).data('product');
 		//const soluong = $('#numberOfProduct').val();
