@@ -89,13 +89,13 @@ $(document).ready(function() {
 	$('.fancybox').fancybox();
 
 
-	if($("#form-shopping").length) {
-		var error1=$('#form-shopping #ten').attr('data-error');
-		var error2=$('#form-shopping #email').attr('data-error');
-		var error3=$('#form-shopping #diachi').attr('data-error');
-		var error4=$('#form-shopping #dienthoai').attr('data-error');
+	if($(".form-shopping").length) {
+		var error1=$('.form-shopping input[name="ten"]').attr('data-error');
+		var error2=$('.form-shopping input[name="email"]').attr('data-error');
+		var error3=$('.form-shopping input[name="diachi"]').attr('data-error');
+		var error4=$('.form-shopping input[name="dienthoai"]').attr('data-error');
 		
-		$("#form-shopping").validate({
+		$(".form-shopping").validate({
 			rules: {
 				ten: "required",				
 				email: {

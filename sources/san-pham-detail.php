@@ -1703,7 +1703,7 @@ $view_button_warrantyonline =  $d->getOption('view_button_warrantyonline');
             </div>
             <div class="modal-body">
                 <?php //print_r($_SESSION['cart'])?>
-                <form action="" id="form-shopping" class="form-horizontal" method="post">
+                <form action="" id="form-shopping" class="form-horizontal form-shopping" method="post">
                 <div class="row">
                     <div class="col-md-5">
                         <div class="dathang-form"><?php include 'form-dat-hang.php';?></div>

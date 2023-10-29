@@ -1,13 +1,13 @@
 <div class="title-form text-uppercase"><?= _infouser ?></div>
 <div class="form-group">
-    <input type="text" class="form-control" id="ten" name="ten" data-error="<?= _typehoten ?>" placeholder="<?= _hoten ?>*">
+    <input type="text" class="form-control" id="ten" name="ten" data-error="<?= _typehoten ?>" placeholder="<?= _hoten ?>*" require>
 </div>
 <div class="form-group">
-    <input type="email" class="form-control" id="email" name="email" data-error="<?= _type_email ?>" placeholder="Email*">
+    <input type="email" class="form-control" id="email" name="email" data-error="<?= _type_email ?>" placeholder="Email*" require>
 </div>
 
 <div class="form-group">
-    <input type="text" class="form-control" id="dienthoai" name="dienthoai" data-error="<?= _typesodienthoai ?>" placeholder="<?= _sodienthoai ?>*">
+    <input type="text" class="form-control" id="dienthoai" name="dienthoai" data-error="<?= _typesodienthoai ?>" placeholder="<?= _sodienthoai ?>*" require>
 </div>
 
 <div class="title-form text-uppercase">Địa chỉ nhận hàng</div>
