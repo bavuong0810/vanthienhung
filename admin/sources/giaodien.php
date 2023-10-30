@@ -18,6 +18,13 @@ switch($a){
             $d->query("INSERT INTO `#_setting`(`name_vi`, `content_vi`, `hien_thi`) VALUES('Vận chuyển và đổi trả', 'Vận chuyển và đổi trả', 0)");
         }
 
+        // check table setting have id=72
+        $query_product_cate_id_72 = "SELECT * FROM `#_setting` WHERE `id` = 72";
+        $result = $d->simple_fetch($query_product_cate_id_72);
+        if (count($result) == 0) {
+            $d->query("INSERT INTO `#_setting`(`name_vi`, `content_vi`, `hien_thi`) VALUES('', '* Giá chưa bao gồm 8% VAT', 1)");
+        }
+
 		showdulieu();
 		$template = @$_REQUEST['p']."/hienthi";
 		break;

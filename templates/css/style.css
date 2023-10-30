@@ -3364,6 +3364,10 @@ span.fd-discount {
     margin-top: 30px;
 }
 
+.cart-vat {
+    padding: 10px 0;
+}
+
 @media (min-width: 768px) {
     .no-zalobox .ct-box-inner {
         padding-left: 15px;

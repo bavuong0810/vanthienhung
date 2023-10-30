@@ -143,6 +143,23 @@ $tableContent = ob_get_clean();
 </div>
 <?php }?>
 
+<?php
+$vat_content = $d->getTemplates(72);
+if ($vat_content['content_' . $lang] != ''):
+?>
+    <hr style="margin: 5px 0;">
+    <div class="cart-vat">
+        <?php if ($vat_content['name_' . $lang] != ''): ?>
+            <div class="title-main">
+                <h3><?= $vat_content['name_' . $lang]; ?></h3>
+            </div>
+        <?php endif; ?>
+        <div class="cart-vat-content">
+            <?= $vat_content['content_' . $lang] ?>
+        </div>
+    </div>
+<?php endif; ?>
+
 <!-- Thanh toan -->
 
 <div class="dathang-pay">
