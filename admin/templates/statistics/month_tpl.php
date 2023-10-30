@@ -173,6 +173,8 @@
 				<th>Khuyến mãi</th>
 				<th>Lượt xem</th>
                 <th>Thời gian</th>
+                <th>IP</th>
+                <th>Khu vực</th>
 				<th class="no-sort">Hành động</th>
 			</tr>
 		</thead>
@@ -197,6 +199,8 @@
 					<td><?php echo $d->vnd($product['promotion_price']); ?></td>
 					<td><?php echo $product['views']; ?></td>
                     <td><?php echo $product['time']; ?></td>
+                    <td><?php echo $product['ip']; ?></td>
+                    <td><?php echo $product['region']; ?></td>
 					<td>
 						<a href="index.php?p=san-pham&a=edit&id=<?php echo $product['id_sanpham']; ?>" target="_blank" class="text-success" title="Sửa sản phẩm"><i class="glyphicon glyphicon-pencil"></i></a>
 						&nbsp;&nbsp;&nbsp;&nbsp;
