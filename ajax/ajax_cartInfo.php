@@ -145,6 +145,7 @@ $tableContent = ob_get_clean();
 
 <?php
 $vat_content = $d->getTemplates(72);
+$lang = $_SESSION['lang'];
 if ($vat_content['content_' . $lang] != ''):
 ?>
     <hr style="margin: 5px 0;">
