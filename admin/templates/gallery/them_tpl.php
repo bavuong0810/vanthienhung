@@ -227,11 +227,6 @@
 <script type="text/javascript" src="/admin/assets/pasteimage.js"></script>
 <script src="/admin/js/form.js?v=<?php echo getenv('APP_VERSION'); ?>"></script>
 <script>
-    $(document).ready(function() {
-        pasteimage('#thumb', showImage);
-        $('#thumb input[name=file2_url]').on('blur', urlToImage);
-    });
-
     function urlToImage(e) {
         const target = e.target.dataset.result;
         const url = e.target.value;
@@ -295,4 +290,8 @@
             dataType: 'json'
         });
     }
+    $(document).ready(function() {
+        pasteimage('#thumb', showImage);
+        $('#thumb input[name="file2_url"]').on('blur', urlToImage);
+    });
 </script>
