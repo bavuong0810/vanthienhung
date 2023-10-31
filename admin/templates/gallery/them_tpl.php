@@ -59,12 +59,12 @@
                             Hình ảnh:
 						</td>
 						<td class="td_right">
-                            <div style="display: flex; justify-content: space-between">
+                            <div style="display: flex; justify-content: flex-start">
                                 <div>
                                     <input type="file" name="file" class="input width400 form-control js-image-field"
                                            data-api="<?php echo getApiUploadFile(); ?>" data-result="#thumb" />
                                 </div>
-                                <div>
+                                <div style="margin-left: 20px">
                                     <input type="text" name="file2_url" placeholder="Link hình ảnh hoặc dán ảnh"
                                            class="input width400 form-control" data-result="#thumb">
                                 </div>
