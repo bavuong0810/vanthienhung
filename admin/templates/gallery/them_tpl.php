@@ -76,6 +76,15 @@
 						</td>
 					</tr>
 
+                    <tr class="show_1">
+                        <td class="td_left">
+                            Hoặc nhập link hình ảnh, dán ảnh:
+                        </td>
+                        <td class="td_right">
+                            <input type="text" name="file2_url" placeholder="Link hình ảnh..." class="input width400 form-control" data-result="#thumb">
+                        </td>
+                    </tr>
+
 					<tr>
 						<td class="td_left">
 							Link:
@@ -215,4 +224,74 @@
 </div>
 </form>
 </div>
+<script>
+    $(document).ready(function() {
+        pasteimage('#thumb', showImage);
+        $('#thumb input[name=file2_url]').on('blur', urlToImage);
+    });
+
+    function urlToImage(e) {
+        const target = e.target.dataset.result;
+        const url = e.target.value;
+        console.log('url', url);
+        if (!url || url.trim().length === 0 || url.indexOf('http') !== 0) {
+            return;
+        }
+
+        const baseUrl = AppConfig && AppConfig.fileBaseUrl ? AppConfig.fileBaseUrl : '/';
+        $.ajax({
+            type: 'GET',
+            url: baseUrl + 'admin/api.php?func=url_to_image',
+            data: { url },
+            contentType: 'application/json',
+            success: (res) => {
+                if (!res.result) {
+                    alert('Lỗi tải lên hình ảnh!');
+                    return;
+                }
+
+                src = res.result;
+                if ($(target + ' .img-result img').length > 0) {
+                    $(target + ' .img-result img').attr('src', baseUrl + 'img_data/images/' + src).attr('data-original-title', '');
+                } else {
+                    $(target + ' .img-result').append('<img src="' + baseUrl + 'img_data/images/' + src + '" style="max-height:150px;"/>');
+                }
+
+                $(target + ' .input-clipboard').val(src);
+                e.target.value = '';
+            },
+            dataType: 'json'
+        });
+    }
+
+    function showImage(src, target) {
+        var sourceSplit = src.split("base64,");
+        var sourceString = sourceSplit[1];
+
+        const baseUrl = AppConfig && AppConfig.fileBaseUrl ? AppConfig.fileBaseUrl : '/';
+        $.ajax({
+            type: 'POST',
+            url: baseUrl + 'admin/upload.php?image_source=1',
+            data: sourceString,
+            contentType: 'application/json',
+            success: (res) => {
+                console.log({res});
+                if (!res.name) {
+                    alert('Lỗi tải lên hình ảnh!');
+                    return;
+                }
+
+                src = res.name;
+                if ($(target + ' .img-result img').length > 0) {
+                    $(target + ' .img-result img').attr('src', baseUrl + 'img_data/images/' + src).attr('data-original-title', '');
+                } else {
+                    $(target + ' .img-result').append('<img src="' + baseUrl + 'img_data/images/' + src + '" style="max-height:150px;"/>');
+                }
+
+                $(target + ' .input-clipboard').val(src);
+            },
+            dataType: 'json'
+        });
+    }
+</script>
 <script src="/admin/js/form.js?v=<?php echo getenv('APP_VERSION'); ?>"></script>

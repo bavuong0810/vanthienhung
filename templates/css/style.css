@@ -3243,6 +3243,11 @@ tr.product-small-list .excerpt {
     height: auto !important;
 }
 
+.sec-home .slider-gallery-wrap .img-shine-2 img {
+    width: 90%;
+    margin: 0 auto;
+}
+
 .hot-news .news-home {
     overflow: hidden;
     height: 295px;
