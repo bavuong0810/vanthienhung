@@ -65,21 +65,24 @@ if (!empty($_COOKIE['productLayout']) && $_COOKIE['productLayout'] == 'small_lis
         // Custom name
         $item['name_' . $_SESSION['lang']] = getCustomProductName($item);
 
-        if (!empty($_COOKIE['productLayout']) && $_COOKIE['productLayout'] == 'list') {
-            include 'ct_product_list.php';
-            continue;
-        } else if (!empty($_COOKIE['productLayout']) && $view_san_pham == 'list') {
-            include 'ct_product_list.php';
-            continue;
-        } else if (!empty($_COOKIE['productLayout']) && $_COOKIE['productLayout'] == 'small_list') {
-            include 'ct_product_small_list.php';
-            continue;
-        } else if (!empty($_COOKIE['productLayout']) && $view_san_pham == 'small_list') {
-            include 'ct_product_small_list.php';
-            continue;
+        if (!empty($_COOKIE['productLayout'])
+            && ($_COOKIE['productLayout'] == 'list' || $_COOKIE['productLayout'] == 'small_list' || $_COOKIE['productLayout'] == 'grid')) {
+            if ($_COOKIE['productLayout'] == 'list') {
+                include 'ct_product_list.php';
+            } else if ($_COOKIE['productLayout'] == 'small_list') {
+                include 'ct_product_small_list.php';
+            } else {
+                include 'ct_product_grid.php';
+            }
+        } else {
+            if ($view_san_pham == 'list') {
+                include 'ct_product_list.php';
+            } else if ($view_san_pham == 'small_list') {
+                include 'ct_product_small_list.php';
+            } else {
+                include 'ct_product_grid.php';
+            }
         }
-
-        include 'ct_product_grid.php';
     }
     if (!empty($_COOKIE['productLayout']) && $_COOKIE['productLayout'] == 'small_list') {
 ?>
