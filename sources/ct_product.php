@@ -35,6 +35,7 @@ if (!empty($_COOKIE['productLayout']) && $_COOKIE['productLayout'] == 'small_lis
 	<?php
 }
 
+$view_san_pham =  $d->getOption('view_san_pham');
 foreach ($sanpham as $item) {
 
 	if (empty($item['image_path'])) {
@@ -49,11 +50,13 @@ foreach ($sanpham as $item) {
 	// Custom name
 	$item['name_' . $_SESSION['lang']] = getCustomProductName($item);
 
-	if (!empty($_COOKIE['productLayout']) && $_COOKIE['productLayout'] == 'list') {
+	if ((!empty($_COOKIE['productLayout']) && $_COOKIE['productLayout'] == 'list')
+        || (empty($_COOKIE['productLayout']) && $view_san_pham == 'list')) {
 		include 'ct_product_list.php';
 		continue;
 	}
-	if (!empty($_COOKIE['productLayout']) && $_COOKIE['productLayout'] == 'small_list') {
+	if ((!empty($_COOKIE['productLayout']) && $_COOKIE['productLayout'] == 'small_list')
+        || (empty($_COOKIE['productLayout']) && $view_san_pham == 'small_list')) {
 		include 'ct_product_small_list.php';
 		continue;
 	}
