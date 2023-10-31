@@ -33,7 +33,9 @@ if (!empty($_COOKIE['productLayout']) && $_COOKIE['productLayout'] == 'small_lis
     </thead>
     <tbody>
 <?php
-} else if (!empty($_COOKIE['productLayout']) && $view_san_pham == 'small_list') { ?>
+} else if (!empty($_COOKIE['productLayout'])
+    && ($_COOKIE['productLayout'] != 'list' || $_COOKIE['productLayout'] != 'small_list' || $_COOKIE['productLayout'] != 'grid')
+    && $view_san_pham == 'small_list') { ?>
 <table class="table table-striped bg-white">
     <thead>
     <tr>
@@ -89,7 +91,9 @@ if (!empty($_COOKIE['productLayout']) && $_COOKIE['productLayout'] == 'small_lis
     </tbody>
 </table>
 <?php
-    } else if (!empty($_COOKIE['productLayout']) && $view_san_pham == 'small_list') { ?>
+    } else if (!empty($_COOKIE['productLayout'])
+    && ($_COOKIE['productLayout'] != 'list' || $_COOKIE['productLayout'] != 'small_list' || $_COOKIE['productLayout'] != 'grid')
+    && $view_san_pham == 'small_list') { ?>
     </tbody>
 </table>
 <?php }
