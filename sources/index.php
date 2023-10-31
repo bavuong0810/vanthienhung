@@ -116,7 +116,19 @@ if($view_home_business){
 				?>
 					<div class="col-md-2 col-sm-12 plr10">
 						<div class="clearfix item-tin mb10">
-							<div class="img-slogan">
+							<div class="img-slogan" style="position: relative">
+                                <?php if (@$_SESSION['is_admin']) { ?>
+                                    <a data-id="<?php echo $doitac['id']; ?>" data-image="<?= $doitac['picture'] ?>"
+                                       href="#" title="Xóa ảnh" class="btn btn-circle btn-del-img text-center btn-danger"
+                                       style="position: absolute; z-index: 2; left: 5px;">
+                                        <i class="fa fa-close" style="width: 20px;height: 20px;line-height: 20px;"></i>
+                                    </a>
+                                    <a href="/admin/index.php?p=gallery&a=edit&id=<?php echo $doitac['id']; ?>"
+                                       title="Chỉnh sửa đối tác" class="btn btn-circle text-center btn-success"
+                                       style="position: absolute; z-index: 2; right: 5px;">
+                                        <i class="fa fa-pencil" style="width: 20px;height: 20px;line-height: 20px;"></i>
+                                    </a>
+                                <?php } ?>
 								<a href="<?= $doitac['link'] ?>" title="<?php echo $doitac['title_' . $lang] ?>" target="_blank">
 									<div class="wrap-img">
 										<img alt="<?php echo $doitac['title_' . $lang] ?>" onerror="this.src='<?= $d->getDefaultProductImage() ?>';" src="<?= THUMB_BASE ?>images/190/120/<?= $doitac['picture'] ?>?zc=0">
