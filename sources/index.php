@@ -73,8 +73,20 @@ $doiTacs = $d->o_fet("SELECT * FROM `#_gallery` WHERE `parent` = 1117 AND `hide`
 						<?php
 						foreach ($homeImgs as $img) :
 						?>
-							<div class="img-gal">
-								<a href="<?= $img['link'] ?>" title="<?= $img['title_vi'] ?>">
+							<div class="img-gal" style="position: relative">
+                                <?php if (@$_SESSION['is_admin']) { ?>
+                                    <a data-id="<?php echo $img['id']; ?>" data-image="<?= $img['picture'] ?>"
+                                       href="#" title="Xóa ảnh" class="btn btn-circle btn-del-img text-center btn-danger"
+                                       style="position: absolute; z-index: 2; left: 5px;">
+                                        <i class="fa fa-close" style="width: 20px;height: 20px;line-height: 20px;"></i>
+                                    </a>
+                                    <a href="/admin/index.php?p=gallery&a=edit&id=<?php echo $img['id']; ?>"
+                                       title="Chỉnh sửa đối tác" class="btn btn-circle text-center btn-success"
+                                       style="position: absolute; z-index: 2; right: 5px;">
+                                        <i class="fa fa-pencil" style="width: 20px;height: 20px;line-height: 20px;"></i>
+                                    </a>
+                                <?php } ?>
+								<a class="img-shine-2" href="<?= $img['link'] ?>" title="<?= $img['title_vi'] ?>">
 									<img alt="<?= $img['body_vn'] ?>" src="<?= THUMB_BASE ?>images/500/330/<?= $img['picture'] ?>" onerror="this.src='<?= $d->getDefaultProductImage(500, 330) ?>';">
 								</a>
 							</div>
@@ -129,7 +141,7 @@ if($view_home_business){
                                         <i class="fa fa-pencil" style="width: 20px;height: 20px;line-height: 20px;"></i>
                                     </a>
                                 <?php } ?>
-								<a href="<?= $doitac['link'] ?>" title="<?php echo $doitac['title_' . $lang] ?>" target="_blank">
+								<a class="img-shine-2" href="<?= $doitac['link'] ?>" title="<?php echo $doitac['title_' . $lang] ?>" target="_blank">
 									<div class="wrap-img">
 										<img alt="<?php echo $doitac['title_' . $lang] ?>" onerror="this.src='<?= $d->getDefaultProductImage() ?>';" src="<?= THUMB_BASE ?>images/190/120/<?= $doitac['picture'] ?>?zc=0">
 									</div>
