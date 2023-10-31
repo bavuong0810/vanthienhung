@@ -59,24 +59,25 @@
                             Hình ảnh:
 						</td>
 						<td class="td_right">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <input type="hidden" class="input-clipboard js-upload-result" name="picture" value="<?php echo @$items[0]['picture']; ?>">
-                                    <div class="img-result">
-                                        <?php if (isset($_GET['id'])) { ?>
-                                            <img src="<?php echo FILEURL . "img_data/images/" . @$items[0]['picture']; ?>" width="120" alt="NO PHOTO" /><br />
-                                        <?php } ?>
-                                    </div>
+                            <div style="display: flex; justify-content: space-between">
+                                <div>
+                                    <input type="file" name="file" class="input width400 form-control js-image-field"
+                                           data-api="<?php echo getApiUploadFile(); ?>" data-result="#thumb" />
                                 </div>
-                                <div class="col-md-6">
-                                    <input type="file" name="file" class="input width400 form-control js-image-field" data-api="<?php echo getApiUploadFile(); ?>" data-result="#thumb" />
-                                </div>
-                                <div class="col-md-6">
-                                    <label>Hoặc nhập link hình ảnh, dán ảnh</label>
-                                    <input type="text" name="file2_url" placeholder="Link hình ảnh..." class="input width400 form-control" data-result="#thumb">
+                                <div>
+                                    <input type="text" name="file2_url" placeholder="Link hình ảnh hoặc dán ảnh"
+                                           class="input width400 form-control" data-result="#thumb">
                                 </div>
                             </div>
-
+                            <div>
+                                <label>Ảnh hiện tại</label>
+                                <input type="hidden" class="input-clipboard js-upload-result" name="picture" value="<?php echo @$items[0]['picture']; ?>">
+                                <div class="img-result">
+                                    <?php if (isset($_GET['id'])) { ?>
+                                        <img src="<?php echo FILEURL . "img_data/images/" . @$items[0]['picture']; ?>" width="120" alt="NO PHOTO" /><br />
+                                    <?php } ?>
+                                </div>
+                            </div>
 						</td>
 					</tr>
 
