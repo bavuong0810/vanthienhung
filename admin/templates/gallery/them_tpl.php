@@ -224,6 +224,8 @@
 </div>
 </form>
 </div>
+<script type="text/javascript" src="/admin/assets/pasteimage.js"></script>
+<script src="/admin/js/form.js?v=<?php echo getenv('APP_VERSION'); ?>"></script>
 <script>
     $(document).ready(function() {
         pasteimage('#thumb', showImage);
@@ -294,4 +296,3 @@
         });
     }
 </script>
-<script src="/admin/js/form.js?v=<?php echo getenv('APP_VERSION'); ?>"></script>
