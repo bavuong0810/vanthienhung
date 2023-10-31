@@ -16,43 +16,35 @@ $detailNeedShow = [
     'group_quantity' => 'Số lượng',
     'group_pos' => 'Vị trí',
 ];
-if (!empty($_COOKIE['productLayout']) && $_COOKIE['productLayout'] == 'small_list') {
+$table = false;
+if (!empty($_COOKIE['productLayout'])
+    && ($_COOKIE['productLayout'] == 'list' || $_COOKIE['productLayout'] == 'small_list' || $_COOKIE['productLayout'] == 'grid')) {
+        if ($_COOKIE['productLayout'] == 'small_list') {
+            $table = true;
+        }
+} else if ($view_san_pham == 'small_list') {
+    $table = true;
+}
 ?>
-<table class="table table-striped bg-white">
-    <thead>
-    <tr>
-        <th style="width: 350px;">Tên</th>
-        <th class="hidden-xs txt-inline" style="width: 170px;">Thương hiệu</th>
-        <th class="hidden-xs txt-inline" style="width: 140px;">Model</th>
-        <th class="hidden-xs txt-inline" style="width: 160px;">Quy cách</th>
-        <th class="hidden-xs" style="width: 200px;">Part Number</th>
-        <th class="hidden-xs" style="width: 200px;">Giá</th>
-        <th class="hidden-xs" style="width: 200px;">Liên hệ</th>
-        <th style="width: 110px;">Order</th>
-    </tr>
-    </thead>
-    <tbody>
-<?php
-} else if (!empty($_COOKIE['productLayout'])
-    && ($_COOKIE['productLayout'] != 'list' || $_COOKIE['productLayout'] != 'small_list' || $_COOKIE['productLayout'] != 'grid')
-    && $view_san_pham == 'small_list') { ?>
-<table class="table table-striped bg-white">
-    <thead>
-    <tr>
-        <th style="width: 350px;">Tên</th>
-        <th class="hidden-xs txt-inline" style="width: 170px;">Thương hiệu</th>
-        <th class="hidden-xs txt-inline" style="width: 140px;">Model</th>
-        <th class="hidden-xs txt-inline" style="width: 160px;">Quy cách</th>
-        <th class="hidden-xs" style="width: 200px;">Part Number</th>
-        <th class="hidden-xs" style="width: 200px;">Giá</th>
-        <th class="hidden-xs" style="width: 200px;">Liên hệ</th>
-        <th style="width: 110px;">Order</th>
-    </tr>
-    </thead>
-    <tbody>
-    <?php
-    }
 
+<?php if ($table): ?>
+<table class="table table-striped bg-white">
+    <thead>
+    <tr>
+        <th style="width: 350px;">Tên</th>
+        <th class="hidden-xs txt-inline" style="width: 170px;">Thương hiệu</th>
+        <th class="hidden-xs txt-inline" style="width: 140px;">Model</th>
+        <th class="hidden-xs txt-inline" style="width: 160px;">Quy cách</th>
+        <th class="hidden-xs" style="width: 200px;">Part Number</th>
+        <th class="hidden-xs" style="width: 200px;">Giá</th>
+        <th class="hidden-xs" style="width: 200px;">Liên hệ</th>
+        <th style="width: 110px;">Order</th>
+    </tr>
+    </thead>
+    <tbody>
+<?php endif; ?>
+
+    <?php
     foreach ($sanpham as $item) {
 
         if (empty($item['image_path'])) {
@@ -86,18 +78,11 @@ if (!empty($_COOKIE['productLayout']) && $_COOKIE['productLayout'] == 'small_lis
             }
         }
     }
-    if (!empty($_COOKIE['productLayout']) && $_COOKIE['productLayout'] == 'small_list') {
 ?>
+<?php if ($table): ?>
     </tbody>
 </table>
-<?php
-    } else if (!empty($_COOKIE['productLayout'])
-    && ($_COOKIE['productLayout'] != 'list' || $_COOKIE['productLayout'] != 'small_list' || $_COOKIE['productLayout'] != 'grid')
-    && $view_san_pham == 'small_list') { ?>
-    </tbody>
-</table>
-<?php }
-?>
+<?php endif; ?>
 
 <script type="text/javascript">
     $(document).ready(function($) {
