@@ -183,6 +183,11 @@ if (!isset($_COOKIE['productLayout']) && $view_san_pham) {
             });
         <?php } ?>
     </script>
+
+    <?php
+    //Google Analytics
+    echo $information['google_analytics'];
+    ?>
 </head>
 
 <?php
