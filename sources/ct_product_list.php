@@ -254,7 +254,7 @@
                     Chi tiết
                 </a>
 
-                <?php if ($view_button_placeorder && !$view_small_button_placeorder): ?>
+                <?php if ($view_button_placeorder || $view_small_button_placeorder): ?>
                     <a href="javascript:void(0)" type="button" class="dl-btn btn btn-dathang btn-dathang-sm btn-flat addToCart"
                        onclick="actionAddToCart(this)"
                        data-product="<?= $item['id'] ?>" data-title="<?= $item['name_' . $lang] ?>"

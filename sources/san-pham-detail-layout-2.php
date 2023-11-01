@@ -89,7 +89,10 @@ $vth_logo = $d->getTemplates(30);
 
                 <div class="col-md-7 plr10 ct-col-box ct-box-right">
                     <div class="row15">
-                        <div class="col-md-6">
+                        <?php
+                        $view_website_fullwidth =  $d->getOption('view_website_fullwidth');
+                        ?>
+                        <div class="<?php echo ($view_website_fullwidth) ? 'col-md-6' : 'col-md-7'; ?>">
                             <div class="ct-box-inner">
 
                                 <!-- <form method="post" action="<?= URLPATH . "gio-hang.html" ?>"> -->
@@ -373,7 +376,7 @@ $vth_logo = $d->getTemplates(30);
                                 <?php echo get_widget_by_category_position($cat_id, 6)?>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="<?php echo ($view_website_fullwidth) ? 'col-md-6' : 'col-md-5'; ?>">
                             <?php if($vth_logo['name_' . $lang] != ''): ?>
                                 <div class="title-main">
                                     <h3><?= $vth_logo['name_' . $lang]; ?></h3>
