@@ -68,6 +68,17 @@ $settingsFields = [
 
 switch($a){
 	case "man":
+        global $d;
+
+        // check column google_analytics, if not add column google_analytics
+        $link = mysqli_connect($d->servername, $d->username, $d->password, $d->database);
+        $result = mysqli_query($link,"SHOW COLUMNS FROM `" . $d->refix . "thongtin` LIKE 'google_analytics'");
+        $exists = ($result->current_field == 0) ? false : true;
+        if (!$exists) {
+            $query = "ALTER TABLE `" . $d->refix . "thongtin` ADD `google_analytics` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL AFTER `lang_ch`";
+            mysqli_query($link, $query);
+        }
+
 		showdulieu();
 		$template = @$_REQUEST['p']."/them";
 		break;
@@ -131,6 +142,7 @@ function luudulieu(){
 	$data['toa_do'] = addslashes($_POST['toa_do']);
 	$data['lang_us'] = isset($_POST['lang_us']) ? addslashes($_POST['lang_us']) : 0;
 	$data['lang_ch'] = isset($_POST['lang_ch']) ? addslashes($_POST['lang_ch']) : 0;
+    $data['google_analytics'] = addslashes($_POST['google_analytics']);
 
 	$d->reset();
 	$d->setWhere("id","1");

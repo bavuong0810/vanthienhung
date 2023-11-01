@@ -221,6 +221,14 @@
 									</span>
 								</td>
 							</tr>
+                            <tr>
+                                <td class="td_left">
+                                    Google Analytics:
+                                </td>
+                                <td class="td_right">
+                                    <textarea class="input width400 form-control" name="google_analytics" id="google_analytics" rows="10"><?= $items[0]['google_analytics'] ?></textarea>
+                                </td>
+                            </tr>
 						</tbody>
 					</table>
 				</div>

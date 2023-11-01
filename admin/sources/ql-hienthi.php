@@ -6,8 +6,8 @@ switch($a){
 	case "man":
         global $d;
 
-	//alter column option_value_1
-	$d->query("ALTER TABLE `#_options` CHANGE COLUMN `option_value_1` `option_value_1` TEXT CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci' NULL DEFAULT NULL;");
+        //alter column option_value_1
+        $d->query("ALTER TABLE `#_options` CHANGE COLUMN `option_value_1` `option_value_1` TEXT CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci' NULL DEFAULT NULL;");
 	
         // check table option have option_name 'view_san_pham_tieu_bieu_top'
         $query_san_pham_tieu_bieu_top = "SELECT * FROM `#_options` WHERE `option_name` = 'view_san_pham_tieu_bieu_top'";
