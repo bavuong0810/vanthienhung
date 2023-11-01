@@ -441,18 +441,6 @@ $body_class.= ' com-'.$com;
             showRecentViewedProducts();
         });
     </script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-159905015-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-159905015-1');
-    </script>
     <div id="chat-root"></div>
     <script defer>
         window.WindChat = {
