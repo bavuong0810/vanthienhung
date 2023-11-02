@@ -223,10 +223,18 @@
 							</tr>
                             <tr>
                                 <td class="td_left">
-                                    Google Analytics:
+                                    Script Header:
                                 </td>
                                 <td class="td_right">
                                     <textarea class="input width400 form-control" name="google_analytics" id="google_analytics" rows="10"><?= $items[0]['google_analytics'] ?></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td_left">
+                                    Script Body:
+                                </td>
+                                <td class="td_right">
+                                    <textarea class="input width400 form-control" name="script_body" id="script_body" rows="10"><?= $items[0]['script_body'] ?></textarea>
                                 </td>
                             </tr>
 						</tbody>

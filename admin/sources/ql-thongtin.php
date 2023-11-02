@@ -79,6 +79,14 @@ switch($a){
             mysqli_query($link, $query);
         }
 
+        // check column script_body, if not add column script_body
+        $result = mysqli_query($link,"SHOW COLUMNS FROM `" . $d->refix . "thongtin` LIKE 'script_body'");
+        $exists = ($result->current_field == 0) ? false : true;
+        if (!$exists) {
+            $query = "ALTER TABLE `" . $d->refix . "thongtin` ADD `script_body` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL AFTER `google_analytics`";
+            mysqli_query($link, $query);
+        }
+
 		showdulieu();
 		$template = @$_REQUEST['p']."/them";
 		break;
@@ -143,6 +151,7 @@ function luudulieu(){
 	$data['lang_us'] = isset($_POST['lang_us']) ? addslashes($_POST['lang_us']) : 0;
 	$data['lang_ch'] = isset($_POST['lang_ch']) ? addslashes($_POST['lang_ch']) : 0;
     $data['google_analytics'] = addslashes($_POST['google_analytics']);
+    $data['script_body'] = addslashes($_POST['script_body']);
 
 	$d->reset();
 	$d->setWhere("id","1");

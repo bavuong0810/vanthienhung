@@ -202,7 +202,10 @@ $body_class.= ' com-'.$com;
 ?>
 
 <body class="<?php echo $body_class?>">
-
+    <?php
+    //Google Analytics
+    echo (isset($information['script_body']) ? $information['script_body'] : '');
+    ?>
     <div class="fback-top"><i class="fa fa-angle-up"></i></div>
     <div id="container">
         <?php include _source . "header.php"; ?>
