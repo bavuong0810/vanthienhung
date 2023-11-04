@@ -531,11 +531,11 @@ function handleSelectProvince() {
 	}
 	$.ajax(`/img_data/files/viet-nam/quan-huyen/${provinceId}.json`, {
 		success: data => {
-			$('#county').html('');
-			$('#county').append(`<option>Chọn quận/huyện</option>`);
+			$('select[name="county"]').html('');
+			$('select[name="county"]').append(`<option>Chọn quận/huyện</option>`);
 			Object.keys(data).forEach(function(i) {
 				const element = data[i];
-				$('#county').append(`<option value="${element.name}" data-id="${element.code}">${element.name}</option>`);
+				$('select[name="county"]').append(`<option value="${element.name}" data-id="${element.code}">${element.name}</option>`);
 			});
 		},
 		fail: () => {
