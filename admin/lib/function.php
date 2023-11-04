@@ -221,7 +221,7 @@ class func_index
         $stmt->execute();
 
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $this->setCache($this->sql, $result, $this->cacheTTL);
+//        $this->setCache($this->sql, $result, $this->cacheTTL);
         return $result;
     }
 
@@ -247,7 +247,7 @@ class func_index
             file_put_contents(__ROOT_PATH . '/queries.data', str_replace("\n", '', $this->sql) . ' -- ' . $queryCost . "\n", FILE_APPEND);
         }
 
-        $this->setCache($this->sql, $result, $this->cacheTTL);
+//        $this->setCache($this->sql, $result, $this->cacheTTL);
         return $result;
     }
 
@@ -278,7 +278,7 @@ class func_index
         $stmt = $this->db->prepare($this->sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_CLASS);
-        $this->setCache($this->sql, $result, $this->cacheTTL);
+//        $this->setCache($this->sql, $result, $this->cacheTTL);
         return $result;
     }
 
@@ -329,7 +329,7 @@ class func_index
         $stmt = $this->db->prepare($this->sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $this->setCache($this->sql, $result, $this->cacheTTL);
+//        $this->setCache($this->sql, $result, $this->cacheTTL);
         return $result;
     }
 
@@ -349,7 +349,7 @@ class func_index
         $stmt->execute();
         $result = $stmt->rowCount();
 
-        $this->setCache($this->sql, $result, $this->cacheTTL);
+//        $this->setCache($this->sql, $result, $this->cacheTTL);
         return $result;
     }
 
@@ -369,7 +369,7 @@ class func_index
         $stmt->execute();
         $result = $stmt->rowCount();
 
-        $this->setCache($this->sql, $result, $this->cacheTTL);
+//        $this->setCache($this->sql, $result, $this->cacheTTL);
         return $result;
     }
 
@@ -1438,7 +1438,7 @@ class func_index
         } else {
             $result = [];
         }
-        $this->setCache($this->sql, $result, $this->cacheTTL);
+//        $this->setCache($this->sql, $result, $this->cacheTTL);
         return $result;
     }
 
@@ -1504,7 +1504,7 @@ class func_index
                 }
             }
         }
-        $this->setCache($cacheKey, $str, 60 * 60 * 24 * 7);
+//        $this->setCache($cacheKey, $str, 60 * 60 * 24 * 7);
         return $str;
     }
 
@@ -1686,7 +1686,7 @@ class func_index
             }
         }
 
-        $this->setCache($cacheKey, $str, 60 * 60 * 24 * 7);
+//        $this->setCache($cacheKey, $str, 60 * 60 * 24 * 7);
         return $str;
     }
 
@@ -1895,7 +1895,7 @@ class func_index
 
         $result = $this->o_fet("SELECT id, name FROM #_brand WHERE name IS NOT NULL ORDER BY name ASC, id DESC");
 
-        $this->setCache($cacheKey, $result, 60 * 60 * 24 * 7);
+//        $this->setCache($cacheKey, $result, 60 * 60 * 24 * 7);
 
         return $result;
     }
@@ -1919,7 +1919,7 @@ class func_index
 
         $result = $this->o_fet("SELECT id, name_vi FROM #_group WHERE name_vi IS NOT NULL ORDER BY name_vi ASC, id DESC");
 
-        $this->setCache($cacheKey, $result, 60 * 60 * 24 * 7);
+//        $this->setCache($cacheKey, $result, 60 * 60 * 24 * 7);
 
         return $result;
     }
@@ -1938,7 +1938,7 @@ class func_index
             $settings[$setting['name']] = $setting;
         }
 
-        $this->setCache($cacheKey, $settings, 60 * 60 * 24 * 7);
+//        $this->setCache($cacheKey, $settings, 60 * 60 * 24 * 7);
 
         return $settings;
     }
@@ -1953,7 +1953,7 @@ class func_index
 
         $result = $this->simple_fetch("SELECT * FROM #_settings WHERE name = {$key}");
 
-        $this->setCache($cacheKey, $result, 60 * 60 * 24 * 7);
+//        $this->setCache($cacheKey, $result, 60 * 60 * 24 * 7);
 
         return $result;
     }
