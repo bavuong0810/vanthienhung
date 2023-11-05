@@ -45,6 +45,12 @@ if (isset($_POST['guidonhang'])) {
         $data['dia_chi'] = $d->clear($_POST['commune'] . ', ' . $_POST['county'] . ', ' . $_POST['province']);
         $data['dien_thoai'] = $d->clear($_POST['dienthoai']);
         $data['hinh_thuc_thanh_toan'] = $d->clear($_POST['thanhtoan']);
+
+        $timeRadios = ($_POST['timeRadios'] == 'timeNow') ? 'Giao khi có hàng' : 'Giao vào ngày ';
+        if ($_POST['timeRadios'] == 'timeDate') {
+            $timeRadios .= $_POST['date_shipping'] . ' ' . $_POST['time_shipping'];
+        }
+
         $data['loi_nhan'] = addslashes($_POST['loinhan']);
         $data['ma_dh'] = $ma_donhang;
         $data['ngay_dat_hang'] = time();

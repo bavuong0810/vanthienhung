@@ -3460,6 +3460,11 @@ span.fd-discount {
     border-color: #263b96;
 }
 
+.summary-time__row .boxtime-radio input[type='radio']:checked:before {
+    opacity: 1;
+    color: #ffffff;
+}
+
 .summary-time__row.picktime_selecter {
     display: none;
     border-top: 1px solid #efefef;

@@ -154,7 +154,7 @@ $tableContent = ob_get_clean();
                 </div>
                 <div class="boxtime-radio" id="picktime_radio" data-time-start="" data-time-end="">
                     <div class="radio-item">
-                        <input class="input-radio" type="radio" name="timeRadios" id="timeRadios-1" value="timeNow">
+                        <input class="input-radio" type="radio" name="timeRadios" id="timeRadios-1" value="timeNow" checked>
                         <label class="label-radio" for="timeRadios-1">Giao khi có hàng</label>
                     </div>
                     <div class="radio-item">
@@ -163,13 +163,13 @@ $tableContent = ob_get_clean();
                     </div>
                 </div>
             </div>
-            <div class="summary-time__row picktime_selecter" style="display: block;">
+            <div class="summary-time__row picktime_selecter">
                 <div class="boxtime-select">
                     <div class="select-choose">
                         <div class="select-box date-option">
                             <label>Ngày giao</label>
                             <div class="select-option">
-                                <select id="date_shipping">
+                                <select id="date_shipping" name="date_shipping">
                                     <?php
                                     $today = date('d/m/Y');
                                     $nextDay = date('d/m/Y', strtotime('+1 day'));
@@ -184,7 +184,7 @@ $tableContent = ob_get_clean();
                         <div class="select-box time-option">
                             <label>Thời gian giao</label>
                             <div class="select-option">
-                                <select id="time_shipping">
+                                <select id="time_shipping" name="time_shipping">
                                     <option data-min="08:00:00" data-max="09:00:00" value="08:00 - 09:00">08:00 - 09:00</option>
                                     <option data-min="09:00:00" data-max="10:00:00" value="09:00 - 10:00">09:00 - 10:00</option>
                                     <option data-min="10:00:00" data-max="11:00:00" value="10:00 - 11:00">10:00 - 11:00</option>

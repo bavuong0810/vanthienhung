@@ -635,7 +635,7 @@ if (file_exists($cachePath) && 1 == 2) {
                     <h4 class="modal-title" id="modalAddToCartLabel">Sản phẩm <span class="product-name"></span> đã được thêm vào giỏ hàng</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="" id="form-shopping" class="form-horizontal form-order" method="post">
+                    <form action="/gio-hang" id="form-shopping" class="form-horizontal form-order" method="post">
                         <div class="row">
                             <div class="col-md-5">
                                 <div class="dathang-form"><?php include 'form-dat-hang.php';?></div>
