@@ -382,6 +382,9 @@ $(document).ready(function() {
 	getAllProvince();
 	$('select[name="province"]').on('change', handleSelectProvince);
 	$('select[name="county"]').on('change', handleSelectCounty);
+
+	$('#modalAddToCart select[name="province"]').on('change', handleSelectProvinceCart);
+	$('#modalAddToCart select[name="county"]').on('change', handleSelectCountryCart);
 });
 
 function actionAddToCart(e) {
@@ -545,7 +548,7 @@ function handleSelectProvince() {
 }
 
 function handleSelectCounty() {
-	const countyId = $('select[name="county"]').find(":selected").data('id');
+	const countyId = $('#county').find(":selected").data('id');
 	$.ajax(`/img_data/files/viet-nam/xa-phuong/${countyId}.json`, {
 		success: data => {
 			$('#commune').html('');
@@ -553,6 +556,43 @@ function handleSelectCounty() {
 			Object.keys(data).forEach(function(i) {
 				const element = data[i];
 				$('#commune').append(`<option value="${element.name}" data-id="${element.code}">${element.name}</option>`);
+			});
+		},
+		fail: () => {
+			alert('Có lỗi khi lấy thông tin, vui lòng tải lại trang!');
+		},
+	});
+}
+
+function handleSelectProvinceCart() {
+	const provinceId = $('#modalAddToCart #province').find(":selected").data('id');
+	if (!provinceId) {
+		return;
+	}
+	$.ajax(`/img_data/files/viet-nam/quan-huyen/${provinceId}.json`, {
+		success: data => {
+			$('#modalAddToCart select[name="county"]').html('');
+			$('#modalAddToCart select[name="county"]').append(`<option>Chọn quận/huyện</option>`);
+			Object.keys(data).forEach(function(i) {
+				const element = data[i];
+				$('#modalAddToCart select[name="county"]').append(`<option value="${element.name}" data-id="${element.code}">${element.name}</option>`);
+			});
+		},
+		fail: () => {
+			alert('Có lỗi khi lấy thông tin, vui lòng tải lại trang!');
+		},
+	});
+}
+
+function handleSelectCountryCart() {
+	const countyId = $('#modalAddToCart #county').find(":selected").data('id');
+	$.ajax(`/img_data/files/viet-nam/xa-phuong/${countyId}.json`, {
+		success: data => {
+			$('#modalAddToCart #commune').html('');
+			$('#modalAddToCart #commune').append(`<option>Chọn xã/phường</option>`);
+			Object.keys(data).forEach(function(i) {
+				const element = data[i];
+				$('#modalAddToCart #commune').append(`<option value="${element.name}" data-id="${element.code}">${element.name}</option>`);
 			});
 		},
 		fail: () => {
