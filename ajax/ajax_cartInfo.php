@@ -172,8 +172,8 @@ $tableContent = ob_get_clean();
                                 <select id="date_shipping">
                                     <?php
                                     $today = date('d/m/Y');
-                                    $nextDay = date('d/m/Y', strtotime($today . ' +1 day'));
-                                    $nextDay1 = date('d/m/Y', strtotime($today . ' +2 day'));
+                                    $nextDay = date('d/m/Y', strtotime('+1 day'));
+                                    $nextDay1 = date('d/m/Y', strtotime('+2 day'));
                                     ?>
                                     <option value="<?php echo $today; ?>">Hôm nay</option>
                                     <option value="<?php echo $nextDay; ?>"><?php echo $nextDay; ?></option>
