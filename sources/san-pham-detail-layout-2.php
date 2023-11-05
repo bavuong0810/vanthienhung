@@ -810,9 +810,6 @@ $vth_logo = $d->getTemplates(30);
     };
 
     $(document).ready(function() {
-        getAllProvince();
-        $('#province').on('change', handleSelectProvince);
-        $('#county').on('change', handleSelectCounty);
         updateFee();
 
         $('body').on('click', '#add-voucher', function() {
