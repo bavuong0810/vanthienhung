@@ -385,17 +385,14 @@ $(document).ready(function() {
 
 	$('.form-order select[name="province"]').on('change', handleSelectProvinceCart);
 	$('.form-order select[name="county"]').on('change', handleSelectCountryCart);
-
-	jQuery('input[name="timeRadios"]').on('change', function () {
-		console.log($(this).val());
-		if ($(this).val() !== 'timeNow') {
-			$('.picktime_selecter').show();
-		} else {
-			$('.picktime_selecter').hide();
-		}
-	});
 });
-
+function timeRadiosChange(e) {
+	if ($(e).val() !== 'timeNow') {
+		$('.picktime_selecter').show();
+	} else {
+		$('.picktime_selecter').hide();
+	}
+}
 function actionAddToCart(e) {
 	const id = $(e).data('product');
 	const soluong = 1;

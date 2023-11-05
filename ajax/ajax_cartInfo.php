@@ -154,11 +154,11 @@ $tableContent = ob_get_clean();
                 </div>
                 <div class="boxtime-radio" id="picktime_radio" data-time-start="" data-time-end="">
                     <div class="radio-item">
-                        <input class="input-radio" type="radio" name="timeRadios" id="timeRadios-1" value="timeNow" checked>
+                        <input class="input-radio" type="radio" name="timeRadios" id="timeRadios-1" onclick="timeRadiosChange(this)" value="timeNow" checked>
                         <label class="label-radio" for="timeRadios-1">Giao khi có hàng</label>
                     </div>
                     <div class="radio-item">
-                        <input class="input-radio" type="radio" name="timeRadios" id="timeRadios-2" value="timeDate">
+                        <input class="input-radio" type="radio" name="timeRadios" id="timeRadios-2" onclick="timeRadiosChange(this)" value="timeDate">
                         <label class="label-radio" for="timeRadios-2">Chọn thời gian</label>
                     </div>
                 </div>
