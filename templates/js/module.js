@@ -524,8 +524,11 @@ function getAllProvince() {
 				$('select[name="province"]').append(`<option value="${element.name}" data-id="${element.code}">${element.name}</option>`);
 			});
 
-			$('select[name="province"]').trigger('change');
-			$('select[name="province"]').on('change', handleGetDeliveryFee);
+			$('.form-shopping select[name="province"]').trigger('change');
+			$('.form-shopping select[name="province"]').on('change', handleGetDeliveryFee);
+
+			$('.form-order select[name="province"]').trigger('change');
+			$('.form-order select[name="province"]').on('change', handleGetDeliveryFee);
 		},
 		fail: () => {
 			alert('Có lỗi khi lấy thông tin, vui lòng tải lại trang!');
