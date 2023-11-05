@@ -380,11 +380,11 @@ $(document).ready(function() {
 		return false;
 	});
 	getAllProvince();
-	$('select[name="province"]').on('change', handleSelectProvince);
-	$('select[name="county"]').on('change', handleSelectCounty);
+	$('.form-shopping #province').on('change', handleSelectProvince);
+	$('.form-shopping #county').on('change', handleSelectCounty);
 
-	$('#modalAddToCart select[name="province"]').on('change', handleSelectProvinceCart);
-	$('#modalAddToCart select[name="county"]').on('change', handleSelectCountryCart);
+	$('.form-order select[name="province"]').on('change', handleSelectProvinceCart);
+	$('.form-order select[name="county"]').on('change', handleSelectCountryCart);
 });
 
 function actionAddToCart(e) {
