@@ -637,10 +637,10 @@ if (file_exists($cachePath) && 1 == 2) {
                 <div class="modal-body">
                     <form action="/gio-hang" id="form-shopping" class="form-horizontal form-order" method="post">
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-4">
                                 <div class="dathang-form"><?php include 'form-dat-hang.php';?></div>
                             </div>
-                            <div class="col-md-7">
+                            <div class="col-md-8">
                                 <div class="title-form text-uppercase">Thông tin đơn hàng</div>
                                 <div class="dathang-cart"></div>
                             </div>
@@ -710,6 +710,11 @@ if (file_exists($cachePath) && 1 == 2) {
 
     <script type="text/javascript">
         $(document).ready(function () {
+            const Wind = {
+                province: <?php echo !empty($_SESSION['delivery_area']) ? json_encode($_SESSION['delivery_area']) : '{}'; ?>,
+                products: null,
+                total: <?php echo 0; ?>
+            };
 
             $('.btn-sendmail').on('click', function () {
                 $('#sendEmailModal').modal('show');

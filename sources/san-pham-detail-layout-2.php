@@ -773,16 +773,6 @@ $vth_logo = $d->getTemplates(30);
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script type="text/javascript">
-    function moneyFormat(n, c = 0, d = ',', t = '.') {
-        c = isNaN(c = Math.abs(c)) ? 2 : c,
-            d = d == undefined ? "." : d,
-            t = t == undefined ? "," : t,
-            s = n < 0 ? "-" : "",
-            i = String(parseInt(n = Math.abs(Number(n) || 0).toFixed(c))),
-            j = (j = i.length) > 3 ? j % 3 : 0;
-
-        return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
-    }
     function thanhtien(id, iddh) {
         var cls = ".thanhtien_" + id;
         $.ajax({
@@ -818,52 +808,7 @@ $vth_logo = $d->getTemplates(30);
         products: <?php echo json_encode($cartProducts); ?>,
         total: <?php echo $tongtien ?: 0; ?>
     };
-    var elDeliveryFee = $('#delivery_fee');
-    var elTotalFee = $('#tong_tien_gh');
 
-    function updateUndefineArea() {
-        elDeliveryFee.html('Thông báo sau!');
-    }
-
-    function handleGetDeliveryFee(e) {
-        e.preventDefault();
-        const name = e.target.value;
-
-        $.ajax({
-            url: '/api.php',
-            method: 'POST',
-            data: {
-                func: 'get_area_by_name',
-                name,
-            },
-            dataType: 'json',
-            success: data => {
-                if (!data.isSuccess) {
-                    alert('Fail!');
-                    return;
-                }
-
-                Wind.province = data.delivery_area || {};
-
-                updateFee();
-            },
-            error: err => {
-                alert('Fail!');
-                console.log(err);
-            },
-        });
-    }
-
-    function updateFee() {
-        if (!Wind.province.price) {
-            elDeliveryFee.html('Thông báo sau!');
-            elTotalFee.html(moneyFormat(Wind.total) + 'đ');
-        } else {
-            elDeliveryFee.html(moneyFormat(+Wind.province.price) + 'đ');
-            elTotalFee.html(moneyFormat(+Wind.province.price + Wind.total) + 'đ');
-        }
-
-    }
     $(document).ready(function() {
         getAllProvince();
         $('#province').on('change', handleSelectProvince);
@@ -1215,10 +1160,10 @@ $vth_logo = $d->getTemplates(30);
                 <?php //print_r($_SESSION['cart'])?>
                 <form action="" id="form-shopping" class="form-horizontal form-shopping" method="post">
                 <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         <div class="dathang-form"><?php include 'form-dat-hang.php';?></div>
                     </div>
-                    <div class="col-md-7">
+                    <div class="col-md-8">
                         <div class="title-form text-uppercase">Thông tin đơn hàng</div>
                         <div class="dathang-cart"></div>
                         

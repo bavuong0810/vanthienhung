@@ -607,10 +607,66 @@ function handleSelectCountryCart() {
 	});
 }
 
+function handleGetDeliveryFee(e) {
+	e.preventDefault();
+	const name = e.target.value;
+
+	$.ajax({
+		url: '/api.php',
+		method: 'POST',
+		data: {
+			func: 'get_area_by_name',
+			name,
+		},
+		dataType: 'json',
+		success: data => {
+			if (!data.isSuccess) {
+				alert('Fail!');
+				return;
+			}
+
+			Wind.province = data.delivery_area || {};
+
+			updateFee();
+		},
+		error: err => {
+			alert('Fail!');
+			console.log(err);
+		},
+	});
+}
+
+function updateFee() {
+	if (!Wind.province.price) {
+		$('.delivery_fee').html('Thông báo sau!');
+		// $('.tong_tien_gh').html(moneyFormat(Wind.total) + 'đ');
+	} else {
+		$('.delivery_fee').html(moneyFormat(+Wind.province.price) + 'đ');
+		let total = $('.tong_tien_gh').text().replaceAll('đ', '');
+		total = total.replaceAll('.', '');
+		$('.tong_tien_gh').html(moneyFormat(+Wind.province.price + parseInt(total)) + 'đ');
+	}
+}
+
 function isValidEmailAddress(emailAddress) {
 	var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
 	return pattern.test(emailAddress);
 };
+
+function moneyFormat(n, c = 0, d = ',', t = '.') {
+	c = isNaN(c = Math.abs(c)) ? 2 : c,
+		d = d == undefined ? "." : d,
+		t = t == undefined ? "," : t,
+		s = n < 0 ? "-" : "",
+		i = String(parseInt(n = Math.abs(Number(n) || 0).toFixed(c))),
+		j = (j = i.length) > 3 ? j % 3 : 0;
+
+	return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+}
+
+function updateUndefineArea() {
+	$('.delivery_fee').html('Thông báo sau!');
+}
 
 $('#chat_online .toggle-button').on('click', function() {
 	if ($(this).hasClass('is-close')) {

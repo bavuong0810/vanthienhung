@@ -125,14 +125,14 @@ $tableContent = ob_get_clean();
                 </tr>
                 <?php echo $tableContent; ?>
                 <tr>
-                    <td colspan="5" style="color:#4cae4c">Phí vận chuyển: <span id="delivery_fee"><?php echo is_string($deliveryFee) ? $deliveryFee : $d->vnd($deliveryFee); ?></span></td>
+                    <td colspan="5" style="color:#4cae4c">Phí vận chuyển: <span class="delivery_fee"><?php echo is_string($deliveryFee) ? $deliveryFee : $d->vnd($deliveryFee); ?></span></td>
                 </tr>
                 <tr>
                     <td colspan="3">Tổng tiền</td>
                     <td colspan="2" style="border-left: 0;">
                         <div class="tong_tt">
                             <h3 class="text-center">
-                                <font id="tong_tien_gh" class="color-main"><?= $d->vnd($tongtien) ?></font>
+                                <font class="tong_tien_gh color-main"><?= $d->vnd($tongtien) ?></font>
                             </h3>
                         </div>
                     </td>
@@ -172,12 +172,13 @@ $tableContent = ob_get_clean();
                                 <select id="date_shipping" name="date_shipping">
                                     <?php
                                     $today = date('d/m/Y');
-                                    $nextDay = date('d/m/Y', strtotime('+1 day'));
-                                    $nextDay1 = date('d/m/Y', strtotime('+2 day'));
                                     ?>
                                     <option value="<?php echo $today; ?>">Hôm nay</option>
-                                    <option value="<?php echo $nextDay; ?>"><?php echo $nextDay; ?></option>
-                                    <option value="<?php echo $nextDay1; ?>"><?php echo $nextDay1; ?></option>
+                                    <?php for ($i = 1; $i <= 10; $i++): ?>
+                                    <option value="<?php echo date('d/m/Y', strtotime('+' . $i . ' day')); ?>">
+                                        <?php echo date('d/m/Y', strtotime('+' . $i . ' day')); ?>
+                                    </option>
+                                    <?php endfor; ?>
                                 </select>
                             </div>
                         </div>
@@ -185,9 +186,18 @@ $tableContent = ob_get_clean();
                             <label>Thời gian giao</label>
                             <div class="select-option">
                                 <select id="time_shipping" name="time_shipping">
-                                    <option data-min="08:00:00" data-max="09:00:00" value="08:00 - 09:00">08:00 - 09:00</option>
-                                    <option data-min="09:00:00" data-max="10:00:00" value="09:00 - 10:00">09:00 - 10:00</option>
-                                    <option data-min="10:00:00" data-max="11:00:00" value="10:00 - 11:00">10:00 - 11:00</option>
+                                    <option value="08:00 - 09:00">08:00 - 09:00</option>
+                                    <option value="09:00 - 10:00">09:00 - 10:00</option>
+                                    <option value="10:00 - 11:00">10:00 - 11:00</option>
+                                    <option value="11:00 - 12:00">11:00 - 12:00</option>
+                                    <option value="12:00 - 13:00">12:00 - 13:00</option>
+                                    <option value="13:00 - 14:00">13:00 - 14:00</option>
+                                    <option value="14:00 - 15:00">14:00 - 15:00</option>
+                                    <option value="15:00 - 16:00">15:00 - 16:00</option>
+                                    <option value="16:00 - 17:00">16:00 - 17:00</option>
+                                    <option value="17:00 - 18:00">17:00 - 18:00</option>
+                                    <option value="18:00 - 19:00">18:00 - 19:00</option>
+                                    <option value="19:00 - 20:00">19:00 - 20:00</option>
                                 </select>
                             </div>
                         </div>
