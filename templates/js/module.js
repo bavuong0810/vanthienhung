@@ -381,7 +381,7 @@ $(document).ready(function() {
 	});
 	getAllProvince();
 	$('select[name="province"]').on('change', handleSelectProvince);
-	$('select[name="county"]').on('change', handleSelectCounty(this));
+	$('select[name="county"]').on('change', handleSelectCounty);
 });
 
 function actionAddToCart(e) {
@@ -544,8 +544,8 @@ function handleSelectProvince() {
 	});
 }
 
-function handleSelectCounty(e) {
-	const countyId = $(e).find(":selected").data('id');
+function handleSelectCounty() {
+	const countyId = $('#county').find(":selected").data('id');
 	$.ajax(`/img_data/files/viet-nam/xa-phuong/${countyId}.json`, {
 		success: data => {
 			$('#commune').html('');
