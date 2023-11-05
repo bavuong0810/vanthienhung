@@ -140,6 +140,62 @@ $tableContent = ob_get_clean();
             </tbody>
         </table>
     </div>
+
+    <div class="shipping-time">
+        <div class="title-form text-uppercase">Thời gian giao hàng</div>
+        <div class="summary-time summary-picktime">
+            <div class="summary-time__row">
+                <div class="boxtime-title">
+                    <p class="txt-title">Thời gian giao hàng</p>
+                    <p class="txt-time ">
+                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                        <span>Giao khi có hàng</span>
+                    </p>
+                </div>
+                <div class="boxtime-radio" id="picktime_radio" data-time-start="" data-time-end="">
+                    <div class="radio-item">
+                        <input class="input-radio" type="radio" name="timeRadios" id="timeRadios-1" value="timeNow">
+                        <label class="label-radio" for="timeRadios-1">Giao khi có hàng</label>
+                    </div>
+                    <div class="radio-item">
+                        <input class="input-radio" type="radio" name="timeRadios" id="timeRadios-2" value="timeDate">
+                        <label class="label-radio" for="timeRadios-2">Chọn thời gian</label>
+                    </div>
+                </div>
+            </div>
+            <div class="summary-time__row picktime_selecter" style="display: block;">
+                <div class="boxtime-select">
+                    <div class="select-choose">
+                        <div class="select-box date-option">
+                            <label>Ngày giao</label>
+                            <div class="select-option">
+                                <select id="date_shipping">
+                                    <?php
+                                    $today = date('d/m/Y');
+                                    $nextDay = date('d/m/Y', strtotime($today . ' +1 day'));
+                                    $nextDay1 = date('d/m/Y', strtotime($today . ' +2 day'));
+                                    ?>
+                                    <option value="<?php echo $today; ?>">Hôm nay</option>
+                                    <option value="<?php echo $nextDay; ?>"><?php echo $nextDay; ?></option>
+                                    <option value="<?php echo $nextDay1; ?>"><?php echo $nextDay1; ?></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="select-box time-option">
+                            <label>Thời gian giao</label>
+                            <div class="select-option">
+                                <select id="time_shipping">
+                                    <option data-min="08:00:00" data-max="09:00:00" value="08:00 - 09:00">08:00 - 09:00</option>
+                                    <option data-min="09:00:00" data-max="10:00:00" value="09:00 - 10:00">09:00 - 10:00</option>
+                                    <option data-min="10:00:00" data-max="11:00:00" value="10:00 - 11:00">10:00 - 11:00</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <?php }?>
 
