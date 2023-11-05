@@ -1372,8 +1372,6 @@ $view_button_warrantyonline =  $d->getOption('view_button_warrantyonline');
     }
     $(document).ready(function() {
         getAllProvince();
-        $('#province').on('change', handleSelectProvince);
-        $('#county').on('change', handleSelectCounty);
         updateFee();
 
         $('body').on('click', '#add-voucher', function() {

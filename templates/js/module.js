@@ -545,7 +545,7 @@ function handleSelectProvince() {
 }
 
 function handleSelectCounty() {
-	const countyId = $('#county').find(":selected").data('id');
+	const countyId = $('select[name="county"]').find(":selected").data('id');
 	$.ajax(`/img_data/files/viet-nam/xa-phuong/${countyId}.json`, {
 		success: data => {
 			$('#commune').html('');
