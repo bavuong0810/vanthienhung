@@ -386,7 +386,8 @@ $(document).ready(function() {
 	$('.form-order select[name="province"]').on('change', handleSelectProvinceCart);
 	$('.form-order select[name="county"]').on('change', handleSelectCountryCart);
 
-	$('input[name="timeRadios"]').on('change', function () {
+	jQuery('input[name="timeRadios"]').on('change', function () {
+		console.log($(this).val());
 		if ($(this).val() !== 'timeNow') {
 			$('.picktime_selecter').show();
 		} else {
