@@ -709,13 +709,13 @@ if (file_exists($cachePath) && 1 == 2) {
     </div>
 
     <script type="text/javascript">
-        $(document).ready(function () {
-            const Wind = {
-                province: <?php echo !empty($_SESSION['delivery_area']) ? json_encode($_SESSION['delivery_area']) : '{}'; ?>,
-                products: null,
-                total: <?php echo 0; ?>
-            };
+        const Wind = {
+            province: <?php echo !empty($_SESSION['delivery_area']) ? json_encode($_SESSION['delivery_area']) : '{}'; ?>,
+            products: null,
+            total: <?php echo 0; ?>
+        };
 
+        $(document).ready(function () {
             $('.btn-sendmail').on('click', function () {
                 $('#sendEmailModal').modal('show');
                 return false;
