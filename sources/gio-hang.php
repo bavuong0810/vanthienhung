@@ -46,6 +46,10 @@ if (isset($_POST['guidonhang'])) {
         $data['dien_thoai'] = $d->clear($_POST['dienthoai']);
         $data['hinh_thuc_thanh_toan'] = $d->clear($_POST['thanhtoan']);
 
+        $province_name = $d->clean($_POST['province']);
+        $delivery_area = $d->simple_fetch("select * from #_delivery_area where name='{$province_name}'");
+        $shipping_fee = $delivery_area['price'];
+
         $timeRadios = ($_POST['timeRadios'] == 'timeNow') ? 'Giao khi có hàng' : 'Giao vào ngày ';
         if ($_POST['timeRadios'] == 'timeDate') {
             $timeRadios .= $_POST['date_shipping'] . ' ' . $_POST['time_shipping'];
@@ -248,10 +252,17 @@ if (isset($_POST['guidonhang'])) {
                                 <td style="color:#000">Thành tiền</td>
                             </tr>' . $row_nd . '
                             <tr>
+                                <td colspan="5" style="color:#4cae4c">Phí vận chuyển: ' . number_format($shipping_fee) . ' VNĐ (Tạm tính)</td>
+                            </tr>
+                            <tr>
+                                <td colspan="5">Thời gian giao hàng: ' . $timeRadios . '</td>
+                            </tr>
+                            <tr>
                                 <td colspan="4" style="background-color:white;color:#000"></td>
                                 <td style="background-color:white;color:#000;text-align:right"><b>Tổng tiền:</b></td>
                                 <td style="background-color:white;color:#000;text-align:right;color:red"><b>' . number_format($tongtien) . ' VNĐ</b></td>
                             </tr>
+                            
                         </tbody>
                     </table>
 
