@@ -145,14 +145,14 @@ $tableContent = ob_get_clean();
         $view_request_price =  $d->getOption('view_request_price');
         if ($view_request_price):
         ?>
-            <button type="button" class="btn btn-primary pull-right mr-1" id="request_quote_cart">Yêu cầu báo giá</button>
+            <a href="javascript:void(0)" class="btn btn-primary pull-right mr-1" id="request_quote_cart">Yêu cầu báo giá</a>
         <?php endif; ?>
 
         <?php
         $view_print_price_request = $d->getOption('view_print_price_request');
         if ($view_print_price_request):
         ?>
-            <button class="button  button--aylen button--pd pull-right" onclick="printQuote(this)">In báo giá</button>
+            <a href="javascript:void(0)" class="button button--aylen button--pd pull-right" onclick="printQuote(this)">In báo giá</a>
         <?php endif; ?>
     </div>
     <div class="shipping-time">

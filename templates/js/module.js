@@ -681,7 +681,7 @@ $('#chat_online .toggle-button').on('click', function() {
 
 function printQuote(e) {
 	(function ($) {
-		let formShopping = console.log($(e).closest('form'));
+		let formShopping = $(e).closest('form');
 		var name = $(formShopping).find('#ten').val();
 		var email = $(formShopping).find('#email').val();
 		var phone = $(formShopping).find('#dienthoai').val();
