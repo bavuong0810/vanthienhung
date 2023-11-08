@@ -681,24 +681,20 @@ $('#chat_online .toggle-button').on('click', function() {
 
 function printQuote(e) {
 	(function ($) {
-		console.log($(e).closest('form'));
-		var name = $('#ten').val();
-		var email = $('#email').val();
-		var phone = $('#dienthoai').val();
+		let formShopping = console.log($(e).closest('form'));
+		var name = $(formShopping).find('#ten').val();
+		var email = $(formShopping).find('#email').val();
+		var phone = $(formShopping).find('#dienthoai').val();
 		if (!name || name.length === 0 ||
 			!phone || phone.length === 0 ||
 			!email || email.length === 0
 		) {
-			swal({
-				title: "Vui lòng nhập tên, email và điện thoại của quý khách!",
-				type: "info",
-			});
+			alert("Vui lòng nhập tên, email và điện thoại của quý khách!");
 			return;
 		}
 
 		// Show loading
-		swal("Xin quý khách chờ trong giây lát...");
-		sweetAlert.disableButtons();
+		alert("Xin quý khách chờ trong giây lát...");
 
 		// Prepare pdf URL
 		var query = 'name=' + encodeURIComponent(name);
@@ -714,18 +710,10 @@ function printQuote(e) {
 			data,
 			method: 'POST'
 		}).done(function() {
-			swal({
-				title: "Thành công!",
-				type: "success",
-			});
-
 			// Open pdf URL
 			window.open(baogiaUrl, '_blank');
 		}).fail(function() {
-			swal({
-				title: "Có lỗi xảy ra, vui lòng thử lại!",
-				type: "info",
-			});
+			alert("Có lỗi xảy ra, vui lòng thử lại!");
 		});
 	})(jQuery);
 }
