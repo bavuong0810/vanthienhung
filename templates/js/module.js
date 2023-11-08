@@ -718,3 +718,9 @@ function printQuote(e) {
 	})(jQuery);
 }
 
+function requestQuoteCart(e) {
+	(function ($) {
+		$('#request_quote_cart_modal').modal('show');
+	})(jQuery);
+}
+

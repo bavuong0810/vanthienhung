@@ -145,7 +145,7 @@ $tableContent = ob_get_clean();
         $view_request_price =  $d->getOption('view_request_price');
         if ($view_request_price):
         ?>
-            <a href="javascript:void(0)" class="btn btn-primary pull-right mr-1" id="request_quote_cart">Yêu cầu báo giá</a>
+            <a href="javascript:void(0)" class="btn btn-primary pull-right mr-1" onclick="requestQuoteCart(this)">Yêu cầu báo giá</a>
         <?php endif; ?>
 
         <?php
