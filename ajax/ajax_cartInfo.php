@@ -140,7 +140,21 @@ $tableContent = ob_get_clean();
             </tbody>
         </table>
     </div>
+    <div>
+        <?php
+        $view_request_price =  $d->getOption('view_request_price');
+        if ($view_request_price):
+        ?>
+            <button type="button" class="btn btn-primary pull-right mr-1" id="request_quote_cart">Yêu cầu báo giá</button>
+        <?php endif; ?>
 
+        <?php
+        $view_print_price_request = $d->getOption('view_print_price_request');
+        if ($view_print_price_request):
+        ?>
+            <button class="button  button--aylen button--pd pull-right" onclick="printQuote(this)">In báo giá</button>
+        <?php endif; ?>
+    </div>
     <div class="shipping-time">
         <div class="title-form text-uppercase">Thời gian giao hàng</div>
         <div class="summary-time summary-picktime">

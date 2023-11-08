@@ -304,7 +304,7 @@ if (isset($_POST['guidonhang'])) {
                         <div>=======================</div>
 
                         <div><span style="color:rgb(11, 83, 148)">Web&nbsp;&nbsp;&nbsp; :<a href="' . getenv('APP_URL') . '/" style="color: rgb(17, 85, 204);" target="_blank"><em>' . getenv('APP_DOMAIN') . '</em></a></span></div>
-                        <div><span style="color:rgb(11, 83, 148)">Tell&nbsp;&nbsp; &nbsp;&nbsp; :<strong>' . getenv('FIRST_PHONE') . ' (zalo)</strong></span></div>
+                        <div><span style="color:rgb(11, 83, 148)">Tell&nbsp;&nbsp; &nbsp;&nbsp; :<strong>' . $information['zalo'] . ' (zalo)</strong></span></div>
                         <div><span style="color:rgb(11, 83, 148)">Skype :<strong>xenang_ts</strong></span></div>
                         <div>&nbsp;</div>
 
@@ -317,7 +317,6 @@ if (isset($_POST['guidonhang'])) {
                         <div><strong>'.$personal_info_title.'</strong></div>
                         <div>&nbsp;</div>
                         '.$personal_info_account.'
-                    
                     </div>';
             $madh = $ma_donhang;
 

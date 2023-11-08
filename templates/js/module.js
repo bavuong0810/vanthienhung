@@ -679,3 +679,54 @@ $('#chat_online .toggle-button').on('click', function() {
 	}
 });
 
+function printQuote(e) {
+	(function ($) {
+		console.log($(e).closest('form'));
+		var name = $('#ten').val();
+		var email = $('#email').val();
+		var phone = $('#dienthoai').val();
+		if (!name || name.length === 0 ||
+			!phone || phone.length === 0 ||
+			!email || email.length === 0
+		) {
+			swal({
+				title: "Vui lòng nhập tên, email và điện thoại của quý khách!",
+				type: "info",
+			});
+			return;
+		}
+
+		// Show loading
+		swal("Xin quý khách chờ trong giây lát...");
+		sweetAlert.disableButtons();
+
+		// Prepare pdf URL
+		var query = 'name=' + encodeURIComponent(name);
+		query += '&email=' + encodeURIComponent(email);
+		query += '&phone=' + encodeURIComponent(phone);
+		var baogiaUrl = '/tai-bao-gia-pdf.php?' + query;
+
+		// Save current cart
+		var data = formShopping.serialize();
+		data += '&in_bao_gia=1&guidonhang=1'
+		$.ajax({
+			url: '/gio-hang.html',
+			data,
+			method: 'POST'
+		}).done(function() {
+			swal({
+				title: "Thành công!",
+				type: "success",
+			});
+
+			// Open pdf URL
+			window.open(baogiaUrl, '_blank');
+		}).fail(function() {
+			swal({
+				title: "Có lỗi xảy ra, vui lòng thử lại!",
+				type: "info",
+			});
+		});
+	})(jQuery);
+}
+
