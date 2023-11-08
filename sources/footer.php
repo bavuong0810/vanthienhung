@@ -708,6 +708,117 @@ if (file_exists($cachePath) && 1 == 2) {
         </div>
     </div>
 
+    <?php
+    $stt = 0;
+    $cartTable = '';
+    if (count($_SESSION['cart']) > 0) {
+        foreach ($_SESSION['cart'] as $key => $value) {
+            $product = $d->simple_fetch("select * from #_sanpham where id={$key}");
+            $product['name_' . $_SESSION['lang']] = getCustomProductName($product);
+
+            $cartProducts[] = $product;
+            if (!empty($product)) {
+                $stt++;
+                $cartTable .= '
+                    <tr>
+                        <td>' . $stt . '</td>
+                        <td>
+                            <img onerror="this.src=\'' . URLPATH . 'templates/error/error.jpg\';" src="' . URLPATH . 'thumb.php?src=' . URLPATH . 'img_data/images/' . @$product['image_path'] . '&w=50&h=50" width="50" height="50">
+                        </td>
+                        <td class="text-left">' . @$product['name_' . $_SESSION['lang']] . '</td>
+                        <td>' . $value['so_luong'] . '</td>
+                    </tr>
+                ';
+            }
+        }
+
+        $cartTable = '<table class="table table-hover table-bordered ">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th align="left">Hình ảnh</th>
+                    <th>' . _namepro . '</th>
+                    <th align="center" class="th_soluong">' . _number . '</th>
+                </tr>
+            </thead>
+            <tbody>
+            ' . $cartTable . '
+            </tbody>
+        </table>
+        ';
+    }
+    ?>
+    <!-- Modal order -->
+    <div class="modal fade" id="request_quote_cart_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="false">
+        <div class="modal-dialog" role="document">
+            <form id="request_quote_cart_form" name="request_quote_cart_form" method="post" enctype="multipart/form-data">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">YÊU CẦU BÁO GIÁ GIỎ HÀNG</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <?php echo $cartTable; ?>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="request_quote_cart_ten">Tên <i class="text-danger">*</i></label>
+                                    <input type="text" id="request_quote_cart_ten" name="ten" class="form-control" placeholder="Tên" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="request_quote_cart_email">Email <i class="text-danger">*</i></label>
+                                    <input type="email" id="request_quote_cart_email" name="email" class="form-control" placeholder="Email" required>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="request_quote_cart_phone"><?= _sodienthoai ?><i class="text-danger">*</i></label>
+                                    <input type="text" id="request_quote_cart_phone" name="dienthoai" class="form-control" placeholder="<?= _sodienthoai ?>" required>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group textarea-message">
+                                    <label for="noi_dung">Lời nhắn</label>
+                                    <textarea type="text" class="form-control" style="max-width: 100%" id="request_quote_cart_noi_dung" name="noi_dung" placeholder="Thêm lời nhắn hoặc các yêu cầu khác của bạn..." rows="8"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Bạn mua sản phẩm để</label>
+                                    <div>
+                                        <label style="margin-right: 10px"><input type="checkbox" id="thongSoSanPham" name="thongSoSanPham"> Để bán lại</label>
+                                        <label style="margin-right: 10px"><input type="checkbox" id="chungNhanKiemDinh" name="chungNhanKiemDinh"> Dành cho doanh nghiệp</label>
+                                        <label style="margin-right: 10px"><input type="checkbox" id="hoSoCongTy" name="hoSoCongTy"> Sử dụng tại nhà</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group" id="listFiles">
+                                    <label>Thêm tệp đính kèm (<small>Nhiều nhất 5 tệp</small>)</label>
+                                    <input type="file" name="dinhKem[]" placeholder="Chọn file mẫu hoặc hình ảnh mà bạn muốn gửi cho chúng tôi" class="form-control file-att" />
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group item-captcha">
+                                    <label for="captcha">Mã xác nhận <i class="text-danger">*</i></label>
+                                    <input type="text" placeholder="Mã xác nhận" class="form-control" id="captcha" name="captcha" style="background: url(./sources/capchaimage.php) center right no-repeat" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default col-md-5" data-dismiss="modal">Đóng</button>
+                        <button name="sub_email" type="submit" class="btn btn-success col-md-6 pull-right"><i class="fa fa-paper-plane"></i> <?= _send ?></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script type="text/javascript">
         const Wind = {
             province: <?php echo !empty($_SESSION['delivery_area']) ? json_encode($_SESSION['delivery_area']) : '{}'; ?>,
@@ -750,6 +861,54 @@ if (file_exists($cachePath) && 1 == 2) {
             $('#frmCheckSerial').submit(function () {
                 $('.checkSerialMsg').html('<h5 class="alert alert-danger text-center">Số Serial sản phẩm không tồn tại!</h5>');
                 return false;
+            });
+
+            $('#request_quote_cart_form').on('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(this);
+
+                // Show loading
+                swal("Đang gửi yêu cầu...");
+                sweetAlert.disableButtons();
+
+                $.ajax({
+                    url: '/api.php?func=request_price_cart',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    timeout: 1000 * 60 * 5,
+                    dataType: 'json',
+                    success: data => {
+                        if (!data || !data.isSuccess) {
+                            swal({
+                                title: "Có lỗi xảy ra",
+                                text: data.error,
+                                type: "error",
+                                confirmButtonClass: 'btn-danger',
+                                confirmButtonText: 'OK'
+                            });
+
+                            return;
+                        }
+
+                        swal({
+                            title: "Gửi thành công",
+                            text: "Chúng tôi sẽ liên hệ với bạn sớm nhất có thể!",
+                            type: "success",
+                            confirmButtonClass: 'btn-success',
+                            confirmButtonText: 'OK'
+                        }, function() {
+                            window.location.href = '/';
+                        });
+                    },
+                    fail: () => {
+                        swal({
+                            title: "Vui lòng thử lại!",
+                            type: "warning",
+                        });
+                    },
+                });
             });
 
             $("#send_email_form").submit(function (e) {
