@@ -722,7 +722,9 @@ function requestQuoteCart(e) {
 	(function ($) {
 		$('#modalAddToCart').modal('hide');
 		$('#modalDathang').modal('hide');
-		$('#request_quote_cart_modal').modal('show');
+		setTimeout(function () {
+			$('#request_quote_cart_modal').modal('show');
+		}, 500);
 	})(jQuery);
 }
 
