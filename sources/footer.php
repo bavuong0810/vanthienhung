@@ -723,7 +723,8 @@ if (file_exists($cachePath) && 1 == 2) {
                     <tr>
                         <td>' . $stt . '</td>
                         <td>
-                            <img onerror="this.src=\'' . URLPATH . 'templates/error/error.jpg\';" src="' . URLPATH . 'thumb.php?src=' . URLPATH . 'img_data/images/' . @$product['image_path'] . '&w=50&h=50" width="50" height="50">
+                            <img onerror="this.src=\'' . $d->getDefaultProductImage() . '\';" 
+                            src="' . THUMB_BASE . 'images/50/50/' . @$product['id'] . '/' . @$product['image_path'] . '" width="50" height="50">
                         </td>
                         <td class="text-left">' . @$product['name_' . $_SESSION['lang']] . '</td>
                         <td>' . $value['so_luong'] . '</td>
@@ -783,7 +784,8 @@ if (file_exists($cachePath) && 1 == 2) {
                             <div class="col-md-12">
                                 <div class="form-group textarea-message">
                                     <label for="noi_dung">Lời nhắn</label>
-                                    <textarea type="text" class="form-control" style="max-width: 100%" id="request_quote_cart_noi_dung" name="noi_dung" placeholder="Thêm lời nhắn hoặc các yêu cầu khác của bạn..." rows="8"></textarea>
+                                    <textarea class="form-control" style="max-width: 100%" id="request_quote_cart_noi_dung" name="noi_dung"
+                                              placeholder="Thêm lời nhắn hoặc các yêu cầu khác của bạn..." rows="4"></textarea>
                                 </div>
                             </div>
                             <div class="col-md-12">

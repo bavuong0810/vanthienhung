@@ -720,6 +720,28 @@ function printQuote(e) {
 
 function requestQuoteCart(e) {
 	(function ($) {
+		let formShopping = $(e).closest('form');
+		let name = $(formShopping).find('#ten').val();
+		let email = $(formShopping).find('#email').val();
+		let phone = $(formShopping).find('#dienthoai').val();
+		let message = $(formShopping).find('#loinhan').val();
+
+		if (name) {
+			$('#request_quote_cart_ten').val(name);
+		}
+
+		if (email) {
+			$('#request_quote_cart_email').val(email);
+		}
+
+		if (phone) {
+			$('#request_quote_cart_phone').val(phone);
+		}
+
+		if (message) {
+			$('#request_quote_cart_noi_dung').val(message);
+		}
+
 		$('#modalAddToCart').modal('hide');
 		$('#modalDathang').modal('hide');
 		setTimeout(function () {
