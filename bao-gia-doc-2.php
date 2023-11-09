@@ -246,7 +246,6 @@ $SETTINGS = $d->getAllSettings();
    ?>
 
     <div style="background:url(img_data/images/<?php echo $SETTINGS['rorate_logo']['value']; ?>) no-repeat scroll center top;width: 96%;padding-left:20px;padding-right:20px;box-sizing: border-box;">
-
         <table style="width: 100%;padding: 20px 0;">
             <tr>
                 <td align="left" style="width: 32%;">
@@ -389,8 +388,8 @@ $SETTINGS = $d->getAllSettings();
                     </tr>
 
                     <tr>
-                        <td colspan="5">Thuế VAT 10%</td>
-                        <td colspan="1" style="text-align: right; font-size: 15px;"><?php echo $d->vnd($tongtien * 0.1); ?></td>
+                        <td colspan="5">Thuế VAT 8%</td>
+                        <td colspan="1" style="text-align: right; font-size: 15px;"><?php echo $d->vnd($tongtien * 0.08); ?></td>
                     </tr>
 
                     <tr>
@@ -398,13 +397,13 @@ $SETTINGS = $d->getAllSettings();
                             <b>Tổng tiền:</b>
                         </td>
                         <td colspan="1" style="text-align: right; font-size: 17px;">
-                            <b><?php echo $d->vnd($tongtien * 1.1); ?></b>
+                            <b><?php echo $d->vnd($tongtien * 1.08); ?></b>
                         </td>
                     </tr>
                 </table>
 
                 <p style="margin: 15px 0;">
-                    <b><font face="Times New Roman" size="3" color="#0000FF">Bằng chữ: <?php echo convert_number_to_words($tongtien * 1.1); ?> nghìn đồng</font></b>
+                    <b><font face="Times New Roman" size="3" color="#0000FF">Bằng chữ: <?php echo convert_number_to_words($tongtien * 1.08); ?> nghìn đồng</font></b>
                 </p>
 
             <?php endif;?>
