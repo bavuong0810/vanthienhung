@@ -19,6 +19,36 @@ function showdulieu(){
 	$d->disableCacheQuery();
 	$d->reset();
 
+    // check column region, if not add column region
+    $link = mysqli_connect($d->servername, $d->username, $d->password, $d->database);
+    $result = mysqli_query($link,"SHOW COLUMNS FROM `" . $d->refix . "email_bao_gia` LIKE 'tell'");
+    $exists = ($result->current_field == 0) ? false : true;
+    if (!$exists) {
+        $query = "ALTER TABLE `" . $d->refix . "email_bao_gia` ADD `tell` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `email_footer_menu_link_3`";
+        mysqli_query($link, $query);
+
+        $query = "ALTER TABLE `" . $d->refix . "email_bao_gia` ADD `zalo` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `email_footer_menu_link_3`";
+        mysqli_query($link, $query);
+
+        $query = "ALTER TABLE `" . $d->refix . "email_bao_gia` ADD `skype` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `email_footer_menu_link_3`";
+        mysqli_query($link, $query);
+
+        $query = "ALTER TABLE `" . $d->refix . "email_bao_gia` ADD `website` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `email_footer_menu_link_3`";
+        mysqli_query($link, $query);
+
+        $query = "ALTER TABLE `" . $d->refix . "email_bao_gia` ADD `company_info_title` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `email_footer_menu_link_3`";
+        mysqli_query($link, $query);
+
+        $query = "ALTER TABLE `" . $d->refix . "email_bao_gia` ADD `company_info_account` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `email_footer_menu_link_3`";
+        mysqli_query($link, $query);
+
+        $query = "ALTER TABLE `" . $d->refix . "email_bao_gia` ADD `personal_info_title` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `email_footer_menu_link_3`";
+        mysqli_query($link, $query);
+
+        $query = "ALTER TABLE `" . $d->refix . "email_bao_gia` ADD `personal_info_account` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `email_footer_menu_link_3`";
+        mysqli_query($link, $query);
+    }
+
 	$query = "SELECT * FROM #_email_bao_gia";
 	$items = $d->o_fet($query);
 }
@@ -29,7 +59,16 @@ function luudulieu(){
 
     $data = array();
 	$data['email_type'] = addslashes($_POST['email_type']);
-	
+
+    $data['tell'] = addslashes($_POST['tell']);
+    $data['zalo'] = addslashes($_POST['zalo']);
+    $data['skype'] = addslashes($_POST['skype']);
+    $data['website'] = addslashes($_POST['website']);
+    $data['company_info_title'] = addslashes($_POST['company_info_title']);
+    $data['company_info_account'] = addslashes($_POST['company_info_account']);
+    $data['personal_info_title'] = addslashes($_POST['personal_info_title']);
+    $data['personal_info_account'] = addslashes($_POST['personal_info_account']);
+
     $data['email_menu_title_1'] = addslashes($_POST['email_menu_title_1']);
     $data['email_menu_link_1'] = addslashes($_POST['email_menu_link_1']);
     $data['email_menu_title_2'] = addslashes($_POST['email_menu_title_2']);

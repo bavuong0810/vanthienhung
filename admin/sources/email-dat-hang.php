@@ -19,6 +19,24 @@ function showdulieu(){
 	$d->disableCacheQuery();
 	$d->reset();
 
+    // check column region, if not add column region
+    $link = mysqli_connect($d->servername, $d->username, $d->password, $d->database);
+    $result = mysqli_query($link,"SHOW COLUMNS FROM `" . $d->refix . "emails` LIKE 'tell'");
+    $exists = ($result->current_field == 0) ? false : true;
+    if (!$exists) {
+        $query = "ALTER TABLE `" . $d->refix . "emails` ADD `tell` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `personal_info_account`";
+        mysqli_query($link, $query);
+
+        $query = "ALTER TABLE `" . $d->refix . "emails` ADD `zalo` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `personal_info_account`";
+        mysqli_query($link, $query);
+
+        $query = "ALTER TABLE `" . $d->refix . "emails` ADD `skype` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `personal_info_account`";
+        mysqli_query($link, $query);
+
+        $query = "ALTER TABLE `" . $d->refix . "emails` ADD `website` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `personal_info_account`";
+        mysqli_query($link, $query);
+    }
+
 	$query = "SELECT * FROM #_emails WHERE `email_type` = 'dat_hang'";
 	$items = $d->o_fet($query);
 }
@@ -37,6 +55,10 @@ function luudulieu(){
     $personal_info_account = addslashes($_POST['personal_info_account']);*/
 	
 	$data = array();
+    $data['tell'] = addslashes($_POST['tell']);
+    $data['zalo'] = addslashes($_POST['zalo']);
+    $data['skype'] = addslashes($_POST['skype']);
+    $data['website'] = addslashes($_POST['website']);
 	$data['email_type'] = addslashes($_POST['email_type']);
 	$data['thank_you'] = addslashes($_POST['thank_you']);
     $data['dear_name'] = addslashes($_POST['dear_name']);

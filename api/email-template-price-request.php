@@ -102,7 +102,7 @@ $mail_price_request_template = '<div style="'.$tbl_wrap_style.'"><table style="'
             <table style="'.$tbl_style.' background-color: #fef5e4;" cellpadding="15" cellspacing="0">
                 <tr>
                     <td>
-                        <p><img src="'.$logo_url.'" alt=""></p>
+                        <p><img src="'.$logo_url.'" alt="" style="width: 160px; margin: 0 auto; display: block"></p>
                         <p>'.$email_address.'</p>
                         <p style="margin:0 0 5px;"><a style="'.$a_style.'" href="tel:'.$email_phone.'">'.$email_phone.'</a></p>
                         <p style="margin:0;"><a style="'.$a_style.'" href="mailto:'.$email_email.'">'.$email_email.'</a></p>

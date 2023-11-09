@@ -33,6 +33,11 @@ $d->clearMemCached();
 $d->disableCacheQuery();
 $d->reset();
 
+$tell = $items[0]['tell'];
+$zalo = $items[0]['zalo'];
+$skype = $items[0]['skype'];
+$website = $items[0]['website'];
+
 $thank_you = $items[0]['thank_you'];
 $dear_name = $items[0]['dear_name'];
 $company_info_title = $items[0]['company_info_title'];
@@ -50,7 +55,46 @@ $personal_info_account = $items[0]['personal_info_account'];
                     <div class="title_thongtinchung">
                         Quản lý thông tin email đặt hàng
                     </div>
-
+                    <tr>
+                        <td class="td_left" style="vertical-align: top !important;">
+                            SĐT
+                        </td>
+                        <td class="td_right">
+                            <p style="margin:0">
+                                <input class="input form-control" type="text" name="tell" value="<?php echo $tell?>">
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td_left" style="vertical-align: top !important;">
+                            Zalo
+                        </td>
+                        <td class="td_right">
+                            <p style="margin:0">
+                                <input class="input form-control" type="text" name="zalo" value="<?php echo $zalo?>">
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td_left" style="vertical-align: top !important;">
+                            Skype
+                        </td>
+                        <td class="td_right">
+                            <p style="margin:0">
+                                <input class="input form-control" type="text" name="skype" value="<?php echo $skype?>">
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td_left" style="vertical-align: top !important;">
+                            Website
+                        </td>
+                        <td class="td_right">
+                            <p style="margin:0">
+                                <input class="input form-control" type="text" name="website" value="<?php echo $website?>">
+                            </p>
+                        </td>
+                    </tr>
                     <tr>
                         <td class="td_left" style="vertical-align: top !important;">
                             Cảm ơn

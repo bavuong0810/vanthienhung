@@ -36,6 +36,15 @@ $d->clearMemCached();
 $d->disableCacheQuery();
 $d->reset();
 
+$tell = $items[0]['tell'];
+$zalo = $items[0]['zalo'];
+$skype = $items[0]['skype'];
+$website = $items[0]['website'];
+$company_info_title = $items[0]['company_info_title'];
+$company_info_account = $items[0]['company_info_account'];
+$personal_info_title = $items[0]['personal_info_title'];
+$personal_info_account = $items[0]['personal_info_account'];
+
 $email_menu_title_1 = $items[0]['email_menu_title_1'];
 $email_menu_link_1 = $items[0]['email_menu_link_1'];
 $email_menu_title_2 = $items[0]['email_menu_title_2'];
@@ -65,7 +74,48 @@ $email_footer_menu_link_3 = $items[0]['email_footer_menu_link_3'];
                     <div class="title_thongtinchung">
                         Quản lý thông tin email báo giá
                     </div>
-                    
+
+                    <tr>
+                        <td class="td_left" style="vertical-align: top !important;">
+                            SĐT
+                        </td>
+                        <td class="td_right">
+                            <p style="margin:0">
+                                <input class="input form-control" type="text" name="tell" value="<?php echo $tell?>">
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td_left" style="vertical-align: top !important;">
+                            Zalo
+                        </td>
+                        <td class="td_right">
+                            <p style="margin:0">
+                                <input class="input form-control" type="text" name="zalo" value="<?php echo $zalo?>">
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td_left" style="vertical-align: top !important;">
+                            Skype
+                        </td>
+                        <td class="td_right">
+                            <p style="margin:0">
+                                <input class="input form-control" type="text" name="skype" value="<?php echo $skype?>">
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td_left" style="vertical-align: top !important;">
+                            Website
+                        </td>
+                        <td class="td_right">
+                            <p style="margin:0">
+                                <input class="input form-control" type="text" name="website" value="<?php echo $website?>">
+                            </p>
+                        </td>
+                    </tr>
+
                     <tr>
                         <td class="td_left" style="vertical-align: top !important;">
                             Menu 1
@@ -105,6 +155,37 @@ $email_footer_menu_link_3 = $items[0]['email_footer_menu_link_3'];
                             <p style="margin:0">
                                 <textarea  name="email_content" id="email_content"><?php echo $email_content?></textarea>
                                 <?php $ckeditor->replace('email_content'); ?>
+                            </p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="td_left" style="vertical-align: top !important;">
+                            Thông tin công ty
+                        </td>
+                        <td class="td_right">
+                            <label>Tiêu đề</label>
+                            <p style="margin:0 0 25px"><input class="input form-control" type="text" name="company_info_title" value="<?php echo $company_info_title?>"></p>
+
+                            <label>Thông tin tài khoản</label>
+                            <p style="margin:0">
+                                <textarea  name="company_info_account" id="company_info_account"><?php echo $company_info_account?></textarea>
+                                <?php $ckeditor->replace('company_info_account'); ?>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td_left" style="vertical-align: top !important;">
+                            Thông tin cá nhân
+                        </td>
+                        <td class="td_right">
+                            <label>Tiêu đề</label>
+                            <p style="margin:0 0 25px"><input class="input form-control" type="text" name="personal_info_title" value="<?php echo $personal_info_title?>"></p>
+
+                            <label>Thông tin tài khoản</label>
+                            <p style="margin:0">
+                                <textarea  name="personal_info_account" id="personal_info_account"><?php echo $personal_info_account?></textarea>
+                                <?php $ckeditor->replace('personal_info_account'); ?>
                             </p>
                         </td>
                     </tr>

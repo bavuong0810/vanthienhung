@@ -815,7 +815,8 @@ $view_button_warrantyonline =  $d->getOption('view_button_warrantyonline');
                                         
                                         <?php if($view_btn_contact == 'small'){?>
                                         <div class="detail-button-item">
-                                            <a type="button" class="btn btn-sendmail btn-product-contact btn-flat" href="#lien-he">Liên hệ</a>
+                                            <a class="btn btn-sendmail btn-product-contact btn-flat" href="javascript:void(0)"
+                                               data-target="#sendEmailModal" data-toggle="modal">Liên hệ</a>
                                         </div>
                                         <?php }?>
 
