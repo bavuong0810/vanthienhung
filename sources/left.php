@@ -140,7 +140,8 @@ if( ($view_zalo_right && $view_ct_truc_tuyen) || ($view_zalo_right && $view_pric
         <?php if ($view_button_contact_right) {?>
         <div class="clearfix btn-placeholder-right">
             <div class="detail-button-wrap detail-button-order mb-1">
-                <a type="button" class="btn btn-sendmail btn-product-contact btn-blue btn-flat" href="#lien-he">Liên hệ</a>
+                <a class="btn btn-sendmail btn-product-contact btn-blue btn-flat"
+                   data-target="#sendEmailModal" data-toggle="modal" href="javascript:void(0)">Liên hệ</a>
             </div>
         </div>
         <?php }?>

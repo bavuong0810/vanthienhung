@@ -145,7 +145,8 @@ $view_count_product = $d->getOption('view_count_product');
         <?php if ($view_button_contact_left) {?>
         <div class="clearfix">
             <div class="detail-button-wrap detail-button-order mb-1">
-                <a type="button" class="btn btn-sendmail btn-product-contact btn-blue btn-flat" href="#lien-he">Liên hệ</a>
+                <a class="btn btn-sendmail btn-product-contact btn-blue btn-flat"
+                   data-target="#sendEmailModal" data-toggle="modal" href="javascript:void(0)">Liên hệ</a>
             </div>
         </div>
         <?php }?>
