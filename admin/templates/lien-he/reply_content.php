@@ -1,5 +1,5 @@
 <?php
-$query = "SELECT * FROM #_emails WHERE `email_type` = 'dat_hang'";
+$query = "SELECT * FROM #_email_bao_gia";
 $items = $d->o_fet($query);
 
 $tell = $items[0]['tell'];
