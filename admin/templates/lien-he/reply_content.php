@@ -41,20 +41,20 @@ $personal_info_account = $items[0]['personal_info_account'];
                             </div>
                             =======================
                         </div>
-                        <span style="color:rgb(11, 83, 148)">Website:<a
+                        <span style="color:rgb(11, 83, 148)">Website: <a
                                     href="<?php echo $website; ?>/"
                                     style="color: rgb(17, 85, 204);"
                                     target="_blank"><em><?php echo $website; ?></em></a></span>
                     </div>
 
                     <div>
-                        <span style="color:rgb(11, 83, 148)">Tell:<strong><?php echo $tell; ?></strong></span>
+                        <span style="color:rgb(11, 83, 148)">Tell: <strong><?php echo $tell; ?></strong></span>
                     </div>
                     <div>
-                        <span style="color:rgb(11, 83, 148)">Zalo:<strong><?php echo $zalo; ?></strong></span>
+                        <span style="color:rgb(11, 83, 148)">Zalo: <strong><?php echo $zalo; ?></strong></span>
                     </div>
                 </div>
-                <span style="color:rgb(11, 83, 148)">Skype:<strong><?php echo $skype; ?></strong></span><br/>
+                <span style="color:rgb(11, 83, 148)">Skype: <strong><?php echo $skype; ?></strong></span><br/>
             </div>
 
             <div>
