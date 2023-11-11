@@ -431,7 +431,7 @@ $popup_zalo_avatar = $d->getOption('popup_zalo_avatar');
                                 <td class="td_right">
                                     <p style="margin:0">
                                         <label for="view_shipping">
-                                            <input id="view_shipping" type="text" name="view_shipping" value="<?php echo $view_shipping; ?>">
+                                            <input id="view_shipping" class="form-control" type="text" name="view_shipping" value="<?php echo $view_shipping; ?>">
                                         </label>
                                     </p>
                                 </td>
