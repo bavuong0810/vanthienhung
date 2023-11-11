@@ -1548,58 +1548,6 @@ $view_button_warrantyonline =  $d->getOption('view_button_warrantyonline');
             ],
         });
 
-        //update cart popup
-
-        function chang_soluong(obj, id, iddh) {
-            var sl = $(obj).val();
-            $.ajax({
-                url: "./sources/ajax.php",
-                type: 'POST',
-                data: {
-                    'do': 'change_so_luong',
-                    'id': id,
-                    'iddh': iddh,
-                    'sl': sl
-                },
-                success: function(data) {
-                    if (data == 0) {
-                        alert("Số lượng nhập không hợp lệ!");
-                    } else {
-                        //console.log(data);
-                        //window.location.href = "<?= URLPATH ?>gio-hang.html";
-                        // thanhtien(id,iddh);
-                        // tongtien(id,iddh);
-                    }
-                }
-            })
-            return;
-        }
-
-        function updateInput2(input, value, pid) {
-            input.value = value;
-            chang_soluong(input, pid, '<?= @$_SESSION['iddonhang'] ?>');
-        };
-
-        $('body').on('click', '.cart-quantity-input .add-one', function(e) {
-            var quantityInput = e.target.parentElement.parentElement.parentElement.querySelector('input');
-            window.minh = e;
-            var value = quantityInput.value;
-            var pid = $(this).attr('data-product');
-            updateInput2(quantityInput, ++value, pid);
-            return false;
-        });
-
-        $('body').on('click', '.cart-quantity-input .minus-one', function(e) {
-            var quantityInput = e.target.parentElement.parentElement.parentElement.querySelector('input');
-            var value = quantityInput.value;
-            var pid = $(this).attr('data-product');
-            if (--value < 1) {
-                return;
-            }
-            updateInput2(quantityInput, value, pid);
-            return false;
-        });
-
         function xoa_sp_gh_dh(id, iddh, al) {
             var cf = confirm(al);
             if (cf) {

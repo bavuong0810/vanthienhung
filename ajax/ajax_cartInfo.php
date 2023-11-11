@@ -125,12 +125,12 @@ $tableContent = ob_get_clean();
         <table class="table table-hover table-bordered ">
             <tbody>
                 <tr>
-                    <th style="width:28%;" class="">Tên sản phẩm</th>
-                    <th style="width:28%;" class="">Trọng lượng</th>
-                    <th style="width:15%; text-align: center;">Giá</th>
-                    <th style="width:10%;" class="th_soluong">Số lượng</th>
-                    <th style="width:15%;">Thành tiền</th>
-                    <th style="width:10%; text-align: center;">Xóa</th>
+                    <th style="width: 35%;" class="">Tên sản phẩm</th>
+                    <th style="width: 10%;" class="">Trọng lượng</th>
+                    <th style="width: 15%; text-align: center;">Giá</th>
+                    <th style="width: 15%;" class="th_soluong">Số lượng</th>
+                    <th style="width: 20%;">Thành tiền</th>
+                    <th style="width: 10%; text-align: center;">Xóa</th>
                 </tr>
                 <?php echo $tableContent; ?>
 

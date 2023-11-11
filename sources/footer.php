@@ -1112,6 +1112,10 @@ if (file_exists($cachePath) && 1 == 2) {
     <link rel="stylesheet" type="text/css" href="/admin/assets/bootstrap-sweetalert/sweetalert.css">
 
     <script>
+        function updateInput2(input, value, pid) {
+            input.value = value;
+            chang_soluong(input, pid, '<?= @$_SESSION['iddonhang'] ?>');
+        };
 
         function autoAddNewFile() {
             $('input.file-att').off();

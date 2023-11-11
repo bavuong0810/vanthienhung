@@ -385,6 +385,26 @@ $(document).ready(function() {
 
 	$('.form-order select[name="province"]').on('change', handleSelectProvinceCart);
 	$('.form-order select[name="county"]').on('change', handleSelectCountryCart);
+
+	//update cart popup
+	$('body').on('click', '.cart-quantity-input .add-one', function(e) {
+		var quantityInput = e.target.parentElement.parentElement.parentElement.querySelector('input');
+		var value = quantityInput.value;
+		var pid = $(this).attr('data-product');
+		updateInput2(quantityInput, ++value, pid);
+		return false;
+	});
+
+	$('body').on('click', '.cart-quantity-input .minus-one', function(e) {
+		var quantityInput = e.target.parentElement.parentElement.parentElement.querySelector('input');
+		var value = quantityInput.value;
+		var pid = $(this).attr('data-product');
+		if (--value < 1) {
+			return;
+		}
+		updateInput2(quantityInput, value, pid);
+		return false;
+	});
 });
 function timeRadiosChange(e) {
 	if ($(e).val() !== 'timeNow') {
@@ -757,6 +777,31 @@ function numberToWords(number) {
 	}
 
 	return to_vietnamese(number);
+}
+
+function chang_soluong(obj, id, iddh) {
+	var sl = $(obj).val();
+	$.ajax({
+		url: "./sources/ajax.php",
+		type: 'POST',
+		data: {
+			'do': 'change_so_luong',
+			'id': id,
+			'iddh': iddh,
+			'sl': sl
+		},
+		success: function(data) {
+			if (data == 0) {
+				alert("Số lượng nhập không hợp lệ!");
+			} else {
+				//console.log(data);
+				//window.location.href = "<?= URLPATH ?>gio-hang.html";
+				// thanhtien(id,iddh);
+				// tongtien(id,iddh);
+			}
+		}
+	})
+	return;
 }
 
 function updateUndefineArea() {
