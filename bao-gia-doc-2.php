@@ -317,7 +317,6 @@ $SETTINGS = $d->getAllSettings();
                 <table style="width: 100%;" class="table table-hover table-bordered">
                     <tr>
                         <th style="width: 10px; text-align: center;">STT</th>
-                        <th style="width: 80px; text-align: center;">Mã SP</th>
                         <th style="width: 240px; text-align: center;"><?=_namepro?></th>
                         <th style="width: 80px; text-align: center;"><?=_price?></th>
 
@@ -357,7 +356,6 @@ $SETTINGS = $d->getAllSettings();
                                 ?>
                             <tr>
                                 <td style="text-align: center;"><?=$stt?></td>
-                                <td style="width: 80px; word-break: break-all; word-wrap: break-word; white-space: pre-wrap; letter-spacing: all; text-align: center;"><?php echo preg_replace('/([\w]{9})/', '$1 ', $product['code']); ?></td>
                                 <td style="width: 240px;">
                                     <a href="<?=URLPATH . $product['alias_' . $_SESSION['lang']]?>.html" style="text-decoration: none;">
                                         <?php

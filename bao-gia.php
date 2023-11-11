@@ -241,7 +241,6 @@ $tax = $tax / 100;
             <table style="width: 100%;" class="table table-hover table-bordered">
                     <tr>
                         <th style="width: 10px;">STT</th>
-                        <th style="width: 80px;">Mã sản phẩm</th>
                         <th style="width: 55px;">Hình ảnh</th>
                         <th style="width: 360px"><?=_namepro?></th>
                         <th style="width: 150px;"><?=_price?></th>
@@ -283,7 +282,6 @@ $tax = $tax / 100;
                             ?>
                             <tr>
                                 <td><?=$stt?></td>
-                                <td style="width: 80px; word-break: break-all; word-wrap: break-word; white-space: pre-wrap; letter-spacing: all;"><?php echo preg_replace('/([\w]{9})/', '$1 ', $product['code']); ?></td>
                                 <td style="width: 55px">
                                     <img src="<?php echo FILEURL; ?>thumb.php?w=54&h=54&src=<?php echo FILEURL; ?>img_data/images/<?php echo @$product['image_path']; ?>" style="width: 50px; height: 50px">
                                 </td>
