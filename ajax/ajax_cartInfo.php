@@ -77,7 +77,7 @@ if (count($_SESSION['cart']) > 0) {
                 </td>
 
                 <td>
-                    <?= @$product['weight'] ?> kg
+                    <?php echo (!empty($product['weight'])) ? $product['weight'] : 1; ?>kg
                 </td>
 
                 <td align="left"><strong><?= @$d->vnd($price) ?></strong></td>
@@ -170,7 +170,7 @@ $tableContent = ob_get_clean();
                 </tr>
                 <tr>
                     <td colspan="6">
-                        <font face="Times New Roman" size="3" color="#0000FF">Bằng chữ: <?php echo convert_number_to_words($tongtien + ($total * $tax / 100)); ?> nghìn đồng</font>
+                        <font face="Times New Roman" size="3" color="#0000FF">Bằng chữ: <?php echo $d->convert_number_to_words($tongtien + ($total * $tax / 100)); ?> nghìn đồng</font>
                     </td>
                 </tr>
             </tbody>
