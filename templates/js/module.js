@@ -647,7 +647,8 @@ function updateFee() {
 		$('.delivery_fee').html(moneyFormat(+Wind.province.price) + 'đ');
 		let total = $('.tong_tien_gh').text().replaceAll('đ', '');
 		total = total.replaceAll('.', '');
-		console.log(numberToWords(parseInt(Wind.province.price) + parseInt(total)));
+		let total_text = numberToWords(parseInt(Wind.province.price) + parseInt(total));
+		$('.total_money_text').html(total_text);
 		$('.tong_tien_gh').html(moneyFormat(+Wind.province.price + parseInt(total)) + 'đ');
 	}
 }

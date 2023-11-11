@@ -184,7 +184,7 @@ $tableContent = ob_get_clean();
                 </tr>
                 <tr>
                     <td colspan="6">
-                        <font face="Times New Roman" size="3" color="#0000FF">Bằng chữ: <span class="total_money_text"><?php echo $d->convert_number_to_words($tongtien + ($total * $tax / 100)); ?></span> nghìn đồng</font>
+                        <font face="Times New Roman" size="3" color="#0000FF">Bằng chữ: <span class="total_money_text" style="text-transform: capitalize;"><?php echo $d->convert_number_to_words($tongtien + ($total * $tax / 100)); ?></span> Nghìn Đồng</font>
                     </td>
                 </tr>
             </tbody>
