@@ -142,7 +142,7 @@ $tableContent = ob_get_clean();
                                 <?php
                                 $tax = ($infomation['tax'] > 0) ? $infomation['tax'] : 8;
                                 ?>
-                                <font class="tong_tien_gh color-main"><?= $d->vnd($total * $tax / 100) ?></font>
+                                <font class="color-main"><?= $d->vnd($total * $tax / 100) ?></font>
                             </h3>
                         </div>
                     </td>
