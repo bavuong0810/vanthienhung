@@ -44,6 +44,9 @@ $company_info_title = $items[0]['company_info_title'];
 $company_info_account = $items[0]['company_info_account'];
 $personal_info_title = $items[0]['personal_info_title'];
 $personal_info_account = $items[0]['personal_info_account'];
+$reply_content = $items[0]['reply_content'];
+$thank_you = $items[0]['thank_you'];
+$dear_name = $items[0]['dear_name'];
 
 $email_menu_title_1 = $items[0]['email_menu_title_1'];
 $email_menu_link_1 = $items[0]['email_menu_link_1'];
@@ -161,37 +164,6 @@ $email_footer_menu_link_3 = $items[0]['email_footer_menu_link_3'];
 
                     <tr>
                         <td class="td_left" style="vertical-align: top !important;">
-                            Thông tin công ty
-                        </td>
-                        <td class="td_right">
-                            <label>Tiêu đề</label>
-                            <p style="margin:0 0 25px"><input class="input form-control" type="text" name="company_info_title" value="<?php echo $company_info_title?>"></p>
-
-                            <label>Thông tin tài khoản</label>
-                            <p style="margin:0">
-                                <textarea  name="company_info_account" id="company_info_account"><?php echo $company_info_account?></textarea>
-                                <?php $ckeditor->replace('company_info_account'); ?>
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="td_left" style="vertical-align: top !important;">
-                            Thông tin cá nhân
-                        </td>
-                        <td class="td_right">
-                            <label>Tiêu đề</label>
-                            <p style="margin:0 0 25px"><input class="input form-control" type="text" name="personal_info_title" value="<?php echo $personal_info_title?>"></p>
-
-                            <label>Thông tin tài khoản</label>
-                            <p style="margin:0">
-                                <textarea  name="personal_info_account" id="personal_info_account"><?php echo $personal_info_account?></textarea>
-                                <?php $ckeditor->replace('personal_info_account'); ?>
-                            </p>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td class="td_left" style="vertical-align: top !important;">
                             Footer 1( Cột bên trái )
                         </td>
                         <td class="td_right">
@@ -247,6 +219,68 @@ $email_footer_menu_link_3 = $items[0]['email_footer_menu_link_3'];
                         </td>
                     </tr>
 
+                    <tr>
+                        <td colspan="2">
+                            <h4>Cài đặt nội dung trả lời mail</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td_left" style="vertical-align: top !important;">
+                            Cảm ơn
+                        </td>
+                        <td class="td_right">
+                            <p style="margin:0"><input class="input form-control" type="text" name="thank_you" value="<?php echo $thank_you?>"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td_left" style="vertical-align: top !important;">
+                            Họ tên
+                        </td>
+                        <td class="td_right">
+                            <p style="margin:0"><input class="input form-control" type="text" name="dear_name" value="<?php echo $dear_name?>"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td_left" style="vertical-align: top !important;">
+                            Nội dung trả lời
+                        </td>
+                        <td class="td_right">
+                            <p style="margin:0">
+                                <textarea name="reply_content" id="reply_content"><?php echo $reply_content; ?></textarea>
+                                <?php $ckeditor->replace('reply_content'); ?>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td_left" style="vertical-align: top !important;">
+                            Thông tin công ty
+                        </td>
+                        <td class="td_right">
+                            <label>Tiêu đề</label>
+                            <p style="margin:0 0 25px"><input class="input form-control" type="text" name="company_info_title" value="<?php echo $company_info_title?>"></p>
+
+                            <label>Thông tin tài khoản</label>
+                            <p style="margin:0">
+                                <textarea  name="company_info_account" id="company_info_account"><?php echo $company_info_account?></textarea>
+                                <?php $ckeditor->replace('company_info_account'); ?>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td_left" style="vertical-align: top !important;">
+                            Thông tin cá nhân
+                        </td>
+                        <td class="td_right">
+                            <label>Tiêu đề</label>
+                            <p style="margin:0 0 25px"><input class="input form-control" type="text" name="personal_info_title" value="<?php echo $personal_info_title?>"></p>
+
+                            <label>Thông tin tài khoản</label>
+                            <p style="margin:0">
+                                <textarea  name="personal_info_account" id="personal_info_account"><?php echo $personal_info_account?></textarea>
+                                <?php $ckeditor->replace('personal_info_account'); ?>
+                            </p>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>

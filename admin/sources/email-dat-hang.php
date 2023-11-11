@@ -37,6 +37,13 @@ function showdulieu(){
         mysqli_query($link, $query);
     }
 
+    $result = mysqli_query($link,"SHOW COLUMNS FROM `" . $d->refix . "emails` LIKE 'reply_content'");
+    $exists = ($result->current_field == 0) ? false : true;
+    if (!$exists) {
+        $query = "ALTER TABLE `" . $d->refix . "emails` ADD `reply_content` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `personal_info_account`";
+        mysqli_query($link, $query);
+    }
+
 	$query = "SELECT * FROM #_emails WHERE `email_type` = 'dat_hang'";
 	$items = $d->o_fet($query);
 }
@@ -59,6 +66,7 @@ function luudulieu(){
     $data['zalo'] = addslashes($_POST['zalo']);
     $data['skype'] = addslashes($_POST['skype']);
     $data['website'] = addslashes($_POST['website']);
+    $data['reply_content'] = addslashes($_POST['reply_content']);
 	$data['email_type'] = addslashes($_POST['email_type']);
 	$data['thank_you'] = addslashes($_POST['thank_you']);
     $data['dear_name'] = addslashes($_POST['dear_name']);

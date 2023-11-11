@@ -49,6 +49,19 @@ function showdulieu(){
         mysqli_query($link, $query);
     }
 
+    $result = mysqli_query($link,"SHOW COLUMNS FROM `" . $d->refix . "email_bao_gia` LIKE 'dear_name'");
+    $exists = ($result->current_field == 0) ? false : true;
+    if (!$exists) {
+        $query = "ALTER TABLE `" . $d->refix . "email_bao_gia` ADD `dear_name` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `email_footer_menu_link_3`";
+        mysqli_query($link, $query);
+
+        $query = "ALTER TABLE `" . $d->refix . "email_bao_gia` ADD `thank_you` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `email_footer_menu_link_3`";
+        mysqli_query($link, $query);
+
+        $query = "ALTER TABLE `" . $d->refix . "email_bao_gia` ADD `reply_content` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `email_footer_menu_link_3`";
+        mysqli_query($link, $query);
+    }
+
 	$query = "SELECT * FROM #_email_bao_gia";
 	$items = $d->o_fet($query);
 }
@@ -68,6 +81,7 @@ function luudulieu(){
     $data['company_info_account'] = addslashes($_POST['company_info_account']);
     $data['personal_info_title'] = addslashes($_POST['personal_info_title']);
     $data['personal_info_account'] = addslashes($_POST['personal_info_account']);
+    $data['reply_content'] = addslashes($_POST['reply_content']);
 
     $data['email_menu_title_1'] = addslashes($_POST['email_menu_title_1']);
     $data['email_menu_link_1'] = addslashes($_POST['email_menu_link_1']);

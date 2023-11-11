@@ -6,16 +6,17 @@ $tell = $items[0]['tell'];
 $zalo = $items[0]['zalo'];
 $skype = $items[0]['skype'];
 $website = $items[0]['website'];
+$reply_content = $items[0]['reply_content'];
+$thank_you = $items[0]['thank_you'];
+$dear_name = $items[0]['dear_name'];
 $company_info_title = $items[0]['company_info_title'];
 $company_info_account = $items[0]['company_info_account'];
 $personal_info_title = $items[0]['personal_info_title'];
 $personal_info_account = $items[0]['personal_info_account'];
 ?>
-<p>Chào quý khách,</p>
-
-<p>Sản phẩm quý khách yêu cầu chưa bao gồm thuế VAT là:&nbsp;</p>
-
-<p>Cảm ơn quý khách!</p>
+<div>
+    <?php echo $reply_content; ?>
+</div>
 
 <p><span style="color:rgb(34, 34, 34); font-family:arial,helvetica,sans-serif; font-size:small">--&nbsp;</span></p>
 
@@ -29,14 +30,14 @@ $personal_info_account = $items[0]['personal_info_account'];
                     <div>
                         <div>
                             <div>
-                                <span style="color:rgb(11, 83, 148)"><strong>Thanks and best regards!</strong></span>
+                                <span style="color:rgb(11, 83, 148)"><strong><?php echo $thank_you; ?></strong></span>
 
                                 <div>
                                     &nbsp;
                                 </div>
 
                                 <div>
-                                    <span style="color:rgb(11, 83, 148)"><strong>Tuấn Nguyễn (Mr)</strong></span>
+                                    <span style="color:rgb(11, 83, 148)"><strong><?php echo $dear_name; ?></strong></span>
                                 </div>
                             </div>
                             =======================

@@ -37,6 +37,7 @@ $tell = $items[0]['tell'];
 $zalo = $items[0]['zalo'];
 $skype = $items[0]['skype'];
 $website = $items[0]['website'];
+$reply_content = $items[0]['reply_content'];
 
 $thank_you = $items[0]['thank_you'];
 $dear_name = $items[0]['dear_name'];
@@ -95,6 +96,12 @@ $personal_info_account = $items[0]['personal_info_account'];
                             </p>
                         </td>
                     </tr>
+
+                    <tr>
+                        <td colspan="2">
+                            <h4>Cài đặt nội dung trả lời mail</h4>
+                        </td>
+                    </tr>
                     <tr>
                         <td class="td_left" style="vertical-align: top !important;">
                             Cảm ơn
@@ -109,6 +116,17 @@ $personal_info_account = $items[0]['personal_info_account'];
                         </td>
                         <td class="td_right">
                             <p style="margin:0"><input class="input form-control" type="text" name="dear_name" value="<?php echo $dear_name?>"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td_left" style="vertical-align: top !important;">
+                            Nội dung trả lời
+                        </td>
+                        <td class="td_right">
+                            <p style="margin:0">
+                                <textarea name="reply_content" id="reply_content"><?php echo $reply_content; ?></textarea>
+                                <?php $ckeditor->replace('reply_content'); ?>
+                            </p>
                         </td>
                     </tr>
                     <tr>
