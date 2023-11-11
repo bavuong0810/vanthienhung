@@ -135,7 +135,7 @@ $tableContent = ob_get_clean();
                 <?php echo $tableContent; ?>
 
                 <tr>
-                    <td colspan="4" class="text-right"><b>Tổng trọng lượng</b></td>
+                    <td colspan="4" style="text-align: right"><b>Tổng trọng lượng</b></td>
                     <td colspan="2" style="border-left: 0;">
                         <div class="tong_tt">
                             <h3 class="text-center">
@@ -160,7 +160,7 @@ $tableContent = ob_get_clean();
                 </tr>
                 <?php endif; ?>
                 <tr>
-                    <td colspan="4" class="text-right"><b>Thuế (VAT) <?php echo $infomation['tax']; ?>%</b></td>
+                    <td colspan="4" style="text-align: right"><b>Thuế (VAT) <?php echo $infomation['tax']; ?>%</b></td>
                     <td colspan="2" style="border-left: 0;">
                         <div class="tong_tt">
                             <h3 class="text-center">
@@ -173,7 +173,7 @@ $tableContent = ob_get_clean();
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="4" class="text-right"><b>Tổng tiền</b></td>
+                    <td colspan="4" style="text-align: right"><b>Tổng tiền</b></td>
                     <td colspan="2" style="border-left: 0;">
                         <div class="tong_tt">
                             <h3 class="text-center">
