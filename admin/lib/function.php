@@ -2028,7 +2028,7 @@ class func_index
         }
 
         if ($number < 0) {
-            return $negative . convert_number_to_words(abs($number));
+            return $negative . self::convert_number_to_words(abs($number));
         }
 
         $string = $fraction = null;
@@ -2054,17 +2054,17 @@ class func_index
                 $remainder = $number % 100;
                 $string = $dictionary[$hundreds] . ' ' . $dictionary[100];
                 if ($remainder) {
-                    $string .= $conjunction . convert_number_to_words($remainder);
+                    $string .= $conjunction . self::convert_number_to_words($remainder);
                 }
                 break;
             default:
                 $baseUnit = pow(1000, floor(log($number, 1000)));
                 $numBaseUnits = (int) ($number / $baseUnit);
                 $remainder = $number % $baseUnit;
-                $string = convert_number_to_words($numBaseUnits) . ' ' . $dictionary[$baseUnit];
+                $string = self::convert_number_to_words($numBaseUnits) . ' ' . $dictionary[$baseUnit];
                 if ($remainder) {
                     $string .= $remainder < 100 ? $conjunction : $separator;
-                    $string .= convert_number_to_words($remainder);
+                    $string .= self::convert_number_to_words($remainder);
                 }
                 break;
         }
@@ -2080,7 +2080,6 @@ class func_index
 
         return $string;
     }
-
 }
 
 function watermark_image($newname, $folder)
