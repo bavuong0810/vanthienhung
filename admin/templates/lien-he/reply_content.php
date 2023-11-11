@@ -57,7 +57,7 @@ $personal_info_account = $items[0]['personal_info_account'];
                 <span style="color:rgb(11, 83, 148)">Skype: <strong><?php echo $skype; ?></strong></span><br/>
             </div>
 
-            <div>
+            <div style="margin-top: 20px">
                 <span style="color:rgb(11, 83, 148)"><strong><span style="color:rgb(0, 0, 0)"><?php echo $company_info_title; ?></span></strong></span>
             </div>
 
