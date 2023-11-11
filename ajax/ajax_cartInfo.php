@@ -23,6 +23,7 @@ $cartProducts = [];
 $sumQuantity = 0;
 $canPayOnline = false;
 $cartTable = '';
+$totalWeight = 0;
 
 ob_start();
 
@@ -50,6 +51,7 @@ if (count($_SESSION['cart']) > 0) {
                 $fee = $product['weight'] * $value['so_luong'] * $_SESSION['delivery_area']['price'];
                 $deliveryFee += $fee;
                 $tongtien += $fee;
+                $totalWeight += $product['weight'];
             } else {
                 $deliveryFee = 'Thông báo sau!';
             }
@@ -131,6 +133,18 @@ $tableContent = ob_get_clean();
                     <th style="width:10%; text-align: center;">Xóa</th>
                 </tr>
                 <?php echo $tableContent; ?>
+
+                <tr>
+                    <td colspan="4">Tổng trọng lượng</td>
+                    <td colspan="2" style="border-left: 0;">
+                        <div class="tong_tt">
+                            <h3 class="text-center">
+                                <font class="color-main"><?= $totalWeight; ?>kg</font>
+                            </h3>
+                        </div>
+                    </td>
+                </tr>
+
                 <?php
                 $view_shipping =  $d->getOption('view_shipping');
                 $shipping_note =  $d->getOption('shipping_note');
@@ -146,7 +160,7 @@ $tableContent = ob_get_clean();
                 </tr>
                 <?php endif; ?>
                 <tr>
-                    <td colspan="4">Thuế (VAT)</td>
+                    <td colspan="4">Thuế (VAT) <?php echo $infomation['tax']; ?>%</td>
                     <td colspan="2" style="border-left: 0;">
                         <div class="tong_tt">
                             <h3 class="text-center">
@@ -170,7 +184,7 @@ $tableContent = ob_get_clean();
                 </tr>
                 <tr>
                     <td colspan="6">
-                        <font face="Times New Roman" size="3" color="#0000FF">Bằng chữ: <?php echo $d->convert_number_to_words($tongtien + ($total * $tax / 100)); ?> nghìn đồng</font>
+                        <font face="Times New Roman" size="3" color="#0000FF">Bằng chữ: <span class="total_money_text"><?php echo $d->convert_number_to_words($tongtien + ($total * $tax / 100)); ?></span> nghìn đồng</font>
                     </td>
                 </tr>
             </tbody>
