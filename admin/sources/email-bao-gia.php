@@ -81,6 +81,8 @@ function luudulieu(){
     $data['company_info_account'] = addslashes($_POST['company_info_account']);
     $data['personal_info_title'] = addslashes($_POST['personal_info_title']);
     $data['personal_info_account'] = addslashes($_POST['personal_info_account']);
+    $data['dear_name'] = addslashes($_POST['dear_name']);
+    $data['thank_you'] = addslashes($_POST['thank_you']);
     $data['reply_content'] = addslashes($_POST['reply_content']);
 
     $data['email_menu_title_1'] = addslashes($_POST['email_menu_title_1']);

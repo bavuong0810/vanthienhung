@@ -98,8 +98,8 @@ $personal_info_account = $items[0]['personal_info_account'];
                     </tr>
 
                     <tr>
-                        <td colspan="2">
-                            <h4>Cài đặt nội dung trả lời mail</h4>
+                        <td class="td_left" colspan="2">
+                            <h4><b>Cài đặt nội dung trả lời mail</b></h4>
                         </td>
                     </tr>
                     <tr>

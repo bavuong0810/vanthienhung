@@ -184,6 +184,12 @@ if (isset($_POST['guidonhang'])) {
             $email_sql = "SELECT * FROM #_emails WHERE `email_type` = 'dat_hang'";
 	        $email_query = $d->o_fet($email_sql);
             $email = array();
+
+            $tell = $information['hotline'];
+            $zalo = $information['zalo'];
+            $skype = 'xenang_ts';
+            $website = getenv('APP_DOMAIN');
+
             if( $email_query ){
                 $email = $email_query[0];
                 $thank_you = $email['thank_you'];
@@ -192,9 +198,13 @@ if (isset($_POST['guidonhang'])) {
                 $company_info_account = $email['company_info_account'];
                 $personal_info_title = $email['personal_info_title'];
                 $personal_info_account = $email['personal_info_account'];
+                $tell = $email[0]['tell'];
+                $zalo = $email[0]['zalo'];
+                $skype = $email[0]['skype'];
+                $website = $email[0]['website'];
             }
-            $thank_you = $thank_you?$thank_you:'Thanks and best regards!';
-            $dear_name = $dear_name?$dear_name:'Tuấn Nguyễn (Mr)';
+            $thank_you = $thank_you ? $thank_you : 'Thanks and best regards!';
+            $dear_name = $dear_name ? $dear_name : 'Tuấn Nguyễn (Mr)';
             $company_info_title = $company_info_title?$company_info_title:'Thông tin Thanh Toán CTY:';
             if( !$company_info_account ){
                 $company_info_account = '<div><span style="color:rgb(11, 83, 148)"><span style="color:rgb(0, 0, 0)">Chủ TK&nbsp; :</span>&nbsp;<strong>' . getenv('FULL_COMPANY_NAME') . '</strong></span></div>
@@ -202,7 +212,7 @@ if (isset($_POST['guidonhang'])) {
                         <div><span style="color:rgb(11, 83, 148)"><span style="color:rgb(0, 0, 0)">Số TK 2 :</span>&nbsp;<strong>125981461&nbsp; NH VPbank CN Bình Dương</strong></span></div>';
             }
 
-            $personal_info_title = $personal_info_title?$personal_info_title:'Thông tin tk cá nhân:';
+            $personal_info_title = $personal_info_title ? $personal_info_title : 'Thông tin tk cá nhân:';
             if( !$personal_info_account ){
                 $personal_info_account = '<div><strong><span style="color:rgb(11, 83, 148)"><em>Ctk: &nbsp; &nbsp; VÕ THỊ LY<br />
                         stk1: &nbsp; 31410001581028&nbsp;&nbsp;&nbsp;&nbsp;</em><em><em>NH&nbsp;<span style="color:rgb(204, 0, 0)">BIDV&nbsp;</span>Đông Sài Gòn PGD Linh Trung 2</em><br />
@@ -295,9 +305,10 @@ if (isset($_POST['guidonhang'])) {
                         <div><span style="color:rgb(11, 83, 148)"><strong>'.$dear_name.'</strong></span></div>
                         <div>=======================</div>
 
-                        <div><span style="color:rgb(11, 83, 148)">Web&nbsp;&nbsp;&nbsp; :<a href="' . getenv('APP_URL') . '/" style="color: rgb(17, 85, 204);" target="_blank"><em>' . getenv('APP_DOMAIN') . '</em></a></span></div>
-                        <div><span style="color:rgb(11, 83, 148)">Tell&nbsp;&nbsp; &nbsp;&nbsp; :<strong>' . $information['zalo'] . ' (zalo)</strong></span></div>
-                        <div><span style="color:rgb(11, 83, 148)">Skype :<strong>xenang_ts</strong></span></div>
+                        <div><span style="color:rgb(11, 83, 148)">Website: <a href="' . $website . '" style="color: rgb(17, 85, 204);" target="_blank"><em>' . $website . '</em></a></span></div>
+                        <div><span style="color:rgb(11, 83, 148)">Tell: <strong>' . $tell . '</strong></span></div>
+                        <div><span style="color:rgb(11, 83, 148)">Zalo: <strong>' . $zalo . '</strong></span></div>
+                        <div><span style="color:rgb(11, 83, 148)">Skype: <strong>' . $skype . '</strong></span></div>
                         <div>&nbsp;</div>
 
                         <div><strong>'.$company_info_title.'</strong></div>
