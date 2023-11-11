@@ -30,6 +30,13 @@ switch($a){
             $d->query("INSERT INTO `#_options`(`option_name`, `option_value_1`) VALUES('view_shipping', 'Phí vận chuyển')");
         }
 
+        // check table option have option_name 'shipping_note'
+        $query_shipping_note = "SELECT * FROM `#_options` WHERE `option_name` = 'shipping_note'";
+        $result = $d->simple_fetch($query_shipping_note);
+        if (count($result) == 0) {
+            $d->query("INSERT INTO `#_options`(`option_name`, `option_value_1`) VALUES('shipping_note', '')");
+        }
+
         // popup zalo
         // check table option have option_name 'popup_zalo_title'
         $query_popup_zalo_title = "SELECT * FROM `#_options` WHERE `option_name` = 'popup_zalo_title'";
@@ -182,6 +189,7 @@ function luudulieu(){
 	$data['view_shipping_content'] = addslashes($_POST['view_shipping_content']);
 	$data['view_return_content'] = addslashes($_POST['view_return_content']);
     $data['view_shipping'] = addslashes($_POST['view_shipping']);
+    $data['shipping_note'] = addslashes($_POST['shipping_note']);
 
     //popup zalo
     $data['popup_zalo_title'] = $_POST['popup_zalo_title'];

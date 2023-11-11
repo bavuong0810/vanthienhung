@@ -27,6 +27,10 @@
 </div>
 
 <div class="form-group">
+    <input type="text" class="form-control" name="address" id="address" placeholder="Địa chỉ">
+</div>
+
+<div class="form-group">
     <textarea id="loinhan" class="form-control" rows="5" name="loinhan" placeholder="Lời nhắn..."></textarea>
 </div>
 

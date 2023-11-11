@@ -76,6 +76,10 @@ if (count($_SESSION['cart']) > 0) {
                     </a>
                 </td>
 
+                <td>
+                    <?= @$product['weight'] ?> kg
+                </td>
+
                 <td align="left"><strong><?= @$d->vnd($price) ?></strong></td>
 
                 <td align="center">
@@ -120,6 +124,7 @@ $tableContent = ob_get_clean();
             <tbody>
                 <tr>
                     <th style="width:28%;" class="">Tên sản phẩm</th>
+                    <th style="width:28%;" class="">Trọng lượng</th>
                     <th style="width:15%; text-align: center;">Giá</th>
                     <th style="width:10%;" class="th_soluong">Số lượng</th>
                     <th style="width:15%;">Thành tiền</th>
@@ -128,14 +133,20 @@ $tableContent = ob_get_clean();
                 <?php echo $tableContent; ?>
                 <?php
                 $view_shipping =  $d->getOption('view_shipping');
+                $shipping_note =  $d->getOption('shipping_note');
                 if ($view_shipping != ''):
                 ?>
                 <tr>
-                    <td colspan="5" style="color:#4cae4c"><?php echo $view_shipping; ?>: <span class="delivery_fee"><?php echo is_string($deliveryFee) ? $deliveryFee : $d->vnd($deliveryFee); ?></span></td>
+                    <td colspan="6" style="color:#4cae4c">
+                        <?php echo $view_shipping; ?>: <span class="delivery_fee"><?php echo is_string($deliveryFee) ? $deliveryFee : $d->vnd($deliveryFee); ?></span>
+                        <p style="color: red; margin: 6px 0;">
+                            <?php echo $shipping_note; ?>
+                        </p>
+                    </td>
                 </tr>
                 <?php endif; ?>
                 <tr>
-                    <td colspan="3">Thuế (VAT)</td>
+                    <td colspan="4">Thuế (VAT)</td>
                     <td colspan="2" style="border-left: 0;">
                         <div class="tong_tt">
                             <h3 class="text-center">
@@ -148,13 +159,18 @@ $tableContent = ob_get_clean();
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="3">Tổng tiền</td>
+                    <td colspan="4>Tổng tiền</td>
                     <td colspan="2" style="border-left: 0;">
                         <div class="tong_tt">
                             <h3 class="text-center">
                                 <font class="tong_tien_gh color-main"><?= $d->vnd($tongtien + ($total * $tax / 100)) ?></font>
                             </h3>
                         </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6">
+                        <font face="Times New Roman" size="3" color="#0000FF">Bằng chữ: <?php echo convert_number_to_words($tongtien + ($total * $tax / 100)); ?> nghìn đồng</font>
                     </td>
                 </tr>
             </tbody>

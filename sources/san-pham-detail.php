@@ -25,7 +25,7 @@ if (isset($_POST['guidonhang'])) {
         $data['tinh_trang'] = isset($_POST['in_bao_gia']) ? -1 : 0;
         $data['ho_ten'] = $d->clear($_POST['ten']);
         $data['email'] = $d->clear($_POST['email']);
-        $data['dia_chi'] = $d->clear($_POST['commune'] . ', ' . $_POST['county'] . ', ' . $_POST['province']);
+        $data['dia_chi'] = $d->clear($_POST['address'] . ', '. $_POST['commune'] . ', ' . $_POST['county'] . ', ' . $_POST['province']);
         $data['dien_thoai'] = $d->clear($_POST['dienthoai']);
         $data['hinh_thuc_thanh_toan'] = $d->clear($_POST['thanhtoan']);
 

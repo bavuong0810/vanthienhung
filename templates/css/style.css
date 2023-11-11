@@ -2976,7 +2976,7 @@ span.divider {
 }
 
 #modalDathang .modal-dialog, #modalAddToCart .modal-dialog {
-    width: 1024px;
+    width: 90%;
     max-width: 100%;
 }
 
