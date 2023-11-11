@@ -438,7 +438,7 @@ if (file_exists($cachePath) && 1 == 2) {
                         $view_map_iframe_in_contact = $d->getOption('view_map_iframe_in_contact');
                         if ($view_map_iframe_in_contact):
                         ?>
-                        <div class="iframe-contact" style="margin: 3rem 0;">
+                        <div class="iframe-contact" style="margin: 2rem 0;">
                             <?php echo $information['map']; ?>
                         </div>
                         <?php endif; ?>

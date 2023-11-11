@@ -3558,6 +3558,7 @@ span.fd-discount {
 .iframe-contact iframe {
     width: 100%;
     display: block;
+    max-height: 220px;
 }
 @media (min-width: 768px) {
     .no-zalobox .ct-box-inner {
