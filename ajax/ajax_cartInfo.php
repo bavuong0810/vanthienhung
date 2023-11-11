@@ -159,7 +159,7 @@ $tableContent = ob_get_clean();
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="4>Tổng tiền</td>
+                    <td colspan="4">Tổng tiền</td>
                     <td colspan="2" style="border-left: 0;">
                         <div class="tong_tt">
                             <h3 class="text-center">
