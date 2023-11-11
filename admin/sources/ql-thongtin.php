@@ -91,7 +91,7 @@ switch($a){
         $result = mysqli_query($link,"SHOW COLUMNS FROM `" . $d->refix . "thongtin` LIKE 'tax'");
         $exists = ($result->current_field == 0) ? false : true;
         if (!$exists) {
-            $query = "ALTER TABLE `" . $d->refix . "thongtin` ADD `tax` INT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL AFTER `lang_ch`";
+            $query = "ALTER TABLE `" . $d->refix . "thongtin` ADD `tax` INT NULL DEFAULT '8' AFTER `lang_ch`;";
             mysqli_query($link, $query);
         }
 
