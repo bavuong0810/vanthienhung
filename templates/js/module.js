@@ -794,6 +794,8 @@ function chang_soluong(obj, id, iddh) {
 			if (data == 0) {
 				alert("Số lượng nhập không hợp lệ!");
 			} else {
+				let formShopping = $(obj).closest('form');
+				$(formShopping).find('.dathang-cart').load('ajax/ajax_cartInfo.php');
 				//console.log(data);
 				//window.location.href = "<?= URLPATH ?>gio-hang.html";
 				// thanhtien(id,iddh);

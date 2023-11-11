@@ -1116,31 +1116,6 @@ if (isset($_POST['xoaall'])) {
         })
     }
 
-    function chang_soluong(obj, id, iddh) {
-        var sl = $(obj).val();
-        $.ajax({
-            url: "./sources/ajax.php",
-            type: 'POST',
-            data: {
-                'do': 'change_so_luong',
-                'id': id,
-                'iddh': iddh,
-                'sl': sl
-            },
-            success: function(data) {
-                if (data == 0) {
-                    alert("Số lượng nhập không hợp lệ!");
-                } else {
-                    console.log(data);
-                    //window.location.href = "<?= URLPATH ?>gio-hang.html";
-                    // thanhtien(id,iddh);
-                    // tongtien(id,iddh);
-                }
-            }
-        })
-        return;
-    }
-
     const Wind = {
         province: <?php echo !empty($_SESSION['delivery_area']) ? json_encode($_SESSION['delivery_area']) : '{}'; ?>,
         products: <?php echo json_encode($cartProducts); ?>,
