@@ -198,6 +198,7 @@ function luudulieu(){
 	$data['view_return_content'] = addslashes($_POST['view_return_content']);
     $data['view_shipping'] = addslashes($_POST['view_shipping']);
     $data['shipping_note'] = addslashes($_POST['shipping_note']);
+    $data['view_map_iframe_in_contact'] = addslashes($_POST['view_map_iframe_in_contact']);
 
     //popup zalo
     $data['popup_zalo_title'] = $_POST['popup_zalo_title'];
