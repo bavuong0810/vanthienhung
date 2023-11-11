@@ -647,7 +647,7 @@ function updateFee() {
 		$('.delivery_fee').html(moneyFormat(+Wind.province.price) + 'đ');
 		let total = $('.tong_tien_gh').text().replaceAll('đ', '');
 		total = total.replaceAll('.', '');
-		console.log(numberToWords(Wind.province.price + parseInt(total)));
+		console.log(numberToWords(parseInt(Wind.province.price) + parseInt(total)));
 		$('.tong_tien_gh').html(moneyFormat(+Wind.province.price + parseInt(total)) + 'đ');
 	}
 }
@@ -709,7 +709,7 @@ function numberToWords(number) {
 			append = ' mươi';
 
 			if (number[1] == 1) {
-				dv = ' mốt';
+				dv = 'mốt';
 			}
 		}
 
