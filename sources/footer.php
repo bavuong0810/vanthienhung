@@ -406,7 +406,7 @@ if (file_exists($cachePath) && 1 == 2) {
                         <div class="form-group textarea-message">
                             <label for="noi_dung">Lời nhắn <i class="text-danger">*</i></label>
                             <textarea type="text" class="form-control" style="max-width: 100%;" id="noi_dung"
-                                      name="noi_dung" placeholder="Thông tin liên hệ hoặc yêu cầu của bạn..." rows="5"
+                                      name="noi_dung" placeholder="Thông tin liên hệ hoặc yêu cầu của bạn..." rows="3"
                                       required aria-required></textarea>
                         </div>
 
@@ -438,7 +438,7 @@ if (file_exists($cachePath) && 1 == 2) {
                         $view_map_iframe_in_contact = $d->getOption('view_map_iframe_in_contact');
                         if ($view_map_iframe_in_contact):
                         ?>
-                        <div class="mt-3 mb-3 iframe-contact">
+                        <div class="iframe-contact" style="margin: 3rem 0;">
                             <?php echo $information['map']; ?>
                         </div>
                         <?php endif; ?>
