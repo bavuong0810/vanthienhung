@@ -10,7 +10,7 @@ define('_lib', '../admin/lib/');
 global $d;
 global $lang;
 $d = new func_index($config['database']);
-
+$infomation = $d->simple_fetch("select * from #_thongtin limit 0,1");
 $SETTINGS = $d->getAllSettings();
 
 if (isset($_SESSION['cart'])) {
@@ -18,6 +18,7 @@ if (isset($_SESSION['cart'])) {
 $stt = 0;
 $deliveryFee = 0;
 $tongtien = 0;
+$total = 0;
 $cartProducts = [];
 $sumQuantity = 0;
 $canPayOnline = false;
@@ -55,6 +56,7 @@ if (count($_SESSION['cart']) > 0) {
 
             $sumQuantity += $value['so_luong'];
             $tongtien += $price * $value['so_luong'];
+            $total += $price * $value['so_luong'];
             $stt++;
 
             $cartTable .= '
@@ -124,15 +126,33 @@ $tableContent = ob_get_clean();
                     <th style="width:10%; text-align: center;">Xóa</th>
                 </tr>
                 <?php echo $tableContent; ?>
+                <?php
+                $view_shipping =  $d->getOption('view_shipping');
+                if ($view_shipping != ''):
+                ?>
                 <tr>
-                    <td colspan="5" style="color:#4cae4c">Phí vận chuyển: <span class="delivery_fee"><?php echo is_string($deliveryFee) ? $deliveryFee : $d->vnd($deliveryFee); ?></span></td>
+                    <td colspan="5" style="color:#4cae4c"><?php echo $view_shipping; ?>: <span class="delivery_fee"><?php echo is_string($deliveryFee) ? $deliveryFee : $d->vnd($deliveryFee); ?></span></td>
+                </tr>
+                <?php endif; ?>
+                <tr>
+                    <td colspan="3">Thuế (VAT)</td>
+                    <td colspan="2" style="border-left: 0;">
+                        <div class="tong_tt">
+                            <h3 class="text-center">
+                                <?php
+                                $tax = ($infomation['tax'] > 0) ? $infomation['tax'] : 8;
+                                ?>
+                                <font class="tong_tien_gh color-main"><?= $d->vnd($total * $tax / 100) ?></font>
+                            </h3>
+                        </div>
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="3">Tổng tiền</td>
                     <td colspan="2" style="border-left: 0;">
                         <div class="tong_tt">
                             <h3 class="text-center">
-                                <font class="tong_tien_gh color-main"><?= $d->vnd($tongtien) ?></font>
+                                <font class="tong_tien_gh color-main"><?= $d->vnd($tongtien + ($total * $tax / 100)) ?></font>
                             </h3>
                         </div>
                     </td>

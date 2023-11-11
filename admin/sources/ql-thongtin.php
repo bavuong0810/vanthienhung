@@ -87,6 +87,14 @@ switch($a){
             mysqli_query($link, $query);
         }
 
+        // check column tax, if not add column tax
+        $result = mysqli_query($link,"SHOW COLUMNS FROM `" . $d->refix . "thongtin` LIKE 'tax'");
+        $exists = ($result->current_field == 0) ? false : true;
+        if (!$exists) {
+            $query = "ALTER TABLE `" . $d->refix . "thongtin` ADD `tax` INT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL AFTER `lang_ch`";
+            mysqli_query($link, $query);
+        }
+
 		showdulieu();
 		$template = @$_REQUEST['p']."/them";
 		break;
@@ -152,6 +160,7 @@ function luudulieu(){
 	$data['lang_ch'] = isset($_POST['lang_ch']) ? addslashes($_POST['lang_ch']) : 0;
     $data['google_analytics'] = addslashes($_POST['google_analytics']);
     $data['script_body'] = addslashes($_POST['script_body']);
+    $data['tax'] = addslashes($_POST['tax']);
 
 	$d->reset();
 	$d->setWhere("id","1");

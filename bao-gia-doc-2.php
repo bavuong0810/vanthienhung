@@ -241,6 +241,9 @@ $SETTINGS = $d->getAllSettings();
     $tongtien = 0;
     $cartProducts = [];
 
+    $tax = $information['tax'] ? $information['tax'] : 8;
+    $tax = $tax / 100;
+
     $qr_html = '<p>'.$information['company_vn'].'</p>';
     $qr_html.= '<p>'.$information['address'].'</p>';
    ?>
@@ -325,6 +328,7 @@ $SETTINGS = $d->getAllSettings();
                     $stt = 0;
                     $deliveryFee = 0;
                     $tongtien = 0;
+                    $total = 0;
                     $cartProducts = [];
                     $sumQuantity = 0;
 
@@ -348,6 +352,7 @@ $SETTINGS = $d->getAllSettings();
 
                                 $sumQuantity += $value['so_luong'];
                                 $tongtien += $price * $value['so_luong'];
+                                $total += $price * $value['so_luong'];
                                 $stt++;
                                 ?>
                             <tr>
@@ -388,8 +393,8 @@ $SETTINGS = $d->getAllSettings();
                     </tr>
 
                     <tr>
-                        <td colspan="5">Thuế VAT 8%</td>
-                        <td colspan="1" style="text-align: right; font-size: 15px;"><?php echo $d->vnd($tongtien * 0.08); ?></td>
+                        <td colspan="5">Thuế VAT <?php echo $information['tax']; ?>%</td>
+                        <td colspan="1" style="text-align: right; font-size: 15px;"><?php echo $d->vnd($total * $tax); ?></td>
                     </tr>
 
                     <tr>
@@ -397,13 +402,13 @@ $SETTINGS = $d->getAllSettings();
                             <b>Tổng tiền:</b>
                         </td>
                         <td colspan="1" style="text-align: right; font-size: 17px;">
-                            <b><?php echo $d->vnd($tongtien * 1.08); ?></b>
+                            <b><?php echo $d->vnd($tongtien + ($total * $tax)); ?></b>
                         </td>
                     </tr>
                 </table>
 
                 <p style="margin: 15px 0;">
-                    <b><font face="Times New Roman" size="3" color="#0000FF">Bằng chữ: <?php echo convert_number_to_words($tongtien * 1.08); ?> nghìn đồng</font></b>
+                    <b><font face="Times New Roman" size="3" color="#0000FF">Bằng chữ: <?php echo convert_number_to_words($tongtien + ($total * $tax)); ?> nghìn đồng</font></b>
                 </p>
 
             <?php endif;?>
@@ -465,8 +470,12 @@ $SETTINGS = $d->getAllSettings();
                                                 <td><?php echo 'Ngày ' . date('d') . ' tháng ' . date('m') . ' năm ' . date('Y') . '<br/>'.date('g:i:s A'); ?></td>
                                             </tr>
                                             <tr>
-                                                <td>Tell/Zallo:</td>
+                                                <td>Tell:</td>
                                                 <td><?php echo $information['hotline']; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Zalo:</td>
+                                                <td><?php echo $information['zalo']; ?></td>
                                             </tr>
                                             <tr>
                                                 <td>Email:</td>

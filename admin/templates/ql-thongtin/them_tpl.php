@@ -223,6 +223,14 @@
 							</tr>
                             <tr>
                                 <td class="td_left">
+                                    Cài đặt thuế (%):
+                                </td>
+                                <td class="td_right">
+                                    <input type="number" class="input form-control  width400" name="tax" value="<?= $items[0]['tax'] ?>" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td_left">
                                     Script Header:
                                 </td>
                                 <td class="td_right">

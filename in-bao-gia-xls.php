@@ -230,10 +230,17 @@ $spreadsheet = $reader->load(__DIR__ . '/mau-bao-gia.xls');
 $sheet = $spreadsheet->getActiveSheet();
 $sheet->setCellValue('F8', 'Ngày ' . date('d') . ' tháng ' . date('m') . ' năm ' . date('Y'));
 
+$information = $d->simple_fetch("select * from #_thongtin limit 0,1");
+
 $stt = 0;
 $deliveryFee = 0;
 $sumQuantity = 0;
 $tongtien = 0;
+$total = 0;
+
+$tax = $information['tax'] ? $information['tax'] : 8;
+$tax = $tax / 100;
+
 foreach ($_SESSION['cart'] as $key => $value) {
     //$product = $d->simple_fetch("select `id`, `category_id`, `alias_vi`, `alias_en`, `alias_ch`, `code`, `code_2`, `code_3`, `name_vi`, `name_en`, `name_ch`, `description_vi`, `description_en`, `description_ch`, `image_path`, `price`, `promotion_price`, `ngay_dang`, `is_hot`, `sp_moi`, `sp_hot`, `title_vi`, `title_en`, `title_ch`, `keyword`, `des`, `view`, `thanh_pho`, `quan`, `hien_thi`, `gear_type`, `group_pos`, `group_quantity`, `group_quantity`, `extra4`, `extra5`, `extra6`, `extra7`, `extra8`, `extra9`, `extra10`, `con_hang`, `so_thu_tu`, `style`, `specification`, `model`, `brand`, `loai`, `weight`, `nang_cao`, `khung_nang`, `mfg_year`, `gio_su_dung`, `xuat_xu`, `part_number`, `tinh_trang_hang`, `banh_sau`, `chieu_dai_cang`, `nang_thap_nhat`, `mat_ban`, `chieu_rong`, `bao_hanh`, `is_completed`, `cong_suat`, `ti_so_truyen`, `nguon_dien`, `kieu_dang` from #_sanpham where id={$key}");
 	$product = $d->simple_fetch("select * from #_sanpham where id={$key}");
@@ -256,6 +263,7 @@ foreach ($_SESSION['cart'] as $key => $value) {
     
     $sumQuantity += $value['so_luong'];
     $tongtien += $price * $value['so_luong'];
+    $total += $price * $value['so_luong'];
     $stt++;
     $row = $baseRow + $stt - 1;
 
@@ -274,9 +282,9 @@ foreach ($_SESSION['cart'] as $key => $value) {
 }
 
 $sheet->setCellValue('O' . ++$row, $tongtien);
-$sheet->setCellValue('O' . ++$row, $tongtien * 0.1);
-$sheet->setCellValue('O' . ++$row, $tongtien * 1.1);
-$sheet->setCellValue('C' . ++$row, convert_number_to_words($tongtien * 1.1) . ' nghìn đồng');
+$sheet->setCellValue('O' . ++$row, $total * $tax);
+$sheet->setCellValue('O' . ++$row, $tongtien + ($total * $tax));
+$sheet->setCellValue('C' . ++$row, convert_number_to_words($tongtien + ($total * $tax)) . ' nghìn đồng');
 
 /**
  * RETURN FILE TO CLIENT

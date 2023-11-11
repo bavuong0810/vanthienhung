@@ -133,6 +133,10 @@ include _source."lang.php";
 include _source."language_".$_SESSION['lang'].".php";
 $d = new func_index($config['database']);
 date_default_timezone_set('Asia/Ho_Chi_Minh');
+
+$information = $d->simple_fetch("select * from #_thongtin limit 0,1");
+$tax = $information['tax'] ? $information['tax'] : 8;
+$tax = $tax / 100;
 ?>
 
 <style type="text/css">
@@ -249,6 +253,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                             $stt = 0;
                             $deliveryFee = 0;
                             $tongtien = 0;
+                            $total = 0;
                             $cartProducts = [];
                             $sumQuantity = 0;
 
@@ -273,6 +278,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                                 
                                 $sumQuantity += $value['so_luong'];
                                 $tongtien += $price * $value['so_luong'];
+                                $total += $price * $value['so_luong'];
                                 $stt++;
                             ?>
                             <tr>
@@ -307,21 +313,21 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                         <td colspan="1" style="text-align: right;"><?php echo $d->vnd($tongtien); ?></td>
                     </tr>
                     <tr>
-                        <td colspan="6">Thuế VAT 10%</td>
-                        <td colspan="1" style="text-align: right;"><?php echo $d->vnd($tongtien * 0.1); ?></td>
+                        <td colspan="6">Thuế VAT <?php echo $information['tax']; ?>%</td>
+                        <td colspan="1" style="text-align: right;"><?php echo $d->vnd($total * $tax); ?></td>
                     </tr>
                     <tr>
                         <td colspan="6">
                             <b>Tổng tiền:</b>
                         </td>
                         <td colspan="1" style="text-align: right; font-size: 17px;">
-                            <b><?php echo $d->vnd($tongtien * 1.1); ?></b>
+                            <b><?php echo $d->vnd($tongtien + ($total * $tax)); ?></b>
                         </td>
 
                     </tr>
             </table>
             <p style="margin: 15px 0;">
-                <b><font face="Times New Roman" size="3" color="#0000FF">Bằng chữ: <?php echo convert_number_to_words($tongtien * 1.1); ?> nghìn đồng</font></b>
+                <b><font face="Times New Roman" size="3" color="#0000FF">Bằng chữ: <?php echo convert_number_to_words($tongtien + ($total * $tax)); ?> nghìn đồng</font></b>
             </p>
 
 

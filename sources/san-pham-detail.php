@@ -233,6 +233,7 @@ if (isset($_POST['guidonhang'])) {
                                 </tr>';
             }
 
+            $tax = ($information['tax'] > 0) ? $information['tax'] : 8;
             $noidung = '
                     <h3><b>Mã đơn hàng: ' . $ma_donhang . '</b></h3><br>
                     <table style="width:100%;min-width:800px;margin:auto;background-color:#ccc;font-size:14px;font-family:Tahoma,Geneva,sans-serif;line-height:20px" border="0" cellpadding="8" cellspacing="1">
@@ -249,6 +250,10 @@ if (isset($_POST['guidonhang'])) {
                             </tr>
                             <tr>
                                 <td colspan="5">Thời gian giao hàng: ' . $timeRadios . '</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" style="background-color:white;color:#000;text-align:right"><b>Thuế (VAT):</b></td>
+                                <td style="background-color:white;color:#000;text-align:right;color:red"><b>' . number_format($tongtien * $tax / 100) . ' VNĐ</b></td>
                             </tr>
                             <tr>
                                 <td colspan="4" style="background-color:white;color:#000;text-align:right"><b>Tổng tiền:</b></td>

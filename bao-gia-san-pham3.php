@@ -328,7 +328,8 @@ $SETTINGS = $d->getAllSettings();
                 </td>
                 <td style="width: 30%;">
                     <p style="margin:0 0 10px;">Người gửi: <?php echo $SETTINGS['ceo_name']['value']; ?></p>
-                    <p style="margin:0">Tell/Zalo: <?php echo $information['hotline']; ?></p>
+                    <p style="margin:0">Tell: <?php echo $information['hotline']; ?></p>
+                    <p style="margin:0">Zalo: <?php echo $information['zalo']; ?></p>
                 </td>
             </tr>
         </table>
@@ -351,22 +352,22 @@ $SETTINGS = $d->getAllSettings();
                         <td colspan="1" style="text-align: right; font-size: 15px;"><?php echo $d->vnd($tongtien); ?></td>
                     </tr>
                     <tr>
-                        <td colspan="4">Thuế VAT 10%</td>
-                        <td colspan="1" style="text-align: right; font-size: 15px;"><?php echo $d->vnd($tongtien * 0.1); ?></td>
+                        <td colspan="4">Thuế VAT <?php echo $information['zalo']; ?>%</td>
+                        <td colspan="1" style="text-align: right; font-size: 15px;"><?php echo $d->vnd($tongtien * $information['tax'] / 100); ?></td>
                     </tr>
                     <tr>
                         <td colspan="4">
                             <b>Tổng tiền:</b>
                         </td>
                         <td colspan="1" style="text-align: right; font-size: 17px;">
-                            <b><?php echo $d->vnd($tongtien * 1.1); ?></b>
+                            <b><?php echo $d->vnd($tongtien + ($tongtien * $information['tax'] / 100)); ?></b>
                         </td>
 
                     </tr>
                 </table>
                 <p style="margin: 15px 0;">
                     <b>
-                        <font face="Times New Roman" size="3" color="#0000FF">Bằng chữ: <?php echo convert_number_to_words($tongtien * 1.1); ?> nghìn đồng</font>
+                        <font face="Times New Roman" size="3" color="#0000FF">Bằng chữ: <?php echo convert_number_to_words($tongtien + ($tongtien * $information['tax'] / 100)); ?> nghìn đồng</font>
                     </b>
                 </p>
 

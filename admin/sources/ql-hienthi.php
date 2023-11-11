@@ -23,6 +23,13 @@ switch($a){
             $d->query("INSERT INTO `#_options`(`option_name`, `option_value_1`) VALUES('view_product_category_list_layout_2', '0')");
         }
 
+        // check table option have option_name 'shipping_text'
+        $query_view_shipping = "SELECT * FROM `#_options` WHERE `option_name` = 'view_shipping'";
+        $result = $d->simple_fetch($query_view_shipping);
+        if (count($result) == 0) {
+            $d->query("INSERT INTO `#_options`(`option_name`, `option_value_1`) VALUES('view_shipping', 'Phí vận chuyển')");
+        }
+
         // popup zalo
         // check table option have option_name 'popup_zalo_title'
         $query_popup_zalo_title = "SELECT * FROM `#_options` WHERE `option_name` = 'popup_zalo_title'";
@@ -174,6 +181,7 @@ function luudulieu(){
 
 	$data['view_shipping_content'] = addslashes($_POST['view_shipping_content']);
 	$data['view_return_content'] = addslashes($_POST['view_return_content']);
+    $data['view_shipping'] = addslashes($_POST['view_shipping']);
 
     //popup zalo
     $data['popup_zalo_title'] = $_POST['popup_zalo_title'];

@@ -117,6 +117,7 @@ $count_cats = $d->simple_fetch("select count(id) as cntid from #_category where 
 
 $view_shipping_content =  $d->getOption('view_shipping_content');
 $view_return_content =  $d->getOption('view_return_content');
+$view_shipping =  $d->getOption('view_shipping');
 
 // Popup Zalo
 $popup_zalo_title = $d->getOption('popup_zalo_title');
@@ -420,6 +421,19 @@ $popup_zalo_avatar = $d->getOption('popup_zalo_avatar');
                                 </td>
                                 <td class="td_right">
                                     <p style="margin:0"><label for="view_shipping_content"><input <?php echo ($view_shipping_content == '1')?'checked="checked"':''?> id="view_shipping_content" type="checkbox" name="view_shipping_content" value="1"> Hiển thị</label></p>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="td_left" style="vertical-align: top !important;">
+                                    Hiển thị nội dung phí vận chuyển ở giỏ hàng:
+                                </td>
+                                <td class="td_right">
+                                    <p style="margin:0">
+                                        <label for="view_shipping">
+                                            <input id="view_shipping" type="text" name="view_shipping" value="<?php echo $view_shipping; ?>">
+                                        </label>
+                                    </p>
                                 </td>
                             </tr>
 
