@@ -3555,6 +3555,10 @@ span.fd-discount {
     -webkit-transform: rotate(45deg);
 }
 
+.iframe-contact iframe {
+    width: 100%;
+    display: block;
+}
 @media (min-width: 768px) {
     .no-zalobox .ct-box-inner {
         padding-left: 15px;

@@ -119,6 +119,7 @@ $view_shipping_content =  $d->getOption('view_shipping_content');
 $view_return_content =  $d->getOption('view_return_content');
 $view_shipping =  $d->getOption('view_shipping');
 $shipping_note =  $d->getOption('shipping_note');
+$view_map_iframe_in_contact =  $d->getOption('view_map_iframe_in_contact');
 
 // Popup Zalo
 $popup_zalo_title = $d->getOption('popup_zalo_title');
@@ -728,6 +729,14 @@ $popup_zalo_avatar = $d->getOption('popup_zalo_avatar');
                     <div class="title_thongtinchung">
                         Hiển thị cài đặt website
                     </div>
+                    <tr>
+                        <td class="td_left" style="vertical-align: top !important;">
+                            Hiển thị bản đồ bên trong "Liên hệ":
+                        </td>
+                        <td class="td_right">
+                            <p style="margin:0"><label for="view_map_iframe_in_contact"><input <?php echo ($view_map_iframe_in_contact == '1')?'checked="checked"':''?> id="view_map_iframe_in_contact" type="checkbox" name="view_map_iframe_in_contact" value="1"> Hiển thị</label></p>
+                        </td>
+                    </tr>
                     <tr>
                         <td class="td_left" style="vertical-align: top !important;">
                             Độ rộng website toàn màn hình:

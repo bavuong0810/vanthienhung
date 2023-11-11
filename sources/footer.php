@@ -373,7 +373,6 @@ if (file_exists($cachePath) && 1 == 2) {
                     </div>
 
                     <div class="modal-body">
-
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -435,6 +434,14 @@ if (file_exists($cachePath) && 1 == 2) {
                         <button name="sub_email" type="submit" class="btn btn-success"><i class="fa fa-paper-plane"></i>
                             Gửi Email
                         </button>
+                        <?php
+                        $view_map_iframe_in_contact = $d->getOption('view_map_iframe_in_contact');
+                        if ($view_map_iframe_in_contact):
+                        ?>
+                        <div class="mt-3 mb-3 iframe-contact">
+                            <?php echo $information['map']; ?>
+                        </div>
+                        <?php endif; ?>
                     </div>
 
                 </div>

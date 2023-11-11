@@ -37,6 +37,14 @@ switch($a){
             $d->query("INSERT INTO `#_options`(`option_name`, `option_value_1`) VALUES('shipping_note', '')");
         }
 
+        // check table option have option_name 'view_map_iframe_in_contact'
+        $query_view_map_iframe_in_contact = "SELECT * FROM `#_options` WHERE `option_name` = 'view_map_iframe_in_contact'";
+        $result = $d->simple_fetch($query_view_map_iframe_in_contact);
+        if (count($result) == 0) {
+            $d->query("INSERT INTO `#_options`(`option_name`, `option_value_1`) VALUES('view_map_iframe_in_contact', '')");
+        }
+
+
         // popup zalo
         // check table option have option_name 'popup_zalo_title'
         $query_popup_zalo_title = "SELECT * FROM `#_options` WHERE `option_name` = 'popup_zalo_title'";
