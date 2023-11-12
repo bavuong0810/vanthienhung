@@ -551,7 +551,6 @@ class func_index
             $options = $this->o_fet("SELECT option_value_1, option_name FROM #_options");
             // Cache the result
             file_put_contents($cacheFile, serialize($options));
-            print_r($options); die();
         }
 
         $result = $this->simple_fetch("SELECT option_value_1 FROM #_options WHERE option_name='$key'");
