@@ -544,6 +544,15 @@ class func_index
 
     function getOption($key)
     {
+        $cacheFile = 'tmp/html/' . md5('page_options') . '.cache'; // Cache file path
+        if (file_exists($cacheFile) && (time() - filemtime($cacheFile)) < 3600) {
+            $options = unserialize(file_get_contents($cacheFile));
+        } else {
+            $options = $this->o_fet("SELECT option_value_1, option_name FROM #_options");
+            // Cache the result
+            file_put_contents($cacheFile, serialize($options));
+            print_r($options); die();
+        }
 
         $result = $this->simple_fetch("SELECT option_value_1 FROM #_options WHERE option_name='$key'");
 

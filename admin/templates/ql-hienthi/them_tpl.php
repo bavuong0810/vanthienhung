@@ -432,9 +432,7 @@ $popup_zalo_avatar = $d->getOption('popup_zalo_avatar');
                                 </td>
                                 <td class="td_right">
                                     <p style="margin:0">
-                                        <label for="view_shipping">
-                                            <input id="view_shipping" class="form-control" type="text" name="view_shipping" value="<?php echo $view_shipping; ?>">
-                                        </label>
+                                        <input id="view_shipping" class="form-control" type="text" name="view_shipping" value="<?php echo $view_shipping; ?>">
                                     </p>
                                 </td>
                             </tr>
@@ -444,9 +442,7 @@ $popup_zalo_avatar = $d->getOption('popup_zalo_avatar');
                                 </td>
                                 <td class="td_right">
                                     <p style="margin:0">
-                                        <label for="shipping_note">
-                                            <input id="shipping_note" class="form-control" type="text" name="shipping_note" value="<?php echo $shipping_note; ?>">
-                                        </label>
+                                        <input id="shipping_note" class="form-control" type="text" name="shipping_note" value="<?php echo $shipping_note; ?>">
                                     </p>
                                 </td>
                             </tr>
