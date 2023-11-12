@@ -546,17 +546,19 @@ class func_index
     {
         $cacheFile = 'tmp/html/' . md5('page_options') . '.cache'; // Cache file path
         if (file_exists($cacheFile) && (time() - filemtime($cacheFile)) < 3600) {
-            $options = unserialize(file_get_contents($cacheFile));
+            $optionArray = unserialize(file_get_contents($cacheFile));
         } else {
             $options = $this->o_fet("SELECT option_value_1, option_name FROM #_options");
+            $optionArray = [];
+            foreach ($options as $option) {
+                $optionArray[$option['option_name']] = $option['option_value_1'];
+            }
             // Cache the result
-            file_put_contents($cacheFile, serialize($options));
+            file_put_contents($cacheFile, serialize($optionArray));
         }
 
-        $result = $this->simple_fetch("SELECT option_value_1 FROM #_options WHERE option_name='$key'");
-
-        if ($result) {
-            return $result['option_value_1'];
+        if (isset($optionArray[$key])) {
+            return $optionArray[$key];
         }
 
         return false;
