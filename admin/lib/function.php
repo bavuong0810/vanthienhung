@@ -1936,19 +1936,18 @@ class func_index
 
     function getAllSettings()
     {
-        $cacheKey = 'all_settings';
-        $result = $this->getCache($cacheKey);
-        if (!empty($result)) {
-            return $result;
+        $cacheFile = 'tmp/html/' . md5('all_settings') . '.cache'; // Cache file path
+        if (file_exists($cacheFile) && (time() - filemtime($cacheFile)) < 3600) {
+            $settings = unserialize(file_get_contents($cacheFile));
+        } else {
+            $result = $this->o_fet("SELECT * FROM #_settings WHERE name IS NOT NULL ORDER BY name DESC");
+            $settings = [];
+            foreach ($result as $setting) {
+                $settings[$setting['name']] = $setting;
+            }
+            // Cache the result
+            file_put_contents($cacheFile, serialize($settings));
         }
-
-        $result = $this->o_fet("SELECT * FROM #_settings WHERE name IS NOT NULL ORDER BY name DESC");
-        $settings = [];
-        foreach ($result as $setting) {
-            $settings[$setting['name']] = $setting;
-        }
-
-//        $this->setCache($cacheKey, $settings, 60 * 60 * 24 * 7);
 
         return $settings;
     }
