@@ -81,7 +81,16 @@ if (defined('__PRODUCT_CACHE_PATH')) {
     ob_start();
 }
 
-$information = $d->simple_fetch("select * from #_thongtin limit 0,1");
+
+$cacheFile = 'tmp/html/' . md5('information') . '.cache'; // Cache file path
+if (file_exists($cacheFile) && (time() - filemtime($cacheFile)) < 3600) {
+    $information = unserialize(file_get_contents($cacheFile));
+} else {
+    $information = $d->simple_fetch("select * from #_thongtin limit 0,1");
+    // Cache the result
+    file_put_contents($cacheFile, serialize($information));
+}
+
 $SETTINGS = $d->getAllSettings();
 $url_page = $d->fullAddress();
 unset($_SESSION['nav']);

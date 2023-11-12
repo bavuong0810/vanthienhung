@@ -38,7 +38,16 @@ if (isset($_COOKIE['admin_image']) && $_COOKIE['admin_image'] == 'true') {
 
 global $d;
 $d = new func_index($config['database']);
-$information = $d->simple_fetch("select * from #_thongtin limit 0,1");
+
+$cacheFile = 'tmp/html/' . md5('information') . '.cache'; // Cache file path
+if (file_exists($cacheFile) && (time() - filemtime($cacheFile)) < 3600) {
+    $information = unserialize(file_get_contents($cacheFile));
+} else {
+    $information = $d->simple_fetch("select * from #_thongtin limit 0,1");
+    // Cache the result
+    file_put_contents($cacheFile, serialize($information));
+}
+
 $SETTINGS = $d->getAllSettings();
 
 date_default_timezone_set('Asia/Ho_Chi_Minh');

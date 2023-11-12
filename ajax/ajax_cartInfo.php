@@ -10,7 +10,14 @@ define('_lib', '../admin/lib/');
 global $d;
 global $lang;
 $d = new func_index($config['database']);
-$infomation = $d->simple_fetch("select * from #_thongtin limit 0,1");
+$cacheFile = 'tmp/html/' . md5('information') . '.cache'; // Cache file path
+if (file_exists($cacheFile) && (time() - filemtime($cacheFile)) < 3600) {
+    $information = unserialize(file_get_contents($cacheFile));
+} else {
+    $information = $d->simple_fetch("select * from #_thongtin limit 0,1");
+    // Cache the result
+    file_put_contents($cacheFile, serialize($information));
+}
 $SETTINGS = $d->getAllSettings();
 
 if (isset($_SESSION['cart'])) {
@@ -160,12 +167,12 @@ $tableContent = ob_get_clean();
                 </tr>
                 <?php endif; ?>
                 <tr>
-                    <td colspan="4" style="text-align: right"><b>Thuế (VAT) <?php echo $infomation['tax']; ?>%</b></td>
+                    <td colspan="4" style="text-align: right"><b>Thuế (VAT) <?php echo $information['tax']; ?>%</b></td>
                     <td colspan="2" style="border-left: 0;">
                         <div class="tong_tt">
                             <h3 class="text-center">
                                 <?php
-                                $tax = ($infomation['tax'] > 0) ? $infomation['tax'] : 8;
+                                $tax = ($information['tax'] > 0) ? $information['tax'] : 8;
                                 ?>
                                 <font class="color-main"><?= $d->vnd($total * $tax / 100) ?></font>
                             </h3>

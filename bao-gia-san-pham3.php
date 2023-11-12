@@ -127,7 +127,14 @@ include _source . "lang.php";
 include _source . "language_" . $_SESSION['lang'] . ".php";
 $d = new func_index($config['database']);
 date_default_timezone_set('Asia/Ho_Chi_Minh');
-$information = $d->simple_fetch("select * from #_thongtin limit 0,1");
+$cacheFile = 'tmp/html/' . md5('information') . '.cache'; // Cache file path
+if (file_exists($cacheFile) && (time() - filemtime($cacheFile)) < 3600) {
+    $information = unserialize(file_get_contents($cacheFile));
+} else {
+    $information = $d->simple_fetch("select * from #_thongtin limit 0,1");
+    // Cache the result
+    file_put_contents($cacheFile, serialize($information));
+}
 $SETTINGS = $d->getAllSettings();
 
 ?>

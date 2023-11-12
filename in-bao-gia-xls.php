@@ -230,7 +230,14 @@ $spreadsheet = $reader->load(__DIR__ . '/mau-bao-gia.xls');
 $sheet = $spreadsheet->getActiveSheet();
 $sheet->setCellValue('F8', 'Ngày ' . date('d') . ' tháng ' . date('m') . ' năm ' . date('Y'));
 
-$information = $d->simple_fetch("select * from #_thongtin limit 0,1");
+$cacheFile = 'tmp/html/' . md5('information') . '.cache'; // Cache file path
+if (file_exists($cacheFile) && (time() - filemtime($cacheFile)) < 3600) {
+    $information = unserialize(file_get_contents($cacheFile));
+} else {
+    $information = $d->simple_fetch("select * from #_thongtin limit 0,1");
+    // Cache the result
+    file_put_contents($cacheFile, serialize($information));
+}
 
 $stt = 0;
 $deliveryFee = 0;

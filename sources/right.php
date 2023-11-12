@@ -1,13 +1,20 @@
-<?php 
-    $infomation = $d->simple_fetch("select * from #_thongtin limit 0,1");
-    $nav_left   = $d->o_fet("select * from #_category where menu=1 and hien_thi=1 order by so_thu_tu asc, id desc");
-    $support    = $d->o_fet("select * from #_hotro where hien_thi=1 order by so_thu_tu asc, id desc");
-     
-    $news_left  = $d->o_fet("select * from #_tintuc where noi_bat=1 and hien_thi=1 and category_id=175  order by so_thu_tu asc, id desc limit 0,10");   
-    $tongdai = $d->getTemplates(31);
+<?php
+$cacheFile = 'tmp/html/' . md5('information') . '.cache'; // Cache file path
+if (file_exists($cacheFile) && (time() - filemtime($cacheFile)) < 3600) {
+    $information = unserialize(file_get_contents($cacheFile));
+} else {
+    $information = $d->simple_fetch("select * from #_thongtin limit 0,1");
+    // Cache the result
+    file_put_contents($cacheFile, serialize($information));
+}
+$nav_left   = $d->o_fet("select * from #_category where menu=1 and hien_thi=1 order by so_thu_tu asc, id desc");
+$support    = $d->o_fet("select * from #_hotro where hien_thi=1 order by so_thu_tu asc, id desc");
 
-    $sp_hot = $d->o_fet("select * from #_sanpham where sp_hot=1 and ".get_column_show()."=1 order by so_thu_tu asc, id desc");   
-    $allTin = $d->simple_fetch("select * from #_category where id=175 and hien_thi=1 ");
+$news_left  = $d->o_fet("select * from #_tintuc where noi_bat=1 and hien_thi=1 and category_id=175  order by so_thu_tu asc, id desc limit 0,10");
+$tongdai = $d->getTemplates(31);
+
+$sp_hot = $d->o_fet("select * from #_sanpham where sp_hot=1 and ".get_column_show()."=1 order by so_thu_tu asc, id desc");
+$allTin = $d->simple_fetch("select * from #_category where id=175 and hien_thi=1 ");
 ?>
 
 <div class="col-md-3 col-left plr10 col-right" >
@@ -55,7 +62,7 @@
         <h3 class="title-left title-font"><?=_tongdai?></h3>
         <div class="box">
              <div class="sodt">
-                 <h4><?=$infomation['hotline']?></h4>
+                 <h4><?=$information['hotline']?></h4>
              </div>  
              <div class="content-tongdai">
                  <?=$tongdai['content_'.$_SESSION['lang']]?>
