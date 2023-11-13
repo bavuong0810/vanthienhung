@@ -544,7 +544,7 @@ class func_index
 
     function getOption($key)
     {
-        $cacheFile = 'tmp/html/' . md5('page_options') . '.cache'; // Cache file path
+        $cacheFile = __ROOT_PATH . '/tmp/html/' . md5('page_options') . '.cache'; // Cache file path
         if (file_exists($cacheFile) && (time() - filemtime($cacheFile)) < 3600) {
             $optionArray = unserialize(file_get_contents($cacheFile));
         } else {
@@ -1936,7 +1936,7 @@ class func_index
 
     function getAllSettings()
     {
-        $cacheFile = 'tmp/html/' . md5('all_settings') . '.cache'; // Cache file path
+        $cacheFile = __ROOT_PATH . '/tmp/html/' . md5('all_settings') . '.cache'; // Cache file path
         if (file_exists($cacheFile) && (time() - filemtime($cacheFile)) < 3600) {
             $settings = unserialize(file_get_contents($cacheFile));
         } else {

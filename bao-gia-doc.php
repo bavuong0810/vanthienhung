@@ -122,7 +122,7 @@ include _source . "lang.php";
 include _source . "language_" . $_SESSION['lang'] . ".php";
 $d = new func_index($config['database']);
 date_default_timezone_set('Asia/Ho_Chi_Minh');
-$cacheFile = 'tmp/html/' . md5('information') . '.cache'; // Cache file path
+$cacheFile = __ROOT_PATH . '/tmp/html/' . md5('information') . '.cache'; // Cache file path
 if (file_exists($cacheFile) && (time() - filemtime($cacheFile)) < 3600) {
     $information = unserialize(file_get_contents($cacheFile));
 } else {

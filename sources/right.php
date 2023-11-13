@@ -1,5 +1,5 @@
 <?php
-$cacheFile = 'tmp/html/' . md5('information') . '.cache'; // Cache file path
+$cacheFile = __ROOT_PATH . '/tmp/html/' . md5('information') . '.cache'; // Cache file path
 if (file_exists($cacheFile) && (time() - filemtime($cacheFile)) < 3600) {
     $information = unserialize(file_get_contents($cacheFile));
 } else {

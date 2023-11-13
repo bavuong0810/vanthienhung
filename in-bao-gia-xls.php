@@ -230,7 +230,7 @@ $spreadsheet = $reader->load(__DIR__ . '/mau-bao-gia.xls');
 $sheet = $spreadsheet->getActiveSheet();
 $sheet->setCellValue('F8', 'Ngày ' . date('d') . ' tháng ' . date('m') . ' năm ' . date('Y'));
 
-$cacheFile = 'tmp/html/' . md5('information') . '.cache'; // Cache file path
+$cacheFile = __ROOT_PATH . '/tmp/html/' . md5('information') . '.cache'; // Cache file path
 if (file_exists($cacheFile) && (time() - filemtime($cacheFile)) < 3600) {
     $information = unserialize(file_get_contents($cacheFile));
 } else {
