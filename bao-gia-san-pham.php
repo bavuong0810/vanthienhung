@@ -259,143 +259,145 @@ $SETTINGS = $d->getAllSettings();
             </tr>
         </table>
     </page_footer>
-    <table style="width: 100%;margin-bottom:50px;">
-        <tr>
-            <td align="center" style="vertical-align: middle; width: 260px; white-space: nowrap; overflow: hidden">
-                <img src="img_data/images/<?php echo $SETTINGS['website_logo']['value']; ?>" width=161 height=80 hspace=1 vspace=2 style="margin-top: 30px; margin-right: -100px;" class="logo">
-                <img src="img_data/images/<?php echo $SETTINGS['company_stamp']['value']; ?>" width=137 height=120 hspace=2 vspace=4 class="con dau" style="margin-left: -150px; z-index: 2; opacity: 0.9; margin-top: -20px">
-            </td>
-            <td align="center" style="width: auto;text-align:center;">
-                <p style="pading-left: 35px;">
-                    <b>
-                        <font face="Times New Roman" color="#0000FF"><?php echo $information['company_vn']; ?></font>
-                    </b>
-                </p>
-                <p style="pading-left: 35px;">
-                    <i>
-                        <font face="Times New Roman" color="#0000FF"><?php echo $information['address']; ?></font>
-                    </i>
-                </p>
-                <p style="pading-left: 35px;">
-                    <font face="Times New Roman" color="#0000FF">Email: <?php echo $information['email']; ?>, Website: <?php echo $SETTINGS['website']['value']; ?> </font>
-                </p>
-                <p style="pading-left: 35px;">
-                    <font face="Times New Roman" color="#0000FF">Tell: <?php echo $information['hotline']; ?></font>
-                </p>
-                <p style="pading-left: 35px;">
-                    <font face="Times New Roman" color="#0000FF">Zalo: <?php echo $information['zalo']; ?></font>
-                </p>
-            </td>
-        </tr>
-    </table>
-    <h1 style="text-align: center;">
-        <span>BÁO GIÁ</span>
-    </h1>
-    <p style="text-align: center"><?php echo 'Ngày ' . date('d') . ' tháng ' . date('m') . ' năm ' . date('Y'); ?></p>
-    <div class="note" style="width:100%;">
-        <p>Kính gửi: Quý khách</p>
-        <p style="margin-bottom: 15px;"><?php echo $SETTINGS['welcome_message']['value']; ?></p>
-        <?php if (isset($_GET['pid'])) : ?>
-            <table style="width: 100%;" class="table table-hover table-bordered">
-                <tr>
-                        <th style="width: 10%; text-align: center;">STT</th>
-                        <th style="width: 38%;text-align: center;"><?= _namepro ?></th>
-                        <th style="width: 20%; text-align: center;"><?= _price ?></th>
-                        <th style="width: 10%; text-align: center;">SL</th>
-                        <th style="width: 20%; text-align: center;"><?= _money ?></th>
-                    </tr>
-                <?php
-                $stt = 0;
-                $deliveryFee = 0;
-                $tongtien = 0;
-                $cartProducts = [];
-
-                if (!empty($_GET['pid'])) {
-                    $id = intval($_GET['pid']);
-                    //$product = $d->simple_fetch("select `id`, `category_id`, `alias_vi`, `alias_en`, `alias_ch`, `code`, `code_2`, `code_3`, `name_vi`, `name_en`, `name_ch`, `description_vi`, `description_en`, `description_ch`, `image_path`, `price`, `promotion_price`, `ngay_dang`, `is_hot`, `sp_moi`, `sp_hot`, `title_vi`, `title_en`, `title_ch`, `keyword`, `des`, `view`, `thanh_pho`, `quan`, `hien_thi`, `gear_type`, `group_pos`, `group_quantity`, `group_quantity`, `extra4`, `extra5`, `extra6`, `extra7`, `extra8`, `extra9`, `extra10`, `con_hang`, `so_thu_tu`, `style`, `specification`, `model`, `brand`, `loai`, `weight`, `nang_cao`, `khung_nang`, `mfg_year`, `gio_su_dung`, `xuat_xu`, `part_number`, `tinh_trang_hang`, `banh_sau`, `chieu_dai_cang`, `nang_thap_nhat`, `mat_ban`, `chieu_rong`, `bao_hanh`, `is_completed`, `cong_suat`, `ti_so_truyen`, `nguon_dien`, `kieu_dang` from #_sanpham where id={$id}");
-                    $product = $d->simple_fetch("select * from #_sanpham where id={$id}");
-                    $cartProducts[] = $product;
-                    if (!empty($product)) {
-                        $price = $product['price'];
-                        if ($product['promotion_price'] > 0) {
-                            $price = $product['promotion_price'];
-                        }
-                        $tongtien += $price;
-                        $stt++;
-                ?>
-                        <tr>
-                            <td style="text-align: center;"><?= $stt ?></td>
-                            <!--<td style="width: 80px; word-break: break-all; word-wrap: break-word; white-space: pre-wrap; letter-spacing: all; text-align: center;"><?php echo preg_replace('/([\w]{9})/', '$1 ', $product['code']); ?></td>-->
-                            <td style="width: 240px;">
-                                <a href="<?= URLPATH . $product['alias_' . $_SESSION['lang']] ?>.html" style="text-decoration: none;">
-                                    <?php
-                                    echo trim(@$product['name_' . $_SESSION['lang']]);
-                                    ?>
-                                </a>
-                            </td>
-                            <td align="right" style="font-size: 15px;"><?= @$d->vnd($price) ?></td>
-                            <td align="center" style="font-size: 15px;">
-                                1
-                            </td>
-
-                            <td align="right" style="font-size: 15px;">
-                                <?php
-                                echo $d->vnd($price);
-                                ?>
-                            </td>
-                        </tr>
-                <?php }
-                } ?>
-                <tr>
-                    <td colspan="4">Cộng</td>
-                    <td colspan="1" style="text-align: right; font-size: 15px;"><?php echo $d->vnd($tongtien); ?></td>
-                </tr>
-                <tr>
-                    <td colspan="4">Thuế VAT <?php echo $information['tax']; ?>%</td>
-                    <td colspan="1" style="text-align: right; font-size: 15px;"><?php echo $d->vnd($tongtien * $information['tax'] / 100); ?></td>
-                </tr>
-                <tr>
-                    <td colspan="4">
-                        <b>Tổng tiền:</b>
-                    </td>
-                    <td colspan="1" style="text-align: right; font-size: 17px;">
-                        <b><?php echo $d->vnd($tongtien + ($tongtien * $information['tax'] / 100)); ?></b>
-                    </td>
-
-                </tr>
-            </table>
-            <p style="margin: 15px 0;">
-                <b>
-                    <font face="Times New Roman" size="3" color="#0000FF">Bằng chữ: <?php echo convert_number_to_words($tongtien + ($tongtien * $information['tax'] / 100)); ?> nghìn đồng</font>
-                </b>
-            </p>
-
-
-        <?php endif; ?>
-    </div>
-    <div class="note" style="width:100%;">
-        <table style="margin-top: 30px; width: 100%;">
+    <div style="background:url(img_data/images/<?php echo $SETTINGS['rorate_logo']['value']; ?>) no-repeat scroll center top;width: 96%;padding-left:20px;padding-right:20px;box-sizing: border-box;">
+        <table style="width: 100%;margin-bottom:50px;">
             <tr>
-                <td style="width: 60%;">
-                    <b><u>Ghi chú:</u></b>
-                    <i>
-                        <pre><?php echo $SETTINGS['price_quote_note']['value']; ?></pre>
-                    </i>
-                    <p>
-                        <b style="font-size: 10px">XÁC NHẬN CỦA QUÝ KHÁCH HÀNG</b>
-                    </p>
+                <td align="center" style="vertical-align: middle; width: 260px; white-space: nowrap; overflow: hidden">
+                    <img src="img_data/images/<?php echo $SETTINGS['website_logo']['value']; ?>" width=161 height=80 hspace=1 vspace=2 style="margin-top: 30px; margin-right: -100px;" class="logo">
+                    <img src="img_data/images/<?php echo $SETTINGS['company_stamp']['value']; ?>" width=137 height=120 hspace=2 vspace=4 class="con dau" style="margin-left: -150px; z-index: 2; opacity: 0.9; margin-top: -20px">
                 </td>
-                <td style="width: 40%" align="center">
-                    <p style="text-align: center; color: #0000FF;">
-                        Người báo giá
+                <td align="center" style="width: auto;text-align:center;">
+                    <p style="pading-left: 35px;">
+                        <b>
+                            <font face="Times New Roman" color="#0000FF"><?php echo $information['company_vn']; ?></font>
+                        </b>
                     </p>
-                    <img src="img_data/images/<?php echo $SETTINGS['ceo_sign']['value']; ?>" width="287" height="82" hspace="5" vspace="1">
-                    <p><?php echo $SETTINGS['ceo_name']['value']; ?></p>
+                    <p style="pading-left: 35px;">
+                        <i>
+                            <font face="Times New Roman" color="#0000FF"><?php echo $information['address']; ?></font>
+                        </i>
+                    </p>
+                    <p style="pading-left: 35px;">
+                        <font face="Times New Roman" color="#0000FF">Email: <?php echo $information['email']; ?>, Website: <?php echo $SETTINGS['website']['value']; ?> </font>
+                    </p>
+                    <p style="pading-left: 35px;">
+                        <font face="Times New Roman" color="#0000FF">Tell: <?php echo $information['hotline']; ?></font>
+                    </p>
+                    <p style="pading-left: 35px;">
+                        <font face="Times New Roman" color="#0000FF">Zalo: <?php echo $information['zalo']; ?></font>
+                    </p>
                 </td>
             </tr>
         </table>
-    </div>
-    <div class="note" style="width:100%;">
-        <hr style="border: 1px solid #333; border-bottom: none;">
+        <h1 style="text-align: center;">
+            <span>BÁO GIÁ</span>
+        </h1>
+        <p style="text-align: center"><?php echo 'Ngày ' . date('d') . ' tháng ' . date('m') . ' năm ' . date('Y'); ?></p>
+        <div class="note" style="width:100%;">
+            <p>Kính gửi: Quý khách</p>
+            <p style="margin-bottom: 15px;"><?php echo $SETTINGS['welcome_message']['value']; ?></p>
+            <?php if (isset($_GET['pid'])) : ?>
+                <table style="width: 100%;" class="table table-hover table-bordered">
+                    <tr>
+                            <th style="width: 10%; text-align: center;">STT</th>
+                            <th style="width: 38%;text-align: center;"><?= _namepro ?></th>
+                            <th style="width: 20%; text-align: center;"><?= _price ?></th>
+                            <th style="width: 10%; text-align: center;">SL</th>
+                            <th style="width: 20%; text-align: center;"><?= _money ?></th>
+                        </tr>
+                    <?php
+                    $stt = 0;
+                    $deliveryFee = 0;
+                    $tongtien = 0;
+                    $cartProducts = [];
+
+                    if (!empty($_GET['pid'])) {
+                        $id = intval($_GET['pid']);
+                        //$product = $d->simple_fetch("select `id`, `category_id`, `alias_vi`, `alias_en`, `alias_ch`, `code`, `code_2`, `code_3`, `name_vi`, `name_en`, `name_ch`, `description_vi`, `description_en`, `description_ch`, `image_path`, `price`, `promotion_price`, `ngay_dang`, `is_hot`, `sp_moi`, `sp_hot`, `title_vi`, `title_en`, `title_ch`, `keyword`, `des`, `view`, `thanh_pho`, `quan`, `hien_thi`, `gear_type`, `group_pos`, `group_quantity`, `group_quantity`, `extra4`, `extra5`, `extra6`, `extra7`, `extra8`, `extra9`, `extra10`, `con_hang`, `so_thu_tu`, `style`, `specification`, `model`, `brand`, `loai`, `weight`, `nang_cao`, `khung_nang`, `mfg_year`, `gio_su_dung`, `xuat_xu`, `part_number`, `tinh_trang_hang`, `banh_sau`, `chieu_dai_cang`, `nang_thap_nhat`, `mat_ban`, `chieu_rong`, `bao_hanh`, `is_completed`, `cong_suat`, `ti_so_truyen`, `nguon_dien`, `kieu_dang` from #_sanpham where id={$id}");
+                        $product = $d->simple_fetch("select * from #_sanpham where id={$id}");
+                        $cartProducts[] = $product;
+                        if (!empty($product)) {
+                            $price = $product['price'];
+                            if ($product['promotion_price'] > 0) {
+                                $price = $product['promotion_price'];
+                            }
+                            $tongtien += $price;
+                            $stt++;
+                    ?>
+                            <tr>
+                                <td style="text-align: center;"><?= $stt ?></td>
+                                <!--<td style="width: 80px; word-break: break-all; word-wrap: break-word; white-space: pre-wrap; letter-spacing: all; text-align: center;"><?php echo preg_replace('/([\w]{9})/', '$1 ', $product['code']); ?></td>-->
+                                <td style="width: 240px;">
+                                    <a href="<?= URLPATH . $product['alias_' . $_SESSION['lang']] ?>.html" style="text-decoration: none;">
+                                        <?php
+                                        echo trim(@$product['name_' . $_SESSION['lang']]);
+                                        ?>
+                                    </a>
+                                </td>
+                                <td align="right" style="font-size: 15px;"><?= @$d->vnd($price) ?></td>
+                                <td align="center" style="font-size: 15px;">
+                                    1
+                                </td>
+
+                                <td align="right" style="font-size: 15px;">
+                                    <?php
+                                    echo $d->vnd($price);
+                                    ?>
+                                </td>
+                            </tr>
+                    <?php }
+                    } ?>
+                    <tr>
+                        <td colspan="4">Cộng</td>
+                        <td colspan="1" style="text-align: right; font-size: 15px;"><?php echo $d->vnd($tongtien); ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">Thuế VAT <?php echo $information['tax']; ?>%</td>
+                        <td colspan="1" style="text-align: right; font-size: 15px;"><?php echo $d->vnd($tongtien * $information['tax'] / 100); ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <b>Tổng tiền:</b>
+                        </td>
+                        <td colspan="1" style="text-align: right; font-size: 17px;">
+                            <b><?php echo $d->vnd($tongtien + ($tongtien * $information['tax'] / 100)); ?></b>
+                        </td>
+
+                    </tr>
+                </table>
+                <p style="margin: 15px 0;">
+                    <b>
+                        <font face="Times New Roman" size="3" color="#0000FF">Bằng chữ: <?php echo convert_number_to_words($tongtien + ($tongtien * $information['tax'] / 100)); ?> nghìn đồng</font>
+                    </b>
+                </p>
+
+
+            <?php endif; ?>
+        </div>
+        <div class="note" style="width:100%;">
+            <table style="margin-top: 30px; width: 100%;">
+                <tr>
+                    <td style="width: 60%;">
+                        <b><u>Ghi chú:</u></b>
+                        <i>
+                            <pre><?php echo $SETTINGS['price_quote_note']['value']; ?></pre>
+                        </i>
+                        <p>
+                            <b style="font-size: 10px">XÁC NHẬN CỦA QUÝ KHÁCH HÀNG</b>
+                        </p>
+                    </td>
+                    <td style="width: 40%" align="center">
+                        <p style="text-align: center; color: #0000FF;">
+                            Người báo giá
+                        </p>
+                        <img src="img_data/images/<?php echo $SETTINGS['ceo_sign']['value']; ?>" width="287" height="82" hspace="5" vspace="1">
+                        <p><?php echo $SETTINGS['ceo_name']['value']; ?></p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="note" style="width:100%;">
+            <hr style="border: 1px solid #333; border-bottom: none;">
+        </div>
     </div>
 </page>
