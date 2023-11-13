@@ -387,23 +387,23 @@ $SETTINGS = $d->getAllSettings();
                         $tongtien += $_SESSION['delivery_area']['price'];
                     ?>
                     <tr>
-                        <td colspan="5">Phí vận chuyển</td>
+                        <td colspan="4">Phí vận chuyển</td>
                         <td colspan="1" style="text-align: right; font-size: 15px;"><?php echo $d->vnd($_SESSION['delivery_area']['price']); ?></td>
                     </tr>
                     <?php }?>
 
                     <tr>
-                        <td colspan="5">Cộng</td>
+                        <td colspan="4">Cộng</td>
                         <td colspan="1" style="text-align: right; font-size: 15px;"><?php echo $d->vnd($tongtien); ?></td>
                     </tr>
 
                     <tr>
-                        <td colspan="5">Thuế VAT <?php echo $information['tax']; ?>%</td>
+                        <td colspan="4">Thuế VAT <?php echo $information['tax']; ?>%</td>
                         <td colspan="1" style="text-align: right; font-size: 15px;"><?php echo $d->vnd($total * $tax); ?></td>
                     </tr>
 
                     <tr>
-                        <td colspan="5">
+                        <td colspan="4">
                             <b>Tổng tiền:</b>
                         </td>
                         <td colspan="1" style="text-align: right; font-size: 17px;">
