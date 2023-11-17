@@ -253,7 +253,7 @@ $email_footer_menu_link_3 = $items[0]['email_footer_menu_link_3'];
                     </tr>
                     <tr>
                         <td class="td_left" style="vertical-align: top !important;">
-                            Thông tin công ty
+                            Thông tin công ty (trả lời)
                         </td>
                         <td class="td_right">
                             <label>Tiêu đề</label>
@@ -268,7 +268,7 @@ $email_footer_menu_link_3 = $items[0]['email_footer_menu_link_3'];
                     </tr>
                     <tr>
                         <td class="td_left" style="vertical-align: top !important;">
-                            Thông tin cá nhân
+                            Thông tin cá nhân (trả lời)
                         </td>
                         <td class="td_right">
                             <label>Tiêu đề</label>
