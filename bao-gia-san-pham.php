@@ -139,6 +139,23 @@ $SETTINGS = $d->getAllSettings();
 ?>
 
 <style type="text/css">
+    @page {
+        size: A4;
+        margin: 0;
+    }
+
+    @media print {
+        .page {
+            margin: 0;
+            border: initial;
+            border-radius: initial;
+            width: initial;
+            min-height: initial;
+            box-shadow: initial;
+            background: initial;
+            page-break-after: always;
+        }
+    }
     * {
         box-sizing: border-box;
     }
@@ -284,7 +301,7 @@ $SETTINGS = $d->getAllSettings();
                         <font face="Times New Roman" color="#0000FF">Tell: <?php echo $information['hotline']; ?></font>
                     </p>
                     <p style="pading-left: 35px;">
-                        <font face="Times New Roman" color="#0000FF">Zalo: <?php echo $information['zalo']; ?></font>
+                        <font face="Times New Roman" color="#0000FF">Zalo: <?php echo $SETTINGS['zalo']['value']; ?></font>
                     </p>
                 </td>
             </tr>

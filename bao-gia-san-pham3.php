@@ -142,6 +142,24 @@ $SETTINGS = $d->getAllSettings();
 <link href="<?=URLPATH . "img_data/icon/" . $information['favicon'];?>" rel="shortcut icon" type="image/x-icon" />
    
 <style type="text/css">
+    @page {
+        size: A4;
+        margin: 0;
+    }
+
+    @media print {
+        .page {
+            margin: 0;
+            border: initial;
+            border-radius: initial;
+            width: initial;
+            min-height: initial;
+            box-shadow: initial;
+            background: initial;
+            page-break-after: always;
+        }
+    }
+
     * {
         box-sizing: border-box;
             -webkit-box-sizing: border-box;
@@ -313,7 +331,7 @@ $SETTINGS = $d->getAllSettings();
                         <font face="Times New Roman" color="#0000FF">Email: <?php echo $information['email']; ?>, Website: <?php echo $SETTINGS['website']['value']; ?> </font>
                     </p>
                     <p>
-                        <font face="Times New Roman" color="#0000FF">Tell: <?php echo $SETTINGS['tell_contact']['value']; ?></font>
+                        <font face="Times New Roman" color="#0000FF">Tell: <?php echo $information['hotline']; ?></font>
                     </p>
                 </td>
             </tr>
@@ -359,7 +377,7 @@ $SETTINGS = $d->getAllSettings();
                         <td colspan="1" style="text-align: right; font-size: 15px;"><?php echo $d->vnd($tongtien); ?></td>
                     </tr>
                     <tr>
-                        <td colspan="4">Thuế VAT <?php echo $information['zalo']; ?>%</td>
+                        <td colspan="4">Thuế VAT <?php echo $information['tax']; ?>%</td>
                         <td colspan="1" style="text-align: right; font-size: 15px;"><?php echo $d->vnd($tongtien * $information['tax'] / 100); ?></td>
                     </tr>
                     <tr>
