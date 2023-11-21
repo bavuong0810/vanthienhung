@@ -275,20 +275,20 @@ $tax = $tax / 100;
             <p style="margin-bottom: 15px;"><?php echo $SETTINGS['welcome_message']['value']; ?></p>
             <?php if (isset($_SESSION['cart'])): ?>
                 <table style="width: 100%;" class="table table-hover table-bordered">
-                        <tr>
-                            <th style="width: 10px; text-align: center;">STT</th>
-                            <th style="width: 240px; text-align: center;"><?=_namepro?></th>
-                            <th style="width: 80px; text-align: center;"><?=_price?></th>
-                            <th style="width: 45px; text-align: center;">SL</th>
-                            <th style="width: 95px; text-align: center;"><?=_money?></th>
-                        </tr>
-                        <?php
-    $stt = 0;
-    $deliveryFee = 0;
-    $tongtien = 0;
-    $cartProducts = [];
-    $sumQuantity = 0;
-    $total = 0;
+                    <tr>
+                        <th style="width: 10px; text-align: center;">STT</th>
+                        <th style="text-align: center;"><?=_namepro?></th>
+                        <th style="width: 80px; text-align: center;"><?=_price?></th>
+                        <th style="width: 45px; text-align: center;">SL</th>
+                        <th style="width: 95px; text-align: center;"><?=_money?></th>
+                    </tr>
+                <?php
+                $stt = 0;
+                $deliveryFee = 0;
+                $tongtien = 0;
+                $cartProducts = [];
+                $sumQuantity = 0;
+                $total = 0;
 
     if (count($_SESSION['cart']) > 0) {
         foreach ($_SESSION['cart'] as $key => $value) {
@@ -314,58 +314,55 @@ $tax = $tax / 100;
                 $total += $price * $value['so_luong'];
                 $stt++;
                 ?>
-                                <tr>
-                                    <td style="text-align: center;"><?=$stt?></td>
-                                    <td style="width: 240px;">
-                                        <a href="<?=URLPATH . $product['alias_' . $_SESSION['lang']]?>.html" style="text-decoration: none;">
-                                            <?php
-    echo trim(@$product['name_' . $_SESSION['lang']]);
+                <tr>
+                    <td style="text-align: center;"><?=$stt?></td>
+                    <td style="width: 240px;">
+                        <a href="<?=URLPATH . $product['alias_' . $_SESSION['lang']]?>.html" style="text-decoration: none;">
+                            <?php echo trim(@$product['name_' . $_SESSION['lang']]); ?>
+                        </a>
+                    </td>
+                    <td align="right" style="font-size: 15px;"><?=@$d->vnd($price)?></td>
+                    <td align="center" style="font-size: 15px;">
+                        <?=$value['so_luong']?>
+                    </td>
+                    <td align="right" style="font-size: 15px;">
+                        <?php echo $d->vnd($price * $value['so_luong']); ?>
+                    </td>
+                </tr>
+            <?php
+            }
+        }
+    }
+    ?>
+                <?php if (!empty($_SESSION['delivery_area'])) {
+                $tongtien += $_SESSION['delivery_area']['price'];
                 ?>
-                                        </a>
-                                    </td>
-                                    <td align="right" style="font-size: 15px;"><?=@$d->vnd($price)?></td>
-                                    <td align="center" style="font-size: 15px;">
-                                        <?=$value['so_luong']?>
-                                    </td>
-
-                                    <td align="right" style="font-size: 15px;">
-                                        <?php
-    echo $d->vnd($price * $value['so_luong']);
-                ?>
-                                    </td>
-                                </tr>
-                        <?php }}}?>
-                        <?php if (!empty($_SESSION['delivery_area'])) {
-        $tongtien += $_SESSION['delivery_area']['price'];
-        ?>
-                        <tr>
-                            <td colspan="4">Phí vận chuyển</td>
-                            <td colspan="1" style="text-align: right; font-size: 15px;"><?php echo $d->vnd($_SESSION['delivery_area']['price']); ?></td>
-                        </tr>
-                        <?php }?>
-                        <tr>
-                            <td colspan="4">Cộng</td>
-                            <td colspan="1" style="text-align: right; font-size: 15px;"><?php echo $d->vnd($tongtien); ?></td>
-                        </tr>
-                        <tr>
-                            <td colspan="4">Thuế VAT <?php echo $information['tax']; ?>%</td>
-                            <td colspan="1" style="text-align: right; font-size: 15px;"><?php echo $d->vnd($total * $tax); ?></td>
-                        </tr>
-                        <tr>
-                            <td colspan="4">
-                                <b>Tổng tiền:</b>
-                            </td>
-                            <td colspan="1" style="text-align: right; font-size: 17px;">
-                                <b><?php echo $d->vnd($tongtien + ($total * $tax)); ?></b>
-                            </td>
-                        </tr>
-                </table>
-                <p style="margin: 15px 0;">
-                    <b><font face="Times New Roman" size="3" color="#0000FF">Bằng chữ: <?php echo convert_number_to_words($tongtien + ($total * $tax)); ?> nghìn đồng</font></b>
-                </p>
-
-
-            <?php endif;?>
+                <tr>
+                    <td colspan="4">Phí vận chuyển</td>
+                    <td colspan="1" style="text-align: right; font-size: 15px;"><?php echo $d->vnd($_SESSION['delivery_area']['price']); ?></td>
+                </tr>
+                <?php } ?>
+                <tr>
+                    <td colspan="4">Cộng</td>
+                    <td colspan="1" style="text-align: right; font-size: 15px;"><?php echo $d->vnd($tongtien); ?></td>
+                </tr>
+                <tr>
+                    <td colspan="4">Thuế VAT <?php echo $information['tax']; ?>%</td>
+                    <td colspan="1" style="text-align: right; font-size: 15px;"><?php echo $d->vnd($total * $tax); ?></td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <b>Tổng tiền:</b>
+                    </td>
+                    <td colspan="1" style="text-align: right; font-size: 17px;">
+                        <b><?php echo $d->vnd($tongtien + ($total * $tax)); ?></b>
+                    </td>
+                </tr>
+            </table>
+            <p style="margin: 15px 0;">
+                <b><font face="Times New Roman" size="3" color="#0000FF">Bằng chữ: <?php echo convert_number_to_words($tongtien + ($total * $tax)); ?> nghìn đồng</font></b>
+            </p>
+        <?php endif;?>
         </div>
         <div class="note" style="width:100%;">
             <table style="margin-top: 30px; width: 100%;">

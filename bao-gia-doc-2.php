@@ -324,8 +324,8 @@ $SETTINGS = $d->getAllSettings();
                 </td>
                 <td style="width: 30%;">
                     <p style="margin:0 0 10px;">Người gửi: <?php echo $SETTINGS['ceo_name']['value']; ?></p>
-                    <p style="margin:0">Tell: <?php echo $information['hotline']; ?></p>
-                    <p style="margin:0 0 10px;">Zalo: <?php echo $SETTINGS['zalo']['value']; ?></p>
+                    <p style="margin:0 0 10px">Tell: <?php echo $information['hotline']; ?></p>
+                    <p style="margin:0;">Zalo: <?php echo $SETTINGS['zalo']['value']; ?></p>
                 </td>
             </tr>
         </table>
@@ -450,7 +450,6 @@ $SETTINGS = $d->getAllSettings();
                 </p>
 
             <?php endif; ?>
-
         </div>
 
         <div class="note" style="width:100%;">
