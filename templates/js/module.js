@@ -447,6 +447,15 @@ function actionAddToCart(e) {
 
 function openCartModal() {
 	$('#modalAddToCart .dathang-cart').load('ajax/ajax_cartInfo.php');
+	$(document).on('click', '.payment-method input#thanhtoan_ck', function(){
+		$('.payment-description').hide();
+		$(this).parent().find('.payment-description').show();
+	});
+
+	$(document).on('click', '.payment-method input#thanhtoan_cod', function(){
+		$('.payment-description').hide();
+		$(this).parent().find('.payment-description').show();
+	});
 	$('#modalAddToCart #modalAddToCartLabel').html("Giỏ hàng của bạn");
 	$('#modalAddToCart').modal('show');
 	return false;
