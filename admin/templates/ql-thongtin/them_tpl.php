@@ -298,6 +298,7 @@ if (!$settings['image_watermark'] || (is_array($settings['image_watermark']) && 
 				</div>
 			</div>
 			<?php $ckeditor->replace('bank_account'); ?>
+            <?php $ckeditor->replace('cod_note'); ?>
 			<div>
 				<button type="submit" class="btn btn-primary">Lưu</button>
 			</div>
