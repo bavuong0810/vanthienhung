@@ -159,9 +159,11 @@ $SETTINGS = $d->getAllSettings();
     * {
         box-sizing: border-box;
     }
+
     img{
         max-width:100%;
     }
+
     table.page_header {
         width: 100%;
         border: none;

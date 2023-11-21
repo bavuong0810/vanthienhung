@@ -201,18 +201,6 @@ $tax = $tax / 100;
 </style>
 <link href="<?=URLPATH . "img_data/icon/" . $information['favicon'];?>" rel="shortcut icon" type="image/x-icon" />
 <page backbottom="14mm" style="font-size: 12pt; font-family: freeserif; width: 100%">
-    <!-- <page_header>
-        <table class="page_header">
-            <tr>
-                <td style="width: 50%; text-align: left">
-                    Báo giá
-                </td>
-                <td style="width: 50%; text-align: right">
-                    <?php echo getenv('APP_DOMAIN'); ?>
-                </td>
-            </tr>
-        </table>
-    </page_header> -->
     <page_footer>
         <table class="page_footer">
             <tr>
@@ -276,11 +264,11 @@ $tax = $tax / 100;
             <?php if (isset($_SESSION['cart'])): ?>
                 <table style="width: 100%;" class="table table-hover table-bordered">
                     <tr>
-                        <th style="width: 10px; text-align: center;">STT</th>
-                        <th style="text-align: center;"><?=_namepro?></th>
-                        <th style="width: 80px; text-align: center;"><?=_price?></th>
-                        <th style="width: 45px; text-align: center;">SL</th>
-                        <th style="width: 95px; text-align: center;"><?=_money?></th>
+                        <th style="width: 8%; text-align: center;">STT</th>
+                        <th style="width: 40%; text-align: center;"><?= _namepro ?></th>
+                        <th style="width: 22%; text-align: center;"><?= _price ?></th>
+                        <th style="width: 8%; text-align: center;">SL</th>
+                        <th style="width: 22%; text-align: center;"><?= _money ?></th>
                     </tr>
                 <?php
                 $stt = 0;
