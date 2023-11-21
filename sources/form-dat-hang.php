@@ -34,10 +34,6 @@
     <textarea id="loinhan" class="form-control" rows="5" name="loinhan" placeholder="Lời nhắn..."></textarea>
 </div>
 
-<div class="form-close-group">
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close">ĐÓNG</button>
-</div>
-
 <style type="text/css">
     .table tr th a {
         color: #000;

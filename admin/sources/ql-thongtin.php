@@ -64,11 +64,21 @@ $settingsFields = [
 		'type' => 'rich_text',
 		'label' => 'Tài khoản thanh toán(chuyển khoản)',
 	],
+    'cod_note' => [
+        'type' => 'rich_text',
+        'label' => 'Ghi chú cho phương thức COD',
+    ],
 ];
 
 switch($a){
 	case "man":
         global $d;
+        // check table settings have name 'cod_note'
+        $query_cod_note = "SELECT * FROM `#_settings` WHERE `name` = 'cod_note'";
+        $result = $d->simple_fetch($query_cod_note);
+        if (count($result) == 0) {
+            $d->query("INSERT INTO `#_settings`(`name`, `value`) VALUES('cod_note', '')");
+        }
 
         // check column google_analytics, if not add column google_analytics
         $link = mysqli_connect($d->servername, $d->username, $d->password, $d->database);

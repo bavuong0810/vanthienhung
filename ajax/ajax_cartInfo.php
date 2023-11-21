@@ -371,12 +371,21 @@ if ($vat_content['content_' . $lang] != ''):
                     <img src="/templates/images/icon-cod.png" height="50">
                     Thanh toán khi nhận hàng
                 </label>
+                <?php
+                $cod_note = $SETTINGS['cod_note']['value'];
+                if( $cod_note ){
+                    ?>
+                    <div class="bank-account payment-description"><?php echo $cod_note?></div>
+                <?php }?>
             </div>
         </div>
     </div>
 
     <div class="form-group btn-placeorder-wrap">
-        <div class="col-sm-12">
+        <div class="col-sm-6 form-close-group">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">ĐÓNG</button>
+        </div>
+        <div class="col-sm-6">
             <button type="submit" id="popup" class="btn-placeorder button button--aylen button--pd button--size-m" name="guidonhang">
                 Đặt hàng
             </button>
