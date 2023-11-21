@@ -138,7 +138,23 @@ $tax = $tax / 100;
 ?>
 
 <style type="text/css">
+    @page {
+        size: A4;
+        margin: 0;
+    }
 
+    @media print {
+        .page {
+            margin: 0;
+            border: initial;
+            border-radius: initial;
+            width: initial;
+            min-height: initial;
+            box-shadow: initial;
+            background: initial;
+            page-break-after: always;
+        }
+    }
 
     * {
         box-sizing: border-box;
@@ -263,7 +279,6 @@ $tax = $tax / 100;
                             <th style="width: 10px; text-align: center;">STT</th>
                             <th style="width: 240px; text-align: center;"><?=_namepro?></th>
                             <th style="width: 80px; text-align: center;"><?=_price?></th>
-
                             <th style="width: 45px; text-align: center;">SL</th>
                             <th style="width: 95px; text-align: center;"><?=_money?></th>
                         </tr>
@@ -336,14 +351,14 @@ $tax = $tax / 100;
                             <td colspan="4">Thuế VAT <?php echo $information['tax']; ?>%</td>
                             <td colspan="1" style="text-align: right; font-size: 15px;"><?php echo $d->vnd($total * $tax); ?></td>
                         </tr>
-                    <tr>
-                        <td colspan="4">
-                            <b>Tổng tiền:</b>
-                        </td>
-                        <td colspan="1" style="text-align: right; font-size: 17px;">
-                            <b><?php echo $d->vnd($tongtien + ($total * $tax)); ?></b>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td colspan="4">
+                                <b>Tổng tiền:</b>
+                            </td>
+                            <td colspan="1" style="text-align: right; font-size: 17px;">
+                                <b><?php echo $d->vnd($tongtien + ($total * $tax)); ?></b>
+                            </td>
+                        </tr>
                 </table>
                 <p style="margin: 15px 0;">
                     <b><font face="Times New Roman" size="3" color="#0000FF">Bằng chữ: <?php echo convert_number_to_words($tongtien + ($total * $tax)); ?> nghìn đồng</font></b>

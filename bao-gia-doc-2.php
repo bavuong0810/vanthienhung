@@ -56,7 +56,7 @@ function convert_number_to_words($number)
         return false;
     }
 
-    if (($number >= 0 && (int) $number < 0) || (int) $number < 0 - PHP_INT_MAX) {
+    if (($number >= 0 && (int)$number < 0) || (int)$number < 0 - PHP_INT_MAX) {
         // overflow
         trigger_error('convert_number_to_words only accepts numbers between -' . PHP_INT_MAX . ' and ' . PHP_INT_MAX, E_USER_WARNING);
         return false;
@@ -77,7 +77,7 @@ function convert_number_to_words($number)
             $string = $dictionary[$number];
             break;
         case $number < 100:
-            $tens = ((int) ($number / 10)) * 10;
+            $tens = ((int)($number / 10)) * 10;
             $units = $number % 10;
             $string = $dictionary[$tens];
             if ($units) {
@@ -94,7 +94,7 @@ function convert_number_to_words($number)
             break;
         default:
             $baseUnit = pow(1000, floor(log($number, 1000)));
-            $numBaseUnits = (int) ($number / $baseUnit);
+            $numBaseUnits = (int)($number / $baseUnit);
             $remainder = $number % $baseUnit;
             $string = convert_number_to_words($numBaseUnits) . ' ' . $dictionary[$baseUnit];
             if ($remainder) {
@@ -107,7 +107,7 @@ function convert_number_to_words($number)
     if (null !== $fraction && is_numeric($fraction)) {
         $string .= $decimal;
         $words = array();
-        foreach (str_split((string) $fraction) as $number) {
+        foreach (str_split((string)$fraction) as $number) {
             $words[] = $dictionary[$number];
         }
         $string .= implode(' ', $words);
@@ -139,19 +139,38 @@ $SETTINGS = $d->getAllSettings();
 
 ?>
 
-<link href="<?=URLPATH . "img_data/icon/" . $information['favicon'];?>" rel="shortcut icon" type="image/x-icon" />
-   
+<link href="<?= URLPATH . "img_data/icon/" . $information['favicon']; ?>" rel="shortcut icon" type="image/x-icon"/>
+
 <style type="text/css">
+    @page {
+        size: A4;
+        margin: 0;
+    }
+
+    @media print {
+        .page {
+            margin: 0;
+            border: initial;
+            border-radius: initial;
+            width: initial;
+            min-height: initial;
+            box-shadow: initial;
+            background: initial;
+            page-break-after: always;
+        }
+    }
 
     * {
         box-sizing: border-box;
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            -ms-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -ms-box-sizing: border-box;
     }
-    img{
-        max-width:100%;
+
+    img {
+        max-width: 100%;
     }
+
     h3 {
         text-align: center;
         font-size: 14mm
@@ -160,9 +179,11 @@ $SETTINGS = $d->getAllSettings();
     p {
         margin: 5px 0;
     }
+
     pre {
         font-family: freeserif, Helvetica, sans-serif;
     }
+
     table.page_header {
         width: 100%;
         border: none;
@@ -226,7 +247,7 @@ $SETTINGS = $d->getAllSettings();
 </style>
 
 <page backbottom="14mm" style="font-size: 12pt; font-family: freeserif; width: 100%;">
-    
+
     <page_footer>
         <table class="page_footer">
             <tr>
@@ -252,20 +273,22 @@ $SETTINGS = $d->getAllSettings();
     $tax = $information['tax'] ? $information['tax'] : 8;
     $tax = $tax / 100;
 
-    $qr_html = '<p>'.$information['company_vn'].'</p>';
-    $qr_html.= '<p>'.$information['address'].'</p>';
-   ?>
+    $qr_html = '<p>' . $information['company_vn'] . '</p>';
+    $qr_html .= '<p>' . $information['address'] . '</p>';
+    ?>
 
     <div style="background:url(img_data/images/<?php echo $SETTINGS['rorate_logo']['value']; ?>) no-repeat scroll center top;width: 96%;padding-left:20px;padding-right:20px;box-sizing: border-box;">
         <table style="width: 100%;padding: 20px 0;">
             <tr>
                 <td align="left" style="width: 32%;">
-                    <img src="img_data/images/<?php echo $SETTINGS['website_logo']['value']; ?>" style="width:100%;height:auto;display:inline-block;" class="logo">
+                    <img src="img_data/images/<?php echo $SETTINGS['website_logo']['value']; ?>"
+                         style="width:100%;height:auto;display:inline-block;" class="logo">
                 </td>
                 <td align="center" style="width: 68%;text-align:center">
                     <p>
                         <b>
-                            <font face="Times New Roman" color="#0000FF"><?php echo $information['company_vn']; ?></font>
+                            <font face="Times New Roman"
+                                  color="#0000FF"><?php echo $information['company_vn']; ?></font>
                         </b>
                     </p>
                     <p>
@@ -274,10 +297,12 @@ $SETTINGS = $d->getAllSettings();
                         </i>
                     </p>
                     <p>
-                        <font face="Times New Roman" color="#0000FF">Email: <?php echo $information['email']; ?>, Website: <?php echo $SETTINGS['website']['value']; ?> </font>
+                        <font face="Times New Roman" color="#0000FF">Email: <?php echo $information['email']; ?>,
+                            Website: <?php echo $SETTINGS['website']['value']; ?> </font>
                     </p>
                     <p>
-                        <font face="Times New Roman" color="#0000FF">Tell: <?php echo $SETTINGS['tell_contact']['value']; ?></font>
+                        <font face="Times New Roman"
+                              color="#0000FF">Tell: <?php echo $SETTINGS['tell_contact']['value']; ?></font>
                     </p>
                 </td>
             </tr>
@@ -299,24 +324,25 @@ $SETTINGS = $d->getAllSettings();
                 </td>
                 <td style="width: 30%;">
                     <p style="margin:0 0 10px;">Người gửi: <?php echo $SETTINGS['ceo_name']['value']; ?></p>
-                    <p style="margin:0">Tell/Zalo: <?php echo $information['hotline']; ?></p>
+                    <p style="margin:0">Tell: <?php echo $information['hotline']; ?></p>
+                    <p style="margin:0 0 10px;">Zalo: <?php echo $SETTINGS['zalo']['value']; ?></p>
                 </td>
             </tr>
         </table>
 
         <div class="note" style="padding:20px 0;width:100%;">
-            
+
             <p>Kính gửi: <strong>Quý khách <?php echo !empty($_GET['name']) ? $_GET['name'] : ''; ?></strong></p>
             <p>
                 <?php
-                    if (!empty($_GET['phone'])): ?>
-                        <span>Điện thoại: <strong><?php echo $_GET['phone']; ?></strong></span>
-                    <?php
-                    endif;
-                    if (!empty($_GET['email'])): ?>
-                        <span style="margin-left: 150px">Email: <strong><?php echo $_GET['email']; ?></strong></span>
-                    <?php
-                    endif;
+                if (!empty($_GET['phone'])): ?>
+                    <span>Điện thoại: <strong><?php echo $_GET['phone']; ?></strong></span>
+                <?php
+                endif;
+                if (!empty($_GET['email'])): ?>
+                    <span style="margin-left: 150px">Email: <strong><?php echo $_GET['email']; ?></strong></span>
+                <?php
+                endif;
                 ?>
             </p>
             <p style="margin-bottom: 15px;"><?php echo $SETTINGS['welcome_message']['value']; ?></p>
@@ -325,11 +351,10 @@ $SETTINGS = $d->getAllSettings();
                 <table style="width: 100%;" class="table table-hover table-bordered">
                     <tr>
                         <th style="width: 10px; text-align: center;">STT</th>
-                        <th style="width: 240px; text-align: center;"><?=_namepro?></th>
-                        <th style="width: 80px; text-align: center;"><?=_price?></th>
-
+                        <th style="width: 240px; text-align: center;"><?= _namepro ?></th>
+                        <th style="width: 80px; text-align: center;"><?= _price ?></th>
                         <th style="width: 45px; text-align: center;">SL</th>
-                        <th style="width: 95px; text-align: center;"><?=_money?></th>
+                        <th style="width: 95px; text-align: center;"><?= _money ?></th>
                     </tr>
                     <?php
                     $stt = 0;
@@ -362,45 +387,50 @@ $SETTINGS = $d->getAllSettings();
                                 $total += $price * $value['so_luong'];
                                 $stt++;
                                 ?>
-                            <tr>
-                                <td style="text-align: center;"><?=$stt?></td>
-                                <td style="width: 240px;">
-                                    <a href="<?=URLPATH . $product['alias_' . $_SESSION['lang']]?>.html" style="text-decoration: none;">
+                                <tr>
+                                    <td style="text-align: center;"><?= $stt ?></td>
+                                    <td style="width: 240px;">
+                                        <a href="<?= URLPATH . $product['alias_' . $_SESSION['lang']] ?>.html"
+                                           style="text-decoration: none;">
+                                            <?php
+                                            echo trim(@$product['name_' . $_SESSION['lang']]);
+                                            ?>
+                                        </a>
+                                    </td>
+                                    <td align="right" style="font-size: 15px;"><?= @$d->vnd($price) ?></td>
+                                    <td align="center" style="font-size: 15px;">
+                                        <?= $value['so_luong'] ?>
+                                    </td>
+                                    <td align="right" style="font-size: 15px;">
                                         <?php
-                                        echo trim(@$product['name_' . $_SESSION['lang']]);
+                                        echo $d->vnd($price * $value['so_luong']);
                                         ?>
-                                    </a>
-                                </td>
-                                <td align="right" style="font-size: 15px;"><?=@$d->vnd($price)?></td>
-                                <td align="center" style="font-size: 15px;">
-                                    <?=$value['so_luong']?>
-                                </td>
-
-                                <td align="right" style="font-size: 15px;">
-                                    <?php
-                                    echo $d->vnd($price * $value['so_luong']);
-                                    ?>
-                                </td>
-                            </tr>
-                    <?php }}}?>
+                                    </td>
+                                </tr>
+                            <?php }
+                        }
+                    } ?>
 
                     <?php if (!empty($_SESSION['delivery_area'])) {
                         $tongtien += $_SESSION['delivery_area']['price'];
-                    ?>
-                    <tr>
-                        <td colspan="4">Phí vận chuyển</td>
-                        <td colspan="1" style="text-align: right; font-size: 15px;"><?php echo $d->vnd($_SESSION['delivery_area']['price']); ?></td>
-                    </tr>
-                    <?php }?>
+                        ?>
+                        <tr>
+                            <td colspan="4">Phí vận chuyển</td>
+                            <td colspan="1"
+                                style="text-align: right; font-size: 15px;"><?php echo $d->vnd($_SESSION['delivery_area']['price']); ?></td>
+                        </tr>
+                    <?php } ?>
 
                     <tr>
                         <td colspan="4">Cộng</td>
-                        <td colspan="1" style="text-align: right; font-size: 15px;"><?php echo $d->vnd($tongtien); ?></td>
+                        <td colspan="1"
+                            style="text-align: right; font-size: 15px;"><?php echo $d->vnd($tongtien); ?></td>
                     </tr>
 
                     <tr>
                         <td colspan="4">Thuế VAT <?php echo $information['tax']; ?>%</td>
-                        <td colspan="1" style="text-align: right; font-size: 15px;"><?php echo $d->vnd($total * $tax); ?></td>
+                        <td colspan="1"
+                            style="text-align: right; font-size: 15px;"><?php echo $d->vnd($total * $tax); ?></td>
                     </tr>
 
                     <tr>
@@ -414,11 +444,13 @@ $SETTINGS = $d->getAllSettings();
                 </table>
 
                 <p style="margin: 15px 0;">
-                    <b><font face="Times New Roman" size="3" color="#0000FF">Bằng chữ: <?php echo convert_number_to_words($tongtien + ($total * $tax)); ?> nghìn đồng</font></b>
+                    <b><font face="Times New Roman" size="3" color="#0000FF">Bằng
+                            chữ: <?php echo convert_number_to_words($tongtien + ($total * $tax)); ?> nghìn
+                            đồng</font></b>
                 </p>
 
-            <?php endif;?>
-            
+            <?php endif; ?>
+
         </div>
 
         <div class="note" style="width:100%;">
@@ -428,22 +460,29 @@ $SETTINGS = $d->getAllSettings();
                     <pre><?php echo $SETTINGS['price_quote_note']['value']; ?></pre>
                 </i>
             </div>
-            
+
             <table style="width: 100%;">
                 <tr>
                     <td style="width: 30%;">
-                        <p><b style="text-transform:uppercase;margin: 0 0 15px;font-size:12px;">XÁC NHẬN CỦA QUÝ KHÁCH HÀNG</b></p>
+                        <p><b style="text-transform:uppercase;margin: 0 0 15px;font-size:12px;">XÁC NHẬN CỦA QUÝ KHÁCH
+                                HÀNG</b></p>
                     </td>
                     <td style="width: 70%" align="left">
-                        <p style="text-align:center;"><b style="text-transform:uppercase;margin: 0 0 15px;font-size:12px;color: #0000FF;">Người báo giá</b></p>
+                        <p style="text-align:center;"><b
+                                    style="text-transform:uppercase;margin: 0 0 15px;font-size:12px;color: #0000FF;">Người
+                                báo giá</b></p>
                         <table style="width:100%;color:#ff0000;font-style:italic;font-size:14px;text-align:left;">
                             <tr>
                                 <td style="width:50%;padding-right:15px;">
-                                    <img class="bgcheck" style="position:relative;margin-top:50px;margin-left:90px;width:70px;z-index:90;" src="img_data/images/<?php echo $SETTINGS['company_stamp']['value']; ?>" alt="">
+                                    <img class="bgcheck"
+                                         style="position:relative;margin-top:50px;margin-left:90px;width:70px;z-index:90;"
+                                         src="img_data/images/<?php echo $SETTINGS['company_stamp']['value']; ?>"
+                                         alt="">
                                     <table style="width:100%;position:relative;z-index:100;margin-top:-160px;">
                                         <tr>
                                             <td>&nbsp;</td>
-                                            <td style="padding-bottom:10px;"><p style="margin:0;">Digitally signed</p></td>
+                                            <td style="padding-bottom:10px;"><p style="margin:0;">Digitally signed</p>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td style="width:25%;">Ký bởi:</td>
@@ -451,17 +490,20 @@ $SETTINGS = $d->getAllSettings();
                                         </tr>
                                         <tr>
                                             <td>Ngày kí:</td>
-                                            <td><?php echo 'Ngày ' . date('d') . ' tháng ' . date('m') . ' năm ' . date('Y') . '<br/>'.date('g:i:s A'); ?></td>
+                                            <td><?php echo 'Ngày ' . date('d') . ' tháng ' . date('m') . ' năm ' . date('Y') . '<br/>' . date('g:i:s A'); ?></td>
                                         </tr>
                                     </table>
                                 </td>
                                 <td style="width:50%;position: relative;padding-left:15px;">
                                     <div class="bg-check">
-                                        <img style="position:relative;margin-top:50px;margin-left:50px;width:70px;z-index:90;opacity:0.5;" src="img_data/images/<?php echo $SETTINGS['company_stamp']['value']; ?>" alt="">
+                                        <img style="position:relative;margin-top:50px;margin-left:50px;width:70px;z-index:90;opacity:0.5;"
+                                             src="img_data/images/<?php echo $SETTINGS['company_stamp']['value']; ?>"
+                                             alt="">
                                         <table style="width:100%;position:relative;z-index:100;margin-top:-160px;">
                                             <tr>
                                                 <td>&nbsp;</td>
-                                                <td style="padding-bottom:10px;"><p style="margin:0">Digitally signed</p></td>
+                                                <td style="padding-bottom:10px;"><p style="margin:0">Digitally
+                                                        signed</p></td>
                                             </tr>
                                             <tr>
                                                 <td>Ký bởi:</td>
@@ -473,7 +515,7 @@ $SETTINGS = $d->getAllSettings();
                                             </tr>
                                             <tr>
                                                 <td>Ngày kí:</td>
-                                                <td><?php echo 'Ngày ' . date('d') . ' tháng ' . date('m') . ' năm ' . date('Y') . '<br/>'.date('g:i:s A'); ?></td>
+                                                <td><?php echo 'Ngày ' . date('d') . ' tháng ' . date('m') . ' năm ' . date('Y') . '<br/>' . date('g:i:s A'); ?></td>
                                             </tr>
                                             <tr>
                                                 <td>Tell:</td>
@@ -488,7 +530,7 @@ $SETTINGS = $d->getAllSettings();
                                                 <td><?php echo $information['email']; ?></td>
                                             </tr>
                                         </table>
-                                        
+
                                     </div>
                                 </td>
                             </tr>
