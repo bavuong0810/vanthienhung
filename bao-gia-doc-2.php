@@ -351,7 +351,7 @@ $SETTINGS = $d->getAllSettings();
                 <table style="width: 100%;" class="table table-hover table-bordered">
                     <tr>
                         <th style="width: 10px; text-align: center;">STT</th>
-                        <th style="width: 240px; text-align: center;"><?= _namepro ?></th>
+                        <th style="text-align: center;"><?= _namepro ?></th>
                         <th style="width: 80px; text-align: center;"><?= _price ?></th>
                         <th style="width: 45px; text-align: center;">SL</th>
                         <th style="width: 95px; text-align: center;"><?= _money ?></th>
