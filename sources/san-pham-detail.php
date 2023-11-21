@@ -1579,9 +1579,14 @@ $view_button_warrantyonline =  $d->getOption('view_button_warrantyonline');
             return false;
         });
 
-        $(document).on('click', '.payment-method input', function(){
-            $('.payment-method').removeClass('payment-method-active');
-            $(this).parent().toggleClass('payment-method-active');
+        $(document).on('click', '.payment-method input#thanhtoan_ck', function(){
+            $('.payment-description').hide();
+            $(this).parent().find('.payment-description').show();
+        });
+
+        $(document).on('click', '.payment-method input#thanhtoan_cod', function(){
+            $('.payment-description').hide();
+            $(this).parent().find('.payment-description').show();
         });
 
         $(document).on('click', '.company_order', function(){
