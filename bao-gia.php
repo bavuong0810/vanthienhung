@@ -144,6 +144,7 @@ if (file_exists($cacheFile) && (time() - filemtime($cacheFile)) < 3600) {
 }
 $tax = $information['tax'] ? $information['tax'] : 8;
 $tax = $tax / 100;
+$SETTINGS = $d->getAllSettings();
 ?>
 
 <style type="text/css">
@@ -242,17 +243,16 @@ $tax = $tax / 100;
             </td>
             <td align="left" style="width: 60%">
                 <p>
-                    <b><font face="Times New Roman" color="#0000FF">CÔNG TY TNHH THIẾT BỊ XE NÂNG</font></b>
-                    <b><font face="Times New Roman" color="#FF0000"> VÂN THIÊN HÙNG</font></b>
+                    <b><font face="Times New Roman" color="#0000FF"><?php echo $information['company_vn']; ?></font></b>
                 </p>
                 <p>
-                    <i><font face="Times New Roman" color="#0000FF">Số 18/7 Đường số DT743, KP Đồng An 1, P.Bình Hòa, TX Thuận An, Bình Dương</font></i>
+                    <i><font face="Times New Roman" color="#0000FF"><?php echo $information['address']; ?></font></i>
                 </p>
                 <p>
-                    <font face="Times New Roman" color="#0000FF">Email: <?php echo getenv('ADMIN_EMAIL'); ?>,     Website: <?php echo getenv('APP_DOMAIN'); ?> </font>
+                    <font face="Times New Roman" color="#0000FF">Email: <?php echo $information['email']; ?>, Website: <?php echo $SETTINGS['website']['value']; ?></font>
                 </p>
                 <p>
-                    <font face="Times New Roman" color="#0000FF">Tell: 02743501763 - <?php echo getenv('FIRST_PHONE'); ?></font>
+                    <font face="Times New Roman" color="#0000FF">Tell/Zalo: <?php echo $SETTINGS['zalo']['value']; ?></font>
                 </p>
             </td>
         </tr>

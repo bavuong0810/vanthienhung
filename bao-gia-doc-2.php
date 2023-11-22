@@ -301,7 +301,7 @@ $SETTINGS = $d->getAllSettings();
                     </p>
                     <p>
                         <font face="Times New Roman"
-                              color="#0000FF">Tell: <?php echo $SETTINGS['tell_contact']['value']; ?></font>
+                              color="#0000FF">Tell/Zalo: <?php echo $SETTINGS['zalo']['value']; ?></font>
                     </p>
                 </td>
             </tr>
@@ -452,7 +452,7 @@ $SETTINGS = $d->getAllSettings();
         </div>
 
         <div class="note" style="width:100%;">
-            <div style="padding: 0 0 80px;">
+            <div style="padding: 0 0 20px;">
                 <b><u>Ghi chú:</u></b>
                 <i>
                     <pre><?php echo $SETTINGS['price_quote_note']['value']; ?></pre>
@@ -516,12 +516,8 @@ $SETTINGS = $d->getAllSettings();
                                                 <td><?php echo 'Ngày ' . date('d') . ' tháng ' . date('m') . ' năm ' . date('Y') . '<br/>' . date('g:i:s A'); ?></td>
                                             </tr>
                                             <tr>
-                                                <td>Tell:</td>
-                                                <td><?php echo $information['hotline']; ?></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Zalo:</td>
-                                                <td><?php echo $information['zalo']; ?></td>
+                                                <td>Tell/Zalo:</td>
+                                                <td><?php echo $SETTINGS['zalo']['value']; ?></td>
                                             </tr>
                                             <tr>
                                                 <td>Email:</td>

@@ -348,7 +348,7 @@ $SETTINGS = $d->getAllSettings();
                     <font face="Times New Roman" color="#0000FF">Email: <?php echo $information['email']; ?>, Website: <?php echo $SETTINGS['website']['value']; ?> </font>
                 </p>
                 <p>
-                    <font face="Times New Roman" color="#0000FF">Tell: <?php echo $information['hotline']; ?></font>
+                    <font face="Times New Roman" color="#0000FF">Tell/Zalo: <?php echo $SETTINGS['zalo']['value']; ?></font>
                 </p>
             </td>
         </tr>
@@ -371,7 +371,7 @@ $SETTINGS = $d->getAllSettings();
             <td style="width: 30%;">
                 <p style="margin:0 0 10px;">Người gửi: <?php echo $SETTINGS['ceo_name']['value']; ?></p>
                 <p style="margin:0">Tell: <?php echo $information['hotline']; ?></p>
-                <p style="margin:0">Zalo: <?php echo $information['zalo']; ?></p>
+                <p style="margin:0">Zalo: <?php echo $SETTINGS['zalo']['value']; ?></p>
             </td>
         </tr>
     </table>
@@ -468,7 +468,7 @@ $SETTINGS = $d->getAllSettings();
                                     </tr>
                                     <tr>
                                         <td>Tell/Zallo:</td>
-                                        <td><?php echo $information['hotline']; ?></td>
+                                        <td><?php echo $SETTINGS['zalo']['value']; ?></td>
                                     </tr>
                                     <tr>
                                         <td>Email:</td>

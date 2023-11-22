@@ -298,10 +298,7 @@ $SETTINGS = $d->getAllSettings();
                         <font face="Times New Roman" color="#0000FF">Email: <?php echo $information['email']; ?>, Website: <?php echo $SETTINGS['website']['value']; ?> </font>
                     </p>
                     <p style="pading-left: 35px;">
-                        <font face="Times New Roman" color="#0000FF">Tell: <?php echo $information['hotline']; ?></font>
-                    </p>
-                    <p style="pading-left: 35px;">
-                        <font face="Times New Roman" color="#0000FF">Zalo: <?php echo $SETTINGS['zalo']['value']; ?></font>
+                        <font face="Times New Roman" color="#0000FF">Tell/Zalo: <?php echo $SETTINGS['zalo']['value']; ?></font>
                     </p>
                 </td>
             </tr>
