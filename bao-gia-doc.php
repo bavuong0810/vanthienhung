@@ -220,9 +220,9 @@ $tax = $tax / 100;
     <div style="background:url(img_data/images/<?php echo $SETTINGS['rorate_logo']['value']; ?>) no-repeat scroll center top;width: 96%;padding-left:20px;padding-right:20px;box-sizing: border-box;">
         <table style="width: 100%;margin-bottom:35px;">
             <tr>
-                <td align="center" style="vertical-align: middle; width: 260px; white-space: nowrap; overflow: hidden">
-                    <img src="img_data/images/<?php echo $SETTINGS['company_stamp']['value']; ?>" width=80 height=80 class="con dau" style="display:inline-block;width:82%;height:auto;">
-                    <img src="img_data/images/<?php echo $SETTINGS['website_logo']['value']; ?>" width=161 height=80 class="logo"style="display:inline-block;width:18%;height:auto;" >
+                <td align="center" style="vertical-align: middle; width: 260px; white-space: nowrap; overflow: hidden; position: relative">
+                    <img src="img_data/images/<?php echo $SETTINGS['website_logo']['value']; ?>" width=161 height=80 hspace=1 vspace=2 style="margin-top: 30px; margin-right: -100px;" class="logo">
+                    <img src="img_data/images/<?php echo $SETTINGS['company_stamp']['value']; ?>" width=137 height=120 hspace=2 vspace=4 class="con dau" style="margin-left: -150px; z-index: 2; opacity: 0.9; margin-top: -20px">
                 </td>
                 <td align="center" style="width: auto;text-align:center;">
                     <p style="pading-left: 35px;">
