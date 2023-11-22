@@ -252,7 +252,7 @@ $SETTINGS = $d->getAllSettings();
                     <font face="Times New Roman" color="#0000FF">Email: <?php echo $information['email']; ?>, Website: <?php echo $SETTINGS['website']['value']; ?></font>
                 </p>
                 <p>
-                    <font face="Times New Roman" color="#0000FF">Tell/Zalo: <?php echo $SETTINGS['zalo']['value']; ?></font>
+                    <font face="Times New Roman" color="#0000FF">Tell: <?php echo $SETTINGS['tell_contact']['value']; ?></font>
                 </p>
             </td>
         </tr>

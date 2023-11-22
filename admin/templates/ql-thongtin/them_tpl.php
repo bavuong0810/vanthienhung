@@ -321,6 +321,14 @@ if (!$settings['image_watermark'] || (is_array($settings['image_watermark']) && 
 	const handleSubmitFormCustom = async (e) => {
 		e.preventDefault();
 		const result = await handleSubmitAjaxForm(e);
+
+        $.ajax({
+            url: '/admin/api.php',
+            data: {
+                func: 'clearCache',
+            }
+        });
+
 		swal({
 			type: 'info',
 			title: 'Cập nhật thành công, đang xóa bộ nhớ đệm cho ảnh!',
