@@ -281,19 +281,14 @@ $tableContent = ob_get_clean();
 <?php }?>
 
 <?php
-$vat_content = $d->getTemplates(72);
+$vat_content = $information['delivery_return'];;
 $lang = $_SESSION['lang'];
-if ($vat_content['content_' . $lang] != ''):
+if ($vat_content != ''):
 ?>
     <hr style="margin: 5px 0;">
     <div class="cart-vat">
-        <?php if ($vat_content['name_' . $lang] != ''): ?>
-            <div class="title-main">
-                <h3><?= $vat_content['name_' . $lang]; ?></h3>
-            </div>
-        <?php endif; ?>
         <div class="cart-vat-content">
-            <?= $vat_content['content_' . $lang] ?>
+            <?= $vat_content ?>
         </div>
     </div>
 <?php endif; ?>
