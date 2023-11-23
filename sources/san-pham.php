@@ -238,7 +238,14 @@ unset($queryArr['perpage']);
 		list-style: none;
         overflow: hidden;
         overflow-y: auto;
+        max-height: 290px;
 	}
+
+    .nav-dm > li > ul::-webkit-scrollbar {
+        width: 5px;
+        background-color: #F2F2F2;
+    }
+
     .nav-dm > li > ul::-webkit-scrollbar-thumb {
         border-radius: 5px;
         -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
