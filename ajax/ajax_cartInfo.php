@@ -153,8 +153,8 @@ $tableContent = ob_get_clean();
                 </tr>
 
                 <?php
-                $view_shipping =  $information['delivery_return'];
-                $shipping_note =  $information['cart_note'];
+                $view_shipping =  $d->getOption('view_shipping');
+                $shipping_note =  $d->getOption('shipping_note');
                 if ($view_shipping != ''):
                 ?>
                 <tr>
