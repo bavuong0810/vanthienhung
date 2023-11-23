@@ -66,17 +66,12 @@ if ($item['promotion_price'] < $item['price'] && $item['promotion_price'] > 0) {
                 <a class="btn-default btn" href="<?= URLPATH . $item['alias_' . $lang] ?>.html" title="<?= $item['name_' . $lang] ?>" target="_blank">
                     Chi tiết
                 </a>
-                <?php
-                $view_add_to_cart =  $d->getOption('view_add_to_cart');
-                if ($view_add_to_cart):
-                ?>
                 <a href="javascript:void(0)" type="button" class="bg-primary btn addcart"
                    onclick="actionAddToCart(this)"
                    data-product="<?= $item['id'] ?>" data-title="<?= $item['name_' . $lang] ?>"
                    data-price="<?= $item['price'] ?>" data-detail="true">
                     Thêm vào giỏ
                 </a>
-                <?php endif; ?>
                 <span class="bg-primary btn addcart" title="<?= $item['name_' . $lang] ?>" data-product="<?= $item['id'] ?>" data-code="<?= $item['code']; ?>" data-image="<?= $item['image_path'] ?>?zc=2" data-title="<?= $item['name_' . $lang] ?>">
                     Yêu cầu báo giá
                 </span>
