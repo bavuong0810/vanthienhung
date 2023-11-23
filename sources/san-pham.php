@@ -242,7 +242,7 @@ unset($queryArr['perpage']);
 	}
 
     .nav-dm > li > ul::-webkit-scrollbar {
-        width: 5px;
+        width: 8px;
         background-color: #F2F2F2;
     }
 
@@ -250,7 +250,7 @@ unset($queryArr['perpage']);
         border-radius: 5px;
         -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
         -moz-box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
-        background-color: #E95221;
+        background-color: #ee1b25;
     }
     .nav-dm > li > ul::-webkit-scrollbar-track {
         -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
