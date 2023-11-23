@@ -235,6 +235,7 @@
                                 </td>
                                 <td class="td_right">
                                     <textarea class="input width400 form-control" name="delivery_return" id="delivery_return" rows="10"><?= $items[0]['delivery_return'] ?></textarea>
+                                    <?php $ckeditor->replace('delivery_return'); ?>
                                 </td>
                             </tr>
                             <tr>
@@ -243,6 +244,7 @@
                                 </td>
                                 <td class="td_right">
                                     <textarea class="input width400 form-control" name="cart_note" id="cart_note" rows="10"><?= $items[0]['cart_note'] ?></textarea>
+                                    <?php $ckeditor->replace('cart_note'); ?>
                                 </td>
                             </tr>
                             <tr>
