@@ -433,24 +433,24 @@ function actionAddToCart(e) {
 		$('#modalAddToCart span.product-name').html(product_name);
 		$('#modalAddToCart').modal('show');
 
-		const dataReloadRequestPriceCart = {
+		let data = {
 			func: 'updateRequestPriceCart',
 		};
 
-		const errorReloadRequestPriceCart = (res) => {
+		let error = (res) => {
 			console.log('Fail to reload request price cart content.')
 		};
 
-		const successReloadRequestPriceCart = (res) => {
+		const success = (res) => {
 			$('#request-price-cart-content').html(res);
 		};
 
 		$.ajax({
 			url: '/api.php',
 			method: 'POST',
-			dataReloadRequestPriceCart,
-			successReloadRequestPriceCart,
-			errorReloadRequestPriceCart,
+			data,
+			success,
+			error,
 		});
 	};
 
