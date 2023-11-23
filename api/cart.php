@@ -112,8 +112,8 @@ function updateRequestPriceCart() {
                 <tr>
                     <th>STT</th>
                     <th align="left">Hình ảnh</th>
-                    <th>' . _namepro . '</th>
-                    <th align="center" class="th_soluong">' . _number . '</th>
+                    <th>Tên sản phẩm</th>
+                    <th align="center" class="th_soluong">Số lượng</th>
                 </tr>
             </thead>
             <tbody>
