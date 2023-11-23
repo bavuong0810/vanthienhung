@@ -236,7 +236,21 @@ unset($queryArr['perpage']);
 		margin: 5px 0 0;
 		padding: 0 0 0 10px;
 		list-style: none;
+        overflow: hidden;
+        overflow-y: auto;
 	}
+    .nav-dm > li > ul::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
+        -moz-box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
+        background-color: #E95221;
+    }
+    .nav-dm > li > ul::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
+        -moz-box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
+        border-radius: 5px;
+        background-color: #F2F2F2;
+    }
 	.nav-dm > li > ul > li{
 		margin: 0;
 		padding: 0;
