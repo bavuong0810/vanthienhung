@@ -122,6 +122,6 @@ function updateRequestPriceCart() {
         </table>
         ';
     }
-    return $cartTable;
+    echo $cartTable;
 }
 
