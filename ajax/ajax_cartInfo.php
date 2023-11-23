@@ -281,7 +281,7 @@ $tableContent = ob_get_clean();
 <?php }?>
 
 <?php
-$vat_content = $information['cart_note'];;
+$vat_content = $information['cart_note'];
 if ($vat_content != ''):
 ?>
     <hr style="margin: 5px 0;">
