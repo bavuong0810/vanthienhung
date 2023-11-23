@@ -105,6 +105,24 @@ switch($a){
             mysqli_query($link, $query);
         }
 
+        // check column delivery_return, if not add column delivery_return
+        $link = mysqli_connect($d->servername, $d->username, $d->password, $d->database);
+        $result = mysqli_query($link,"SHOW COLUMNS FROM `" . $d->refix . "thongtin` LIKE 'delivery_return'");
+        $exists = ($result->current_field == 0) ? false : true;
+        if (!$exists) {
+            $query = "ALTER TABLE `" . $d->refix . "thongtin` ADD `delivery_return` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL AFTER `lang_ch`";
+            mysqli_query($link, $query);
+        }
+
+        // check column cart_note, if not add column cart_note
+        $link = mysqli_connect($d->servername, $d->username, $d->password, $d->database);
+        $result = mysqli_query($link,"SHOW COLUMNS FROM `" . $d->refix . "thongtin` LIKE 'cart_note'");
+        $exists = ($result->current_field == 0) ? false : true;
+        if (!$exists) {
+            $query = "ALTER TABLE `" . $d->refix . "thongtin` ADD `cart_note` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL AFTER `lang_ch`";
+            mysqli_query($link, $query);
+        }
+
 		showdulieu();
 		$template = @$_REQUEST['p']."/them";
 		break;
@@ -171,6 +189,8 @@ function luudulieu(){
     $data['google_analytics'] = addslashes($_POST['google_analytics']);
     $data['script_body'] = addslashes($_POST['script_body']);
     $data['tax'] = addslashes($_POST['tax']);
+    $data['delivery_return'] = addslashes($_POST['delivery_return']);
+    $data['cart_note'] = addslashes($_POST['cart_note']);
 
 	$d->reset();
 	$d->setWhere("id","1");

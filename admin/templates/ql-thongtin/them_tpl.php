@@ -231,6 +231,22 @@
                             </tr>
                             <tr>
                                 <td class="td_left">
+                                    Hiển thị vận chuyển và đổi trả:
+                                </td>
+                                <td class="td_right">
+                                    <textarea class="input width400 form-control" name="delivery_return" id="delivery_return" rows="10"><?= $items[0]['delivery_return'] ?></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td_left">
+                                    Hiển thị ghi chú bên trong giỏ hàng:
+                                </td>
+                                <td class="td_right">
+                                    <textarea class="input width400 form-control" name="cart_note" id="cart_note" rows="10"><?= $items[0]['cart_note'] ?></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td_left">
                                     Script Header:
                                 </td>
                                 <td class="td_right">
