@@ -331,20 +331,14 @@ $vth_logo = $d->getTemplates(30);
                                         </div>
                                     <?php }?>
 
-                                    <?php if($view_shipping_content == 1):
-                                        $shipping_return = $d->getTemplates(71);
-                                        ?>
+                                    <?php
+                                    if($view_shipping_content == 1):
+                                        $shipping_return = $information['delivery_return'];
+                                    ?>
                                         <div class="shipping-return">
-                                            <?php if ($shipping_return['name_' . $lang] != ''): ?>
-                                                <div class="title-main">
-                                                    <h3><?= $shipping_return['name_' . $lang]; ?></h3>
-                                                </div>
-                                            <?php endif; ?>
-                                            <?php if ($shipping_return['content_' . $lang] != ''): ?>
-                                                <div class="content-about text-justify">
-                                                    <?= $shipping_return['content_' . $lang] ?>
-                                                </div>
-                                            <?php endif; ?>
+                                            <div class="content-about text-justify">
+                                                <?= $shipping_return ?>
+                                            </div>
                                         </div>
                                     <?php endif; ?>
 
