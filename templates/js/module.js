@@ -437,9 +437,31 @@ function actionAddToCart(e) {
 	$.ajax({
 		url: '/api.php',
 		method: 'POST',
+		type: 'html',
 		data,
 		success,
 		error,
+	});
+
+	const dataReloadRequestPriceCart = {
+		func: 'updateRequestPriceCart',
+	};
+
+	const errorReloadRequestPriceCart = (res) => {
+		console.log('Fail to reload request price cart content.')
+	};
+
+	const successReloadRequestPriceCart = (res) => {
+		$('#request-price-cart-content').html(res);
+	};
+
+	$.ajax({
+		url: '/api.php',
+		method: 'POST',
+		type: 'html',
+		dataReloadRequestPriceCart,
+		successReloadRequestPriceCart,
+		errorReloadRequestPriceCart,
 	});
 
 	return false;

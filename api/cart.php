@@ -81,3 +81,47 @@ function get_area_by_name() {
     echo json_encode(array('isSuccess' => true, 'delivery_area' => $delivery_area));
     return;
 }
+
+function updateRequestPriceCart() {
+    global $d;
+    $stt = 0;
+    $cartTable = '';
+    if (count($_SESSION['cart']) > 0) {
+        foreach ($_SESSION['cart'] as $key => $value) {
+            $product = $d->simple_fetch("select * from #_sanpham where id={$key}");
+            $product['name_' . $_SESSION['lang']] = getCustomProductName($product);
+
+            if (!empty($product)) {
+                $stt++;
+                $cartTable .= '
+                    <tr>
+                        <td>' . $stt . '</td>
+                        <td>
+                            <img onerror="this.src=\'' . $d->getDefaultProductImage() . '\';" 
+                            src="' . THUMB_BASE . 'images/50/50/' . @$product['id'] . '/' . @$product['image_path'] . '" width="50" height="50">
+                        </td>
+                        <td class="text-left">' . @$product['name_' . $_SESSION['lang']] . '</td>
+                        <td>' . $value['so_luong'] . '</td>
+                    </tr>
+                ';
+            }
+        }
+
+        $cartTable = '<table class="table table-hover table-bordered ">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th align="left">Hình ảnh</th>
+                    <th>' . _namepro . '</th>
+                    <th align="center" class="th_soluong">' . _number . '</th>
+                </tr>
+            </thead>
+            <tbody>
+            ' . $cartTable . '
+            </tbody>
+        </table>
+        ';
+    }
+    return $cartTable;
+}
+
