@@ -3297,15 +3297,15 @@ span.fd-discount {
     margin-top: 5px;
 }
 
-.product-detail-price {
-    position: relative;
+.img-pro span.fd-discount {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1;
 }
 
-.product-detail-price span.fd-discount {
-    position: absolute;
-    top: 50%;
-    right: 15px;
-    transform: translateY(-50%);
+.product-detail-price {
+    position: relative;
 }
 
 .slider-doitacs .max-line-2 {
