@@ -432,6 +432,26 @@ function actionAddToCart(e) {
 		$('#modalAddToCart .dathang-cart').load('ajax/ajax_cartInfo.php');
 		$('#modalAddToCart span.product-name').html(product_name);
 		$('#modalAddToCart').modal('show');
+
+		const dataReloadRequestPriceCart = {
+			func: 'updateRequestPriceCart',
+		};
+
+		const errorReloadRequestPriceCart = (res) => {
+			console.log('Fail to reload request price cart content.')
+		};
+
+		const successReloadRequestPriceCart = (res) => {
+			$('#request-price-cart-content').html(res);
+		};
+
+		$.ajax({
+			url: '/api.php',
+			method: 'POST',
+			dataReloadRequestPriceCart,
+			successReloadRequestPriceCart,
+			errorReloadRequestPriceCart,
+		});
 	};
 
 	$.ajax({
@@ -441,27 +461,6 @@ function actionAddToCart(e) {
 		data,
 		success,
 		error,
-	});
-
-	const dataReloadRequestPriceCart = {
-		func: 'updateRequestPriceCart',
-	};
-
-	const errorReloadRequestPriceCart = (res) => {
-		console.log('Fail to reload request price cart content.')
-	};
-
-	const successReloadRequestPriceCart = (res) => {
-		$('#request-price-cart-content').html(res);
-	};
-
-	$.ajax({
-		url: '/api.php',
-		method: 'POST',
-		type: 'html',
-		dataReloadRequestPriceCart,
-		successReloadRequestPriceCart,
-		errorReloadRequestPriceCart,
 	});
 
 	return false;
