@@ -77,6 +77,7 @@ if ($item['promotion_price'] < $item['price'] && $item['promotion_price'] > 0) {
                    data-price="<?= $item['price'] ?>" data-detail="true">
                     Thêm vào giỏ
                 </a>
+                <?php endif; ?>
                 <span class="bg-primary btn addcart" title="<?= $item['name_' . $lang] ?>" data-product="<?= $item['id'] ?>" data-code="<?= $item['code']; ?>" data-image="<?= $item['image_path'] ?>?zc=2" data-title="<?= $item['name_' . $lang] ?>">
                     Yêu cầu báo giá
                 </span>
