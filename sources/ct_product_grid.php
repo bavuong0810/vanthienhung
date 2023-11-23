@@ -1,6 +1,6 @@
 <?php
 // include 'ct_tooltip.php';
-
+global $d;
 $tooltip = '';
 // $tooltip = $title;
 // if (@$_SESSION['is_admin']) {
