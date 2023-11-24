@@ -461,6 +461,13 @@ $body_class.= ' com-'.$com;
         };
     </script>
     <script defer src="/chat/index.js?v=<?php echo getenv('APP_VERSION'); ?>"></script>
+    <script>
+        jQuery(document).ready(function($) {
+            $('body').on('click', '.rcw-close-button', function() {
+                localStorage.setItem("keep-logged-in", false);
+            });
+        });
+    </script>
 </body>
 </html>
 
