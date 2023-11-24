@@ -538,6 +538,27 @@ function xoa_sp_gh_dm(id, iddh, al) {
 			success: function(data) {
 				updateProductInCart();
 				$('#modalAddToCart .dathang-cart').load('ajax/ajax_cartInfo.php');
+
+				//reload request price cart
+				let data1 = {
+					func: 'updateRequestPriceCart',
+				};
+
+				let error = (res) => {
+					console.log('Fail to reload request price cart content.')
+				};
+
+				const success = (res) => {
+					$('#request-price-cart-content').html(res);
+				};
+
+				$.ajax({
+					url: '/api.php',
+					method: 'POST',
+					data1,
+					success,
+					error,
+				});
 			}
 		})
 	}

@@ -1098,6 +1098,27 @@ $vth_logo = $d->getTemplates(30);
                     success: function(data) {
                         updateProductInCart();
                         $('#modalDathang .dathang-cart').load('ajax/ajax_cartInfo.php');
+
+                        //reload request price cart
+                        let data1 = {
+                            func: 'updateRequestPriceCart',
+                        };
+
+                        let error = (res) => {
+                            console.log('Fail to reload request price cart content.')
+                        };
+
+                        const success = (res) => {
+                            $('#request-price-cart-content').html(res);
+                        };
+
+                        $.ajax({
+                            url: '/api.php',
+                            method: 'POST',
+                            data1,
+                            success,
+                            error,
+                        });
                     }
                 })
             }
