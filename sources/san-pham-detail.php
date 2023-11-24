@@ -1587,7 +1587,7 @@ $view_button_warrantyonline =  $d->getOption('view_button_warrantyonline');
                         $('#modalDathang .dathang-cart').load('ajax/ajax_cartInfo.php');
 
                         //reload request price cart
-                        let data1 = {
+                        data = {
                             func: 'updateRequestPriceCart',
                         };
 
@@ -1602,7 +1602,7 @@ $view_button_warrantyonline =  $d->getOption('view_button_warrantyonline');
                         $.ajax({
                             url: '/api.php',
                             method: 'POST',
-                            data1,
+                            data,
                             success,
                             error,
                         });

@@ -540,7 +540,7 @@ function xoa_sp_gh_dm(id, iddh, al) {
 				$('#modalAddToCart .dathang-cart').load('ajax/ajax_cartInfo.php');
 
 				//reload request price cart
-				let data1 = {
+				data = {
 					func: 'updateRequestPriceCart',
 				};
 
@@ -555,7 +555,7 @@ function xoa_sp_gh_dm(id, iddh, al) {
 				$.ajax({
 					url: '/api.php',
 					method: 'POST',
-					data1,
+					data,
 					success,
 					error,
 				});
