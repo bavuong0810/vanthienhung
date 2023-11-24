@@ -1017,6 +1017,27 @@ $vth_logo = $d->getTemplates(30);
                 //$('#modalDathang .modal-body').load('ajax/ajax_cartInfo.php');
                 $('#modalDathang .dathang-cart').load('ajax/ajax_cartInfo.php');
                 $('#modalDathang').modal('show');
+
+                //Reload Request Price Cart
+                let data = {
+                    func: 'updateRequestPriceCart',
+                };
+
+                let error = (res) => {
+                    console.log('Fail to reload request price cart content.')
+                };
+
+                const success = (res) => {
+                    $('#request-price-cart-content').html(res);
+                };
+
+                $.ajax({
+                    url: '/api.php',
+                    method: 'POST',
+                    data,
+                    success,
+                    error,
+                });
             };
 
             $.ajax({
