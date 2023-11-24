@@ -1448,7 +1448,7 @@ class func_index
         } else {
             $result = [];
         }
-//        $this->setCache($this->sql, $result, $this->cacheTTL);
+        $this->setCache($this->sql, $result, $this->cacheTTL);
         return $result;
     }
 
