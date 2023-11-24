@@ -66,7 +66,7 @@ if ($item['promotion_price'] < $item['price'] && $item['promotion_price'] > 0) {
                 <a class="btn-default btn" href="<?= URLPATH . $item['alias_' . $lang] ?>.html" title="<?= $item['name_' . $lang] ?>" target="_blank">
                     Chi tiết
                 </a>
-                <a href="javascript:void(0)" type="button" class="bg-primary btn addcart"
+                <a href="javascript:void(0)" type="button" class="bg-primary btn"
                    onclick="actionAddToCart(this)"
                    data-product="<?= $item['id'] ?>" data-title="<?= $item['name_' . $lang] ?>"
                    data-price="<?= $item['price'] ?>" data-detail="true">
