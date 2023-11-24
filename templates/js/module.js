@@ -392,6 +392,27 @@ $(document).ready(function() {
 		var value = quantityInput.value;
 		var pid = $(this).attr('data-product');
 		updateInput2(quantityInput, ++value, pid);
+
+		let data = {
+			func: 'updateRequestPriceCart',
+		};
+
+		let error = (res) => {
+			console.log('Fail to reload request price cart content.')
+		};
+
+		const success = (res) => {
+			$('#request-price-cart-content').html(res);
+		};
+
+		$.ajax({
+			url: '/api.php',
+			method: 'POST',
+			data,
+			success,
+			error,
+		});
+
 		return false;
 	});
 
@@ -403,6 +424,27 @@ $(document).ready(function() {
 			return;
 		}
 		updateInput2(quantityInput, value, pid);
+
+		let data = {
+			func: 'updateRequestPriceCart',
+		};
+
+		let error = (res) => {
+			console.log('Fail to reload request price cart content.')
+		};
+
+		const success = (res) => {
+			$('#request-price-cart-content').html(res);
+		};
+
+		$.ajax({
+			url: '/api.php',
+			method: 'POST',
+			data,
+			success,
+			error,
+		});
+
 		return false;
 	});
 });

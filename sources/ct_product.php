@@ -93,6 +93,26 @@ if (!empty($_COOKIE['productLayout'])
             if (quantity > 1) {
                 $('#quantity_' + product_id).val(quantity - 1);
             }
+
+            let data = {
+                func: 'updateRequestPriceCart',
+            };
+
+            let error = (res) => {
+                console.log('Fail to reload request price cart content.')
+            };
+
+            const success = (res) => {
+                $('#request-price-cart-content').html(res);
+            };
+
+            $.ajax({
+                url: '/api.php',
+                method: 'POST',
+                data,
+                success,
+                error,
+            });
         });
 
         $('.cart-quantity-input .add-one').on('click', function () {
@@ -100,6 +120,26 @@ if (!empty($_COOKIE['productLayout'])
             let quantity = $('#quantity_' + product_id).val();
             quantity = parseInt(quantity);
             $('#quantity_' + product_id).val(quantity + 1);
+
+            let data = {
+                func: 'updateRequestPriceCart',
+            };
+
+            let error = (res) => {
+                console.log('Fail to reload request price cart content.')
+            };
+
+            const success = (res) => {
+                $('#request-price-cart-content').html(res);
+            };
+
+            $.ajax({
+                url: '/api.php',
+                method: 'POST',
+                data,
+                success,
+                error,
+            });
         });
 
         $('.detail-button-wrap .addToCart').click(function(e) {
