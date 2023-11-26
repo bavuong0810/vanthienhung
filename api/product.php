@@ -20,8 +20,10 @@ function changeProductThumb()
             $d->setWhere('id', $id);
             if ($d->update($data)) {
                 echo json_encode(['success' => true]);
+                exit();
             }
         }
     }
     echo json_encode(['success' => false]);
+    exit();
 }

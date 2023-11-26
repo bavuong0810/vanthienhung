@@ -862,9 +862,7 @@ if (file_exists($cachePath) && 1 == 2) {
                                     <div class="col-md-12 form-group text-label">
                                         Kết quả:
                                     </div>
-                                    <div class="col-md-12 form-group img-result">
-                                        <span style="color:#ff0000;">Chưa có ảnh</span>
-                                    </div>
+                                    <div class="col-md-12 form-group img-result"></div>
                                 </div>
                             </div>
                             <div class="form-group text-center">
@@ -903,7 +901,7 @@ if (file_exists($cachePath) && 1 == 2) {
                         timeout: 1000 * 60 * 5,
                         dataType: 'json',
                         success: data => {
-                            if (!data || !data.isSuccess) {
+                            if (!data.success) {
                                 swal({
                                     title: "Có lỗi xảy ra",
                                     text: data.error,
@@ -911,7 +909,6 @@ if (file_exists($cachePath) && 1 == 2) {
                                     confirmButtonClass: 'btn-danger',
                                     confirmButtonText: 'OK'
                                 });
-
                                 return;
                             }
 
