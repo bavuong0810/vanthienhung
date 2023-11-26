@@ -842,35 +842,33 @@ if (file_exists($cachePath) && 1 == 2) {
                             <h4 class="modal-title" id="changeImageModalLabel">Thay đổi hình ảnh</h4>
                         </div>
                         <div class="modal-body">
-                            <div class="row">
-                                <input type="hidden" id="changeImageProductId" name="changeImageProductId">
-                                <div class="col-md-12 form-group" id="thumb">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <input type="file" name="file2" class="input width400 form-control js-image-field" data-api="<?php echo getApiUploadFile(); ?>" data-result="#thumb"/>
-                                        </div>
-                                        <div class="col-md-2 text-label">
-                                            Hoặc nhập link hình ảnh:
-                                        </div>
-                                        <div class="col-md-4">
-                                            <input type="text" name="file2_url" placeholder="Link hình ảnh..." class="input width400 form-control" data-result="#thumb">
-                                        </div>
-                                        <div>
-                                            <input type="hidden" class="input-clipboard js-upload-result" name="file2_clipboard">
-                                        </div>
+                            <input type="hidden" id="changeImageProductId" name="changeImageProductId">
+                            <div id="thumb">
+                                <div class="row">
+                                    <div class="col-md-12 form-group">
+                                        <input type="file" name="file2" class="input width400 form-control js-image-field" data-api="<?php echo getApiUploadFile(); ?>" data-result="#thumb"/>
                                     </div>
-                                    <div class="row mt-2">
-                                        <div class="col-md-1 text-label">
-                                            Kết quả:
-                                        </div>
-                                        <div class="col-md-3 img-result">
-                                            <span style="color:#ff0000;">Chưa có ảnh</span>
-                                        </div>
+                                    <div class="col-md-12 form-group text-label">
+                                        Hoặc nhập link hình ảnh:
+                                    </div>
+                                    <div class="col-md-12 form-group">
+                                        <input type="text" name="file2_url" placeholder="Link hình ảnh..." class="input width400 form-control" data-result="#thumb">
+                                    </div>
+                                    <div>
+                                        <input type="hidden" class="input-clipboard js-upload-result" name="file2_clipboard">
                                     </div>
                                 </div>
-                                <div class="col-md-12 form-group">
-                                    <button class="btn btn-primary" type="submit">Đổi ảnh</button>
+                                <div class="row mt-2">
+                                    <div class="col-md-12 form-group text-label">
+                                        Kết quả:
+                                    </div>
+                                    <div class="col-md-12 form-group img-result">
+                                        <span style="color:#ff0000;">Chưa có ảnh</span>
+                                    </div>
                                 </div>
+                            </div>
+                            <div class="form-group text-center">
+                                <button class="btn btn-primary" type="submit">Đổi ảnh</button>
                             </div>
                         </div>
                     </div>
