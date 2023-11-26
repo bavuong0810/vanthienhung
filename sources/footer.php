@@ -843,6 +843,7 @@ if (file_exists($cachePath) && 1 == 2) {
                         </div>
                         <div class="modal-body">
                             <input type="hidden" id="changeImageProductId" name="changeImageProductId">
+                            <h3 id="changeImageProductTitle"></h3>
                             <div id="thumb">
                                 <div class="row">
                                     <div class="col-md-12 form-group">

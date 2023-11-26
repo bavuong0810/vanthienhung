@@ -135,6 +135,7 @@ function ajaxChangeImg() {
 
 		let id = $(this).attr('data-id');
 		$('#changeImageModal #changeImageProductId').val(id);
+		$('#changeImageModal #changeImageProductTitle').text($(this).attr('data-title'));
 		$('#changeImageModal').modal('show');
 	});
 }

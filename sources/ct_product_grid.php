@@ -32,7 +32,7 @@ if ($item['promotion_price'] < $item['price'] && $item['promotion_price'] > 0) {
                     z-index: 2;
                     left: 5px;
                 "><i class="fa fa-close" style="width: 20px;height: 20px;line-height: 20px;"></i></a>
-                <a data-id="<?php echo $item['id']; ?>" href="javascript:void(0)" title="Đổi ảnh" class="btn btn-circle btn-change-img text-center btn-warning" style="
+                <a data-id="<?php echo $item['id']; ?>" href="javascript:void(0)" title="Đổi ảnh" class="btn btn-circle btn-change-img text-center btn-warning" data-title="<?= $item['name_' . $lang] ?>" style="
                     position: absolute;
                     z-index: 2;
                     left: 45px;
