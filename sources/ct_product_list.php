@@ -18,9 +18,16 @@
                                 z-index: 2;
                                 left: 5px;
                             "><i class="fa fa-close" style="width: 20px;height: 20px;line-height: 20px;"></i></a>
+                            <a data-id="<?php echo $item['id']; ?>" href="javascript:void(0)" title="Đổi ảnh" class="btn btn-circle btn-change-img text-center btn-warning" data-title="<?= $item['name_' . $lang] ?>" style="
+                                position: absolute;
+                                z-index: 2;
+                                left: 45px;
+                            ">
+                                <i class="fa fa-file-image-o" aria-hidden="true" style="width: 20px;height: 20px;line-height: 20px;"></i>
+                            </a>
                         <?php } ?>
                         <a class="img-shine-2" href="<?=URLPATH.$item['alias_'.$lang] ?>.html" title="<?=$item['name_'.$lang] ?>">
-                            <img alt="<?=$item['name_' . $lang]?>" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAWCAQAAAB9auREAAAAGklEQVR42mP8X89ANmAc1TyqeVTzqOaRqhkAD/0g67N/o4cAAAAASUVORK5CYII=" class="lazy" data-src="<?=$item['image_path'] ?>" onerror="this.src='<?= $d->getDefaultProductImage(300, 220) ?>';">
+                            <img alt="<?=$item['name_' . $lang]?>" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAWCAQAAAB9auREAAAAGklEQVR42mP8X89ANmAc1TyqeVTzqOaRqhkAD/0g67N/o4cAAAAASUVORK5CYII=" class="lazy product_image_<?php echo $item['id']; ?>" data-src="<?=$item['image_path'] ?>" onerror="this.src='<?= $d->getDefaultProductImage(300, 220) ?>';">
                         </a>
                     </div>
                 </div>

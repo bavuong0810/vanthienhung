@@ -46,7 +46,7 @@ if ($item['promotion_price'] < $item['price'] && $item['promotion_price'] > 0) {
                 "><i class="fa fa-pencil" style="width: 20px;height: 20px;line-height: 20px;"></i></a>
             <?php } ?>
             <a class="img-shine-2" href="<?= URLPATH . $item['alias_' . $lang] ?>.html" title="<?= $item['name_' . $lang] ?>" target="_blank">
-                <img alt="<?= $item['name_' . $lang] ?>" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAWCAQAAAB9auREAAAAGklEQVR42mP8X89ANmAc1TyqeVTzqOaRqhkAD/0g67N/o4cAAAAASUVORK5CYII=" class="lazy" data-src="<?= $item['image_path'] ?>" onerror="this.src='<?= $d->getDefaultProductImage(300, 220) ?>';">
+                <img alt="<?= $item['name_' . $lang] ?>" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAWCAQAAAB9auREAAAAGklEQVR42mP8X89ANmAc1TyqeVTzqOaRqhkAD/0g67N/o4cAAAAASUVORK5CYII=" class="lazy product_image_<?php echo $item['id']; ?>" data-src="<?= $item['image_path'] ?>" onerror="this.src='<?= $d->getDefaultProductImage(300, 220) ?>';">
             </a>
             <?php if($discountPercent > 0): ?>
                 <span class="fd-discount">- <?php echo $discountPercent; ?>%</span>

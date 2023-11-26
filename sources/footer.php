@@ -885,7 +885,8 @@ if (file_exists($cachePath) && 1 == 2) {
                 $('#changeImageForm').on('submit', function(e) {
                     e.preventDefault();
                     const formData = new FormData(this);
-
+                    let id = $('#changeImageForm #changeImageProductId').val();
+                    let imgResult = $('#changeImageForm .img-result img').attr('src');
                     $.ajax({
                         url: '/api.php?func=changeProductThumb',
                         type: 'POST',
@@ -895,10 +896,9 @@ if (file_exists($cachePath) && 1 == 2) {
                         timeout: 1000 * 60 * 5,
                         dataType: 'json',
                         success: data => {
-                            console.log(data);
                             if (data.success === true) {
                                 alert('Đổi ảnh thành công!');
-                                window.location.reload();
+                                $('.product_image_' + id).attr('src', imgResult);
                             } else {
                                 alert('Có lỗi xảy ra.');
                             }
