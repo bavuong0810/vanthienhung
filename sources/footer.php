@@ -875,9 +875,13 @@ if (file_exists($cachePath) && 1 == 2) {
                 </form>
             </div>
         </div>
+        <script type="text/javascript" src="/admin/assets/pasteimage.js"></script>
         <script src="/admin/js/form.js?v=<?php echo getenv('APP_VERSION'); ?>"></script>
         <script>
             jQuery(document).ready(function($) {
+                pasteimage('#thumb', showImage);
+                $('#thumb input[name=file2_url]').on('blur', urlToImage);
+
                 $('#changeImageForm').on('submit', function(e) {
                     e.preventDefault();
                     const formData = new FormData(this);
