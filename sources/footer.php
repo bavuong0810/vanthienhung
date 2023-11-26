@@ -846,8 +846,11 @@ if (file_exists($cachePath) && 1 == 2) {
                             <h3 id="changeImageProductTitle"></h3>
                             <div id="thumb">
                                 <div class="row">
+                                    <div class="col-md-12">
+                                        <input type="file" name="file2" class="input width400 form-control js-image-field" data-api="<?php echo getApiUploadFile(); ?>" data-result="#thumb"/>
+                                    </div>
                                     <div class="col-md-12 form-group text-label">
-                                        Nhập link hình ảnh:
+                                        Hoặc nhập link hình ảnh:
                                     </div>
                                     <div class="col-md-12 form-group">
                                         <input type="text" name="file2_url" placeholder="Link hình ảnh..." class="input width400 form-control" data-result="#thumb">
