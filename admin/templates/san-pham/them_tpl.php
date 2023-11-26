@@ -701,17 +701,9 @@ $brand_title = $attributes['brand_title'];
 <script type="text/javascript" src="/admin/assets/pasteimage.js"></script>
 <script type="text/javascript">
 	function showImage(src, target) {
-
-		// if ($(target + ' .img-result img').length > 0) {
-		// 	$(target + ' .img-result img').attr('src', src);
-		// } else {
-		// 	$(target + ' .img-result').append('<img src="' + src + '" style="max-height:150px"/>');
-		// }
-
 		var sourceSplit = src.split("base64,");
 		var sourceString = sourceSplit[1];
-		// $(target + ' .input-clipboard').val(sourceString);
-		// 
+
 		var sourceSplit = src.split("base64,");
 		var sourceString = sourceSplit[1];
 		// $(target + ' .input-clipboard').val(sourceString);

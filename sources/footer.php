@@ -877,53 +877,122 @@ if (file_exists($cachePath) && 1 == 2) {
         </div>
         <script src="/admin/js/form.js?v=<?php echo getenv('APP_VERSION'); ?>"></script>
         <script>
-            $('#changeImageForm').on('submit', function(e) {
-                e.preventDefault();
-                const formData = new FormData(this);
+            jQuery(document).ready(function($) {
+                $('#changeImageForm').on('submit', function(e) {
+                    e.preventDefault();
+                    const formData = new FormData(this);
 
-                // Show loading
-                swal("Đang gửi yêu cầu...");
-                sweetAlert.disableButtons();
+                    // Show loading
+                    swal("Đang gửi yêu cầu...");
+                    sweetAlert.disableButtons();
 
-                $.ajax({
-                    url: '/api.php?func=changeProductThumb',
-                    type: 'POST',
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    timeout: 1000 * 60 * 5,
-                    dataType: 'json',
-                    success: data => {
-                        if (!data || !data.isSuccess) {
+                    $.ajax({
+                        url: '/api.php?func=changeProductThumb',
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        timeout: 1000 * 60 * 5,
+                        dataType: 'json',
+                        success: data => {
+                            if (!data || !data.isSuccess) {
+                                swal({
+                                    title: "Có lỗi xảy ra",
+                                    text: data.error,
+                                    type: "error",
+                                    confirmButtonClass: 'btn-danger',
+                                    confirmButtonText: 'OK'
+                                });
+
+                                return;
+                            }
+
                             swal({
-                                title: "Có lỗi xảy ra",
-                                text: data.error,
-                                type: "error",
-                                confirmButtonClass: 'btn-danger',
+                                title: "OK!",
+                                text: "Đổi ảnh thành công!",
+                                type: "success",
+                                confirmButtonClass: 'btn-success',
                                 confirmButtonText: 'OK'
+                            }, function() {
+                                window.location.reload();
                             });
+                        },
+                        fail: () => {
+                            swal({
+                                title: "Vui lòng thử lại!",
+                                type: "warning",
+                            });
+                        },
+                    });
+                });
+            });
 
+            function showImage(src, target) {
+                var sourceSplit = src.split("base64,");
+                var sourceString = sourceSplit[1];
+
+                var sourceSplit = src.split("base64,");
+                var sourceString = sourceSplit[1];
+                // $(target + ' .input-clipboard').val(sourceString);
+                const baseUrl = AppConfig && AppConfig.fileBaseUrl ? AppConfig.fileBaseUrl : '/';
+                $.ajax({
+                    type: 'POST',
+                    url: baseUrl + 'admin/upload.php?image_source=1',
+                    data: sourceString,
+                    contentType: 'application/json',
+                    success: (res) => {
+                        console.log({res});
+                        if (!res.name) {
+                            alert('Lỗi tải lên hình ảnh!');
                             return;
                         }
 
-                        swal({
-                            title: "OK!",
-                            text: "Đổi ảnh thành công!",
-                            type: "success",
-                            confirmButtonClass: 'btn-success',
-                            confirmButtonText: 'OK'
-                        }, function() {
-                            window.location.reload();
-                        });
+                        src = res.name;
+                        if ($(target + ' .img-result img').length > 0) {
+                            $(target + ' .img-result img').attr('src', baseUrl + 'img_data/images/' + src).attr('data-original-title', '');
+                        } else {
+                            $(target + ' .img-result').append('<img src="' + baseUrl + 'img_data/images/' + src + '" style="max-height:150px;"/>');
+                        }
+
+                        $(target + ' .input-clipboard').val(src);
                     },
-                    fail: () => {
-                        swal({
-                            title: "Vui lòng thử lại!",
-                            type: "warning",
-                        });
-                    },
+                    dataType: 'json'
                 });
-            });
+            }
+
+            function urlToImage(e) {
+                const target = e.target.dataset.result;
+                const url = e.target.value;
+                console.log('url', url);
+                if (!url || url.trim().length === 0 || url.indexOf('http') !== 0) {
+                    return;
+                }
+
+                const baseUrl = AppConfig && AppConfig.fileBaseUrl ? AppConfig.fileBaseUrl : '/';
+                $.ajax({
+                    type: 'GET',
+                    url: baseUrl + 'admin/api.php?func=url_to_image',
+                    data: { url },
+                    contentType: 'application/json',
+                    success: (res) => {
+                        if (!res.result) {
+                            alert('Lỗi tải lên hình ảnh!');
+                            return;
+                        }
+
+                        src = res.result;
+                        if ($(target + ' .img-result img').length > 0) {
+                            $(target + ' .img-result img').attr('src', baseUrl + 'img_data/images/' + src).attr('data-original-title', '');
+                        } else {
+                            $(target + ' .img-result').append('<img src="' + baseUrl + 'img_data/images/' + src + '" style="max-height:150px;"/>');
+                        }
+
+                        $(target + ' .input-clipboard').val(src);
+                        e.target.value = '';
+                    },
+                    dataType: 'json'
+                });
+            }
         </script>
     <?php endif; ?>
 
