@@ -878,6 +878,10 @@ if (file_exists($cachePath) && 1 == 2) {
         <script type="text/javascript" src="/admin/assets/pasteimage.js"></script>
         <script src="/admin/js/form.js?v=<?php echo getenv('APP_VERSION'); ?>"></script>
         <script>
+            const AppConfig = {
+                fileBaseUrl: '<?php echo FILEURL; ?>',
+                thumbFolder: '<?php echo THUMB_SITE_FOLDER; ?>',
+            };
             jQuery(document).ready(function($) {
                 pasteimage('#thumb', showImage);
                 $('#thumb input[name=file2_url]').on('blur', urlToImage);
