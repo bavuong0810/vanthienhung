@@ -15,6 +15,10 @@ if($view_san_pham_tieu_bieu == 1){
                     } else {
                         $item['image_path'] = THUMB_BASE . 'images/190/120/' . $item['id'] . '/' . $item['image_path'] . '?zc=0';
                     }
+                    $discountPercent = 0;
+                    if ($item['promotion_price'] < $item['price'] && $item['promotion_price'] > 0) {
+                        $discountPercent = intval(100 - ($item['promotion_price'] / $item['price'] * 100));
+                    }
                 ?>
                     <div class="plr10">
                         <div class="clearfix item-tin mb10">
@@ -27,17 +31,16 @@ if($view_san_pham_tieu_bieu == 1){
                                         <?= $item['name_' . $_SESSION['lang']] ?>
                                     </span>
                                 </a>
+                                <?php if($discountPercent > 0): ?>
+                                    <span class="fd-discount">- <?php echo $discountPercent;?>%</span>
+                                <?php endif; ?>
                             </div>
                             <div class="clearfix product_info_price">
-                                <?php if ($item['promotion_price'] < $item['price'] && $item['promotion_price'] > 0):
-                                    $discountPercent = intval(100 - ($item['promotion_price'] / $item['price'] * 100));
-                                ?>
+                                <?php if ($discountPercent > 0): ?>
                                 <p>
 	    					        <span class="fd-price">
                                         <?php echo $d->vnd($item['promotion_price']); ?>
                                     </span>
-
-                                    <span class="fd-discount">- <?php echo $discountPercent;?>%</span>
                                     <br>
                                     <s class="fd-market-price"><?php echo $d->vnd($item['price']); ?></s>
                                 </p>

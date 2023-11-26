@@ -830,6 +830,105 @@ if (file_exists($cachePath) && 1 == 2) {
         </div>
     </div>
 
+    <?php if (@$_SESSION['is_admin']) : ?>
+        <div class="modal fade" id="changeImageModal" tabindex="-1" role="dialog" aria-labelledby="changeImageModalLabel" data-backdrop="false">
+            <div class="modal-dialog" role="document">
+                <form id="changeImageForm" method="post" enctype="multipart/form-data">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" id="changeImageModalLabel">Thay đổi hình ảnh</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <input type="hidden" id="changeImageProductId" name="changeImageProductId">
+                                <div class="col-md-12 form-group" id="thumb">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <input type="file" name="file2" class="input width400 form-control js-image-field" data-api="<?php echo getApiUploadFile(); ?>" data-result="#thumb"/>
+                                        </div>
+                                        <div class="col-md-2 text-label">
+                                            Hoặc nhập link hình ảnh:
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" name="file2_url" placeholder="Link hình ảnh..." class="input width400 form-control" data-result="#thumb">
+                                        </div>
+                                        <div>
+                                            <input type="hidden" class="input-clipboard js-upload-result" name="file2_clipboard">
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-1 text-label">
+                                            Kết quả:
+                                        </div>
+                                        <div class="col-md-3 img-result">
+                                            <span style="color:#ff0000;">Chưa có ảnh</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <button class="btn btn-primary" type="submit">Đổi ảnh</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="/admin/js/form.js?v=<?php echo getenv('APP_VERSION'); ?>"></script>
+        <script>
+            $('#changeImageForm').on('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(this);
+
+                // Show loading
+                swal("Đang gửi yêu cầu...");
+                sweetAlert.disableButtons();
+
+                $.ajax({
+                    url: '/api.php?func=changeProductThumb',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    timeout: 1000 * 60 * 5,
+                    dataType: 'json',
+                    success: data => {
+                        if (!data || !data.isSuccess) {
+                            swal({
+                                title: "Có lỗi xảy ra",
+                                text: data.error,
+                                type: "error",
+                                confirmButtonClass: 'btn-danger',
+                                confirmButtonText: 'OK'
+                            });
+
+                            return;
+                        }
+
+                        swal({
+                            title: "OK!",
+                            text: "Đổi ảnh thành công!",
+                            type: "success",
+                            confirmButtonClass: 'btn-success',
+                            confirmButtonText: 'OK'
+                        }, function() {
+                            window.location.reload();
+                        });
+                    },
+                    fail: () => {
+                        swal({
+                            title: "Vui lòng thử lại!",
+                            type: "warning",
+                        });
+                    },
+                });
+            });
+        </script>
+    <?php endif; ?>
+
     <script type="text/javascript">
         const Wind = {
             province: <?php echo !empty($_SESSION['delivery_area']) ? json_encode($_SESSION['delivery_area']) : '{}'; ?>,

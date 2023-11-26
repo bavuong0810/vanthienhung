@@ -129,6 +129,16 @@ function triggleDeleteImageField(id) {
 	return default_img;
 }
 
+function ajaxChangeImg() {
+	$('.btn-change-img').on('click', function (e) {
+		e.preventDefault();
+
+		let id = $(this).attr('data-id');
+		$('#changeImageModal #changeImageProductId').val(id);
+		$('#changeImageModal').modal('show');
+	});
+}
+
 function carouselProductImgs() {
 	$('.prod-slider-nav').slick({
 		infinite: true,
@@ -210,6 +220,8 @@ $(document).ready(function () {
 	stickyHoTroTrucTuyen();
 
 	tiepTucMuaHang();
+
+	ajaxChangeImg();
 
 	$('[data-toggle="tooltip"]').tooltip();
 

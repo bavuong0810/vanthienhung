@@ -32,6 +32,13 @@ if ($item['promotion_price'] < $item['price'] && $item['promotion_price'] > 0) {
                     z-index: 2;
                     left: 5px;
                 "><i class="fa fa-close" style="width: 20px;height: 20px;line-height: 20px;"></i></a>
+                <a data-id="<?php echo $item['id']; ?>" href="javascript:void(0)" title="Đổi ảnh" class="btn btn-circle btn-change-img text-center btn-warning" style="
+                    position: absolute;
+                    z-index: 2;
+                    left: 45px;
+                ">
+                    <i class="fa fa-file-image-o" aria-hidden="true" style="width: 20px;height: 20px;line-height: 20px;"></i>
+                </a>
                 <a href="/admin/index.php?p=san-pham&a=edit&id=<?php echo $item['id']; ?>" title="Chỉnh sửa sản phẩm" class="btn btn-circle text-center btn-success" style="
                     position: absolute;
                     z-index: 2;
@@ -63,9 +70,11 @@ if ($item['promotion_price'] < $item['price'] && $item['promotion_price'] > 0) {
                 </div>
             </div>
             <div class="row text-center">
+                <?php /*
                 <a class="btn-default btn" href="<?= URLPATH . $item['alias_' . $lang] ?>.html" title="<?= $item['name_' . $lang] ?>" target="_blank">
                     Chi tiết
                 </a>
+                */ ?>
                 <a href="javascript:void(0)" type="button" class="bg-primary btn"
                    onclick="actionAddToCart(this)"
                    data-product="<?= $item['id'] ?>" data-title="<?= $item['name_' . $lang] ?>"

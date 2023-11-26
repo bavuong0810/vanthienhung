@@ -7,3 +7,21 @@ function product_get_by_ids()
   $products = $d->o_fet_class("SELECT id, code, name_vi, alias_vi, image_path, price, promotion_price FROM PREFIX_sanpham WHERE id IN ($productIds)");
   echo json_encode($products);
 }
+
+function changeProductThumb()
+{
+    global $d;
+    $id = $_POST['changeImageProductId'];
+    if ($id > 0) {
+        if (!empty($_POST['file2_clipboard'])) {
+            $data['image_path'] = $_POST['file2_clipboard'];
+            $d->reset();
+            $d->setTable('#_sanpham');
+            $d->setWhere('id', $id);
+            if ($d->update($data)) {
+                echo json_encode(['success' => true]);
+            }
+        }
+    }
+    echo json_encode(['success' => false]);
+}
