@@ -889,10 +889,6 @@ if (file_exists($cachePath) && 1 == 2) {
                     e.preventDefault();
                     const formData = new FormData(this);
 
-                    // Show loading
-                    swal("Đang gửi yêu cầu...");
-                    sweetAlert.disableButtons();
-
                     $.ajax({
                         url: '/api.php?func=changeProductThumb',
                         type: 'POST',
@@ -902,26 +898,13 @@ if (file_exists($cachePath) && 1 == 2) {
                         timeout: 1000 * 60 * 5,
                         dataType: 'json',
                         success: data => {
-                            if (!data.success) {
-                                swal({
-                                    title: "Có lỗi xảy ra",
-                                    text: data.error,
-                                    type: "error",
-                                    confirmButtonClass: 'btn-danger',
-                                    confirmButtonText: 'OK'
-                                });
-                                return;
-                            }
-
-                            swal({
-                                title: "OK!",
-                                text: "Đổi ảnh thành công!",
-                                type: "success",
-                                confirmButtonClass: 'btn-success',
-                                confirmButtonText: 'OK'
-                            }, function() {
+                            console.log(data);
+                            if (data.success === true) {
+                                alert('Đổi ảnh thành công!');
                                 window.location.reload();
-                            });
+                            } else {
+                                alert('Có lỗi xảy ra.');
+                            }
                         },
                         fail: () => {
                             swal({
