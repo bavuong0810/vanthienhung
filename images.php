@@ -8,7 +8,7 @@ global $lang;
 $d = new func_index($config['database']);
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 
-$query = 'SELECT `id`, `image_path` FROM #_sanpham';
+$query = 'SELECT `id`, `image_path` FROM #_sanpham WHERE `image_path` != "" AND `image_path` IS NOT NULL';
 $items = $d->o_fet($query);
 
 foreach ($items as $key => $value) {
@@ -39,7 +39,7 @@ foreach ($items as $key => $value) {
     curl_close($curl);
 
     //Process for Gallery
-    $queryGallery = 'SELECT `id`, `id_sp`, `image_path` FROM #_sanpham_hinhanh WHERE `id_sp` = ' . $value['id'];
+    $queryGallery = 'SELECT `id`, `id_sp`, `image_path` FROM #_sanpham_hinhanh WHERE `image_path` != "" AND `image_path` IS NOT NULL AND `id_sp` = ' . $value['id'];
     $gallery = $d->o_fet($queryGallery);
     if (count($gallery) > 0) {
         $imagePath = [];
