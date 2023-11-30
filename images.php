@@ -5,8 +5,6 @@ define('_lib','./admin/lib/');
 @include_once _lib."function.php";
 global $d;
 global $lang;
-include _source."lang.php";
-include _source."language_".$_SESSION['lang'].".php";
 $d = new func_index($config['database']);
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 
@@ -18,7 +16,7 @@ foreach ($items as $key => $value) {
         'product_id' => $value['id'],
         'source' => getenv('APP_URL'),
         'path' => getenv('THUMB_SITE_FOLDER'),
-        'image_type' => 'Thumbnail',
+        'image_type' => 'thumbnail',
         'image_path' => $value['image_path']
     ];
 
@@ -39,5 +37,22 @@ foreach ($items as $key => $value) {
 
     $response = curl_exec($curl);
     curl_close($curl);
+
+    //Process for Gallery
+    $queryGallery = 'SELECT `id`, `id_sp`, `image_path` FROM #_sanpham_hinhanh WHERE `id_sp` = ' . $value['id'];
+    $gallery = $d->o_fet($queryGallery);
+    if (count($gallery) > 0) {
+        $imagePath = [];
+        foreach ($gallery as $keyG => $valueG) {
+            $imagePath[] = $value['image_path'];
+        }
+        $data = [
+            'product_id' => $value['id'],
+            'source' => getenv('APP_URL'),
+            'path' => getenv('THUMB_SITE_FOLDER'),
+            'image_type' => 'gallery',
+            'image_path' => json_encode($imagePath)
+        ];
+    }
 }
 echo 'DONE';
