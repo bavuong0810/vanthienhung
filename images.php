@@ -1,7 +1,6 @@
 <?php
 define('__ROOT_PATH', dirname(__FILE__));
 define('_lib','./admin/lib/');
-define('_source','./sources/');
 @include _lib."config.php";
 @include_once _lib."function.php";
 global $d;
@@ -11,7 +10,34 @@ include _source."language_".$_SESSION['lang'].".php";
 $d = new func_index($config['database']);
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 
-$link = mysqli_connect($d->servername, $d->username, $d->password, $d->database);
-$query = "select `id`, `image_path`, `name_vi` from `" . $d->refix . "_sanpham`";
-$result = mysqli_query($link, $query);
-print_r($result); die();
+$query = 'SELECT `id`, `image_path` FROM #_sanpham';
+$items = $d->o_fet($query);
+
+foreach ($items as $key => $value) {
+    $data = [
+        'product_id' => $value['id'],
+        'source' => getenv('APP_URL'),
+        'path' => getenv('THUMB_SITE_FOLDER'),
+        'image_type' => 'Thumbnail',
+        'image_path' => $value['image_path']
+    ];
+
+    $curl = curl_init();
+
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://images.vanthienhung.vn/api/storage-image',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS => json_encode($data),
+        CURLOPT_HTTPHEADER => ['Content-Type: application/json'],
+    ));
+
+    $response = curl_exec($curl);
+    curl_close($curl);
+}
+echo 'DONE';
