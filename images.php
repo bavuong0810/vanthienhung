@@ -55,4 +55,4 @@ foreach ($items as $key => $value) {
         ];
     }
 }
-echo 'DONE';
+file_put_contents('images-log.txt', 'Done sync at ' . date('Y-m-d H:i:s'));
