@@ -39,20 +39,20 @@ foreach ($items as $key => $value) {
     curl_close($curl);
 
     //Process for Gallery
-    $queryGallery = 'SELECT `id`, `id_sp`, `image_path` FROM #_sanpham_hinhanh WHERE `image_path` != "" AND `image_path` IS NOT NULL AND `id_sp` = ' . $value['id'];
-    $gallery = $d->o_fet($queryGallery);
-    if (count($gallery) > 0) {
-        $imagePath = [];
-        foreach ($gallery as $keyG => $valueG) {
-            $imagePath[] = $value['image_path'];
-        }
-        $data = [
-            'product_id' => $value['id'],
-            'source' => getenv('APP_URL'),
-            'path' => getenv('THUMB_SITE_FOLDER'),
-            'image_type' => 'gallery',
-            'image_path' => json_encode($imagePath)
-        ];
-    }
+//    $queryGallery = 'SELECT `id`, `id_sp`, `image_path` FROM #_sanpham_hinhanh WHERE `image_path` != "" AND `image_path` IS NOT NULL AND `id_sp` = ' . $value['id'];
+//    $gallery = $d->o_fet($queryGallery);
+//    if (count($gallery) > 0) {
+//        $imagePath = [];
+//        foreach ($gallery as $keyG => $valueG) {
+//            $imagePath[] = $value['image_path'];
+//        }
+//        $data = [
+//            'product_id' => $value['id'],
+//            'source' => getenv('APP_URL'),
+//            'path' => getenv('THUMB_SITE_FOLDER'),
+//            'image_type' => 'gallery',
+//            'image_path' => json_encode($imagePath)
+//        ];
+//    }
 }
 file_put_contents('images-log.txt', 'Done sync at ' . date('Y-m-d H:i:s'));
