@@ -8,9 +8,8 @@ global $lang;
 $d = new func_index($config['database']);
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 
-$query = 'SELECT `id`, `image_path` FROM #_sanpham WHERE `image_path` != "" AND `image_path` IS NOT NULL';
+$query = 'SELECT `id`, `image_path` FROM #_sanpham WHERE `image_path` != "" AND `image_path` IS NOT NULL GROUP BY `image_path`';
 $items = $d->o_fet($query);
-
 foreach ($items as $key => $value) {
     $data = [
         'product_id' => $value['id'],
