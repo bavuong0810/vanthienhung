@@ -13,7 +13,7 @@ $items = $d->o_fet($query);
 $pushData = [];
 $countItem = 0;
 foreach ($items as $key => $value) {
-    if ($countItem == 200) {
+    if ($countItem == 100) {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
