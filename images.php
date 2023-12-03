@@ -76,7 +76,7 @@ foreach ($slides as $key => $slide) {
         'product_id' => $slide['id'],
         'source' => getenv('APP_URL'),
         'path' => getenv('THUMB_SITE_FOLDER'),
-        'image_type' => 'Slide',
+        'image_type' => 'slide',
         'image_path' => $slide['image_path']
     ];
 }
@@ -100,11 +100,11 @@ curl_close($curl);
 $galleries = $d->o_fet("SELECT * FROM `#_gallery`");
 $galleryData = [];
 foreach ($galleries as $key => $gallery) {
-    $sliderData[] = [
+    $galleryData[] = [
         'product_id' => $gallery['id'],
         'source' => getenv('APP_URL'),
         'path' => getenv('THUMB_SITE_FOLDER'),
-        'image_type' => 'Partner',
+        'image_type' => 'partner',
         'image_path' => $gallery['picture']
     ];
 }
@@ -159,7 +159,7 @@ if (count($productGalleries) > 0) {
             'product_id' => $valueG['id_sp'],
             'source' => getenv('APP_URL'),
             'path' => getenv('THUMB_SITE_FOLDER'),
-            'image_type' => 'thumbnail',
+            'image_type' => 'productGallery',
             'image_path' => $valueG['image_path']
         ];
         $countItemGallery++;
