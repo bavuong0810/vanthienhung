@@ -81,7 +81,6 @@ foreach ($slides as $key => $slide) {
     ];
 }
 $curl = curl_init();
-
 curl_setopt_array($curl, array(
     CURLOPT_URL => 'https://images.vanthienhung.vn/api/storage-image',
     CURLOPT_RETURNTRANSFER => true,
@@ -94,7 +93,6 @@ curl_setopt_array($curl, array(
     CURLOPT_POSTFIELDS => json_encode(['images' => $sliderData]),
     CURLOPT_HTTPHEADER => ['Content-Type: application/json'],
 ));
-
 $response = curl_exec($curl);
 curl_close($curl);
 
@@ -111,7 +109,6 @@ foreach ($galleries as $key => $gallery) {
     ];
 }
 $curl = curl_init();
-
 curl_setopt_array($curl, array(
     CURLOPT_URL => 'https://images.vanthienhung.vn/api/storage-image',
     CURLOPT_RETURNTRANSFER => true,
@@ -124,7 +121,6 @@ curl_setopt_array($curl, array(
     CURLOPT_POSTFIELDS => json_encode(['images' => $galleryData]),
     CURLOPT_HTTPHEADER => ['Content-Type: application/json'],
 ));
-
 $response = curl_exec($curl);
 curl_close($curl);
 
