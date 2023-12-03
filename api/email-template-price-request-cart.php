@@ -57,7 +57,8 @@ a[x-apple-data-detectors] {
 <?php
 $site_url = getenv('APP_URL');
 $SETTINGS = $d->getAllSettings();
-$logo_url = $site_url. '/img_data/images/'.$SETTINGS['website_logo']['value'];
+//$logo_url = $site_url. '/img_data/images/'.$SETTINGS['website_logo']['value'];
+$logo_url = $site_url. '/images/160/65/'.$SETTINGS['website_logo']['value'] . '?zc=0';
 
 $email_query = "SELECT * FROM #_email_bao_gia";
 $email_items = $d->o_fet($email_query);

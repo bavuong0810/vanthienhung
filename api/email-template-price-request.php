@@ -35,7 +35,8 @@ if (empty($ctsp[0]['image_path'])) {
 $tbl_style = 'width:100%;margin:0;';
 $tbl_wrap_style = 'color:#000000;margin:0 auto;border:1px solid #cccccc;width:700px;max-width:100%;font-size:15px;line-height:23px;';
 $a_style = 'color:#000000;';
-$logo_url = $site_url. '/img_data/images/'.$SETTINGS['website_logo']['value'];
+//$logo_url = $site_url. '/img_data/images/'.$SETTINGS['website_logo']['value'];
+$logo_url = $site_url. '/images/160/65/'.$SETTINGS['website_logo']['value'] . '?zc=0';
 
 $email_query = "SELECT * FROM #_email_bao_gia";
 $email_items = $d->o_fet($email_query);
