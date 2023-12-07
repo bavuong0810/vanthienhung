@@ -31,9 +31,11 @@ if ($category_id == '') {
 	$d->location(URLPATH . "404.html");
 }
 
-$maxR = $d->getOption('view_num_category')?$d->getOption('view_num_category') : 60;
-
-
+if (!__IS_MOBILE) {
+    $maxR = $d->getOption('view_num_category')?$d->getOption('view_num_category') : 60;
+} else {
+    $maxR = 25;
+}
 
 if (isset($_GET['perpage']) && $_GET['perpage'] != 0) {
 	$maxR = $_GET['perpage'];
