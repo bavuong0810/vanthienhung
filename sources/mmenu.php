@@ -37,8 +37,15 @@ user-select: none;
             <a href="/kich-hoat-bao-hanh.html" title="Bảo hành online">Bảo hành online</a>
         </li>
         <?php foreach ($nav as $item) {
-            // $sub = $d->o_fet("select * from #_category where category_id={$item['id']} and hien_thi=1 order by so_thu_tu asc, id desc");
             $sub = [];
+            $cacheFile = __ROOT_PATH . '/tmp/html/' . md5('sub_category_' . $item['id']) . '.cache'; // Cache file path
+            if (file_exists($cacheFile) && (time() - filemtime($cacheFile)) < 3600) {
+                $sub = unserialize(file_get_contents($cacheFile));
+            } else {
+                $sub = $d->o_fet("select * from #_category where category_id={$item['id']} and hien_thi=1 order by so_thu_tu asc, id desc");
+                // Cache the result
+                file_put_contents($cacheFile, serialize($sub));
+            }
             $count_child = count($sub);
         ?>
             <li class="<?php if (count($sub) > 0) {
