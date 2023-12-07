@@ -26,7 +26,7 @@ user-select: none;
             }
         }
     </style>
-    <ul class="nav navbar-nav 333333333">
+    <ul class="nav navbar-nav">
         <li>
             <a href="/admin" title="Dành cho đại lý">Dành cho đại lý</a>
         </li>
@@ -62,7 +62,14 @@ user-select: none;
                 ?>
                     <ul class="dropdown-menu fadeInUp animate1 <?= $count_child > 6 ? 'menu-2fix' : '' ?>">
                         <?php foreach ($sub as $item1) {
-                            $sub1 = $d->o_fet("select * from #_category where category_id={$item1['id']} and hien_thi=1 order by so_thu_tu asc, id desc");
+                            $cacheFile1 = __ROOT_PATH . '/tmp/html/' . md5('sub_category_' . $item['id'] . '_' . $item1['id']) . '.cache'; // Cache file path
+                            if (file_exists($cacheFile1) && (time() - filemtime($cacheFile1)) < 3600) {
+                                $sub1 = unserialize(file_get_contents($cacheFile1));
+                            } else {
+                                $sub1 = $d->o_fet("select * from #_category where category_id={$item1['id']} and hien_thi=1 order by so_thu_tu asc, id desc");
+                                // Cache the result
+                                file_put_contents($cacheFile1, serialize($sub1));
+                            }
                         ?>
                             <li class="<?php if (count($sub1) > 0) {
                                             echo "dropdown-submenu";
@@ -73,7 +80,14 @@ user-select: none;
                                 ?>
                                     <ul class="dropdown-menu fadeInUp animate1 <?= count($sub1) > 2 ? 'menu-2fix' : '' ?>">
                                         <?php foreach ($sub1 as $item2) {
-                                            $sub2 = $d->o_fet("select * from #_category where category_id={$item2['id']} and hien_thi=1 order by so_thu_tu asc, id desc");
+                                            $cacheFile2 = __ROOT_PATH . '/tmp/html/' . md5('sub_category_' . $item['id'] . '_' . $item1['id'] . '_' . $item2['id']) . '.cache'; // Cache file path
+                                            if (file_exists($cacheFile2) && (time() - filemtime($cacheFile2)) < 3600) {
+                                                $sub2 = unserialize(file_get_contents($cacheFile2));
+                                            } else {
+                                                $sub2 = $d->o_fet("select * from #_category where category_id={$item2['id']} and hien_thi=1 order by so_thu_tu asc, id desc");
+                                                // Cache the result
+                                                file_put_contents($cacheFile2, serialize($sub2));
+                                            }
                                         ?>
                                             <li class="<?php if (count($sub2) > 0) {
                                                             echo "dropdown-submenu";
@@ -84,10 +98,7 @@ user-select: none;
                                                 ?>
                                                     <ul class="dropdown-menu fadeInUp animate1 <?= count($sub2) > 2 ? 'menu-2fix' : '' ?>">
                                                         <?php foreach ($sub2 as $item3) { ?>
-                                                            <li class="<?php if (count($sub3) > 0) {
-                                                                            echo "dropdown-submenu";
-                                                                        }
-                                                                        ?>">
+                                                            <li>
                                                                 <a href="<?= URLPATH . $item3['alias_' . $lang] ?>.html" title="  <?= $item3['name_' . $lang] ?>"><?= $item3['name_' . $lang] ?></a>
                                                             </li>
                                                         <?php } ?>
