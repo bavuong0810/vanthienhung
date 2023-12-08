@@ -34,7 +34,7 @@ if ($category_id == '') {
 if (!__IS_MOBILE) {
     $maxR = $d->getOption('view_num_category')?$d->getOption('view_num_category') : 60;
 } else {
-    $maxR = 25;
+    $maxR = 24;
 }
 
 if (isset($_GET['perpage']) && $_GET['perpage'] != 0) {

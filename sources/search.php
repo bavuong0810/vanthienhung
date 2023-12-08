@@ -164,9 +164,14 @@ if( $view_dm_truc_tuyen || $is_view_danh_muc || $is_view_nhan_hieu || $view_butt
                                         <?php
                                         $nums = array(12, 24, 36, 48, 60, 72, 84, 100, 120, 140, 180, 200);
                                         if (@$_SESSION['is_admin']) {
-                                            $nums[] = 300;
                                             $nums[] = 500;
                                             $nums[] = 1000;
+                                            $nums[] = 1300;
+                                            $nums[] = 1500;
+                                            $nums[] = 2000;
+                                            $nums[] = 3000;
+                                            $nums[] = 4000;
+                                            $nums[] = 5000;
                                         }
                                         foreach ($nums as $num) {
                                             echo '<option'. ($num == $itemPerPage ? ' selected' : '') .'>'. $num .'</option>';

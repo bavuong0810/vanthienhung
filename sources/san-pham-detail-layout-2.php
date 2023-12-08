@@ -7,6 +7,18 @@ $view_button_warrantyonline =  $d->getOption('view_button_warrantyonline');
 $lang = $_SESSION['lang'];
 $our_service = $d->getTemplates(48);
 $vth_logo = $d->getTemplates(30);
+
+$chiTietHoTroZalo = $d->getTemplates(49, true);
+$timetable = $d->getTemplates(54, true);
+$view_ct_truc_tuyen = $d->getOption('view_ct_truc_tuyen');
+$view_price_report_form_right = $d->getOption('view_price_report_form_right');
+$view_button_placeorder_right = $d->getOption('view_button_placeorder_right');
+$view_button_checkorder_right =  $d->getOption('view_button_checkorder_right');
+$view_button_warrantyonline_right =  $d->getOption('view_button_warrantyonline_right');
+$view_button_price_request_right =  $d->getOption('view_button_price_request_right');
+$view_button_contact_right =  $d->getOption('view_button_contact_right');
+$view_zalo_right =  $d->getOption('view_zalo_right');
+$view_calendar_right =  $d->getOption('view_calendar_right');
 ?>
 <style type="text/css">
     .tab-content {
@@ -18,18 +30,6 @@ $vth_logo = $d->getTemplates(30);
     <link href="<?= URLPATH ?>templates/extra/magiczoomplus/magiczoomplus.css" rel="stylesheet" />
     <script src="<?= URLPATH ?>templates/extra/magiczoomplus/magiczoomplus.js"></script>
     <?php
-    $chiTietHoTroZalo = $d->getTemplates(49, true);
-    $timetable = $d->getTemplates(54, true);
-    $view_ct_truc_tuyen = $d->getOption('view_ct_truc_tuyen');
-    $view_price_report_form_right = $d->getOption('view_price_report_form_right');
-    $view_button_placeorder_right = $d->getOption('view_button_placeorder_right');
-    $view_button_checkorder_right =  $d->getOption('view_button_checkorder_right');
-    $view_button_warrantyonline_right =  $d->getOption('view_button_warrantyonline_right');
-    $view_button_price_request_right =  $d->getOption('view_button_price_request_right');
-    $view_button_contact_right =  $d->getOption('view_button_contact_right');
-    $view_zalo_right =  $d->getOption('view_zalo_right');
-    $view_calendar_right =  $d->getOption('view_calendar_right');
-
     if( $view_ct_truc_tuyen || $view_price_report_form_right || $view_button_placeorder_right || $view_button_checkorder_right || $view_button_warrantyonline_right || $view_button_price_request_right || $view_zalo_right || $view_calendar_right ){
         $has_sidebar = 1;
     } else {
