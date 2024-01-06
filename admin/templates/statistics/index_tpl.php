@@ -196,10 +196,10 @@
                     <td><?php echo $product['region']; ?></td>
 					<td>
 						<a href="index.php?p=san-pham&a=edit&id=<?php echo $product['id_sanpham']; ?>" target="_blank" class="text-success" title="Sửa sản phẩm"><i class="glyphicon glyphicon-pencil"></i></a>
-						&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;
 						<a href="/<?php echo $product['alias_vi']; ?>.html" target="_blank" title="Xem sản phẩm"><i class="glyphicon glyphicon-eye-open"></i></a>
-
-                        <a data-id="<?php echo $product['id_sanpham']; ?>" href="javascript:void(0)" title="Đổi ảnh" class="btn btn-circle btn-change-img text-center btn-warning" data-title="<?php echo $product['alias_vi']; ?>">
+                        &nbsp;
+                        <a data-id="<?php echo $product['id_sanpham']; ?>" href="javascript:void(0)" title="Đổi ảnh" data-title="<?php echo $product['alias_vi']; ?>">
                             <i class="glyphicon glyphicon-picture"></i>
                         </a>
 					</td>
@@ -388,10 +388,6 @@
     <script type="text/javascript" src="/admin/assets/pasteimage.js"></script>
     <script src="/admin/js/form.js?v=<?php echo getenv('APP_VERSION'); ?>"></script>
     <script>
-        const AppConfig = {
-            fileBaseUrl: '<?php echo FILEURL; ?>',
-            thumbFolder: '<?php echo THUMB_SITE_FOLDER; ?>',
-        };
         jQuery(document).ready(function($) {
             $('.btn-change-img').on('click', function (e) {
                 e.preventDefault();
@@ -631,7 +627,7 @@
 
                             <a href="/${item.alias_vi}.html" target="_blank" title="Xem sản phẩm"><i class="glyphicon glyphicon-eye-open"></i></a>
 
-                            <a data-id="${item.id_sanpham}" href="javascript:void(0)" title="Đổi ảnh" class="btn btn-circle btn-change-img text-center btn-warning" data-title="${item.alias_vi}">
+                            <a data-id="${item.id_sanpham}" href="javascript:void(0)" title="Đổi ảnh" data-title="${item.alias_vi}">
                                 <i class="glyphicon glyphicon-picture"></i>
                             </a>
 						</td>
