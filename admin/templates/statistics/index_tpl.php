@@ -200,7 +200,7 @@
 						<a href="/<?php echo $product['alias_vi']; ?>.html" target="_blank" title="Xem sản phẩm"><i class="glyphicon glyphicon-eye-open"></i></a>
 
                         <a data-id="<?php echo $product['id_sanpham']; ?>" href="javascript:void(0)" title="Đổi ảnh" class="btn btn-circle btn-change-img text-center btn-warning" data-title="<?php echo $product['alias_vi']; ?>">
-                            <i class="fa fa-file-image-o" aria-hidden="true" style="width: 20px;height: 20px;line-height: 20px;"></i>
+                            <i class="glyphicon glyphicon-picture"></i>
                         </a>
 					</td>
 				</tr>
@@ -632,7 +632,7 @@
                             <a href="/${item.alias_vi}.html" target="_blank" title="Xem sản phẩm"><i class="glyphicon glyphicon-eye-open"></i></a>
 
                             <a data-id="${item.id_sanpham}" href="javascript:void(0)" title="Đổi ảnh" class="btn btn-circle btn-change-img text-center btn-warning" data-title="${item.alias_vi}">
-                                <i class="fa fa-file-image-o" aria-hidden="true" style="width: 20px;height: 20px;line-height: 20px;"></i>
+                                <i class="glyphicon glyphicon-picture"></i>
                             </a>
 						</td>
 					</tr>
