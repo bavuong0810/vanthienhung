@@ -205,6 +205,10 @@
 						<a href="index.php?p=san-pham&a=edit&id=<?php echo $product['id_sanpham']; ?>" target="_blank" class="text-success" title="Sửa sản phẩm"><i class="glyphicon glyphicon-pencil"></i></a>
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="/<?php echo $product['alias_vi']; ?>.html" target="_blank" title="Xem sản phẩm"><i class="glyphicon glyphicon-eye-open"></i></a>
+
+                        <a data-id="<?php echo $product['id_sanpham']; ?>" href="javascript:void(0)" title="Đổi ảnh" class="btn btn-circle btn-change-img text-center btn-warning" data-title="<?php echo $product['alias_vi']; ?>">
+                            <i class="fa fa-file-image-o" aria-hidden="true" style="width: 20px;height: 20px;line-height: 20px;"></i>
+                        </a>
 					</td>
 				</tr>
 				<?php
@@ -473,6 +477,10 @@
 							<a href="index.php?p=san-pham&amp;a=edit&amp;id=${item.id_sanpham}" target="_blank" class="text-success" title="Sửa sản phẩm"><i class="glyphicon glyphicon-pencil"></i></a>
 							&nbsp;&nbsp;&nbsp;&nbsp;
 							<a href="/${item.alias_vi}.html" target="_blank" title="Xem sản phẩm"><i class="glyphicon glyphicon-eye-open"></i></a>
+
+                            <a data-id="${item.id_sanpham}" href="javascript:void(0)" title="Đổi ảnh" class="btn btn-circle btn-change-img text-center btn-warning" data-title="${item.alias_vi}">
+                                <i class="fa fa-file-image-o" aria-hidden="true" style="width: 20px;height: 20px;line-height: 20px;"></i>
+                            </a>
 						</td>
 					</tr>
 					`);
