@@ -199,7 +199,7 @@
 						&nbsp;
 						<a href="/<?php echo $product['alias_vi']; ?>.html" target="_blank" title="Xem sản phẩm"><i class="glyphicon glyphicon-eye-open"></i></a>
                         &nbsp;
-                        <a data-id="<?php echo $product['id_sanpham']; ?>" href="javascript:void(0)" title="Đổi ảnh" class="btn-change-img" data-title="<?php echo $product['name_vi']; ?>">
+                        <a data-id="<?php echo $product['id_sanpham']; ?>" href="javascript:void(0)" title="Đổi ảnh" onclick="changeImage(this)" data-title="<?php echo $product['name_vi']; ?>">
                             <i class="glyphicon glyphicon-picture"></i>
                         </a>
 					</td>
@@ -389,16 +389,6 @@
     <script src="/admin/js/form.js?v=<?php echo getenv('APP_VERSION'); ?>"></script>
     <script>
         jQuery(document).ready(function($) {
-            $('.btn-change-img').on('click', function (e) {
-                e.preventDefault();
-
-                let id = $(this).attr('data-id');
-                $('#changeImageModal #changeImageProductId').val(id);
-                $('#changeImageModal #changeImageProductTitle').text($(this).attr('data-title'));
-                $('#changeImageModal .img-result').html('');
-                $('#changeImageModal').modal('show');
-            });
-
             pasteimage('#thumb', showImage);
             $('#thumb input[name=file2_url]').on('blur', urlToImage);
 
@@ -434,6 +424,15 @@
                 });
             });
         });
+
+        function changeImage(e) {
+            e.preventDefault();
+            let id = $(e).attr('data-id');
+            $('#changeImageModal #changeImageProductId').val(id);
+            $('#changeImageModal #changeImageProductTitle').text($(e).attr('data-title'));
+            $('#changeImageModal .img-result').html('');
+            $('#changeImageModal').modal('show');
+        }
 
         function showImage(src, target) {
             var sourceSplit = src.split("base64,");
@@ -627,7 +626,7 @@
 
                             <a href="/${item.alias_vi}.html" target="_blank" title="Xem sản phẩm"><i class="glyphicon glyphicon-eye-open"></i></a>
 
-                            <a data-id="${item.id_sanpham}" href="javascript:void(0)" title="Đổi ảnh" class="btn-change-img" data-title="${item.name_vi}">
+                            <a data-id="${item.id_sanpham}" href="javascript:void(0)" title="Đổi ảnh" onclick="changeImage(this)" data-title="${item.name_vi}">
                                 <i class="glyphicon glyphicon-picture"></i>
                             </a>
 						</td>
