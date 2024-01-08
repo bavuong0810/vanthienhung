@@ -186,9 +186,11 @@
 					<td><?php echo ++$i; ?></td>
 					<td><?php echo $product['code']; ?></td>
 					<td>
-						<?php
-							echo ($product['image_path'] <> '') ? "<img width=\"70\" src='" . THUMB_BASE . "images/70/50/" . $product['id'] . "/" . $product['image_path']."'>" : "";
-						?>
+                        <div class="product_image_<?php echo $product['id_sanpham']; ?>">
+                            <?php
+                                echo ($product['image_path'] <> '') ? "<img width=\"70\" src='" . THUMB_BASE . "images/70/50/" . $product['id'] . "/" . $product['image_path']."'>" : "";
+                            ?>
+                        </div>
 					</td>
 					<td><?php echo $product['name_vi']; ?></td>
 					<td>
@@ -418,9 +420,7 @@
                     dataType: 'json',
                     success: data => {
                         if (data.success === true) {
-                            $('.product_image_' + id).attr('src', imgResult);
-                            $('.product_image_' + id).css('max-height', '200px');
-                            $('.product_image_' + id).css('object-fit', 'cover');
+                            $('.product_image_' + id).html('<img src="' + imgResult + '" alt="" width="70">');
                             $('#changeImageModal').modal('hide');
                         } else {
                             alert('Có lỗi xảy ra.');
