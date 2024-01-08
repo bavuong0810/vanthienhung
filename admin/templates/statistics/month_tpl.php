@@ -420,7 +420,7 @@
                     dataType: 'json',
                     success: data => {
                         if (data.success === true) {
-                            $('.product_image_' + id).html('<img src="' + imgResult + '" alt="" width="70">');
+                            $('#product_image_' + id).html('<img src="' + imgResult + '" alt="" width="70">');
                             $('#changeImageModal').modal('hide');
                         } else {
                             alert('Có lỗi xảy ra.');
