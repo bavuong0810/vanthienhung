@@ -425,7 +425,6 @@
         });
 
         function changeImage(e) {
-            e.preventDefault();
             let id = $(e).attr('data-id');
             $('#changeImageModal #changeImageProductId').val(id);
             $('#changeImageModal #changeImageProductTitle').text($(e).attr('data-title'));
