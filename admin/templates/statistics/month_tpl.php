@@ -186,7 +186,7 @@
 					<td><?php echo ++$i; ?></td>
 					<td><?php echo $product['code']; ?></td>
 					<td>
-                        <div class="product_image_<?php echo $product['id_sanpham']; ?>">
+                        <div id="product_image_<?php echo $product['id_sanpham']; ?>">
                             <?php
                                 echo ($product['image_path'] <> '') ? "<img width=\"70\" src='" . THUMB_BASE . "images/70/50/" . $product['id'] . "/" . $product['image_path']."'>" : "";
                             ?>
