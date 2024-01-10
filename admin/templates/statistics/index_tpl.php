@@ -417,7 +417,7 @@
                     dataType: 'json',
                     success: data => {
                         if (data.success === true) {
-                            if (imgResult !== '') {
+                            if ($('#changeImageForm .img-result img').length) {
                                 $('#product_image_' + id).html('<img src="' + imgResult + '" alt="" width="70">');
                             }
                             $('#changeImageModal').modal('hide');
