@@ -136,8 +136,8 @@ function ajaxChangeImg() {
 		let id = $(this).attr('data-id');
 		$('#changeImageModal #changeImageProductId').val(id);
 		$('#changeImageModal #changeImageProductTitle').text($(this).attr('data-title'));
-		$('#changeImageModal #product_title').val($(e).attr('data-title'));
-		$('#changeImageModal #editBtn').attr('href', 'index.php?p=san-pham&a=edit&id=' + $(e).attr('data-id'));
+		$('#changeImageModal #product_title').val($(this).attr('data-title'));
+		$('#changeImageModal #editBtn').attr('href', '/admin/index.php?p=san-pham&a=edit&id=' + $(this).attr('data-id'));
 		$('#changeImageModal .img-result').html('');
 		$('#changeImageModal').modal('show');
 	});
