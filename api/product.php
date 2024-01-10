@@ -13,12 +13,19 @@ function changeProductThumb()
     global $d;
     $id = $_POST['changeImageProductId'];
     if ($id > 0) {
+        $data = [];
         if (!empty($_POST['file2_clipboard'])) {
             $data['image_path'] = $_POST['file2_clipboard'];
+        }
+
+        if (!empty($_POST['product_title'])) {
             $data['name_vi'] = $_POST['product_title'];
-            $d->reset();
-            $d->setTable('#_sanpham');
-            $d->setWhere('id', $id);
+        }
+
+        $d->reset();
+        $d->setTable('#_sanpham');
+        $d->setWhere('id', $id);
+        if (count($data)) {
             if ($d->update($data)) {
                 echo json_encode(['success' => true]);
                 exit();
