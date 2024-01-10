@@ -356,6 +356,15 @@
                     <div class="modal-body">
                         <input type="hidden" id="changeImageProductId" name="changeImageProductId">
                         <h3 id="changeImageProductTitle"></h3>
+                        <div class="form-group">
+                            <a href="" target="_blank" class="text-success" id="editBtn" title="Sửa sản phẩm">
+                                <i class="glyphicon glyphicon-pencil"></i>
+                            </a>
+                        </div>
+                        <div class="form-group">
+                            <label for="product_title">Tên sản phẩm</label>
+                            <input type="text" name="product_title" class="form-control" value="" id="product_title">
+                        </div>
                         <div id="thumb">
                             <div class="row">
                                 <div class="col-md-12">
@@ -428,6 +437,8 @@
             let id = $(e).attr('data-id');
             $('#changeImageModal #changeImageProductId').val(id);
             $('#changeImageModal #changeImageProductTitle').text($(e).attr('data-title'));
+            $('#changeImageModal #product_title').val($(e).attr('data-title'));
+            $('#changeImageModal #editBtn').attr('href', 'index.php?p=san-pham&a=edit&id=' + $(e).attr('data-id'));
             $('#changeImageModal .img-result').html('');
             $('#changeImageModal').modal('show');
         }

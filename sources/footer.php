@@ -844,6 +844,15 @@ if (file_exists($cachePath) && 1 == 2) {
                         <div class="modal-body">
                             <input type="hidden" id="changeImageProductId" name="changeImageProductId">
                             <h3 id="changeImageProductTitle"></h3>
+                            <div class="form-group">
+                                <a href="" target="_blank" class="text-success" id="editBtn" title="Sửa sản phẩm">
+                                    <i class="glyphicon glyphicon-pencil"></i>
+                                </a>
+                            </div>
+                            <div class="form-group">
+                                <label for="product_title">Tên sản phẩm</label>
+                                <input type="text" name="product_title" class="form-control" value="" id="product_title">
+                            </div>
                             <div id="thumb">
                                 <div class="row">
                                     <div class="col-md-12">

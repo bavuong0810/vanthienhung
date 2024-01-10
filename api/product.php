@@ -15,6 +15,7 @@ function changeProductThumb()
     if ($id > 0) {
         if (!empty($_POST['file2_clipboard'])) {
             $data['image_path'] = $_POST['file2_clipboard'];
+            $data['name_vi'] = $_POST['product_title'];
             $d->reset();
             $d->setTable('#_sanpham');
             $d->setWhere('id', $id);
