@@ -909,9 +909,11 @@ if (file_exists($cachePath) && 1 == 2) {
                         dataType: 'json',
                         success: data => {
                             if (data.success === true) {
-                                $('.product_image_' + id).attr('src', imgResult);
-                                $('.product_image_' + id).css('max-height', '200px');
-                                $('.product_image_' + id).css('object-fit', 'cover');
+                                if (imgResult !== '') {
+                                    $('.product_image_' + id).attr('src', imgResult);
+                                    $('.product_image_' + id).css('max-height', '200px');
+                                    $('.product_image_' + id).css('object-fit', 'cover');
+                                }
                                 $('#changeImageModal').modal('hide');
                             } else {
                                 alert('Có lỗi xảy ra.');
