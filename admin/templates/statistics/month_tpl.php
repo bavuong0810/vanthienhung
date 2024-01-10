@@ -192,7 +192,9 @@
                             ?>
                         </div>
 					</td>
-					<td><?php echo $product['name_vi']; ?></td>
+					<td>
+                        <div id="product_title_<?php echo $product['id_sanpham']; ?>"><?php echo $product['name_vi']; ?></div>
+                    </td>
 					<td>
 						<input class="chk_box" type="checkbox" onclick="on_check(this,'#_sanpham','is_completed','<?=$product['id']?>')" <?php if($product['is_completed'] == 1) echo 'checked="checked"'; ?>/>
 						<span class="d-none"><?php echo $product['is_completed'] == 1 ? 'is-completed' : 'not-completed'; ?></span>
@@ -432,6 +434,7 @@
                             if ($('#changeImageForm .img-result img').length) {
                                 $('#product_image_' + id).html('<img src="' + imgResult + '" alt="" width="70">');
                             }
+                            $('#product_title_' + id).html($('#changeImageModal #product_title').val());
                             $('#changeImageModal').modal('hide');
                         } else {
                             alert('Có lỗi xảy ra.');
