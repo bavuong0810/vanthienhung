@@ -33,7 +33,7 @@ if($brand_features){
     <?php 
     foreach( $brandGroupResults as $group ){ 
         $group_id = $group['id'];
-        $nav = $d->o_fet("select * from #_brand where group_id='".$group_id."' and is_show=1 order by name asc, id desc");
+        $nav = $d->o_fet("select * from #_brand where group_id='".$group_id."' AND is_show=1 AND is_featured=1 order by name asc, id desc");
         $group_slug = str_replace(' ', '-', $group['name_vi']);
         $brandGroupIDs = array();
         if( $nav ){
