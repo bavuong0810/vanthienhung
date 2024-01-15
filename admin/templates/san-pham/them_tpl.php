@@ -211,11 +211,14 @@ $brand_title = $attributes['brand_title'];
 						?>
 						<div class="dv-img-ad hide_js_<?=$val['id']?>" data-toggle="tooltip" data-html="true" data-placement="right" title="<?php echo htmlspecialchars($title) ?>">
 							<div class="img_addimage">
+                                <img src="<?php echo FILEURL; ?>img_data/images/<?php echo @$val['image_path']?>">
+                                <?php /*
 								<?php if (ADMIN_IMAGE): ?>
-									<img src="<?php echo FILEURL; ?>img_data/images/<?php echo @$val['image_path']?>">
+                                    <img src="<?php echo FILEURL; ?>img_data/images/<?php echo @$val['image_path']?>">
 								<?php else: ?>
 									Hình ảnh
 								<?php endif; ?>
+                                */ ?>
 							</div>
 							<div class="icon_deleteimage">
 								<a href="javascript:xoa_anh_sp('<?=$val['id']?>','<?=$val['id_sp']?>')" data-id="<?=$val['id']?>" onclick="if(!confirm('Xác nhận xóa?')) return false;  "><img src="public/images/delete.png" alt="Delete"></a>

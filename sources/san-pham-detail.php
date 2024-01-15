@@ -1233,6 +1233,16 @@ $view_button_warrantyonline =  $d->getOption('view_button_warrantyonline');
 									<select name="perpage" onchange="this.form.submit()">
 										<?php 
 										$nums = array(12, 24, 36, 42, 60, 120, 180);
+                                        if (@$_SESSION['is_admin']) {
+                                            $nums[] = 500;
+                                            $nums[] = 1000;
+                                            $nums[] = 1300;
+                                            $nums[] = 1500;
+                                            $nums[] = 2000;
+                                            $nums[] = 3000;
+                                            $nums[] = 4000;
+                                            $nums[] = 5000;
+                                        }
 										foreach ($nums as $num) {
 											echo '<option' . ($num == $maxR ? ' selected' : '') . '>' . $num . '</option>';
 										}
