@@ -1,5 +1,5 @@
 <?php
-$brandGroupResults = $d->o_fet("SELECT id, name_vi, so_luong FROM #_brand_group WHERE name_vi IS NOT NULL AND is_show=1 AND is_featured=1 ORDER BY name_vi ASC, id DESC");
+$brandGroupResults = $d->o_fet("SELECT id, name_vi, so_luong FROM #_brand_group WHERE name_vi IS NOT NULL AND is_show=1 ORDER BY name_vi ASC, id DESC");
 $brandGroups = [];
 foreach ($brandGroupResults as $brandGroup) {
     $brandGroups[$brandGroup['id']] = $brandGroup['name_vi'];
@@ -33,7 +33,7 @@ if($brand_features){
     <?php 
     foreach( $brandGroupResults as $group ){ 
         $group_id = $group['id'];
-        $nav = $d->o_fet("select * from #_brand where group_id='".$group_id."' AND is_show=1 AND is_featured=1 order by name asc, id desc");
+        $nav = $d->o_fet("select * from #_brand where group_id='".$group_id."' and is_show=1 order by name asc, id desc");
         $group_slug = str_replace(' ', '-', $group['name_vi']);
         $brandGroupIDs = array();
         if( $nav ){
