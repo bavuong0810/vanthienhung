@@ -138,8 +138,18 @@ function ajaxChangeImg() {
 		$('#changeImageModal #changeImageProductTitle').text($(this).attr('data-title'));
 		$('#changeImageModal #product_title').val($(this).attr('data-title'));
 		$('#changeImageModal #editBtn').attr('href', '/admin/index.php?p=san-pham&a=edit&id=' + $(this).attr('data-id'));
+		$('#changeImageModal #deleteImageBtn').attr('data-id', $(this).attr('data-id'));
 		$('#changeImageModal .img-result').html('');
 		$('#changeImageModal').modal('show');
+	});
+}
+
+function ajaxModalDeleteImg()
+{
+	$('#changeImageModal #deleteImageBtn').on('click', function (e) {
+		e.preventDefault();
+		let id = $(this).attr('data-id');
+		$('a.btn-del-img[data-id="' + id + '"]').trigger('click');
 	});
 }
 
@@ -226,6 +236,8 @@ $(document).ready(function () {
 	tiepTucMuaHang();
 
 	ajaxChangeImg();
+
+	ajaxModalDeleteImg();
 
 	$('[data-toggle="tooltip"]').tooltip();
 

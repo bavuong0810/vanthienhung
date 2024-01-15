@@ -850,6 +850,12 @@ if (file_exists($cachePath) && 1 == 2) {
                                 </a>
                             </div>
                             <div class="form-group">
+                                <a href="javascript:void(0)" class="btn text-center btn-danger"
+                                   id="deleteImageBtn" title="Xoá ảnh" data-id="">
+                                    <i class="fa fa-close"></i> Xoá ảnh hiện tại
+                                </a>
+                            </div>
+                            <div class="form-group">
                                 <label for="product_title">Tên sản phẩm</label>
                                 <input type="text" name="product_title" class="form-control" value="" id="product_title">
                             </div>
