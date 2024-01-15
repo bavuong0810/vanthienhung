@@ -39,6 +39,12 @@ if ($item['promotion_price'] < $item['price'] && $item['promotion_price'] > 0) {
                 ">
                     <i class="fa fa-file-image-o" aria-hidden="true" style="width: 20px;height: 20px;line-height: 20px;"></i>
                 </a>
+                <a href="javascript:void(0)" title="View" class="btn text-center btn-info" style="
+                    position: absolute;
+                    z-index: 2;
+                    left: 85px;
+                    padding: 6px;
+                "><i class="fa fa-eye" style="width: 20px;height: 20px;line-height: 20px;"></i> <?php echo number_format($item['view']); ?></a>
                 <a href="/admin/index.php?p=san-pham&a=edit&id=<?php echo $item['id']; ?>" title="Chỉnh sửa sản phẩm" class="btn btn-circle text-center btn-success" style="
                     position: absolute;
                     z-index: 2;
