@@ -4,10 +4,16 @@ $brandGroups = [];
 foreach ($brandGroupResults as $brandGroup) {
     $brandGroups[$brandGroup['id']] = $brandGroup['name_vi'];
 }
-$brand_features = $d->o_fet("select * from #_brand where is_featured=1 and is_show=1 order by name asc, id desc");
+
+$is_featured = '';
+$brand_features = null;
+if ($view_nhan_hieu == 'is_featured_and_group') {
+    $is_featured = 'AND is_featured=1';
+    $brand_features = $d->o_fet("select * from #_brand where is_featured=1 and is_show=1 order by name asc, id desc");
+}
 ?>
 
-<ul class="nav-dm<?php echo ($view_nhan_hieu == 'group')?' nav-dm-toggle':''?>">
+<ul class="nav-dm<?php echo ($view_nhan_hieu == 'group' || $view_nhan_hieu == 'is_featured_and_group') ? ' nav-dm-toggle' : ''?>">
 
 <?php 
 if($brand_features){
@@ -33,7 +39,7 @@ if($brand_features){
     <?php 
     foreach( $brandGroupResults as $group ){ 
         $group_id = $group['id'];
-        $nav = $d->o_fet("select * from #_brand where group_id='".$group_id."' AND is_show=1 AND is_featured=1 order by name asc, id desc");
+        $nav = $d->o_fet("select * from #_brand where group_id='".$group_id."' AND is_show=1 order by name asc, id desc");
         $group_slug = str_replace(' ', '-', $group['name_vi']);
         $brandGroupIDs = array();
         if( $nav ){
