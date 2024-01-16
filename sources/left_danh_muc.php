@@ -101,7 +101,7 @@ $view_count_product = $d->getOption('view_count_product');
                 <div class="clearfix"></div>
                 <div class="nav-left clearfix">
                     <?php 
-                    if( $view_nhan_hieu == 'group' ){
+                    if( $view_nhan_hieu == 'group' || $view_nhan_hieu == 'is_featured_and_group'){
                         include 'menu-nhan-hieu-group-sidebar.php'; 
                     } else {
                         include 'menu-nhan-hieu-sidebar.php'; 
