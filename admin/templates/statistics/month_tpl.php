@@ -357,176 +357,25 @@
 		</tbody>
 	</table>
 
-    <div class="modal fade" id="changeImageModal" tabindex="-1" role="dialog" aria-labelledby="changeImageModalLabel" data-backdrop="false">
-        <div class="modal-dialog" role="document">
-            <form id="changeImageForm" method="post" enctype="multipart/form-data">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <h4 class="modal-title" id="changeImageModalLabel">Thay đổi hình ảnh</h4>
-                    </div>
-                    <div class="modal-body">
-                        <input type="hidden" id="changeImageProductId" name="changeImageProductId">
-                        <h3 id="changeImageProductTitle"></h3>
-                        <div class="form-group">
-                            <a href="" target="_blank" class="text-success" id="editBtn" title="Sửa sản phẩm">
-                                <i class="glyphicon glyphicon-pencil"></i>
-                            </a>
-                        </div>
-                        <div class="form-group">
-                            <label for="product_title">Tên sản phẩm</label>
-                            <input type="text" name="product_title" class="form-control" value="" id="product_title">
-                        </div>
-                        <div id="thumb">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <input type="file" name="file2" class="input width400 form-control js-image-field" data-api="<?php echo getApiUploadFile(); ?>" data-result="#thumb"/>
-                                </div>
-                                <div class="col-md-12 form-group text-label">
-                                    Hoặc nhập link hình ảnh:
-                                </div>
-                                <div class="col-md-12 form-group">
-                                    <input type="text" name="file2_url" placeholder="Link hình ảnh..." class="input width400 form-control" data-result="#thumb">
-                                </div>
-                                <div>
-                                    <input type="hidden" class="input-clipboard js-upload-result" name="file2_clipboard">
-                                </div>
-                            </div>
-                            <div class="row mt-2">
-                                <div class="col-md-12 form-group text-label">
-                                    Kết quả:
-                                </div>
-                                <div class="col-md-12 form-group img-result"></div>
-                            </div>
-                        </div>
-                        <div class="form-group text-center">
-                            <button class="btn btn-primary" type="submit">Đổi ảnh</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    <script type="text/javascript" src="/admin/assets/pasteimage.js"></script>
-    <script src="/admin/js/form.js?v=<?php echo getenv('APP_VERSION'); ?>"></script>
-    <script>
-        jQuery(document).ready(function($) {
-            pasteimage('#thumb', showImage);
-            $('#thumb input[name=file2_url]').on('blur', urlToImage);
-
-            $('#changeImageForm').on('submit', function(e) {
-                e.preventDefault();
-                const formData = new FormData(this);
-                let id = $('#changeImageForm #changeImageProductId').val();
-                let imgResult = $('#changeImageForm .img-result img').attr('src');
-                $.ajax({
-                    url: '/api.php?func=changeProductThumb',
-                    type: 'POST',
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    timeout: 1000 * 60 * 5,
-                    dataType: 'json',
-                    success: data => {
-                        if (data.success === true) {
-                            if ($('#changeImageForm .img-result img').length) {
-                                $('#product_image_' + id).html('<img src="' + imgResult + '" alt="" width="70">');
-                            }
-                            $('#product_title_' + id).html($('#changeImageModal #product_title').val());
-                            $('#changeImageModal').modal('hide');
-                        } else {
-                            alert('Có lỗi xảy ra.');
-                        }
-                    },
-                    fail: () => {
-                        swal({
-                            title: "Vui lòng thử lại!",
-                            type: "warning",
-                        });
-                    },
-                });
-            });
-        });
-
-        function changeImage(e) {
-            let id = $(e).attr('data-id');
-            $('#changeImageModal #changeImageProductId').val(id);
-            $('#changeImageModal #changeImageProductTitle').text($(e).attr('data-title'));
-            $('#changeImageModal #product_title').val($(e).attr('data-title'));
-            $('#changeImageModal #editBtn').attr('href', 'index.php?p=san-pham&a=edit&id=' + $(e).attr('data-id'));
-            $('#changeImageModal .img-result').html('');
-            $('#changeImageModal').modal('show');
-        }
-
-        function showImage(src, target) {
-            var sourceSplit = src.split("base64,");
-            var sourceString = sourceSplit[1];
-
-            var sourceSplit = src.split("base64,");
-            var sourceString = sourceSplit[1];
-            // $(target + ' .input-clipboard').val(sourceString);
-            const baseUrl = AppConfig && AppConfig.fileBaseUrl ? AppConfig.fileBaseUrl : '/';
-            $.ajax({
-                type: 'POST',
-                url: baseUrl + 'admin/upload.php?image_source=1',
-                data: sourceString,
-                contentType: 'application/json',
-                success: (res) => {
-                    console.log({res});
-                    if (!res.name) {
-                        alert('Lỗi tải lên hình ảnh!');
-                        return;
-                    }
-
-                    src = res.name;
-                    if ($(target + ' .img-result img').length > 0) {
-                        $(target + ' .img-result img').attr('src', baseUrl + 'img_data/images/' + src).attr('data-original-title', '');
-                    } else {
-                        $(target + ' .img-result').append('<img src="' + baseUrl + 'img_data/images/' + src + '" style="max-height:150px;"/>');
-                    }
-
-                    $(target + ' .input-clipboard').val(src);
-                },
-                dataType: 'json'
-            });
-        }
-
-        function urlToImage(e) {
-            const target = e.target.dataset.result;
-            const url = e.target.value;
-            console.log('url', url);
-            if (!url || url.trim().length === 0 || url.indexOf('http') !== 0) {
-                return;
-            }
-
-            const baseUrl = AppConfig && AppConfig.fileBaseUrl ? AppConfig.fileBaseUrl : '/';
-            $.ajax({
-                type: 'GET',
-                url: baseUrl + 'admin/api.php?func=url_to_image',
-                data: { url },
-                contentType: 'application/json',
-                success: (res) => {
-                    if (!res.result) {
-                        alert('Lỗi tải lên hình ảnh!');
-                        return;
-                    }
-
-                    src = res.result;
-                    if ($(target + ' .img-result img').length > 0) {
-                        $(target + ' .img-result img').attr('src', baseUrl + 'img_data/images/' + src).attr('data-original-title', '');
-                    } else {
-                        $(target + ' .img-result').append('<img src="' + baseUrl + 'img_data/images/' + src + '" style="max-height:150px;"/>');
-                    }
-
-                    $(target + ' .input-clipboard').val(src);
-                    e.target.value = '';
-                },
-                dataType: 'json'
-            });
-        }
-    </script>
+	<!-- CHANGE IMAGE -->
+	<script>
+		function changeImageSuccessCB(id, data) {
+			if (data.success === true) {
+					if ($('#changeImageForm #thumb .img-result img').length) {
+						const imgResult = $('#changeImageForm #thumb .img-result img').attr('src');
+						$('#product_image_' + id).html('<img src="' + imgResult + '" alt="" width="70">');
+					}
+					$('#product_title_' + id).html($('#changeImageModal #product_title').val());
+					$('#changeImageModal').modal('hide');
+			} else {
+				swal({
+						title: "Vui lòng thử lại!",
+						type: "warning",
+				});
+			}
+		}
+	</script>
+	<?php include __ROOT_PATH . '/admin/templates/_parts/change-image.php'; ?>
 
 	<script type="text/javascript">
 

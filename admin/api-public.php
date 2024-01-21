@@ -41,6 +41,7 @@ $allowMethods = [
   'clearCache',
   'checkRemoveErrorImages',
   'checkRemoveErrorSlideImages',
+  'getSlideImagesByProduct',
 ];
 if (empty($func) || !in_array($func, $allowMethods)) {
   die('Not found');

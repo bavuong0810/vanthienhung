@@ -18,7 +18,7 @@
                                 z-index: 2;
                                 left: 5px;
                             "><i class="fa fa-close" style="width: 20px;height: 20px;line-height: 20px;"></i></a>
-                            <a data-id="<?php echo $item['id']; ?>" href="javascript:void(0)" title="Đổi ảnh" class="btn btn-circle btn-change-img text-center btn-warning" data-title="<?= $item['name_' . $lang] ?>" style="
+                            <a data-id="<?php echo $item['id']; ?>" href="javascript:void(0)" onclick="changeImage(this)" title="Đổi ảnh" class="btn btn-circle text-center btn-warning" data-title="<?= $item['name_' . $lang] ?>" style="
                                 position: absolute;
                                 z-index: 2;
                                 left: 45px;

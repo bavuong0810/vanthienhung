@@ -178,6 +178,17 @@ function getSlideImages() {
   return $d->o_fet("SELECT id, image_path FROM db_sanpham_hinhanh WHERE id > $id ORDER BY id ASC LIMIT 0, " . $limit);
 }
 
+function getSlideImagesByProduct() {
+  global $d;
+
+  $id = intval($_GET['id']);
+  $limit = intval($_GET['limit']) ?: 1000;
+  if ($limit > 5000) {
+    $limit = 1000;
+  }
+  return $d->o_fet("SELECT id, image_path, hien_thi, title FROM db_sanpham_hinhanh WHERE id_sp = $id ORDER BY id ASC LIMIT 0, " . $limit);
+}
+
 function removeErrorImages() {
   global $d;
 

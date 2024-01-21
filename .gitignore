@@ -36,3 +36,6 @@ yarn-error.log
 
 robots.txt
 images-log.txt
+
+/img_data1
+/admin/lib/**/*.txt

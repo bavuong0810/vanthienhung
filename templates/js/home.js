@@ -129,20 +129,6 @@ function triggleDeleteImageField(id) {
 	return default_img;
 }
 
-function ajaxChangeImg() {
-	$('.btn-change-img').on('click', function (e) {
-		e.preventDefault();
-
-		let id = $(this).attr('data-id');
-		$('#changeImageModal #changeImageProductId').val(id);
-		$('#changeImageModal #changeImageProductTitle').text($(this).attr('data-title'));
-		$('#changeImageModal #product_title').val($(this).attr('data-title'));
-		$('#changeImageModal #editBtn').attr('href', '/admin/index.php?p=san-pham&a=edit&id=' + $(this).attr('data-id'));
-		$('#changeImageModal .img-result').html('');
-		$('#changeImageModal').modal('show');
-	});
-}
-
 function carouselProductImgs() {
 	$('.prod-slider-nav').slick({
 		infinite: true,
@@ -224,8 +210,6 @@ $(document).ready(function () {
 	stickyHoTroTrucTuyen();
 
 	tiepTucMuaHang();
-
-	ajaxChangeImg();
 
 	$('[data-toggle="tooltip"]').tooltip();
 
