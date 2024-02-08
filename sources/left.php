@@ -35,6 +35,17 @@ if( ($view_zalo_right && $view_ct_truc_tuyen) || ($view_zalo_right && $view_pric
 
     <div class="<?php echo $sticky_widget?'hotrotructuyen-widget':'hotrotructuyen-widget-2'?>">
 
+        <?php
+        if($view_shipping_content == 1):
+            $shipping_return_content = $information['delivery_return'];
+            ?>
+            <div class="shipping-return">
+                <div class="content-about text-justify">
+                    <?= $shipping_return_content ?>
+                </div>
+            </div>
+        <?php endif; ?>
+
         <?php if( $view_zalo_right ){?>
         <div class="info-box mb20">
             <h4 class="title"><?php echo $chiTietHoTroZalo['name_' . $lang]; ?></h4>

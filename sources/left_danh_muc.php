@@ -14,17 +14,6 @@ $view_shipping_content =  $d->getOption('view_shipping_content');
 
     <div class="<?php echo $sticky_left_sidebar?'hotrotructuyen-widget':'hotrotructuyen-widget-2'?>">
 
-        <?php
-        if($view_shipping_content == 1):
-            $shipping_return_content = $information['delivery_return'];
-            ?>
-            <div class="shipping-return">
-                <div class="content-about text-justify">
-                    <?= $shipping_return_content ?>
-                </div>
-            </div>
-        <?php endif; ?>
-
         <?php if( $view_zalo_left ){?>
         <div class="info-box mb20">
             <h4 class="title"><?php echo $chiTietHoTroZalo['name_' . $lang]; ?></h4>
