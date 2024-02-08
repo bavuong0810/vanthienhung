@@ -45,7 +45,7 @@ if( ($view_zalo_right && $view_ct_truc_tuyen) || ($view_zalo_right && $view_pric
             </div>
 
             <?php if($view_shipping_content == 1):
-                $shipping_return = $d->getTemplates(72);
+                $shipping_return = $d->getTemplates(71);
                 ?>
                 <div class="shipping-return">
                     <?php if ($shipping_return['name_' . $lang] != ''): ?>
