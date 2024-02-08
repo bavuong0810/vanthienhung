@@ -16,11 +16,11 @@ $view_shipping_content =  $d->getOption('view_shipping_content');
 
         <?php
         if($view_shipping_content == 1):
-            $shipping_return = $information['delivery_return'];
+            $shipping_return_content = $information['delivery_return'];
             ?>
             <div class="shipping-return">
                 <div class="content-about text-justify">
-                    <?= $shipping_return ?>
+                    <?= $shipping_return_content ?>
                 </div>
             </div>
         <?php endif; ?>
