@@ -877,17 +877,6 @@ $view_button_warrantyonline =  $d->getOption('view_button_warrantyonline');
                                     </div>
                                     <?php }?>
 
-                                    <?php
-                                    if($view_shipping_content == 1):
-                                        $shipping_return_content = $information['delivery_return'];
-                                        ?>
-                                        <div class="shipping-return" style="margin-top: 10px">
-                                            <div class="content-about text-justify">
-                                                <?= $shipping_return_content ?>
-                                            </div>
-                                        </div>
-                                    <?php endif; ?>
-
                                     <?php if($view_shipping_content == 1):
                                         $shipping_return = $d->getTemplates(71);
                                         $shipping_return_content = $information['delivery_return'];
