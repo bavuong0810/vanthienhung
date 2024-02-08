@@ -7,11 +7,23 @@ if( $view_dm_truc_tuyen ){
 }
 $view_vi_tri_nhan_hieu =  $d->getOption('view_vi_tri_nhan_hieu');
 $view_count_product = $d->getOption('view_count_product');
+$view_shipping_content =  $d->getOption('view_shipping_content');
 ?>
 
 <div class="col-md-3 col-left plr10 hotrotructuyen-wrap">
 
     <div class="<?php echo $sticky_left_sidebar?'hotrotructuyen-widget':'hotrotructuyen-widget-2'?>">
+
+        <?php
+        if($view_shipping_content == 1):
+            $shipping_return = $information['delivery_return'];
+            ?>
+            <div class="shipping-return">
+                <div class="content-about text-justify">
+                    <?= $shipping_return ?>
+                </div>
+            </div>
+        <?php endif; ?>
 
         <?php if( $view_zalo_left ){?>
         <div class="info-box mb20">
