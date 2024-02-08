@@ -18,20 +18,9 @@ foreach ($items as $key => $value) {
     $product_id = $value['id'];
 
     //Xoá ảnh lỗi
-    $product_image =  getenv('FILEURL') . '/img_data/images/' . $value['image_path'];
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $product_image);
-    // don't download content
-    curl_setopt($ch, CURLOPT_NOBODY, 1);
-    curl_setopt($ch, CURLOPT_FAILONERROR, 1);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    $result = curl_exec($ch);
-    curl_close($ch);
-    echo $product_image; die();
-    if (!$result) {
+    $product_image =  FILEURL . 'img_data/images/' . $value['image_path'];
+    if (!@getimagesize($product_image)) {
         $d->query('UPDATE db_sanpham SET image_path = NULL WHERE id = ' . $product_id . ';');
-    } else {
-        echo $product_image; die();
     }
 
     $queryGallery = 'SELECT `id`, `id_sp`, `image_path` FROM #_sanpham_hinhanh WHERE `image_path` != "" AND `image_path` IS NOT NULL AND id_sp = ' . $product_id;
@@ -47,15 +36,7 @@ foreach ($items as $key => $value) {
 
     foreach ($productGalleries as $keyGallery => $valueGallery) {
         $image_url =  getenv('FILEURL') . '/img_data/images/' . $valueGallery['image_path'];
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $image_url);
-        // don't download content
-        curl_setopt($ch, CURLOPT_NOBODY, 1);
-        curl_setopt($ch, CURLOPT_FAILONERROR, 1);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $result = curl_exec($ch);
-        curl_close($ch);
-        if(!$result) {
+        if (!@getimagesize($image_url)) {
             $d->o_que("delete from #_sanpham_hinhanh where id = " . $valueGallery['id']);
         }
     }
