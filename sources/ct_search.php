@@ -17,7 +17,7 @@ function checkExpanded($params) {
 	return false;
 }
 
-$brands = $d->o_fet("SELECT id, name FROM #_brand WHERE name IS NOT NULL ORDER BY name ASC, id DESC");
+$brands = $d->o_fet("SELECT id, name FROM #_brand WHERE name IS NOT NULL AND is_show = 1 ORDER BY name ASC, id DESC");
 $isExpended = checkExpanded($params);
 
 ?>
