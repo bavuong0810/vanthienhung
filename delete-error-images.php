@@ -35,7 +35,7 @@ foreach ($items as $key => $value) {
     }
 
     foreach ($productGalleries as $keyGallery => $valueGallery) {
-        $image_url =  getenv('FILEURL') . '/img_data/images/' . $valueGallery['image_path'];
+        $image_url = FILEURL . '/img_data/images/' . $valueGallery['image_path'];
         if (!@getimagesize($image_url)) {
             $d->o_que("delete from #_sanpham_hinhanh where id = " . $valueGallery['id']);
         }
