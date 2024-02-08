@@ -44,14 +44,20 @@ if( ($view_zalo_right && $view_ct_truc_tuyen) || ($view_zalo_right && $view_pric
                 ?>
             </div>
 
-            <?php
-            if($view_shipping_content == 1):
-                $shipping_return_content = $information['delivery_return'];
+            <?php if($view_shipping_content == 1):
+                $shipping_return = $d->getTemplates(72);
                 ?>
-                <div class="shipping-return" style="margin-top: 10px">
-                    <div class="content-about text-justify">
-                        <?= $shipping_return_content ?>
-                    </div>
+                <div class="shipping-return">
+                    <?php if ($shipping_return['name_' . $lang] != ''): ?>
+                        <div class="title-main">
+                            <h3><?= $shipping_return['name_' . $lang]; ?></h3>
+                        </div>
+                    <?php endif; ?>
+                    <?php if ($shipping_return['content_' . $lang] != ''): ?>
+                        <div class="content-about text-justify">
+                            <?= $shipping_return['content_' . $lang] ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
             <?php endif; ?>
         </div>
