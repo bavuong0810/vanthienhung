@@ -73,56 +73,6 @@ $settingsFields = [
 switch($a){
 	case "man":
         global $d;
-        // check table settings have name 'cod_note'
-        $query_cod_note = "SELECT * FROM `#_settings` WHERE `name` = 'cod_note'";
-        $result = $d->simple_fetch($query_cod_note);
-        if (count($result) == 0) {
-            $d->query("INSERT INTO `#_settings`(`name`, `value`) VALUES('cod_note', '')");
-        }
-
-        // check column google_analytics, if not add column google_analytics
-        $link = mysqli_connect($d->servername, $d->username, $d->password, $d->database);
-        $result = mysqli_query($link,"SHOW COLUMNS FROM `" . $d->refix . "thongtin` LIKE 'google_analytics'");
-        $exists = ($result->current_field == 0) ? false : true;
-        if (!$exists) {
-            $query = "ALTER TABLE `" . $d->refix . "thongtin` ADD `google_analytics` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL AFTER `lang_ch`";
-            mysqli_query($link, $query);
-        }
-
-        // check column script_body, if not add column script_body
-        $result = mysqli_query($link,"SHOW COLUMNS FROM `" . $d->refix . "thongtin` LIKE 'script_body'");
-        $exists = ($result->current_field == 0) ? false : true;
-        if (!$exists) {
-            $query = "ALTER TABLE `" . $d->refix . "thongtin` ADD `script_body` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL AFTER `google_analytics`";
-            mysqli_query($link, $query);
-        }
-
-        // check column tax, if not add column tax
-        $result = mysqli_query($link,"SHOW COLUMNS FROM `" . $d->refix . "thongtin` LIKE 'tax'");
-        $exists = ($result->current_field == 0) ? false : true;
-        if (!$exists) {
-            $query = "ALTER TABLE `" . $d->refix . "thongtin` ADD `tax` INT NULL DEFAULT '8' AFTER `lang_ch`;";
-            mysqli_query($link, $query);
-        }
-
-        // check column delivery_return, if not add column delivery_return
-        $link = mysqli_connect($d->servername, $d->username, $d->password, $d->database);
-        $result = mysqli_query($link,"SHOW COLUMNS FROM `" . $d->refix . "thongtin` LIKE 'delivery_return'");
-        $exists = ($result->current_field == 0) ? false : true;
-        if (!$exists) {
-            $query = "ALTER TABLE `" . $d->refix . "thongtin` ADD `delivery_return` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL AFTER `lang_ch`";
-            mysqli_query($link, $query);
-        }
-
-        // check column cart_note, if not add column cart_note
-        $link = mysqli_connect($d->servername, $d->username, $d->password, $d->database);
-        $result = mysqli_query($link,"SHOW COLUMNS FROM `" . $d->refix . "thongtin` LIKE 'cart_note'");
-        $exists = ($result->current_field == 0) ? false : true;
-        if (!$exists) {
-            $query = "ALTER TABLE `" . $d->refix . "thongtin` ADD `cart_note` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL AFTER `lang_ch`";
-            mysqli_query($link, $query);
-        }
-
 		showdulieu();
 		$template = @$_REQUEST['p']."/them";
 		break;
