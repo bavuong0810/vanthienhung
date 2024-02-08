@@ -200,4 +200,5 @@
         });
     }
 </script>
+<script src="<?= URLPATH ?>templates/extra/slick/slick.js"></script>
 <script src="/templates/js/home.js"></script>
