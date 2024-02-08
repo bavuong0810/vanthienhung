@@ -33,7 +33,7 @@ if (file_exists($cachePath) && 1 == 2) {
 
                     <!--<span><i class="fa fa-envelope-o"></i>Email: <a href="mailto:<?= $information['email'] ?>"><?= $information['email'] ?></a></span>-->
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pc">
                     <span class="bg-red"><a href="lien-he.html"><i
                                     class="fa fa-ticket"></i>Gửi email hỗ trợ kỹ thuật</a></span>
                 </div>

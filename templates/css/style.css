@@ -46,6 +46,14 @@ body {
     max-width: 768px;
 }
 
+.pc {
+    display: block !important;
+}
+
+.mobile {
+    display: none !important;
+}
+
 .title-font {
     font-family: "RobotoCondensed";
     font-weight: bold;
@@ -3682,6 +3690,16 @@ span.fd-discount {
 
     .product-thumbnail {
         max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .pc {
+        display: none !important;
+    }
+
+    .mobile {
+        display: block !important;
     }
 }
 
