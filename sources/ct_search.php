@@ -5,6 +5,7 @@ function checkExpanded($params) {
 		'brandId',
 		'minPrice',
 		'maxPrice',
+		'orderBy',
 	];
 
 	foreach($fields as $field) {
@@ -58,7 +59,7 @@ $isExpended = checkExpanded($params);
 			</div>
 		</div>
 		<div class="collapse row <?php echo $isExpended ? 'in' : '' ?>" id="advancedSearch">
-			<div class="col-md-4">
+			<div class="col-md-3">
 				<div class="form-group">
 					<label>Nhãn hiệu</label>
 					<select name="brandId" class="input form-control selectpicker" data-live-search="true">
@@ -70,16 +71,56 @@ $isExpended = checkExpanded($params);
 				</div>
 			</div>
 
-			<div class="col-md-4">
+			<div class="col-md-3">
 				<div class="form-group">
 					<label>Giá lớn hơn</label>
 					<input type="text" placeholder="Giá cao hơn..." class="form-control" name="minPrice" value="<?php echo @$params['minPrice'] ?>" data-type="currency" maxlength="20">
 				</div>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-3">
 				<div class="form-group">
 					<label>Giá thấp hơn</label>
 					<input type="text" placeholder="Giá thấp hơn..." class="form-control" name="maxPrice" value="<?php echo @$params['maxPrice'] ?>" data-type="currency" maxlength="20">
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="form-group">
+					<label>Sắp xếp</label>
+
+					<select name="orderBy" id="orderBy" placeholder="Mặc định" class="form-control">
+							<?php
+							$orderByOptions = [
+								[
+									'value' => '',
+									'label' => 'Mặc định',
+								],
+								[
+									'value' => 'price_increase',
+									'label' => 'Giá tăng dần',
+								],
+								[
+									'value' => 'price_decrease',
+									'label' => 'Giá giảm dần',
+								],
+								[
+									'value' => 'view_increase',
+									'label' => 'Lượt xem tăng dần',
+								],
+								[
+									'value' => 'view_decrease',
+									'label' => 'Lượt xem giảm dần',
+								],
+							];
+
+							foreach($orderByOptions as $orderByOption) {
+								?>
+								<option value="<?php echo $orderByOption['value'];?>" <?php echo $orderByOption['value'] == @$_GET['orderBy'] ? 'selected' : ''; ?>>
+									<?php echo $orderByOption['label']; ?>
+								</option>
+								<?php
+							}
+							?>
+					</select>
 				</div>
 			</div>
 		</div>

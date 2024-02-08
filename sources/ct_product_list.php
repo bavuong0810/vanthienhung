@@ -61,7 +61,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <h3 class="mb10 mt-0">
-                        <a href="<?=URLPATH.$item['alias_'.$lang] ?>.html" title="<?=$item['name_'.$lang] ?>">
+                        <a href="<?=URLPATH.$item['alias_'.$lang] ?>.html" title="<?=$item['name_'.$lang] ?>" class="item-title-<?php echo $item['id']; ?>">
                             <?=$item['name_'.$lang] ?>
                         </a>
                     </h3>
@@ -123,7 +123,7 @@
                     <?php $productCateContentRight = $d->getTemplates(70); ?>
                     <?php if ($productCateContentRight['name_' . $lang] != ''): ?>
                         <div class="title-main">
-                            <h3><?= $productCateContentRight['name_' . $lang]; ?></h3>
+                            <h3 class="item-title-<?php echo $item['id']; ?>"><?= $productCateContentRight['name_' . $lang]; ?></h3>
                         </div>
                     <?php endif; ?>
                     <?php if ($productCateContentRight['content_' . $lang] != ''): ?>
@@ -135,7 +135,7 @@
             </div>
             <?php else: ?>
             <h3 class="m-0 mb-1">
-                <a href="<?=URLPATH.$item['alias_'.$lang] ?>.html" title="<?=$item['name_'.$lang] ?>">
+                <a href="<?=URLPATH.$item['alias_'.$lang] ?>.html" title="<?=$item['name_'.$lang] ?>" class="item-title-<?php echo $item['id']; ?>">
                     <?=$item['name_'.$lang] ?>
                 </a>
             </h3>

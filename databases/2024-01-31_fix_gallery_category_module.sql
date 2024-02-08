@@ -1,0 +1,1 @@
+UPDATE `db_category` SET `module` = '1' WHERE `db_category`.`id` = 1117;

@@ -50,6 +50,20 @@ $queries = [];
 $view_product_noprice = $d->getOption('view_product_noprice');
 $pwhere = (!$view_product_noprice)?' and price > '.MIN_PRICE:'';
 
+$order = '';
+$orderByOptions = [
+    'price_increase' => ' ORDER BY price ASC',
+    'price_decrease' => ' ORDER BY price DESC',
+    'view_increase' => ' ORDER BY view ASC',
+    'view_decrease' => ' ORDER BY view DESC',
+];
+if (@$_GET['orderBy']) {
+    $selectedOrder = @$_GET['orderBy'];
+    if ($orderByOptions[$selectedOrder]) {
+        $order = $orderByOptions[$selectedOrder];
+    }
+}
+
 if ($t || count($params) > 0) {
     if ($t) {
         $whereName = '';
@@ -61,8 +75,11 @@ if ($t || count($params) > 0) {
                 $whereName .= " AND name_vi LIKE '%" . $textE ."%'";
             }
         }
+        if (!$order) {
+            $order = ' ORDER BY name_vi ASC';
+        }
         $query = "SELECT * FROM #_sanpham
-				WHERE $whereName $pwhere ORDER BY name_vi ASC";
+				WHERE $whereName $pwhere $order";
     } else {
         $params = array_map(function($str) use($d) { return $d->cleanData($str); }, $params);
         if (!empty($params['minPrice'])) {
@@ -74,12 +91,14 @@ if ($t || count($params) > 0) {
         $conditions = arrayToConditions($params, $searchColumns);
         $whereString = implode(' AND ', $conditions);
 
-        if ( empty($params['minPrice']) && empty($params['maxPrice']) ){
-            $order = ' ORDER BY name_vi ASC';
-        } elseif ( empty($params['minPrice']) && !empty($params['maxPrice']) ) {
-            $order = ' ORDER BY price DESC';
-        }  else {
-            $order = ' ORDER BY price ASC';
+        if (!$order) {
+            if ( empty($params['minPrice']) && empty($params['maxPrice']) ){
+                $order = ' ORDER BY name_vi ASC';
+            } elseif ( empty($params['minPrice']) && !empty($params['maxPrice']) ) {
+                $order = ' ORDER BY price DESC';
+            }  else {
+                $order = ' ORDER BY price ASC';
+            }
         }
 
         $query = "SELECT * FROM #_sanpham

@@ -32,7 +32,7 @@ if ($item['promotion_price'] < $item['price'] && $item['promotion_price'] > 0) {
                     z-index: 2;
                     left: 5px;
                 "><i class="fa fa-close" style="width: 20px;height: 20px;line-height: 20px;"></i></a>
-                <a data-id="<?php echo $item['id']; ?>" href="javascript:void(0)" onclick="changeImage(this)" title="Đổi ảnh" class="btn btn-circle text-center btn-warning"
+                <a data-id="<?php echo $item['id']; ?>" href="javascript:void(0)" onclick="changeImage(this)" title="Đổi ảnh" class="btn btn-circle text-center btn-warning quick-item-<?php echo $item['id']; ?>"
                    data-title="<?= $item['name_' . $lang] ?>" data-image="<?= $item['image_path'] ?>"
                    style="
                     position: absolute;
@@ -62,7 +62,7 @@ if ($item['promotion_price'] < $item['price'] && $item['promotion_price'] > 0) {
         </div>
         <div class="info">
             <h3>
-                <a href="<?= URLPATH . $item['alias_' . $lang] ?>.html" title="<?= $item['name_' . $lang] ?>" target="_blank">
+                <a href="<?= URLPATH . $item['alias_' . $lang] ?>.html" title="<?= $item['name_' . $lang] ?>" target="_blank" class="item-title-<?php echo $item['id']; ?>">
                     <?= $item['name_' . $lang] ?>
                 </a>
             </h3>

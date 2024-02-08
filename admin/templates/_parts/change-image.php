@@ -42,6 +42,8 @@
                             <div class="col-md-12 form-group img-result"></div>
                         </div>
                     </div>
+                    <?php if (!@$changeImage_hideSlide) {
+                    ?>
                     <div class="form-group">
                         <label class="text-label">
                             Hình ảnh slide:
@@ -55,6 +57,7 @@
                             <div style=""><a href="javascript:them_anh()" style="  background-color: #089abf;  padding: 5px 22px;  border-radius: 3px;  color: #fff;  text-decoration: none;">Thêm ảnh</a></div>
                         </div>
                     </div>
+                    <?php } ?>
                     <div class="form-group text-center">
                         <button class="btn btn-primary" type="submit">CẬP NHẬT</button>
                     </div>
@@ -73,8 +76,9 @@
   <script>
     if (typeof AppConfig === 'undefined') {
       window.AppConfig = {
-        fileBaseUrl: '<?php echo FILEURL; ?>',
+        fileBaseUrl: '<?php echo $changeImage_baseFile ?: FILEURL; ?>',
         thumbFolder: '<?php echo THUMB_SITE_FOLDER; ?>',
+        changeImageUrl: '<?php echo @$changeImage_api; ?>',
       };
     }
     jQuery(document).ready(function($) {
@@ -86,7 +90,7 @@
             const formData = new FormData(this);
             let id = $('#changeImageForm #changeImageProductId').val();
             $.ajax({
-                url: '/api.php?func=changeProductThumb',
+                url: AppConfig.changeImageUrl || '/api.php?func=changeProductThumb',
                 type: 'POST',
                 data: formData,
                 processData: false,
@@ -107,6 +111,12 @@
                             $('.product_image_' + id).attr('src', imgResult);
                             $('.product_image_' + id).css('max-height', '200px');
                             $('.product_image_' + id).css('object-fit', 'cover');
+                        }
+                        const $titleInput = $('input#product_title');
+                        if ($titleInput && $titleInput.val()) {
+                            const title = $titleInput.val();
+                            $('.quick-item-' + id).attr('data-title', title);
+                            $('.item-title-' + id).text(title);
                         }
                         $('#changeImageModal').modal('hide');
                     } else {

@@ -31,6 +31,7 @@ require_once __ROOT_PATH . '/api/view_count.php';
 require_once __ROOT_PATH . '/api/guarantee.php';
 require_once __ROOT_PATH . '/api/product.php';
 require_once __ROOT_PATH . '/api/email_contact.php';
+require_once __ROOT_PATH . '/api/brand.php';
 
 if ($_REQUEST['func']) {
 	if (function_exists($_REQUEST['func'])) {
