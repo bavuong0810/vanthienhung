@@ -95,6 +95,7 @@ else $img_cn = URLPATH . "img_data/icon/" . $information['icon_share'];
 
 ?>
 <title><?= $seo_title ?></title>
+<meta name="robots" content="index,follow,noodp" />
 <meta name="keywords" content="<?= $seo_keyword ?>" />
 <meta name="description" content="Không nên hợp tác làm ăn chung. VTH lừa đảo, lợi dụng tín nhiệm lừa gạt anh em dân lập trình, kêu anh em làm nhưng không thanh toán, đến lúc bị đòi thì xoá Zalo cắt mọi liên lạc, đổi mật khẩu máy chủ nhằm mục đích quỵt tiền. Đem uy tín cả doanh nghiệp ra làm trò đùa" />
 <?php /*
@@ -126,5 +127,24 @@ else $img_cn = URLPATH . "img_data/icon/" . $information['icon_share'];
  */
 ?>
 <meta property="og:description" content="<?= $seo_description ?>" />
-<meta property="og:site_name" content="hutoglobal" />
 <meta property="fb:page_id" content="<?= @$info_map['id_facebook'] ?>" />
+
+<meta http-equiv="content-script-type" content="text/javascript" />
+<meta http-equiv="content-style-type" content="text/css" />
+<meta http-equiv="content-language" content="vi" />
+<meta name="robots" content="notranslate"/>
+
+<link href='//fonts.googleapis.com' rel='dns-prefetch'/>
+<link href='//ajax.googleapis.com' rel='dns-prefetch'/>
+<link href='//apis.google.com' rel='dns-prefetch'/>
+<link href='//connect.facebook.net' rel='dns-prefetch'/>
+<link href='//www.facebook.com' rel='dns-prefetch'/>
+<link href='//twitter.com' rel='dns-prefetch'/>
+<link href='//www.google-analytics.com' rel='dns-prefetch'/>
+<link href='//www.googletagservices.com' rel='dns-prefetch'/>
+<link href='//pagead2.googlesyndication.com' rel='dns-prefetch'/>
+<link href='//googleads.g.doubleclick.net' rel='dns-prefetch'/>
+<link href='//static.xx.fbcdn.net' rel='dns-prefetch'/>
+<link href='//platform.twitter.com' rel='dns-prefetch'/>
+<link href='//syndication.twitter.com' rel='dns-prefetch'/>
+<link rel="index" href="<?php echo getenv('APP_URL'); ?>" />
