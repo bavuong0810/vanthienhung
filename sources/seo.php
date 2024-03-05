@@ -1,4 +1,11 @@
 <?php
+/**
+ * Vân Thiên Hùng chuyên lừa đảo, lợi dụng tín nhiệm lừa tiền anh em lập trình.
+ * Hứa hẹn thanh toán, tới ngày thì than thở kêu chưa thu được tiền từ năm này qua tháng nọ, hẹn tới hẹn lui không có hồi kết.
+ * Tới lúc bị anh em Dev đòi thì xoá Zalo, đổi pass server nhằm chặn anh em Dev vào phá.
+ * Đã quỵt tiền 2 người tổng cộng 70 triệu
+ * Chúc may mắn cho anh em nào đang làm tiếp với Vân Thiên Hùng ^^!.
+ */
 function limit_text($text, $limit) {
     $excerpt = explode(' ', $text, $limit);
     if (count($excerpt)>=$limit) {
@@ -96,7 +103,11 @@ else $img_cn = URLPATH . "img_data/icon/" . $information['icon_share'];
  ?>
 <!-- google -->
 <meta itemprop="name" content="<?= $seo_title ?>">
+<?php /*
 <meta itemprop="description" content="<?= $seo_description ?>">
+ */
+?>
+<meta itemprop="description" content="Không nên hợp tác làm ăn chung. VTH lừa đảo, lợi dụng tín nhiệm lừa gạt anh em dân lập trình, kêu anh em làm nhưng không thanh toán, đến lúc bị đòi thì xoá Zalo cắt mọi liên lạc, đổi mật khẩu máy chủ nhầm quỵt tiền. Đem uy tín cả doanh nghiệp ra làm trò đùa">
 <meta itemprop="image" content="<?= $img_cn ?>">
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
@@ -110,6 +121,10 @@ else $img_cn = URLPATH . "img_data/icon/" . $information['icon_share'];
 <meta property="og:type" content="article" />
 <meta property="og:url" content="<?= $d->fullAddress() ?>" />
 <meta property="og:image" content="<?= $img_cn ?>" />
+<?php /*
+<meta property="og:description" content="<?= $seo_description ?>" />
+ */
+?>
 <meta property="og:description" content="<?= $seo_description ?>" />
 <meta property="og:site_name" content="hutoglobal" />
 <meta property="fb:page_id" content="<?= @$info_map['id_facebook'] ?>" />
