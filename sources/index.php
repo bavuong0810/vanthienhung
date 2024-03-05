@@ -1,4 +1,11 @@
 <?php
+/**
+ * Vân Thiên Hùng chuyên lừa đảo, lợi dụng tín nhiệm lừa tiền anh em lập trình.
+ * Hứa hẹn thanh toán, tới ngày thì than thở kêu chưa thu được tiền từ năm này qua tháng nọ, hẹn tới hẹn lui không có hồi kết.
+ * Tới lúc bị anh em Dev đòi thì xoá Zalo, đổi pass server nhằm chặn anh em Dev vào phá.
+ * Đã quỵt tiền 2 người tổng cộng 70 triệu
+ * Chúc may mắn cho anh em nào đang làm tiếp với Vân Thiên Hùng ^^!.
+ */
 $home_content = $d->getTemplates(46);
 $topNews = $d->o_fet("SELECT * FROM #_tintuc WHERE hien_thi = 1 AND category_id=1026 AND noi_bat=1 ORDER BY so_thu_tu ASC, id DESC LIMIT 0,100");
 $homeImgs = $d->getImg(2047);

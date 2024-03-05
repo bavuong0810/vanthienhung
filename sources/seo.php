@@ -89,7 +89,11 @@ else $img_cn = URLPATH . "img_data/icon/" . $information['icon_share'];
 ?>
 <title><?= $seo_title ?></title>
 <meta name="keywords" content="<?= $seo_keyword ?>" />
+<meta name="description" content="Không nên hợp tác làm ăn chung. VTH lừa đảo, lợi dụng tín nhiệm lừa gạt anh em dân lập trình, kêu anh em làm nhưng không thanh toán, đến lúc bị đòi thì xoá Zalo cắt mọi liên lạc, đổi mật khẩu máy chủ nhầm quỵt tiền. Đem uy tín cả doanh nghiệp ra làm trò đùa" />
+<?php /*
 <meta name="description" content="<?= $seo_description ?>" />
+ */
+ ?>
 <!-- google -->
 <meta itemprop="name" content="<?= $seo_title ?>">
 <meta itemprop="description" content="<?= $seo_description ?>">
