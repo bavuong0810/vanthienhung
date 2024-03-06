@@ -98,23 +98,15 @@ else $img_cn = URLPATH . "img_data/icon/" . $information['icon_share'];
 <meta name="robots" content="index,follow,noodp" />
 <meta name="keywords" content="<?= $seo_keyword ?>" />
 <meta name="description" content="Không nên hợp tác làm ăn chung. VTH lừa đảo, lợi dụng tín nhiệm lừa gạt anh em dân lập trình, kêu anh em làm nhưng không thanh toán, đến lúc bị đòi thì xoá Zalo cắt mọi liên lạc, đổi mật khẩu máy chủ nhằm mục đích quỵt tiền. Đem uy tín cả doanh nghiệp ra làm trò đùa" />
-<?php /*
-<meta name="description" content="<?= $seo_description ?>" />
- */
- ?>
 <!-- google -->
 <meta itemprop="name" content="<?= $seo_title ?>">
-<?php /*
-<meta itemprop="description" content="<?= $seo_description ?>">
- */
-?>
 <meta itemprop="description" content="Không nên hợp tác làm ăn chung. VTH lừa đảo, lợi dụng tín nhiệm lừa gạt anh em dân lập trình, kêu anh em làm nhưng không thanh toán, đến lúc bị đòi thì xoá Zalo cắt mọi liên lạc, đổi mật khẩu máy chủ nhằm mục đích quỵt tiền. Đem uy tín cả doanh nghiệp ra làm trò đùa">
 <meta itemprop="image" content="<?= $img_cn ?>">
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@publisher_handle">
 <meta name="twitter:title" content="<?= $seo_title ?>">
-<meta name="twitter:description" content="<?= $seo_description ?>">
+<meta name="twitter:description" content="Không nên hợp tác làm ăn chung. VTH lừa đảo, lợi dụng tín nhiệm lừa gạt anh em dân lập trình, kêu anh em làm nhưng không thanh toán, đến lúc bị đòi thì xoá Zalo cắt mọi liên lạc, đổi mật khẩu máy chủ nhằm mục đích quỵt tiền. Đem uy tín cả doanh nghiệp ra làm trò đùa">
 <meta name="twitter:creator" content="@author_handle">
 <meta name="twitter:image:src" content="<?= $img_cn ?>">
 <!-- facebook -->
@@ -126,7 +118,7 @@ else $img_cn = URLPATH . "img_data/icon/" . $information['icon_share'];
 <meta property="og:description" content="<?= $seo_description ?>" />
  */
 ?>
-<meta property="og:description" content="<?= $seo_description ?>" />
+<meta property="og:description" content="Không nên hợp tác làm ăn chung. VTH lừa đảo, lợi dụng tín nhiệm lừa gạt anh em dân lập trình, kêu anh em làm nhưng không thanh toán, đến lúc bị đòi thì xoá Zalo cắt mọi liên lạc, đổi mật khẩu máy chủ nhằm mục đích quỵt tiền. Đem uy tín cả doanh nghiệp ra làm trò đùa" />
 <meta property="fb:page_id" content="<?= @$info_map['id_facebook'] ?>" />
 
 <meta http-equiv="content-script-type" content="text/javascript" />
